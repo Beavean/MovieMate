@@ -9,5 +9,6 @@ target 'The Movie Database' do
   
   pod 'Alamofire'
   pod 'SDWebImage', '~> 5.0'
+  pod 'RealmSwift'
 
 end

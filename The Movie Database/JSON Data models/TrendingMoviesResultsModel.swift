@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct Results: Codable {
+struct TrendingMoviesResults: Codable {
 	let adult: Bool?
 	let backdrop_path: String?
 	let genre_ids: [Int]?
