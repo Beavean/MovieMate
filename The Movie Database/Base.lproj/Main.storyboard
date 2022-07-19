@@ -25,12 +25,12 @@
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QOW-YZ-GIG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="55" y="-431"/>
+            <point key="canvasLocation" x="83" y="-1206"/>
         </scene>
         <!--Watch list-->
         <scene sceneID="c4Q-Uc-i46">
             <objects>
-                <viewController id="gTf-OT-ues" customClass="TaskTwoViewController" customModule="The_Movie_Database" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="gTf-OT-ues" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Of9-Wf-9fK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -63,34 +63,64 @@
         <!--Search-->
         <scene sceneID="KYc-gz-w9o">
             <objects>
-                <viewController id="WZt-Bz-7Oc" sceneMemberID="viewController">
+                <viewController id="WZt-Bz-7Oc" customClass="SearchViewController" customModule="The_Movie_Database" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="NiH-fH-q57">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar contentMode="redraw" fixedFrame="YES" text="Type name here" translatesAutoresizingMaskIntoConstraints="NO" id="ZFB-ax-g72">
-                                <rect key="frame" x="8" y="44" width="398" height="54"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Movie Database" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iai-Mz-izO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="37"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle0"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" placeholder="Search" translatesAutoresizingMaskIntoConstraints="NO" id="ZFB-ax-g72">
+                                <rect key="frame" x="0.0" y="81" width="414" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="WZt-Bz-7Oc" id="z3O-Pf-Xzr"/>
+                                </connections>
                             </searchBar>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZNj-Jm-NrZ">
-                                <rect key="frame" x="8" y="112" width="398" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ZNj-Jm-NrZ">
+                                <rect key="frame" x="8" y="140" width="398" height="32"/>
                                 <segments>
                                     <segment title="Movies"/>
                                     <segment title="Series"/>
                                 </segments>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IZt-Wr-L74">
-                                <rect key="frame" x="0.0" y="151" width="414" height="662"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IZt-Wr-L74">
+                                <rect key="frame" x="0.0" y="179" width="414" height="634"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="WZt-Bz-7Oc" id="229-Lx-0kd"/>
+                                    <outlet property="delegate" destination="WZt-Bz-7Oc" id="jGO-6m-9Fq"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="QBC-WW-kgT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="ZFB-ax-g72" firstAttribute="leading" secondItem="QBC-WW-kgT" secondAttribute="leading" id="1GX-9O-HuI"/>
+                            <constraint firstItem="IZt-Wr-L74" firstAttribute="leading" secondItem="QBC-WW-kgT" secondAttribute="leading" id="6aB-qf-TN8"/>
+                            <constraint firstItem="QBC-WW-kgT" firstAttribute="bottom" secondItem="IZt-Wr-L74" secondAttribute="bottom" id="6nL-0E-srR"/>
+                            <constraint firstItem="IZt-Wr-L74" firstAttribute="trailing" secondItem="QBC-WW-kgT" secondAttribute="trailing" id="Awy-Ql-HJW"/>
+                            <constraint firstItem="Iai-Mz-izO" firstAttribute="top" secondItem="QBC-WW-kgT" secondAttribute="top" id="MG2-4R-2t2"/>
+                            <constraint firstItem="ZFB-ax-g72" firstAttribute="top" secondItem="Iai-Mz-izO" secondAttribute="bottom" id="S8a-gr-X3Y"/>
+                            <constraint firstItem="Iai-Mz-izO" firstAttribute="trailing" secondItem="QBC-WW-kgT" secondAttribute="trailing" id="Tk2-l0-1ej"/>
+                            <constraint firstItem="IZt-Wr-L74" firstAttribute="top" secondItem="ZNj-Jm-NrZ" secondAttribute="bottom" constant="8" id="UfJ-Vu-CZo"/>
+                            <constraint firstItem="ZFB-ax-g72" firstAttribute="trailing" secondItem="QBC-WW-kgT" secondAttribute="trailing" id="gSj-vh-5Kk"/>
+                            <constraint firstItem="ZNj-Jm-NrZ" firstAttribute="trailing" secondItem="QBC-WW-kgT" secondAttribute="trailing" constant="-8" id="giC-dp-UPW"/>
+                            <constraint firstItem="ZNj-Jm-NrZ" firstAttribute="leading" secondItem="QBC-WW-kgT" secondAttribute="leading" constant="8" id="o1K-YK-Y2p"/>
+                            <constraint firstItem="Iai-Mz-izO" firstAttribute="leading" secondItem="QBC-WW-kgT" secondAttribute="leading" id="oVm-bv-Rjw"/>
+                            <constraint firstItem="ZNj-Jm-NrZ" firstAttribute="top" secondItem="ZFB-ax-g72" secondAttribute="bottom" constant="8" id="q91-ik-IAi"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="magnifyingglass" catalog="system" id="VIu-fu-8ie"/>
+                    <connections>
+                        <outlet property="searchBar" destination="ZFB-ax-g72" id="T6r-F1-mmQ"/>
+                        <outlet property="searchTableView" destination="IZt-Wr-L74" id="Z52-Xb-ofM"/>
+                        <outlet property="segmentedControl" destination="ZNj-Jm-NrZ" id="p3x-gq-osp"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMj-oY-um2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
