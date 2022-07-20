@@ -17,4 +17,5 @@ struct K {
     
     
     static let MoviesCellReuseID = "SearchTableViewCell"
+    static let DetailViewControllerID = "DetailViewController"
 }

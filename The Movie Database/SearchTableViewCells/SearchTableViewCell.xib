@@ -23,15 +23,22 @@
                             <constraint firstAttribute="width" constant="100" id="qsd-Pr-lre"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="This will be the movie title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-hX-5Da">
-                        <rect key="frame" x="116" y="8" width="291" height="21.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="This will be the movie title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-hX-5Da">
+                        <rect key="frame" x="116" y="8" width="291" height="16"/>
+                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hY-gq-aO1">
-                        <rect key="frame" x="116" y="37.5" width="291" height="19.5"/>
-                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-da-XQN">
+                        <rect key="frame" x="116" y="141" width="234" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hY-gq-aO1">
+                        <rect key="frame" x="116" y="24" width="291" height="13.5"/>
+                        <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -45,31 +52,26 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-da-XQN">
-                        <rect key="frame" x="116" y="136.5" width="234" height="19.5"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="19.5" id="jc0-Hu-N1m"/>
-                        </constraints>
-                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3s-7Z-zjK">
+                        <rect key="frame" x="116" y="128" width="234" height="18"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="hL7-os-fMQ" secondAttribute="bottom" constant="8" id="0dN-Yb-uRb"/>
-                    <constraint firstItem="M2q-C6-04j" firstAttribute="leading" secondItem="v5k-da-XQN" secondAttribute="trailing" constant="8" symbolic="YES" id="18h-95-hnU"/>
                     <constraint firstItem="M2q-C6-04j" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="128" id="1jC-sI-lcV"/>
                     <constraint firstAttribute="bottom" secondItem="M2q-C6-04j" secondAttribute="bottom" constant="8" id="4C4-YQ-rSS"/>
                     <constraint firstItem="hL7-os-fMQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="4Zu-kS-hQk"/>
-                    <constraint firstItem="2hY-gq-aO1" firstAttribute="top" secondItem="lcc-hX-5Da" secondAttribute="bottom" constant="8" symbolic="YES" id="B28-wu-dnY"/>
-                    <constraint firstItem="2hY-gq-aO1" firstAttribute="leading" secondItem="hL7-os-fMQ" secondAttribute="trailing" constant="8" symbolic="YES" id="BJf-E4-hGs"/>
-                    <constraint firstItem="v5k-da-XQN" firstAttribute="leading" secondItem="hL7-os-fMQ" secondAttribute="trailing" constant="8" symbolic="YES" id="U8N-Dd-Dnq"/>
+                    <constraint firstItem="2hY-gq-aO1" firstAttribute="top" secondItem="lcc-hX-5Da" secondAttribute="bottom" id="4zK-hf-yHT"/>
                     <constraint firstItem="lcc-hX-5Da" firstAttribute="leading" secondItem="hL7-os-fMQ" secondAttribute="trailing" constant="8" symbolic="YES" id="Yxw-dj-cy4"/>
+                    <constraint firstItem="2hY-gq-aO1" firstAttribute="leading" secondItem="hL7-os-fMQ" secondAttribute="trailing" constant="8" id="ah1-uc-1ux"/>
                     <constraint firstItem="hL7-os-fMQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="bYF-ho-YXG"/>
                     <constraint firstAttribute="trailing" secondItem="M2q-C6-04j" secondAttribute="trailing" constant="8" id="gl3-o5-jlv"/>
+                    <constraint firstAttribute="trailing" secondItem="2hY-gq-aO1" secondAttribute="trailing" constant="8" id="j8f-Bv-kQz"/>
                     <constraint firstAttribute="trailing" secondItem="lcc-hX-5Da" secondAttribute="trailing" constant="8" id="oRG-gY-P7R"/>
-                    <constraint firstItem="v5k-da-XQN" firstAttribute="centerY" secondItem="M2q-C6-04j" secondAttribute="centerY" id="sWO-aj-wLV"/>
-                    <constraint firstAttribute="trailing" secondItem="2hY-gq-aO1" secondAttribute="trailing" constant="8" id="ss8-wF-4b2"/>
                     <constraint firstItem="lcc-hX-5Da" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="xc7-ac-s6T"/>
                 </constraints>
             </tableViewCellContentView>
@@ -79,6 +81,7 @@
                 <outlet property="movieOverviewLabel" destination="2hY-gq-aO1" id="2lL-9f-03I"/>
                 <outlet property="movieTitleLabel" destination="lcc-hX-5Da" id="y8u-5W-Hy6"/>
                 <outlet property="posterImageView" destination="hL7-os-fMQ" id="YWh-ih-pu8"/>
+                <outlet property="releaseDateLabel" destination="u3s-7Z-zjK" id="G2j-Vk-dEg"/>
             </connections>
             <point key="canvasLocation" x="206.52173913043481" y="161.04910714285714"/>
         </tableViewCell>

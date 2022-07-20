@@ -36,12 +36,9 @@ class SearchViewController: UIViewController {
             do {
                 if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
                     self.moviesSearchResults = allData.results!
-                    
-                    print(self.moviesSearchResults.first!)
-                    print(self.moviesSearchResults.count)
-                    
                     DispatchQueue.main.async {
                         self.searchTableView.reloadData()
+                        print(self.moviesSearchResults.first?.id)
                     }
                 }
             } catch {
@@ -58,16 +55,25 @@ extension SearchViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
-        print(moviesSearchResults.count)
         let item = moviesSearchResults[indexPath.row]
-        cell.posterImageView.sd_setImage(with: URL(string: K.baseImageUrl + item.posterPath!))
+        cell.configure(with: item)
         return cell
         
     }
 }
 
 extension SearchViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let viewController = storyboard.instantiateViewController(withIdentifier: K.DetailViewControllerID) as? DetailViewController {
+            viewController.movieID = self.moviesSearchResults[indexPath.row].id!
+            viewController.backdropPosterPath = self.moviesSearchResults[indexPath.row].backdropPath!
+            print(viewController.backdropPosterPath)
+            self.navigationController?.pushViewController(viewController, animated: true)
+            
+            
+        }
+    }
 }
 
 

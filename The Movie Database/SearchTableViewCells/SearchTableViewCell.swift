@@ -8,21 +8,31 @@
 import UIKit
 import SDWebImage
 
+
 class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var movieTitleLabel: UILabel!
     @IBOutlet weak var movieOverviewLabel: UILabel!
+    @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieGenresLabel: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-
+        posterImageView.layer.cornerRadius = posterImageView.frame.width / 10
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
+    }
+    
+    func configure(with results: MoviesSearch.Results) {
+        self.posterImageView.sd_setImage(with: URL(string: K.baseImageUrl + results.posterPath!))
+        self.movieTitleLabel.text = results.title
+        self.movieOverviewLabel.text = results.overview
+        self.movieGenresLabel.text = results.genreIDs?.description
+        self.releaseDateLabel.text = results.releaseDate
     }
     
 }
