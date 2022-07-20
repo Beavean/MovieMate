@@ -23,6 +23,12 @@ class SearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchTableView.dataSource = self
+        searchTableView.delegate = self
+        
+        searchTableView.register(UINib(nibName: K.MoviesCellReuseID, bundle: nil), forCellReuseIdentifier: K.MoviesCellReuseID)
+        
         let apiQuery = enteredQuery.replacingOccurrences(of: " ", with: "%20")
         let url = K.baseUrl + K.movieSearchKey + K.apiKey + K.movieSearchQuery + apiQuery
         print(url)
@@ -30,8 +36,13 @@ class SearchViewController: UIViewController {
             do {
                 if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
                     self.moviesSearchResults = allData.results!
+                    
                     print(self.moviesSearchResults.first!)
                     print(self.moviesSearchResults.count)
+                    
+                    DispatchQueue.main.async {
+                        self.searchTableView.reloadData()
+                    }
                 }
             } catch {
                 print(error)
@@ -42,14 +53,17 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        return moviesSearchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        UITableViewCell()
+        guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
+        print(moviesSearchResults.count)
+        let item = moviesSearchResults[indexPath.row]
+        cell.posterImageView.sd_setImage(with: URL(string: K.baseImageUrl + item.posterPath!))
+        return cell
+        
     }
-    
-    
 }
 
 extension SearchViewController: UITableViewDelegate {

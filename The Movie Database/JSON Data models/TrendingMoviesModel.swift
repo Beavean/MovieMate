@@ -2,11 +2,11 @@
 
 import Foundation
 
-struct TrendingMovies : Codable {
-	let page : Int?
-	let results : [Results]?
-	let totalPages : Int?
-	let totalResults : Int?
+struct TrendingMovies: Codable {
+	let page: Int?
+	let results: [Results]?
+	let totalPages: Int?
+	let totalResults: Int?
 
 	enum CodingKeys: String, CodingKey {
 
