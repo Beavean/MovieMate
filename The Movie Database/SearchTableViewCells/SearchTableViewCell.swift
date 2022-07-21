@@ -20,7 +20,7 @@ class SearchTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        posterImageView.layer.cornerRadius = posterImageView.frame.width / 2
+        posterImageView.layer.cornerRadius = posterImageView.frame.width / 6
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
