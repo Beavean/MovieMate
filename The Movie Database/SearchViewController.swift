@@ -8,6 +8,7 @@
 import UIKit
 import SDWebImage
 import Alamofire
+import SwiftUI
 
 class SearchViewController: UIViewController {
     
@@ -38,7 +39,6 @@ class SearchViewController: UIViewController {
                     self.moviesSearchResults = allData.results!
                     DispatchQueue.main.async {
                         self.searchTableView.reloadData()
-                        print(self.moviesSearchResults.first?.id)
                     }
                 }
             } catch {
@@ -66,9 +66,14 @@ extension SearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: K.DetailViewControllerID) as? DetailViewController {
+            let media = self.moviesSearchResults[indexPath.row]
+            viewController.media = media
             viewController.movieID = self.moviesSearchResults[indexPath.row].id!
-            viewController.backdropPosterPath = self.moviesSearchResults[indexPath.row].backdropPath!
-            print(viewController.backdropPosterPath)
+            print(self.moviesSearchResults[indexPath.row].id!)
+            if let posterPath = self.moviesSearchResults[indexPath.row].backdropPath {
+                viewController.backdropPosterPath = posterPath
+            }
+            
             self.navigationController?.pushViewController(viewController, animated: true)
             
             

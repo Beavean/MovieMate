@@ -15,11 +15,12 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var movieOverviewLabel: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
     @IBOutlet weak var movieGenresLabel: UILabel!
+    @IBOutlet weak var ratingLabel: UILabel!
     
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        posterImageView.layer.cornerRadius = posterImageView.frame.width / 10
+        posterImageView.layer.cornerRadius = posterImageView.frame.width / 2
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -33,6 +34,8 @@ class SearchTableViewCell: UITableViewCell {
         self.movieOverviewLabel.text = results.overview
         self.movieGenresLabel.text = results.genreIDs?.description
         self.releaseDateLabel.text = results.releaseDate
+        self.ratingLabel.text = "\(results.voteAverage!)"
+
     }
     
 }

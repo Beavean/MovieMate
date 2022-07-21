@@ -11,17 +11,22 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var backdropPoster: UIImageView!
     
+    var searchIndex = Int()
     var movieID = Int()
-    var backdropPosterPath = ""
-
+    var backdropPosterPath: String? = nil
+    var media: MoviesSearch.Results? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureViewController()
-      
+        
     }
     
     func configureViewController() {
-        self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + backdropPosterPath))
+        if let backdrop = backdropPosterPath {
+            self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + backdrop))
+        } else {
+            return
+        }
     }
-
 }

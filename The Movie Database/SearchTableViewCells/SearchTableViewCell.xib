@@ -29,9 +29,11 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Movie genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-da-XQN">
-                        <rect key="frame" x="116" y="141" width="234" height="18"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-da-XQN">
+                        <rect key="frame" x="116" y="140" width="234" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="Qsn-9m-yDH"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -42,13 +44,13 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="9.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2q-C6-04j">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="9.9" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2q-C6-04j">
                         <rect key="frame" x="358" y="128" width="49" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="49" id="cO0-CZ-YrO"/>
                             <constraint firstAttribute="height" constant="36" id="mjv-aD-F7U"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="30"/>
+                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -66,12 +68,16 @@
                     <constraint firstAttribute="bottom" secondItem="M2q-C6-04j" secondAttribute="bottom" constant="8" id="4C4-YQ-rSS"/>
                     <constraint firstItem="hL7-os-fMQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="4Zu-kS-hQk"/>
                     <constraint firstItem="2hY-gq-aO1" firstAttribute="top" secondItem="lcc-hX-5Da" secondAttribute="bottom" id="4zK-hf-yHT"/>
+                    <constraint firstAttribute="bottom" secondItem="v5k-da-XQN" secondAttribute="bottom" constant="8" id="5kx-O7-Em2"/>
                     <constraint firstItem="lcc-hX-5Da" firstAttribute="leading" secondItem="hL7-os-fMQ" secondAttribute="trailing" constant="8" symbolic="YES" id="Yxw-dj-cy4"/>
                     <constraint firstItem="2hY-gq-aO1" firstAttribute="leading" secondItem="hL7-os-fMQ" secondAttribute="trailing" constant="8" id="ah1-uc-1ux"/>
                     <constraint firstItem="hL7-os-fMQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="bYF-ho-YXG"/>
                     <constraint firstAttribute="trailing" secondItem="M2q-C6-04j" secondAttribute="trailing" constant="8" id="gl3-o5-jlv"/>
                     <constraint firstAttribute="trailing" secondItem="2hY-gq-aO1" secondAttribute="trailing" constant="8" id="j8f-Bv-kQz"/>
+                    <constraint firstItem="v5k-da-XQN" firstAttribute="leading" secondItem="hL7-os-fMQ" secondAttribute="trailing" constant="8" id="kLQ-Rr-ZJk"/>
+                    <constraint firstItem="M2q-C6-04j" firstAttribute="leading" secondItem="v5k-da-XQN" secondAttribute="trailing" constant="8" id="l0i-ct-xbd"/>
                     <constraint firstAttribute="trailing" secondItem="lcc-hX-5Da" secondAttribute="trailing" constant="8" id="oRG-gY-P7R"/>
+                    <constraint firstItem="v5k-da-XQN" firstAttribute="bottom" secondItem="hL7-os-fMQ" secondAttribute="bottom" id="pCA-yn-D7s"/>
                     <constraint firstItem="lcc-hX-5Da" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="xc7-ac-s6T"/>
                 </constraints>
             </tableViewCellContentView>
@@ -81,6 +87,7 @@
                 <outlet property="movieOverviewLabel" destination="2hY-gq-aO1" id="2lL-9f-03I"/>
                 <outlet property="movieTitleLabel" destination="lcc-hX-5Da" id="y8u-5W-Hy6"/>
                 <outlet property="posterImageView" destination="hL7-os-fMQ" id="YWh-ih-pu8"/>
+                <outlet property="ratingLabel" destination="M2q-C6-04j" id="y2M-mv-P3E"/>
                 <outlet property="releaseDateLabel" destination="u3s-7Z-zjK" id="G2j-Vk-dEg"/>
             </connections>
             <point key="canvasLocation" x="206.52173913043481" y="161.04910714285714"/>
