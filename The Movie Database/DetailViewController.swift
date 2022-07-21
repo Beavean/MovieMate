@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class DetailViewController: UIViewController {
     
@@ -15,6 +16,7 @@ class DetailViewController: UIViewController {
     var movieID = Int()
     var backdropPosterPath: String? = nil
     var media: MoviesSearch.Results? = nil
+    var detailMedia: MediaDetails? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,10 +25,21 @@ class DetailViewController: UIViewController {
     }
     
     func configureViewController() {
-        if let backdrop = backdropPosterPath {
-            self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + backdrop))
-        } else {
-            return
-        }
+        if let media = media {
+            if let backdropPath = media.backdropPath {
+                self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
+            } else { return }
+            let url = K.baseUrl + K.getMovieByID + String(media.id!) + K.apiKey
+            AF.request(url).responseData { response in
+                do {
+                    if let allData = try JSONDecoder().decode(MediaDetails?.self, from: response.data!) {
+                        self.detailMedia = allData
+                        print(self.detailMedia!.budget!)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        } else { return }
     }
 }

@@ -14,7 +14,7 @@ struct K {
     static let trendingMoviesKey = "trending/movie/day"
     static let movieSearchKey = "search/movie"
     static let movieSearchQuery = "&query="
-    
+    static let getMovieByID = "movie/"
     
     static let MoviesCellReuseID = "SearchTableViewCell"
     static let DetailViewControllerID = "DetailViewController"

@@ -32,8 +32,7 @@ class SearchViewController: UIViewController {
         
         let apiQuery = enteredQuery.replacingOccurrences(of: " ", with: "%20")
         let url = K.baseUrl + K.movieSearchKey + K.apiKey + K.movieSearchQuery + apiQuery
-        print(url)
-        AF.request(url).responseJSON { response in
+        AF.request(url).responseData { response in
             do {
                 if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
                     self.moviesSearchResults = allData.results!
@@ -69,14 +68,7 @@ extension SearchViewController: UITableViewDelegate {
             let media = self.moviesSearchResults[indexPath.row]
             viewController.media = media
             viewController.movieID = self.moviesSearchResults[indexPath.row].id!
-            print(self.moviesSearchResults[indexPath.row].id!)
-            if let posterPath = self.moviesSearchResults[indexPath.row].backdropPath {
-                viewController.backdropPosterPath = posterPath
-            }
-            
             self.navigationController?.pushViewController(viewController, animated: true)
-            
-            
         }
     }
 }
