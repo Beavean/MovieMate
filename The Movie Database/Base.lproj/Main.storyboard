@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
+        <!--Tab Bar View Controller-->
         <scene sceneID="h6L-sM-YPz">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RnY-i0-WS6" sceneMemberID="viewController">
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="RnY-i0-WS6" customClass="TabBarViewController" customModule="The_Movie_Database" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fj8-cV-inj">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -31,7 +31,7 @@
         <!--Saved list-->
         <scene sceneID="c4Q-Uc-i46">
             <objects>
-                <viewController id="gTf-OT-ues" sceneMemberID="viewController">
+                <viewController id="gTf-OT-ues" customClass="SavedMediaViewController" customModule="The_Movie_Database" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Of9-Wf-9fK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -51,6 +51,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Saved list" largeTitleDisplayMode="always" id="ZVH-wi-XiK"/>
+                    <connections>
+                        <outlet property="savedMediaTableView" destination="1Pe-24-3ek" id="7E6-WX-Ue3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yiU-oF-8I2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -143,12 +146,17 @@
                                     <constraint firstAttribute="height" constant="45" id="Auh-NI-ZCV"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="YNd-lR-Fqv"/>
                                 </constraints>
-                                <color key="tintColor" systemColor="labelColor"/>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="arrow.down.square" catalog="system" imagePlacement="bottom" title="SAVE" imagePadding="2">
+                                <buttonConfiguration key="configuration" style="filled" image="arrow.down.square" catalog="system" imagePlacement="bottom" title="SAVE" imagePadding="2" cornerStyle="large">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
                                     <fontDescription key="titleFontDescription" type="boldSystem" pointSize="7"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="47k-N6-AGp" eventType="touchUpInside" id="gcO-ZN-vni"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rRg-zQ-ec0"/>

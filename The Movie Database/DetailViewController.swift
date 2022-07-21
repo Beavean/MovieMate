@@ -34,6 +34,12 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        RealmDataManager.shared.saveMedia(media: media!)
+        print(RealmDataManager.shared.getMedia())
+    }
+    
+    
     func loadMediaDetails() {
         if let media = media {
             if let backdropPath = media.backdropPath {
