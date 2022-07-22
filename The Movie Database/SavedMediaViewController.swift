@@ -11,7 +11,7 @@ class SavedMediaViewController: UIViewController {
     
     @IBOutlet weak var savedMediaTableView: UITableView!
     
-    var arrayOgMedia: [MovieRealm] = []
+    var arrayOfMedia: [MovieRealm] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,19 +30,19 @@ class SavedMediaViewController: UIViewController {
     }
 
     func getSavedMedia() {
-        arrayOgMedia = RealmDataManager.shared.getMedia()
+        arrayOfMedia = RealmDataManager.shared.getMedia()
  
     }
 }
 
 extension SavedMediaViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arrayOgMedia.count
+        arrayOfMedia.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
-        let item = arrayOgMedia[indexPath.row]
+        let item = arrayOfMedia[indexPath.row]
         cell.configure(withRealm: item)
         return cell
     }
@@ -51,5 +51,14 @@ extension SavedMediaViewController: UITableViewDataSource {
 }
 
 extension SavedMediaViewController: UITableViewDelegate {
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let viewController = storyboard.instantiateViewController(withIdentifier: K.DetailViewControllerID) as? DetailViewController {
+            let media = self.arrayOfMedia[indexPath.row]
+            viewController.movieID = self.arrayOfMedia[indexPath.row].id
+            viewController.loadView()
+            viewController.configureViewController(with: media)
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
 }

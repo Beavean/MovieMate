@@ -17,7 +17,7 @@ struct RealmDataManager {
     private init() { }
     
     func saveMedia(media: MoviesSearch.Results) {
-        var movieRealm = MovieRealm()
+        let movieRealm = MovieRealm()
 
         movieRealm.adult = media.adult ?? false
         movieRealm.backdropPath = media.backdropPath ?? ""

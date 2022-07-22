@@ -25,18 +25,27 @@ class DetailViewController: UIViewController {
         
     }
     
-    func configureViewController(with receivedMedia: MoviesSearch.Results) {
-        if let media = media {
-            if let backdropPath = media.backdropPath {
-                self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
-            } else { return }
-            
-        }
+    func configureViewController(with model: MoviesSearch.Results) {
+        if let backdropPath = model.backdropPath {
+            self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
+        } else { return }
+        
     }
     
+    func configureViewController(with realm: MovieRealm) {
+        let backdropPath = realm.backdropPath
+        self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
+        
+    }
+    
+    
+    
+    
     @IBAction func saveButtonPressed(_ sender: UIButton) {
+        
         RealmDataManager.shared.saveMedia(media: media!)
         print(RealmDataManager.shared.getMedia())
+        
     }
     
     
