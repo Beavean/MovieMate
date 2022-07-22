@@ -12,7 +12,7 @@ class MovieRealm: Object {
    
     @objc dynamic var adult = false
     @objc dynamic var backdropPath = ""
-//    @objc dynamic var genreIDs = [0]
+    @objc dynamic var genreIDs = ""
     @objc dynamic var id = 0
     @objc dynamic var originalLanguage = ""
     @objc dynamic var originalTitle = ""

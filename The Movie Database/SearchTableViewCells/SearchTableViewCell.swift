@@ -32,7 +32,7 @@ class SearchTableViewCell: UITableViewCell {
         self.posterImageView.sd_setImage(with: URL(string: K.baseImageUrl + results.posterPath!))
         self.movieTitleLabel.text = results.title
         self.movieOverviewLabel.text = results.overview
-        self.movieGenresLabel.text = results.genreIDs?.description
+        self.movieGenresLabel.text = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: results.genreIDs!)
         self.releaseDateLabel.text = results.releaseDate
         self.ratingLabel.text = "\(results.voteAverage!)"
 
@@ -42,7 +42,7 @@ class SearchTableViewCell: UITableViewCell {
         self.posterImageView.sd_setImage(with: URL(string: K.baseImageUrl + results.posterPath))
         self.movieTitleLabel.text = results.title
         self.movieOverviewLabel.text = results.overview
-//        self.movieGenresLabel.text = results.genreIDs?.description
+        self.movieGenresLabel.text = results.genreIDs
         self.releaseDateLabel.text = results.releaseDate
         self.ratingLabel.text = "\(results.voteAverage)"
 

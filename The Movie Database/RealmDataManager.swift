@@ -21,7 +21,7 @@ struct RealmDataManager {
 
         movieRealm.adult = media.adult ?? false
         movieRealm.backdropPath = media.backdropPath ?? ""
-//        movieRealm.genreIDs = media.genreIDs  ?? []
+        movieRealm.genreIDs = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: media.genreIDs!)
         movieRealm.id =  media.id ?? 0
         movieRealm.originalLanguage = media.originalLanguage ?? ""
         movieRealm.originalTitle = media.originalTitle ?? ""
@@ -38,6 +38,7 @@ struct RealmDataManager {
             realm?.add(movieRealm)
         }
     }
+    
     
     func getMedia() -> [MovieRealm] {
         var moviesRealm: [MovieRealm] = []
