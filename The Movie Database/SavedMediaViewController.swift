@@ -40,6 +40,16 @@ extension SavedMediaViewController: UITableViewDataSource {
         arrayOfMedia.count
     }
     
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            self.arrayOfMedia.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else {
+            return
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
         let item = arrayOfMedia[indexPath.row]
@@ -61,4 +71,5 @@ extension SavedMediaViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
+    
 }

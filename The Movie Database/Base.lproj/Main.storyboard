@@ -142,17 +142,17 @@
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuu-N0-BXe">
                                 <rect key="frame" x="351" y="214" width="45" height="45"/>
+                                <color key="backgroundColor" systemColor="labelColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="Auh-NI-ZCV"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="YNd-lR-Fqv"/>
                                 </constraints>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="arrow.down.square" catalog="system" imagePlacement="bottom" title="SAVE" imagePadding="2" cornerStyle="large">
+                                <buttonConfiguration key="configuration" style="filled" image="bookmark" catalog="system" imagePlacement="bottom" imagePadding="2" cornerStyle="large">
                                     <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                    <fontDescription key="titleFontDescription" type="boldSystem" pointSize="7"/>
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="saveButtonPressed:" destination="47k-N6-AGp" eventType="touchUpInside" id="gcO-ZN-vni"/>
@@ -175,6 +175,7 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="7Z7-xU-rE6"/>
                     <connections>
                         <outlet property="backdropPoster" destination="40G-6l-Jff" id="Txs-zb-7gx"/>
+                        <outlet property="saveButtonOutlet" destination="Wuu-N0-BXe" id="rj6-bi-tWh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeW-nJ-kgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -222,7 +223,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrow.down.square" catalog="system" width="128" height="114"/>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="ticket" catalog="system" width="128" height="84"/>
         <systemColor name="labelColor">

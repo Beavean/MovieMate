@@ -11,6 +11,7 @@ import Alamofire
 class DetailViewController: UIViewController {
     
     @IBOutlet weak var backdropPoster: UIImageView!
+    @IBOutlet weak var saveButtonOutlet: UIButton!
     
     var searchIndex = Int()
     var movieID = Int()
@@ -21,6 +22,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 40
+        saveButtonOutlet.layer.cornerRadius = saveButtonOutlet.frame.width / 2
         loadMediaDetails()
         
     }
@@ -35,17 +37,24 @@ class DetailViewController: UIViewController {
     func configureViewController(with realm: MovieRealm) {
         let backdropPath = realm.backdropPath
         self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
-        
+        self.saveButtonOutlet.alpha = 1
+        self.saveButtonOutlet.backgroundColor = .orange
+        self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+        self.saveButtonOutlet.isUserInteractionEnabled = false
     }
     
     
     
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        
-        RealmDataManager.shared.saveMedia(media: media!)
-        print(RealmDataManager.shared.getMedia())
-        
+        let alert = UIAlertController(title: "Save",message: "Add movie to the list?", preferredStyle: .alert)
+        let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+            RealmDataManager.shared.saveMedia(media: self.media!)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alert.addAction(saveAction)
+        alert.addAction(cancelAction)
+        present(alert, animated: true)
     }
     
     

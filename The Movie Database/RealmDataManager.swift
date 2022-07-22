@@ -51,4 +51,5 @@ struct RealmDataManager {
         return moviesRealm
                 
     }
+    
 }
