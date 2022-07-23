@@ -44,6 +44,9 @@ struct MoviesSearch: Codable {
         let video: Bool?
         let voteAverage: Double?
         let voteCount: Int?
+        let firstAirDate: String?
+        let name: String?
+        let originalName: String?
 
         enum CodingKeys: String, CodingKey {
 
@@ -61,6 +64,9 @@ struct MoviesSearch: Codable {
             case video = "video"
             case voteAverage = "vote_average"
             case voteCount = "vote_count"
+            case name = "name"
+            case originalName = "original_name"
+            case firstAirDate = "first_air_date"
         }
 
         init(from decoder: Decoder) throws {
@@ -79,6 +85,9 @@ struct MoviesSearch: Codable {
             video = try values.decodeIfPresent(Bool.self, forKey: .video)
             voteAverage = try values.decodeIfPresent(Double.self, forKey: .voteAverage)
             voteCount = try values.decodeIfPresent(Int.self, forKey: .voteCount)
+            name = try values.decodeIfPresent(String.self, forKey: .name)
+            originalName = try values.decodeIfPresent(String.self, forKey: .originalName)
+            firstAirDate = try values.decodeIfPresent(String.self, forKey: .firstAirDate)
         }
 
     }

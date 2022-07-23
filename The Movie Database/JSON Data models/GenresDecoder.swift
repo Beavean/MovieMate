@@ -57,6 +57,22 @@ struct GenresDecoder {
                 idString = "War"
             case 37:
                 idString = "Western"
+            case 10765:
+                idString = "Sci-Fi & Fantasy"
+            case 10766:
+                idString = "Soap"
+            case 10767:
+                idString = "Talk"
+            case 10768:
+                idString = "War & Politics"
+            case 10764:
+                idString = "Reality"
+            case 10763:
+                idString = "News"
+            case 10762:
+                idString = "Kids"
+            case 10759:
+                idString = "Action & Adventure"
             default:
                 idString = "Undefined"
             }
