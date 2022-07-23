@@ -70,7 +70,7 @@
                             <searchBar contentMode="redraw" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZFB-ax-g72">
                                 <rect key="frame" x="0.0" y="88" width="414" height="51"/>
                                 <color key="tintColor" systemColor="labelColor"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="webSearch" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                 <scopeButtonTitles>
                                     <string>Title</string>
                                     <string>Title</string>

@@ -16,9 +16,7 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchTableView: UITableView!
     
-    let enteredQuery = "Star Wars"
-    
-    
+    var enteredQuery = "Star Wars"
     
     var moviesSearchResults = [MoviesSearch.Results]()
     
@@ -27,6 +25,7 @@ class SearchViewController: UIViewController {
         
         searchTableView.dataSource = self
         searchTableView.delegate = self
+        searchBar.delegate = self
         
         searchTableView.register(UINib(nibName: K.MoviesCellReuseID, bundle: nil), forCellReuseIdentifier: K.MoviesCellReuseID)
         
@@ -74,6 +73,42 @@ extension SearchViewController: UITableViewDelegate {
         }
     }
 }
+
+extension SearchViewController: UISearchBarDelegate {
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        let searchText = searchBar.text
+        if searchText == "" {
+            return
+        } else {
+            enteredQuery = searchText!
+        }
+        let apiQuery = enteredQuery.replacingOccurrences(of: " ", with: "%20")
+        let url = K.baseUrl + K.movieSearchKey + K.apiKey + K.movieSearchQuery + apiQuery
+        AF.request(url).responseData { response in
+            do {
+                if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
+                    self.moviesSearchResults = allData.results!
+                    DispatchQueue.main.async {
+                        self.searchTableView.reloadData()
+                    }
+                }
+            } catch {
+                print(error)
+            }
+        }
+        searchBar.endEditing(true)
+        self.searchTableView.reloadData()
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchBar.endEditing(true)
+        self.searchTableView.reloadData()
+    }
+}
+
+
 
 
 
