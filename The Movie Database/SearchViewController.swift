@@ -18,6 +18,7 @@ class SearchViewController: UIViewController {
     
     var mediaType = "movie"
     var enteredQuery = ""
+    var lastScheduledSearch: Timer?
     
     var moviesSearchResults = [MoviesSearch.Results]()
     
@@ -50,9 +51,8 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func receiveSearchResults() {
+    @objc func receiveSearchResults() {
         if searchBar.searchTextField.text == "" {
-            searchBar.endEditing(true)
             receivePopularMedia()
             return
         } else {
@@ -71,7 +71,6 @@ class SearchViewController: UIViewController {
                     print(error)
                 }
             }
-            searchBar.endEditing(true)
             self.searchTableView.reloadData()
         }
     }
@@ -83,9 +82,11 @@ class SearchViewController: UIViewController {
         case 0:
             mediaType = "movie"
             receiveSearchResults()
+            searchBar.endEditing(true)
         case 1:
             mediaType = "tv"
             receiveSearchResults()
+            searchBar.endEditing(true)
         default:
             searchBar.endEditing(true)
             receiveSearchResults()
@@ -125,14 +126,20 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         receiveSearchResults()
+        searchBar.endEditing(true)
     }
-    
-    
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
         receiveSearchResults()
+        searchBar.endEditing(true)
     }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        lastScheduledSearch?.invalidate()
+        lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(receiveSearchResults), userInfo: nil, repeats: false)
+    }
+
 }
 
 
