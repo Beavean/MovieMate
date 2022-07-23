@@ -16,7 +16,8 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var searchTableView: UITableView!
     
-    var enteredQuery = "Star Wars"
+    var mediaType = "movie"
+    var enteredQuery = ""
     
     var moviesSearchResults = [MoviesSearch.Results]()
     
@@ -29,12 +30,16 @@ class SearchViewController: UIViewController {
         
         searchTableView.register(UINib(nibName: K.MoviesCellReuseID, bundle: nil), forCellReuseIdentifier: K.MoviesCellReuseID)
         
-        let apiQuery = enteredQuery.replacingOccurrences(of: " ", with: "%20")
-        let url = K.baseUrl + K.movieSearchKey + K.apiKey + K.movieSearchQuery + apiQuery
+        receivePopularMedia()
+        
+    }
+    
+    func receivePopularMedia() {
+        let url = K.baseUrl + mediaType + K.popularKey + K.apiKey
         AF.request(url).responseData { response in
             do {
                 if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
-                    self.moviesSearchResults = allData.results!
+                    self.moviesSearchResults = allData.results ?? []
                     DispatchQueue.main.async {
                         self.searchTableView.reloadData()
                     }
@@ -44,6 +49,24 @@ class SearchViewController: UIViewController {
             }
         }
     }
+    
+    
+    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
+            switch segmentedControl.selectedSegmentIndex
+            {
+            case 0:
+                mediaType = "movie"
+                receivePopularMedia()
+                searchTableView.reloadData()
+            case 1:
+                mediaType = "tv"
+                receivePopularMedia()
+                searchTableView.reloadData()
+            default:
+                receivePopularMedia()
+                searchTableView.reloadData()
+            }
+        }
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -88,7 +111,7 @@ extension SearchViewController: UISearchBarDelegate {
         AF.request(url).responseData { response in
             do {
                 if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
-                    self.moviesSearchResults = allData.results!
+                    self.moviesSearchResults = allData.results ?? []
                     DispatchQueue.main.async {
                         self.searchTableView.reloadData()
                     }

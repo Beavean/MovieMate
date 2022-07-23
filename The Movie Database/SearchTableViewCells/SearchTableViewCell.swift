@@ -31,11 +31,11 @@ class SearchTableViewCell: UITableViewCell {
     func configure(withModel results: MoviesSearch.Results) {
         if let posterPath = results.posterPath {
             self.posterImageView.sd_setImage(with: URL(string: K.baseImageUrl + posterPath))
-        } 
+        }
         self.movieTitleLabel.text = results.title
         self.movieOverviewLabel.text = results.overview
         self.movieGenresLabel.text = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: results.genreIDs!)
-        self.releaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: results.releaseDate!)
+        self.releaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: results.releaseDate ?? "")
         self.ratingLabel.text = "\(results.voteAverage!)"
 
     }

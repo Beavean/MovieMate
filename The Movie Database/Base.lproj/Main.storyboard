@@ -85,6 +85,9 @@
                                     <segment title="Movies"/>
                                     <segment title="Series"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedControlChanged:" destination="WZt-Bz-7Oc" eventType="valueChanged" id="YUy-sd-dWg"/>
+                                </connections>
                             </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IZt-Wr-L74">
                                 <rect key="frame" x="0.0" y="186" width="414" height="627"/>

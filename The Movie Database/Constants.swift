@@ -15,6 +15,7 @@ struct K {
     static let movieSearchKey = "search/movie"
     static let movieSearchQuery = "&query="
     static let getMovieByID = "movie/"
+    static let popularKey = "/popular"
     
     static let MoviesCellReuseID = "SearchTableViewCell"
     static let DetailViewControllerID = "DetailViewController"
