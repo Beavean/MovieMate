@@ -22,6 +22,7 @@ class SearchViewController: UIViewController {
     
     var moviesSearchResults = [MoviesSearch.Results]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -72,6 +73,7 @@ class SearchViewController: UIViewController {
                 }
             }
             self.searchTableView.reloadData()
+            searchTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
         }
     }
     
