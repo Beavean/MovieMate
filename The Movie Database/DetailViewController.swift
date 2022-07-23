@@ -34,6 +34,7 @@ class DetailViewController: UIViewController {
         
     }
     
+    
     func configureViewController(with realm: MovieRealm) {
         let backdropPath = realm.backdropPath
         self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
@@ -47,13 +48,14 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Save",message: "Add movie to the list?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "Save", style: .default) { action in
             RealmDataManager.shared.saveMedia(media: self.media!)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alert.addAction(saveAction)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        alert.view.tintColor = UIColor.black
         alert.addAction(cancelAction)
+        alert.addAction(saveAction)
         present(alert, animated: true)
     }
     

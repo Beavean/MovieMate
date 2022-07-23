@@ -33,7 +33,7 @@ class SearchTableViewCell: UITableViewCell {
         self.movieTitleLabel.text = results.title
         self.movieOverviewLabel.text = results.overview
         self.movieGenresLabel.text = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: results.genreIDs!)
-        self.releaseDateLabel.text = results.releaseDate
+        self.releaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: results.releaseDate!)
         self.ratingLabel.text = "\(results.voteAverage!)"
 
     }

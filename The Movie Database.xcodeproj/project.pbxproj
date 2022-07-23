@@ -27,6 +27,7 @@
 		08B046612889964C00E61D76 /* SavedMediaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B046602889964C00E61D76 /* SavedMediaViewController.swift */; };
 		08B046632889B18700E61D76 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B046622889B18600E61D76 /* TabBarViewController.swift */; };
 		08B04665288B316200E61D76 /* GenresDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B04664288B316100E61D76 /* GenresDecoder.swift */; };
+		08B04669288BD33700E61D76 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B04668288BD33700E61D76 /* DateFormatter.swift */; };
 		08DD20EC2885F33E0036FA84 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD20EA2885F33E0036FA84 /* SearchTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		08B046602889964C00E61D76 /* SavedMediaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedMediaViewController.swift; sourceTree = "<group>"; };
 		08B046622889B18600E61D76 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		08B04664288B316100E61D76 /* GenresDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenresDecoder.swift; sourceTree = "<group>"; };
+		08B04668288BD33700E61D76 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		08DD20EA2885F33E0036FA84 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		11FF59286F0A11AE754CA463 /* Pods_The_Movie_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Movie_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC00BEBB31BFA682DEB487E /* Pods-The Movie Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Movie Database.release.xcconfig"; path = "Target Support Files/Pods-The Movie Database/Pods-The Movie Database.release.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				088163222886A9FC005F2C9B /* SeriesSearch.swift */,
 				08B046522889481800E61D76 /* MediaDetails.swift */,
 				08B04664288B316100E61D76 /* GenresDecoder.swift */,
+				08B04668288BD33700E61D76 /* DateFormatter.swift */,
 			);
 			path = "JSON Data models";
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08B04669288BD33700E61D76 /* DateFormatter.swift in Sources */,
 				08B0464B288854E600E61D76 /* DetailViewController.swift in Sources */,
 				08B04665288B316200E61D76 /* GenresDecoder.swift in Sources */,
 				08DD20EC2885F33E0036FA84 /* SearchTableViewCell.swift in Sources */,

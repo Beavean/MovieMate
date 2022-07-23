@@ -28,7 +28,7 @@ struct RealmDataManager {
         movieRealm.overview = media.overview ?? ""
         movieRealm.popularity = media.popularity ?? 0
         movieRealm.posterPath = media.posterPath ?? ""
-        movieRealm.releaseDate = media.releaseDate ?? ""
+        movieRealm.releaseDate = MediaDateFormatter.shared.formatDate(from: media.releaseDate!)
         movieRealm.title = media.title ?? ""
         movieRealm.video = media.video ?? false
         movieRealm.voteAverage = media.voteAverage ?? 0
