@@ -12,8 +12,8 @@ struct K {
     static let baseUrl = "https://api.themoviedb.org/3/"
     static let baseImageUrl = "https://image.tmdb.org/t/p/w500/"
     static let trendingMoviesKey = "trending/movie/day"
-    static let movieSearchKey = "search/movie"
-    static let movieSearchQuery = "&query="
+    static let mediaSearchKey = "search/"
+    static let mediaSearchQueryKey = "&query="
     static let getMovieByID = "movie/"
     static let popularKey = "/popular"
     

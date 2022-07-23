@@ -50,23 +50,47 @@ class SearchViewController: UIViewController {
         }
     }
     
+    func receiveSearchResults() {
+        if searchBar.searchTextField.text == "" {
+            searchBar.endEditing(true)
+            receivePopularMedia()
+            return
+        } else {
+            enteredQuery = searchBar.searchTextField.text!
+            let apiQuery = enteredQuery.replacingOccurrences(of: " ", with: "%20")
+            let url = K.baseUrl + K.mediaSearchKey + mediaType + K.apiKey + K.mediaSearchQueryKey + apiQuery
+            AF.request(url).responseData { response in
+                do {
+                    if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
+                        self.moviesSearchResults = allData.results ?? []
+                        DispatchQueue.main.async {
+                            self.searchTableView.reloadData()
+                        }
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+            searchBar.endEditing(true)
+            self.searchTableView.reloadData()
+        }
+    }
+    
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
-            switch segmentedControl.selectedSegmentIndex
-            {
-            case 0:
-                mediaType = "movie"
-                receivePopularMedia()
-                searchTableView.reloadData()
-            case 1:
-                mediaType = "tv"
-                receivePopularMedia()
-                searchTableView.reloadData()
-            default:
-                receivePopularMedia()
-                searchTableView.reloadData()
-            }
+        switch segmentedControl.selectedSegmentIndex
+        {
+        case 0:
+            mediaType = "movie"
+            receiveSearchResults()
+        case 1:
+            mediaType = "tv"
+            receiveSearchResults()
+        default:
+            searchBar.endEditing(true)
+            receiveSearchResults()
         }
+    }
 }
 
 extension SearchViewController: UITableViewDataSource {
@@ -100,34 +124,14 @@ extension SearchViewController: UITableViewDelegate {
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        let searchText = searchBar.text
-        if searchText == "" {
-            return
-        } else {
-            enteredQuery = searchText!
-        }
-        let apiQuery = enteredQuery.replacingOccurrences(of: " ", with: "%20")
-        let url = K.baseUrl + K.movieSearchKey + K.apiKey + K.movieSearchQuery + apiQuery
-        AF.request(url).responseData { response in
-            do {
-                if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
-                    self.moviesSearchResults = allData.results ?? []
-                    DispatchQueue.main.async {
-                        self.searchTableView.reloadData()
-                    }
-                }
-            } catch {
-                print(error)
-            }
-        }
-        searchBar.endEditing(true)
-        self.searchTableView.reloadData()
+        receiveSearchResults()
     }
+    
+    
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.text = ""
-        searchBar.endEditing(true)
-        self.searchTableView.reloadData()
+        receiveSearchResults()
     }
 }
 
