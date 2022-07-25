@@ -16,26 +16,32 @@ struct RealmDataManager {
     
     private init() { }
     
-    func saveMedia(media: MoviesSearch.Results) {
+    
+    @discardableResult func saveMedia(media: MoviesSearch.Results) -> Bool {
         let movieRealm = MovieRealm()
-
-        movieRealm.adult = media.adult ?? false
-        movieRealm.backdropPath = media.backdropPath ?? ""
-        movieRealm.genreIDs = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: media.genreIDs!)
-        movieRealm.id =  media.id ?? 0
-        movieRealm.originalLanguage = media.originalLanguage ?? ""
-        movieRealm.originalTitle = media.originalTitle ?? ""
-        movieRealm.overview = media.overview ?? ""
-        movieRealm.popularity = media.popularity ?? 0
-        movieRealm.posterPath = media.posterPath ?? ""
-        movieRealm.releaseDate = MediaDateFormatter.shared.formatDate(from: media.releaseDate ?? "")
-        movieRealm.title = media.title ?? ""
-        movieRealm.video = media.video ?? false
-        movieRealm.voteAverage = media.voteAverage ?? 0
-        movieRealm.voteCount = media.voteCount ?? 0
         
-        try? realm?.write {
-            realm?.add(movieRealm)
+        if (realm?.object(ofType: MovieRealm.self, forPrimaryKey: media.title)) != nil {
+            return false
+        } else {
+            
+            movieRealm.adult = media.adult ?? false
+            movieRealm.backdropPath = media.backdropPath ?? ""
+            movieRealm.genreIDs = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: media.genreIDs!)
+            movieRealm.id =  media.id ?? 0
+            movieRealm.originalLanguage = media.originalLanguage ?? ""
+            movieRealm.originalTitle = media.originalTitle ?? ""
+            movieRealm.overview = media.overview ?? ""
+            movieRealm.popularity = media.popularity ?? 0
+            movieRealm.posterPath = media.posterPath ?? ""
+            movieRealm.releaseDate = MediaDateFormatter.shared.formatDate(from: media.releaseDate ?? "")
+            movieRealm.title = media.title ?? ""
+            movieRealm.video = media.video ?? false
+            movieRealm.voteAverage = media.voteAverage ?? 0
+            movieRealm.voteCount = media.voteCount ?? 0
+            try? realm?.write {
+                realm?.add(movieRealm)
+            }
+            return true
         }
     }
     
@@ -50,7 +56,7 @@ struct RealmDataManager {
         }
         
         return moviesRealm
-                
+        
     }
     
 }

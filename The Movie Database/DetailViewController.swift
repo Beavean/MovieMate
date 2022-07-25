@@ -38,8 +38,6 @@ class DetailViewController: UIViewController {
     func configureViewController(with realm: MovieRealm) {
         let backdropPath = realm.backdropPath
         self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
-        self.saveButtonOutlet.alpha = 1
-        self.saveButtonOutlet.backgroundColor = .orange
         self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
         self.saveButtonOutlet.isUserInteractionEnabled = false
     }
@@ -48,15 +46,24 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
-        let saveAction = UIAlertAction(title: "Save", style: .default) { action in
-            RealmDataManager.shared.saveMedia(media: self.media!)
+        
+        if RealmDataManager.shared.saveMedia(media: self.media!) {
+            let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
+            let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+                RealmDataManager.shared.saveMedia(media: self.media!)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+            alert.view.tintColor = UIColor.label
+            alert.addAction(cancelAction)
+            alert.addAction(saveAction)
+            present(alert, animated: true)
+        } else {
+            let alert = UIAlertController(title: "Already saved", message: "This page was already saved", preferredStyle: .alert)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+            alert.view.tintColor = UIColor.label
+            alert.addAction(cancelAction)
+            present(alert, animated: true)
         }
-        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-        alert.view.tintColor = UIColor.black
-        alert.addAction(cancelAction)
-        alert.addAction(saveAction)
-        present(alert, animated: true)
     }
     
     

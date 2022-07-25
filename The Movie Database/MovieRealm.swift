@@ -25,8 +25,8 @@ class MovieRealm: Object {
     @objc dynamic var voteAverage = 0.0
     @objc dynamic var voteCount = 0
     
-//    override class func primaryKey() -> String? {
-//        "title"
-//    }
+    override class func primaryKey() -> String? {
+        "title"
+    }
     
 }
