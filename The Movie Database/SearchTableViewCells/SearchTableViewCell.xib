@@ -50,7 +50,7 @@
                             <constraint firstAttribute="width" constant="49" id="cO0-CZ-YrO"/>
                             <constraint firstAttribute="height" constant="36" id="mjv-aD-F7U"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
+                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="15"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>

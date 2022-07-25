@@ -32,7 +32,7 @@ class DetailViewController: UIViewController {
             self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
             if RealmDataManager.shared.checkIfAlreadySaved(id: model.id!) {
                 self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-                self.saveButtonOutlet.setTitle("saved", for: .normal)
+                self.saveButtonOutlet.setTitle("Saved", for: .normal)
             }
         } else { return }
         
@@ -43,7 +43,7 @@ class DetailViewController: UIViewController {
         let backdropPath = realm.backdropPath
         self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
         self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-        self.saveButtonOutlet.setTitle("saved", for: .normal)
+        self.saveButtonOutlet.setTitle("Saved", for: .normal)
     }
     
     
@@ -56,7 +56,7 @@ class DetailViewController: UIViewController {
                 let saveAction = UIAlertAction(title: "Save", style: .default) { action in
                     RealmDataManager.shared.saveMedia(media: self.media!)
                     self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-                    self.saveButtonOutlet.setTitle("saved", for: .normal)
+                    self.saveButtonOutlet.setTitle("Saved", for: .normal)
                 }
                 let cancelAction = UIAlertAction(title: "Cancel", style: .default)
                 alert.view.tintColor = UIColor.label
@@ -70,7 +70,7 @@ class DetailViewController: UIViewController {
                 let deleteAction = UIAlertAction(title: "Delete", style: .default) { action in
                     RealmDataManager.shared.deleteMedia(id: media.id!)
                     self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark"), for: .normal)
-                    self.saveButtonOutlet.setTitle("save", for: .normal)
+                    self.saveButtonOutlet.setTitle("Save", for: .normal)
                     
                 }
                 alert.view.tintColor = UIColor.label
