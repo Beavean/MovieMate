@@ -32,12 +32,12 @@ class SearchViewController: UIViewController {
         
         searchTableView.register(UINib(nibName: K.MoviesCellReuseID, bundle: nil), forCellReuseIdentifier: K.MoviesCellReuseID)
         
-        receivePopularMedia()
+        receiveTrendingMedia()
         
     }
     
-    func receivePopularMedia() {
-        let url = K.baseUrl + mediaType + K.popularKey + K.apiKey
+    func receiveTrendingMedia() {
+        let url = K.baseUrl + K.trendingKey + mediaType + K.dayKey + K.apiKey
         AF.request(url).responseData { response in
             do {
                 if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
@@ -54,7 +54,7 @@ class SearchViewController: UIViewController {
     
     @objc func receiveSearchResults() {
         if searchBar.searchTextField.text == "" {
-            receivePopularMedia()
+            receiveTrendingMedia()
             return
         } else {
             enteredQuery = searchBar.searchTextField.text!

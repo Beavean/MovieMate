@@ -20,7 +20,7 @@ struct RealmDataManager {
     @discardableResult func saveMedia(media: MoviesSearch.Results) -> Bool {
         let movieRealm = MovieRealm()
         
-        if (realm?.object(ofType: MovieRealm.self, forPrimaryKey: media.title)) != nil {
+        if (realm?.object(ofType: MovieRealm.self, forPrimaryKey: media.id)) != nil {
             return false
         } else {
             
@@ -34,7 +34,7 @@ struct RealmDataManager {
             movieRealm.popularity = media.popularity ?? 0
             movieRealm.posterPath = media.posterPath ?? ""
             movieRealm.releaseDate = MediaDateFormatter.shared.formatDate(from: media.releaseDate ?? "")
-            movieRealm.title = media.title ?? ""
+            movieRealm.title = (media.title ?? "").isEmpty == false ? media.title ?? "" : media.name ?? ""
             movieRealm.video = media.video ?? false
             movieRealm.voteAverage = media.voteAverage ?? 0
             movieRealm.voteCount = media.voteCount ?? 0
@@ -59,7 +59,7 @@ struct RealmDataManager {
     
     func deleteMedia(media: MovieRealm) {
         try? realm?.write {
-            realm?.delete((realm?.object(ofType: MovieRealm.self, forPrimaryKey: media.title))!)
+            realm?.delete((realm?.object(ofType: MovieRealm.self, forPrimaryKey: media.id))!)
         }
     }
     
