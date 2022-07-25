@@ -54,9 +54,13 @@ struct RealmDataManager {
         for movie in movieResults {
             moviesRealm.append(movie)
         }
-        
         return moviesRealm
-        
+    }
+    
+    func deleteMedia(media: MovieRealm) {
+        try? realm?.write {
+            realm?.delete((realm?.object(ofType: MovieRealm.self, forPrimaryKey: media.title))!)
+        }
     }
     
 }
