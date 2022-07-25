@@ -23,7 +23,6 @@ struct RealmDataManager {
         if (realm?.object(ofType: MovieRealm.self, forPrimaryKey: media.id)) != nil {
             return false
         } else {
-            
             movieRealm.adult = media.adult ?? false
             movieRealm.backdropPath = media.backdropPath ?? ""
             movieRealm.genreIDs = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: media.genreIDs!)
@@ -57,9 +56,17 @@ struct RealmDataManager {
         return moviesRealm
     }
     
-    func deleteMedia(media: MovieRealm) {
+    func deleteMedia(id: Int) {
         try? realm?.write {
-            realm?.delete((realm?.object(ofType: MovieRealm.self, forPrimaryKey: media.id))!)
+            realm?.delete((realm?.object(ofType: MovieRealm.self, forPrimaryKey: id))!)
+        }
+    }
+    
+    func checkIfAlreadySaved(id: Int) -> Bool {
+        if (realm?.object(ofType: MovieRealm.self, forPrimaryKey: id)) != nil {
+            return true
+        } else {
+            return false
         }
     }
     

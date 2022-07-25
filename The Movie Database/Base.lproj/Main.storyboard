@@ -138,52 +138,50 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="40G-6l-Jff">
-                                <rect key="frame" x="0.0" y="44" width="414" height="233"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="233"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="40G-6l-Jff" secondAttribute="height" multiplier="16:9" priority="750" id="mgk-DM-9Ac"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wuu-N0-BXe">
-                                <rect key="frame" x="351" y="214" width="45" height="45"/>
-                                <color key="backgroundColor" systemColor="labelColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="45" id="Auh-NI-ZCV"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="YNd-lR-Fqv"/>
-                                </constraints>
-                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="bookmark" catalog="system" imagePlacement="bottom" imagePadding="2" cornerStyle="large">
-                                    <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="saveButtonPressed:" destination="47k-N6-AGp" eventType="touchUpInside" id="gcO-ZN-vni"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="rRg-zQ-ec0"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="Wuu-N0-BXe" firstAttribute="top" secondItem="40G-6l-Jff" secondAttribute="bottom" constant="-63" id="DTP-fl-Xmf"/>
                             <constraint firstItem="rRg-zQ-ec0" firstAttribute="trailing" secondItem="40G-6l-Jff" secondAttribute="trailing" id="GWM-Ap-Urz"/>
                             <constraint firstItem="40G-6l-Jff" firstAttribute="top" secondItem="rRg-zQ-ec0" secondAttribute="top" id="XOW-Vu-kuf"/>
-                            <constraint firstItem="Wuu-N0-BXe" firstAttribute="leading" secondItem="40G-6l-Jff" secondAttribute="trailing" constant="-63" id="YNi-CB-fb3"/>
-                            <constraint firstItem="rRg-zQ-ec0" firstAttribute="trailing" secondItem="Wuu-N0-BXe" secondAttribute="trailing" constant="18" id="eOr-LU-Ore"/>
                             <constraint firstItem="40G-6l-Jff" firstAttribute="top" secondItem="rRg-zQ-ec0" secondAttribute="top" id="jiM-eR-zca"/>
                             <constraint firstItem="40G-6l-Jff" firstAttribute="height" relation="lessThanOrEqual" secondItem="rRg-zQ-ec0" secondAttribute="height" priority="751" id="svM-Ev-W2J"/>
                             <constraint firstItem="40G-6l-Jff" firstAttribute="leading" secondItem="rRg-zQ-ec0" secondAttribute="leading" id="uuZ-4V-tnw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="7Z7-xU-rE6"/>
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="7Z7-xU-rE6">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="zRx-Ia-cL5">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="nbc-4P-NKt">
+                                <rect key="frame" x="347.5" y="5" width="46.5" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="31" id="mpj-u2-3bn"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="43" id="vuD-A6-ttY"/>
+                                </constraints>
+                                <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="bookmark" catalog="system" imagePlacement="trailing" title="save" imagePadding="3">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="47k-N6-AGp" eventType="touchUpInside" id="ww1-lQ-kKq"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="backdropPoster" destination="40G-6l-Jff" id="Txs-zb-7gx"/>
-                        <outlet property="saveButtonOutlet" destination="Wuu-N0-BXe" id="rj6-bi-tWh"/>
+                        <outlet property="saveButtonOutlet" destination="nbc-4P-NKt" id="2k9-Bu-iBE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeW-nJ-kgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2786" y="-1206"/>
+            <point key="canvasLocation" x="3695.652173913044" y="-1206.0267857142856"/>
         </scene>
         <!--Search-->
         <scene sceneID="Esk-mQ-XSR">
@@ -214,6 +212,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fz1-ev-B7n">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" systemColor="labelColor"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -223,6 +222,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v6n-5M-o5B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="979.71014492753636" y="-431.25"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="waW-f5-Yw2">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="EWy-Qn-vpn" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9ri-t3-k4c">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="47k-N6-AGp" kind="relationship" relationship="rootViewController" id="6dB-9D-P1Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MrQ-mG-SfZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2785.507246376812" y="-1206.0267857142856"/>
         </scene>
     </scenes>
     <resources>

@@ -18,11 +18,11 @@ class DetailViewController: UIViewController {
     var backdropPosterPath: String? = nil
     var media: MoviesSearch.Results? = nil
     var detailMedia: MediaDetails? = nil
+    var realmData: MovieRealm? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 40
-        saveButtonOutlet.layer.cornerRadius = saveButtonOutlet.frame.width / 2
         loadMediaDetails()
         
     }
@@ -30,6 +30,10 @@ class DetailViewController: UIViewController {
     func configureViewController(with model: MoviesSearch.Results) {
         if let backdropPath = model.backdropPath {
             self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
+            if RealmDataManager.shared.checkIfAlreadySaved(id: model.id!) {
+                self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+                self.saveButtonOutlet.setTitle("saved", for: .normal)
+            }
         } else { return }
         
     }
@@ -39,29 +43,52 @@ class DetailViewController: UIViewController {
         let backdropPath = realm.backdropPath
         self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
         self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-        self.saveButtonOutlet.isUserInteractionEnabled = false
+        self.saveButtonOutlet.setTitle("saved", for: .normal)
     }
     
     
     
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        
-        if RealmDataManager.shared.saveMedia(media: self.media!) {
-            let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
-            let saveAction = UIAlertAction(title: "Save", style: .default) { action in
-                RealmDataManager.shared.saveMedia(media: self.media!)
+        if let media = media {
+            if RealmDataManager.shared.saveMedia(media: media) {
+                let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
+                let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+                    RealmDataManager.shared.saveMedia(media: self.media!)
+                    self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+                    self.saveButtonOutlet.setTitle("saved", for: .normal)
+                }
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+                alert.view.tintColor = UIColor.label
+                alert.addAction(cancelAction)
+                alert.addAction(saveAction)
+                present(alert, animated: true)
+                
+            } else {
+                let alert = UIAlertController(title: "Already saved", message: "Do you want to delete it?", preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+                let deleteAction = UIAlertAction(title: "Delete", style: .default) { action in
+                    RealmDataManager.shared.deleteMedia(id: media.id!)
+                    self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark"), for: .normal)
+                    self.saveButtonOutlet.setTitle("save", for: .normal)
+                    
+                }
+                alert.view.tintColor = UIColor.label
+                alert.addAction(cancelAction)
+                alert.addAction(deleteAction)
+                present(alert, animated: true)
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-            alert.view.tintColor = UIColor.label
-            alert.addAction(cancelAction)
-            alert.addAction(saveAction)
-            present(alert, animated: true)
         } else {
-            let alert = UIAlertController(title: "Already saved", message: "This page was already saved", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Already saved", message: "Do you want to delete it?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+            let deleteAction = UIAlertAction(title: "Delete", style: .default) { action in
+                RealmDataManager.shared.deleteMedia(id: self.movieID)
+                self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark"), for: .normal)
+                self.saveButtonOutlet.setTitle("save", for: .normal)
+            }
             alert.view.tintColor = UIColor.label
             alert.addAction(cancelAction)
+            alert.addAction(deleteAction)
             present(alert, animated: true)
         }
     }
@@ -85,3 +112,5 @@ class DetailViewController: UIViewController {
         } else { return }
     }
 }
+
+
