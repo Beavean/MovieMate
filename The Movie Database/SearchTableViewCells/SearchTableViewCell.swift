@@ -41,7 +41,7 @@ class SearchTableViewCell: UITableViewCell {
 
     }
     
-    func configure(withRealm results: MovieRealm) {
+    func configure(withRealm results: MediaRealm) {
         self.posterImageView.sd_setImage(with: URL(string: K.baseImageUrl + results.posterPath))
         self.movieTitleLabel.text = results.title
         self.movieOverviewLabel.text = results.overview

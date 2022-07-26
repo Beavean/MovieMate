@@ -155,7 +155,7 @@
                                     <constraint firstAttribute="width" secondItem="40G-6l-Jff" secondAttribute="height" multiplier="16:9" id="rCP-9k-RGt"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yLF-Xh-g48" customClass="YTPlayerView" customModule="The_Movie_Database" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yLF-Xh-g48" customClass="YTPlayerView">
                                 <rect key="frame" x="0.0" y="324" width="414" height="233"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -179,7 +179,7 @@
                     </view>
                     <connections>
                         <outlet property="backdropPoster" destination="40G-6l-Jff" id="Txs-zb-7gx"/>
-                        <outlet property="playerView" destination="yLF-Xh-g48" id="2Ia-XM-Inf"/>
+                        <outlet property="playerView" destination="yLF-Xh-g48" id="FlC-pw-bVb"/>
                         <outlet property="saveButtonOutlet" destination="66F-F4-ewo" id="VvH-PT-QsY"/>
                     </connections>
                 </viewController>

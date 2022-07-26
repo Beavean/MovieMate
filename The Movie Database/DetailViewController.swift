@@ -13,28 +13,34 @@ import youtube_ios_player_helper
 class DetailViewController: UIViewController {
     
     @IBOutlet var playerView: YTPlayerView!
-    
-    
     @IBOutlet weak var backdropPoster: UIImageView!
     @IBOutlet weak var saveButtonOutlet: UIButton!
     
-    
-    
-    
     var searchIndex = Int()
-    var movieID = Int()
-    var backdropPosterPath: String? = nil
+    var mediaID = Int()
+    var mediaType = String()
+    var mediaBackdropPosterLink: String? = nil
     var media: MoviesSearch.Results? = nil
-    var detailMedia: MediaDetails? = nil
-    var realmData: MovieRealm? = nil
+    var mediaVideos: MediaVideos.Results? = nil
+    var realmMediaData: MediaRealm? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 20
-        playerView.load(withVideoId: "dpTbHIRreB8", playerVars: ["playsinline": 1])
-        loadMediaDetails()
-        
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 50
+        loadMediaVideos()
+        guard let mediaVideoDetails = mediaVideos else {
+            print(mediaVideos)
+            return
+        }
+        guard let mediaVideoKey = mediaVideoDetails.key else {
+            return
+        }
+        playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
+        print(mediaVideoKey)
+        }
     
     func configureViewController(with model: MoviesSearch.Results) {
         if let backdropPath = model.backdropPath {
@@ -48,7 +54,7 @@ class DetailViewController: UIViewController {
     }
     
     
-    func configureViewController(with realm: MovieRealm) {
+    func configureViewController(with realm: MediaRealm) {
         let backdropPath = realm.backdropPath
         self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
         self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
@@ -91,7 +97,7 @@ class DetailViewController: UIViewController {
             let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .default)
             let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
-                RealmDataManager.shared.deleteMedia(id: self.movieID)
+                RealmDataManager.shared.deleteMedia(id: self.mediaID)
                 self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark"), for: .normal)
                 self.saveButtonOutlet.setTitle("save", for: .normal)
             }
@@ -103,22 +109,22 @@ class DetailViewController: UIViewController {
     }
     
     
-    func loadMediaDetails() {
+    func loadMediaVideos() -> MediaVideos.Results? {
         if let media = media {
-            if let backdropPath = media.backdropPath {
-                self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
-            } else { return }
-            let url = K.baseUrl + K.getMovieByID + String(media.id!) + K.apiKey
+            let url = K.baseUrl + K.movieKey + String(media.id!) + K.videosKey + K.apiKey
             AF.request(url).responseData { response in
                 do {
-                    if let allData = try JSONDecoder().decode(MediaDetails?.self, from: response.data!) {
-                        self.detailMedia = allData
+                    if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaVideos.Results?.self, from: receivedData)  {
+                        self.mediaVideos = allData
                     }
                 } catch {
                     print(error)
                 }
             }
-        } else { return }
+            return mediaVideos
+        } else {
+            return nil
+        }
     }
 }
 

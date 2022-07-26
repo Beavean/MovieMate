@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  SearchViewController.swift
 //  The Movie Database
 //
 //  Created by Beavean on 11.07.2022.
@@ -61,7 +61,6 @@ class SearchViewController: UIViewController {
             enteredQuery = searchBar.searchTextField.text!
             if let apiQuery = enteredQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
                 let url = K.baseUrl + K.mediaSearchKey + mediaType + K.apiKey + K.mediaSearchQueryKey + apiQuery
-                print(url)
                 AF.request(url).responseData { response in
                     do {
                         if let receivedData = response.data, let allData = try JSONDecoder().decode(MoviesSearch?.self, from: receivedData)  {
@@ -123,7 +122,7 @@ extension SearchViewController: UITableViewDelegate {
         if let viewController = storyboard.instantiateViewController(withIdentifier: K.DetailViewControllerID) as? DetailViewController {
             let media = self.moviesSearchResults[indexPath.row]
             viewController.media = media
-            viewController.movieID = self.moviesSearchResults[indexPath.row].id!
+            viewController.mediaID = self.moviesSearchResults[indexPath.row].id!
             viewController.loadView()
             viewController.configureViewController(with: media)
             self.navigationController?.pushViewController(viewController, animated: true)

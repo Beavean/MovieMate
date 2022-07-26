@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class MovieRealm: Object {
+class MediaRealm: Object {
    
     @objc dynamic var adult = false
     @objc dynamic var backdropPath = ""

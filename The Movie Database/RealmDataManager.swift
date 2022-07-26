@@ -18,9 +18,9 @@ struct RealmDataManager {
     
     
     @discardableResult func saveMedia(media: MoviesSearch.Results) -> Bool {
-        let movieRealm = MovieRealm()
+        let movieRealm = MediaRealm()
         
-        if (realm?.object(ofType: MovieRealm.self, forPrimaryKey: media.id)) != nil {
+        if (realm?.object(ofType: MediaRealm.self, forPrimaryKey: media.id)) != nil {
             return false
         } else {
             movieRealm.adult = media.adult ?? false
@@ -45,10 +45,10 @@ struct RealmDataManager {
     }
     
     
-    func getMedia() -> [MovieRealm] {
-        var moviesRealm: [MovieRealm] = []
+    func getMedia() -> [MediaRealm] {
+        var moviesRealm: [MediaRealm] = []
         
-        guard let movieResults = realm?.objects(MovieRealm.self) else { return [] }
+        guard let movieResults = realm?.objects(MediaRealm.self) else { return [] }
         
         for movie in movieResults {
             moviesRealm.append(movie)
@@ -58,12 +58,12 @@ struct RealmDataManager {
     
     func deleteMedia(id: Int) {
         try? realm?.write {
-            realm?.delete((realm?.object(ofType: MovieRealm.self, forPrimaryKey: id))!)
+            realm?.delete((realm?.object(ofType: MediaRealm.self, forPrimaryKey: id))!)
         }
     }
     
     func checkIfAlreadySaved(id: Int) -> Bool {
-        if (realm?.object(ofType: MovieRealm.self, forPrimaryKey: id)) != nil {
+        if (realm?.object(ofType: MediaRealm.self, forPrimaryKey: id)) != nil {
             return true
         } else {
             return false

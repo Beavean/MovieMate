@@ -11,7 +11,7 @@ class SavedMediaViewController: UIViewController {
     
     @IBOutlet weak var savedMediaTableView: UITableView!
     
-    var arrayOfMedia: [MovieRealm] = []
+    var arrayOfMedia: [MediaRealm] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,7 +65,7 @@ extension SavedMediaViewController: UITableViewDelegate {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: K.DetailViewControllerID) as? DetailViewController {
             let media = self.arrayOfMedia[indexPath.row]
-            viewController.movieID = self.arrayOfMedia[indexPath.row].id
+            viewController.mediaID = self.arrayOfMedia[indexPath.row].id
             viewController.loadView()
             viewController.configureViewController(with: media)
             self.navigationController?.pushViewController(viewController, animated: true)

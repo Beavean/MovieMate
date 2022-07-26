@@ -16,7 +16,8 @@ struct K {
     static let dayKey = "/day"
     static let mediaSearchKey = "search/"
     static let mediaSearchQueryKey = "&query="
-    static let getMovieByID = "movie/"
+    static let movieKey = "movie/"
+    static let videosKey = "/videos"
     static let popularKey = "/popular"
     
     static let MoviesCellReuseID = "SearchTableViewCell"
