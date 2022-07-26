@@ -7,11 +7,19 @@
 
 import UIKit
 import Alamofire
+import youtube_ios_player_helper_swift
+
 
 class DetailViewController: UIViewController {
     
+    @IBOutlet var playerView: YTPlayerView!
+    
+    
     @IBOutlet weak var backdropPoster: UIImageView!
     @IBOutlet weak var saveButtonOutlet: UIButton!
+    
+    
+    
     
     var searchIndex = Int()
     var movieID = Int()
@@ -22,7 +30,8 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 40
+        backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 20
+        playerView.load(videoId: "dpTbHIRreB8")
         loadMediaDetails()
         
     }

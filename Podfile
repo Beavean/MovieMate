@@ -8,7 +8,8 @@ target 'The Movie Database' do
   # Pods for The Movie Database
   
   pod 'Alamofire'
-  pod 'SDWebImage', '~> 5.0'
+  pod 'SDWebImage' 
   pod 'RealmSwift'
+  pod 'youtube-ios-player-helper-swift'
 
 end
