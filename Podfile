@@ -10,6 +10,6 @@ target 'The Movie Database' do
   pod 'Alamofire'
   pod 'SDWebImage' 
   pod 'RealmSwift'
-  pod 'youtube-ios-player-helper-swift'
+  pod 'youtube-ios-player-helper'
 
 end

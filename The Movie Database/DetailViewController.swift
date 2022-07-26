@@ -7,7 +7,7 @@
 
 import UIKit
 import Alamofire
-import youtube_ios_player_helper_swift
+import youtube_ios_player_helper
 
 
 class DetailViewController: UIViewController {
@@ -31,7 +31,7 @@ class DetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 20
-        playerView.load(videoId: "dpTbHIRreB8")
+        playerView.load(withVideoId: "dpTbHIRreB8", playerVars: ["playsinline": 1])
         loadMediaDetails()
         
     }

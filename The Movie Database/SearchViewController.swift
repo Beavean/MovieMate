@@ -24,6 +24,7 @@ class SearchViewController: UIViewController {
     
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         
         searchTableView.dataSource = self
@@ -58,22 +59,28 @@ class SearchViewController: UIViewController {
             return
         } else {
             enteredQuery = searchBar.searchTextField.text!
-            let apiQuery = enteredQuery.replacingOccurrences(of: " ", with: "%20")
-            let url = K.baseUrl + K.mediaSearchKey + mediaType + K.apiKey + K.mediaSearchQueryKey + apiQuery
-            AF.request(url).responseData { response in
-                do {
-                    if let receivedData = response.data, let allData = try JSONDecoder().decode(MoviesSearch?.self, from: receivedData)  {
-                        self.moviesSearchResults = allData.results ?? []
-                        DispatchQueue.main.async {
-                            self.searchTableView.reloadData()
+            if let apiQuery = enteredQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+                let url = K.baseUrl + K.mediaSearchKey + mediaType + K.apiKey + K.mediaSearchQueryKey + apiQuery
+                print(url)
+                AF.request(url).responseData { response in
+                    do {
+                        if let receivedData = response.data, let allData = try JSONDecoder().decode(MoviesSearch?.self, from: receivedData)  {
+                            self.moviesSearchResults = allData.results ?? []
+                            DispatchQueue.main.async {
+                                self.searchTableView.reloadData()
+                            }
                         }
+                    } catch {
+                        print(error)
                     }
-                } catch {
-                    print(error)
+                }
+                self.searchTableView.reloadData()
+                if searchTableView.numberOfRows(inSection: 0) > 0 {
+                    searchTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+                } else {
+                    return
                 }
             }
-            self.searchTableView.reloadData()
-            searchTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
         }
     }
     
@@ -141,7 +148,7 @@ extension SearchViewController: UISearchBarDelegate {
         lastScheduledSearch?.invalidate()
         lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(receiveSearchResults), userInfo: nil, repeats: false)
     }
-
+    
 }
 
 

@@ -47,7 +47,7 @@ class SearchTableViewCell: UITableViewCell {
         self.movieOverviewLabel.text = results.overview
         self.movieGenresLabel.text = results.genreIDs
         self.releaseDateLabel.text = results.releaseDate
-        self.ratingLabel.text = "\(results.voteAverage)"
+        self.ratingLabel.text = String(format: "%.1f", results.voteAverage)
 
     }
     

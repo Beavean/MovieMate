@@ -8,13 +8,13 @@ PODS:
   - SDWebImage (5.13.2):
     - SDWebImage/Core (= 5.13.2)
   - SDWebImage/Core (5.13.2)
-  - youtube-ios-player-helper-swift (1.1)
+  - youtube-ios-player-helper (1.0.4)
 
 DEPENDENCIES:
   - Alamofire
   - RealmSwift
-  - SDWebImage (~> 5.0)
-  - youtube-ios-player-helper-swift
+  - SDWebImage
+  - youtube-ios-player-helper
 
 SPEC REPOS:
   trunk:
@@ -22,15 +22,15 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SDWebImage
-    - youtube-ios-player-helper-swift
+    - youtube-ios-player-helper
 
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   Realm: e617c54ad0f566b3d0f6a2abae7010de05f252ac
   RealmSwift: 8a516a8759d80d52ebcec1ff1076f5f5159f98b2
   SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
-  youtube-ios-player-helper-swift: 51a3c5325317c8271d0c7985c1bbe5a252ffb2fd
+  youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 
-PODFILE CHECKSUM: 9436eb5fe7975fa602a8de267dd9b8edbc6f2b43
+PODFILE CHECKSUM: 511f45e5e3b2acba54129e79f63af0589d555b58
 
 COCOAPODS: 1.11.3

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		05D987DBC295AB88D85713ED /* Pods_The_Movie_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FF59286F0A11AE754CA463 /* Pods_The_Movie_Database.framework */; };
+		08003968289027EC008BB7A6 /* testModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08003967289027EC008BB7A6 /* testModel.swift */; };
 		0881631F2886A79C005F2C9B /* MoviesSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0881631D2886A79B005F2C9B /* MoviesSearch.swift */; };
 		088163242886A9FC005F2C9B /* SeriesSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088163222886A9FC005F2C9B /* SeriesSearch.swift */; };
 		088163262886ABFC005F2C9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088163252886ABFC005F2C9B /* Constants.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08003967289027EC008BB7A6 /* testModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testModel.swift; sourceTree = "<group>"; };
 		0881631D2886A79B005F2C9B /* MoviesSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoviesSearch.swift; sourceTree = "<group>"; };
 		088163222886A9FC005F2C9B /* SeriesSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeriesSearch.swift; sourceTree = "<group>"; };
 		088163252886ABFC005F2C9B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				08B046522889481800E61D76 /* MediaDetails.swift */,
 				08B04664288B316100E61D76 /* GenresDecoder.swift */,
 				08B04668288BD33700E61D76 /* DateFormatter.swift */,
+				08003967289027EC008BB7A6 /* testModel.swift */,
 			);
 			path = "JSON Data models";
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				08986CE0287C46C000D9FBDA /* SceneDelegate.swift in Sources */,
 				08B046612889964C00E61D76 /* SavedMediaViewController.swift in Sources */,
 				08B0466B288C10BA00E61D76 /* AlamofireManager.swift in Sources */,
+				08003968289027EC008BB7A6 /* testModel.swift in Sources */,
 				0881631F2886A79C005F2C9B /* MoviesSearch.swift in Sources */,
 				088163262886ABFC005F2C9B /* Constants.swift in Sources */,
 			);
