@@ -40,7 +40,7 @@ class SearchViewController: UIViewController {
         let url = K.baseUrl + K.trendingKey + mediaType + K.dayKey + K.apiKey
         AF.request(url).responseData { response in
             do {
-                if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
+                if let receivedData = response.data, let allData = try JSONDecoder().decode(MoviesSearch?.self, from: receivedData) {
                     self.moviesSearchResults = allData.results ?? []
                     DispatchQueue.main.async {
                         self.searchTableView.reloadData()
@@ -62,7 +62,7 @@ class SearchViewController: UIViewController {
             let url = K.baseUrl + K.mediaSearchKey + mediaType + K.apiKey + K.mediaSearchQueryKey + apiQuery
             AF.request(url).responseData { response in
                 do {
-                    if let allData = try JSONDecoder().decode(MoviesSearch?.self, from: response.data!) {
+                    if let receivedData = response.data, let allData = try JSONDecoder().decode(MoviesSearch?.self, from: receivedData)  {
                         self.moviesSearchResults = allData.results ?? []
                         DispatchQueue.main.async {
                             self.searchTableView.reloadData()

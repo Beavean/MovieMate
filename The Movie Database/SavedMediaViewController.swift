@@ -43,7 +43,7 @@ extension SavedMediaViewController: UITableViewDataSource {
             RealmDataManager.shared.deleteMedia(id: arrayOfMedia[indexPath.row].id)
             self.arrayOfMedia.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            savedMediaTableView.reloadData()
+            savedMediaTableView.endUpdates()
         } else {
             return
         }

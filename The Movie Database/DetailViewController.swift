@@ -65,9 +65,9 @@ class DetailViewController: UIViewController {
                 present(alert, animated: true)
                 
             } else {
-                let alert = UIAlertController(title: "Already saved", message: "Do you want to delete it?", preferredStyle: .alert)
+                let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-                let deleteAction = UIAlertAction(title: "Delete", style: .default) { action in
+                let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
                     RealmDataManager.shared.deleteMedia(id: media.id!)
                     self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark"), for: .normal)
                     self.saveButtonOutlet.setTitle("Save", for: .normal)
@@ -79,9 +79,9 @@ class DetailViewController: UIViewController {
                 present(alert, animated: true)
             }
         } else {
-            let alert = UIAlertController(title: "Already saved", message: "Do you want to delete it?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-            let deleteAction = UIAlertAction(title: "Delete", style: .default) { action in
+            let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
                 RealmDataManager.shared.deleteMedia(id: self.movieID)
                 self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark"), for: .normal)
                 self.saveButtonOutlet.setTitle("save", for: .normal)
