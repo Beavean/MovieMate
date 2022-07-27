@@ -21,7 +21,7 @@ class DetailViewController: UIViewController {
     var mediaType = String()
     var mediaBackdropPosterLink: String? = nil
     var media: MoviesSearch.Results? = nil
-    var mediaVideos: MediaVideos.Results? = nil
+    var mediaVideos: MediaVideos? = nil
     var realmMediaData: MediaRealm? = nil
     
     override func viewDidLoad() {
@@ -29,18 +29,17 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 50
         loadMediaVideos()
+        backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 50
         guard let mediaVideoDetails = mediaVideos else {
-            print(mediaVideos)
             return
         }
-        guard let mediaVideoKey = mediaVideoDetails.key else {
+        guard let mediaVideoKey = mediaVideoDetails.results?.first?.key else {
             return
         }
         playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
-        print(mediaVideoKey)
         }
+    
     
     func configureViewController(with model: MoviesSearch.Results) {
         if let backdropPath = model.backdropPath {
@@ -109,21 +108,18 @@ class DetailViewController: UIViewController {
     }
     
     
-    func loadMediaVideos() -> MediaVideos.Results? {
+    func loadMediaVideos() {
         if let media = media {
             let url = K.baseUrl + K.movieKey + String(media.id!) + K.videosKey + K.apiKey
             AF.request(url).responseData { response in
                 do {
-                    if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaVideos.Results?.self, from: receivedData)  {
+                    if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaVideos?.self, from: receivedData)  {
                         self.mediaVideos = allData
                     }
                 } catch {
                     print(error)
                 }
             }
-            return mediaVideos
-        } else {
-            return nil
         }
     }
 }
