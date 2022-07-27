@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import youtube_ios_player_helper
+import SwiftUI
 
 
 class DetailViewController: UIViewController {
@@ -38,7 +39,7 @@ class DetailViewController: UIViewController {
             return
         }
         playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
-        }
+    }
     
     
     func configureViewController(with model: MoviesSearch.Results) {
@@ -64,45 +65,30 @@ class DetailViewController: UIViewController {
     
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        if let media = media {
-            if RealmDataManager.shared.saveMedia(media: media) {
-                let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
-                let saveAction = UIAlertAction(title: "Save", style: .default) { action in
-                    RealmDataManager.shared.saveMedia(media: self.media!)
-                    self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-                    self.saveButtonOutlet.setTitle("Saved", for: .normal)
-                }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-                alert.view.tintColor = UIColor.label
-                alert.addAction(cancelAction)
-                alert.addAction(saveAction)
-                present(alert, animated: true)
-                
-            } else {
-                let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-                let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
-                    RealmDataManager.shared.deleteMedia(id: media.id!)
-                    self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark"), for: .normal)
-                    self.saveButtonOutlet.setTitle("Save", for: .normal)
-                    
-                }
-                alert.view.tintColor = UIColor.label
-                alert.addAction(cancelAction)
-                alert.addAction(deleteAction)
-                present(alert, animated: true)
-            }
-        } else {
+        if RealmDataManager.shared.checkIfAlreadySaved(id: mediaID) {
             let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .default)
             let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
                 RealmDataManager.shared.deleteMedia(id: self.mediaID)
-                self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark"), for: .normal)
-                self.saveButtonOutlet.setTitle("save", for: .normal)
+                self.navigationController?.popToRootViewController(animated: true)
+                
             }
             alert.view.tintColor = UIColor.label
             alert.addAction(cancelAction)
             alert.addAction(deleteAction)
+            present(alert, animated: true)
+            
+        } else {
+            let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
+            let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+                RealmDataManager.shared.saveMedia(from: self.media!)
+                self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+                self.saveButtonOutlet.setTitle("Saved", for: .normal)
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+            alert.view.tintColor = UIColor.label
+            alert.addAction(cancelAction)
+            alert.addAction(saveAction)
             present(alert, animated: true)
         }
     }

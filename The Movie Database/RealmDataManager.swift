@@ -17,26 +17,26 @@ struct RealmDataManager {
     private init() { }
     
     
-    @discardableResult func saveMedia(media: MoviesSearch.Results) -> Bool {
+    @discardableResult func saveMedia(from model: MoviesSearch.Results) -> Bool {
         let movieRealm = MediaRealm()
         
-        if (realm?.object(ofType: MediaRealm.self, forPrimaryKey: media.id)) != nil {
+        if (realm?.object(ofType: MediaRealm.self, forPrimaryKey: model.id)) != nil {
             return false
         } else {
-            movieRealm.adult = media.adult ?? false
-            movieRealm.backdropPath = media.backdropPath ?? ""
-            movieRealm.genreIDs = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: media.genreIDs!)
-            movieRealm.id =  media.id ?? 0
-            movieRealm.originalLanguage = media.originalLanguage ?? ""
-            movieRealm.originalTitle = media.originalTitle ?? ""
-            movieRealm.overview = media.overview ?? ""
-            movieRealm.popularity = media.popularity ?? 0
-            movieRealm.posterPath = media.posterPath ?? ""
-            movieRealm.releaseDate = MediaDateFormatter.shared.formatDate(from: media.releaseDate ?? "")
-            movieRealm.title = (media.title ?? "").isEmpty == false ? media.title ?? "" : media.name ?? ""
-            movieRealm.video = media.video ?? false
-            movieRealm.voteAverage = media.voteAverage ?? 0
-            movieRealm.voteCount = media.voteCount ?? 0
+            movieRealm.adult = model.adult ?? false
+            movieRealm.backdropPath = model.backdropPath ?? ""
+            movieRealm.genreIDs = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
+            movieRealm.id =  model.id ?? 0
+            movieRealm.originalLanguage = model.originalLanguage ?? ""
+            movieRealm.originalTitle = model.originalTitle ?? ""
+            movieRealm.overview = model.overview ?? ""
+            movieRealm.popularity = model.popularity ?? 0
+            movieRealm.posterPath = model.posterPath ?? ""
+            movieRealm.releaseDate = MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? "")
+            movieRealm.title = (model.title ?? "").isEmpty == false ? model.title ?? "" : model.name ?? ""
+            movieRealm.video = model.video ?? false
+            movieRealm.voteAverage = model.voteAverage ?? 0
+            movieRealm.voteCount = model.voteCount ?? 0
             try? realm?.write {
                 realm?.add(movieRealm)
             }
@@ -58,7 +58,8 @@ struct RealmDataManager {
     
     func deleteMedia(id: Int) {
         try? realm?.write {
-            realm?.delete((realm?.object(ofType: MediaRealm.self, forPrimaryKey: id))!)
+            guard let realmObject = realm?.object(ofType: MediaRealm.self, forPrimaryKey: id) else { return }
+            realm?.delete(realmObject)
         }
     }
     
