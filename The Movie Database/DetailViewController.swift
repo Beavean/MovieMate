@@ -8,14 +8,21 @@
 import UIKit
 import Alamofire
 import youtube_ios_player_helper
-import SwiftUI
-
 
 class DetailViewController: UIViewController {
     
     @IBOutlet var playerView: YTPlayerView!
-    @IBOutlet weak var backdropPoster: UIImageView!
+    @IBOutlet weak var mediaBackdropPosterImageView: UIImageView!
     @IBOutlet weak var saveButtonOutlet: UIButton!
+    @IBOutlet weak var mediaTitleLabel: UILabel!
+    @IBOutlet weak var mediaReleaseDateLabel: UILabel!
+    @IBOutlet weak var mediaGenresLabel: UILabel!
+    @IBOutlet weak var mediaPosterImageView: UIImageView!
+    @IBOutlet weak var mediaOverviewLabel: UILabel!
+    @IBOutlet weak var mediaRatingLabel: UILabel!
+    @IBOutlet weak var mediaVotesCountLabel: UILabel!
+    
+    
     
     var searchIndex = Int()
     var mediaID = Int()
@@ -31,32 +38,35 @@ class DetailViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         loadMediaVideos()
-        backdropPoster.layer.cornerRadius = backdropPoster.frame.height / 50
-        guard let mediaVideoDetails = mediaVideos else {
-            return
-        }
-        guard let mediaVideoKey = mediaVideoDetails.results?.first?.key else {
-            return
-        }
-        playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
+        mediaBackdropPosterImageView.layer.cornerRadius = mediaBackdropPosterImageView.frame.height / 50
     }
     
     
     func configureViewController(with model: MoviesSearch.Results) {
         if let backdropPath = model.backdropPath {
-            self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
+            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
+        if let posterPath = model.posterPath {
+            self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + posterPath))
+            self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.width / 10
+            
+        }
+        self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
+        self.mediaOverviewLabel.text = model.overview
+        self.mediaGenresLabel.text = "Genres: \(GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!))"
+        self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? "") : MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? "")
+            self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
+            self.mediaVotesCountLabel.text = "\(String(describing: model.voteCount!)) votes"
             if RealmDataManager.shared.checkIfAlreadySaved(id: model.id!) {
                 self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
                 self.saveButtonOutlet.setTitle("Saved", for: .normal)
             }
         } else { return }
-        
     }
     
     
     func configureViewController(with realm: MediaRealm) {
         let backdropPath = realm.backdropPath
-        self.backdropPoster.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
+        self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
         self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
         self.saveButtonOutlet.setTitle("Saved", for: .normal)
     }
@@ -93,18 +103,19 @@ class DetailViewController: UIViewController {
         }
     }
     
-    
     func loadMediaVideos() {
-        if let media = media {
-            let url = K.baseUrl + K.movieKey + String(media.id!) + K.videosKey + K.apiKey
-            AF.request(url).responseData { response in
-                do {
-                    if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaVideos?.self, from: receivedData)  {
-                        self.mediaVideos = allData
+        let url = K.baseUrl + K.movieKey + String(mediaID) + K.videosKey + K.apiKey
+        AF.request(url).responseData { response in
+            do {
+                if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaVideos?.self, from: receivedData)  {
+                    self.mediaVideos = allData
+                    guard let mediaVideoKey = allData.results?.first?.key else {
+                        return
                     }
-                } catch {
-                    print(error)
+                    self.playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
                 }
+            } catch {
+                print(error)
             }
         }
     }

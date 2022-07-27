@@ -108,9 +108,9 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
+        guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? MediaSearchTableviewCell else { return UITableViewCell() }
         let item = moviesSearchResults[indexPath.row]
-        cell.configure(withModel: item)
+        cell.configure(with: item)
         return cell
         
     }

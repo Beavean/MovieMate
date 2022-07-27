@@ -9,7 +9,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="166" id="KGk-i7-Jjw" customClass="SearchTableViewCell" customModule="The_Movie_Database" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SearchTableViewCell" rowHeight="166" id="KGk-i7-Jjw" customClass="MediaSearchTableviewCell" customModule="The_Movie_Database" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="415" height="165"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
@@ -23,13 +23,13 @@
                             <constraint firstAttribute="width" constant="100" id="qsd-Pr-lre"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="This will be the movie title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-hX-5Da">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="This will be the media title" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lcc-hX-5Da">
                         <rect key="frame" x="116" y="8" width="291" height="16"/>
                         <fontDescription key="fontDescription" type="system" weight="black" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-da-XQN">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Media genres" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-da-XQN">
                         <rect key="frame" x="116" y="140" width="234" height="18"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="18" id="Qsn-9m-yDH"/>
@@ -38,7 +38,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hY-gq-aO1">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Media overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hY-gq-aO1">
                         <rect key="frame" x="116" y="24" width="291" height="13.5"/>
                         <fontDescription key="fontDescription" type="italicSystem" pointSize="11"/>
                         <nil key="textColor"/>
@@ -83,12 +83,12 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="movieGenresLabel" destination="v5k-da-XQN" id="qj5-Ks-dah"/>
-                <outlet property="movieOverviewLabel" destination="2hY-gq-aO1" id="2lL-9f-03I"/>
-                <outlet property="movieTitleLabel" destination="lcc-hX-5Da" id="y8u-5W-Hy6"/>
-                <outlet property="posterImageView" destination="hL7-os-fMQ" id="YWh-ih-pu8"/>
-                <outlet property="ratingLabel" destination="M2q-C6-04j" id="y2M-mv-P3E"/>
-                <outlet property="releaseDateLabel" destination="u3s-7Z-zjK" id="G2j-Vk-dEg"/>
+                <outlet property="mediaGenresLabel" destination="v5k-da-XQN" id="qj5-Ks-dah"/>
+                <outlet property="mediaOverviewLabel" destination="2hY-gq-aO1" id="2lL-9f-03I"/>
+                <outlet property="mediaPosterImageView" destination="hL7-os-fMQ" id="YWh-ih-pu8"/>
+                <outlet property="mediaRatingLabel" destination="M2q-C6-04j" id="y2M-mv-P3E"/>
+                <outlet property="mediaReleaseDateLabel" destination="u3s-7Z-zjK" id="G2j-Vk-dEg"/>
+                <outlet property="mediaTitleLabel" destination="lcc-hX-5Da" id="y8u-5W-Hy6"/>
             </connections>
             <point key="canvasLocation" x="206.52173913043481" y="161.04910714285714"/>
         </tableViewCell>

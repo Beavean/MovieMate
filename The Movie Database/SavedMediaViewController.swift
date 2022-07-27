@@ -51,7 +51,7 @@ extension SavedMediaViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? SearchTableViewCell else { return UITableViewCell() }
+        guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? MediaSearchTableviewCell else { return UITableViewCell() }
         let item = arrayOfMedia[indexPath.row]
         cell.configure(withRealm: item)
         return cell
