@@ -41,13 +41,13 @@ class MediaSearchTableviewCell: UITableViewCell {
 
     }
     
-    func configure(withRealm results: MediaRealm) {
-        self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + results.posterPath))
-        self.mediaTitleLabel.text = results.title
-        self.mediaOverviewLabel.text = results.overview
-        self.mediaGenresLabel.text = results.genreIDs
-        self.mediaReleaseDateLabel.text = results.releaseDate
-        self.mediaRatingLabel.text = String(format: "%.1f", results.voteAverage)
+    func configure(with object: MediaRealm) {
+        self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + object.posterPath))
+        self.mediaTitleLabel.text = object.title
+        self.mediaOverviewLabel.text = object.overview
+        self.mediaGenresLabel.text = object.genreIDs
+        self.mediaReleaseDateLabel.text = object.releaseDate
+        self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage)
 
     }
     

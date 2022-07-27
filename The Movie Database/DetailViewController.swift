@@ -22,8 +22,6 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var mediaRatingLabel: UILabel!
     @IBOutlet weak var mediaVotesCountLabel: UILabel!
     
-    
-    
     var searchIndex = Int()
     var mediaID = Int()
     var mediaType = String()
@@ -45,15 +43,15 @@ class DetailViewController: UIViewController {
     func configureViewController(with model: MoviesSearch.Results) {
         if let backdropPath = model.backdropPath {
             self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
-        if let posterPath = model.posterPath {
-            self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + posterPath))
-            self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.width / 10
-            
-        }
-        self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
-        self.mediaOverviewLabel.text = model.overview
-        self.mediaGenresLabel.text = "Genres: \(GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!))"
-        self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? "") : MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? "")
+            if let posterPath = model.posterPath {
+                self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + posterPath))
+                self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.width / 10
+                
+            }
+            self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
+            self.mediaOverviewLabel.text = model.overview
+            self.mediaGenresLabel.text = "Genres: \(GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!))"
+            self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? "") : MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? "")
             self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
             self.mediaVotesCountLabel.text = "\(String(describing: model.voteCount!)) votes"
             if RealmDataManager.shared.checkIfAlreadySaved(id: model.id!) {
@@ -64,11 +62,20 @@ class DetailViewController: UIViewController {
     }
     
     
-    func configureViewController(with realm: MediaRealm) {
-        let backdropPath = realm.backdropPath
-        self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
-        self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-        self.saveButtonOutlet.setTitle("Saved", for: .normal)
+    func configureViewController(with object: MediaRealm) {
+        self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (object.backdropPath)))
+        self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + object.posterPath))
+        self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.width / 10
+        self.mediaTitleLabel.text = object.title
+        self.mediaOverviewLabel.text = object.overview
+        self.mediaGenresLabel.text = object.genreIDs.isEmpty == false ? object.genreIDs : "Unspecified"
+        self.mediaReleaseDateLabel.text = object.releaseDate.isEmpty == false ? object.releaseDate : "-"
+        self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage).isEmpty == false ? String(format: "%.1f", object.voteAverage) : "-"
+        self.mediaVotesCountLabel.text = "\(String(describing: object.voteCount)) votes"
+        if RealmDataManager.shared.checkIfAlreadySaved(id: object.id) {
+            self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
+            self.saveButtonOutlet.setTitle("Saved", for: .normal)
+        } else { return }
     }
     
     
