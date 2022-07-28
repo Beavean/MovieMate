@@ -26,7 +26,7 @@ class DetailViewController: UIViewController {
     var mediaID = Int()
     var mediaType = String()
     var mediaBackdropPosterLink: String? = nil
-    var media: MoviesSearch.Results? = nil
+    var media: MediaSearch.Results? = nil
     var mediaVideos: MediaVideos? = nil
     var realmMediaData: MediaRealm? = nil
     
@@ -40,7 +40,7 @@ class DetailViewController: UIViewController {
     }
     
     
-    func configureViewController(with model: MoviesSearch.Results) {
+    func configureViewController(with model: MediaSearch.Results) {
         loadMediaVideos()
         if let backdropPath = model.backdropPath {
             self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
@@ -55,7 +55,7 @@ class DetailViewController: UIViewController {
         }
         self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
         self.mediaOverviewLabel.text = model.overview
-        self.mediaGenresLabel.text = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!).isEmpty == false ? GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!) : "Specific genre"
+        self.mediaGenresLabel.text = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!).isEmpty == false ? GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!) : "Genre is not specified"
         self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate!) : "Unknown"
         self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
         self.mediaVotesCountLabel.text = "\(String(describing: model.voteCount!)) votes"
@@ -68,8 +68,9 @@ class DetailViewController: UIViewController {
     
     
     func configureViewController(with object: MediaRealm) {
+        self.mediaType = object.mediaType
         loadMediaVideos()
-        if object.backdropPath.isEmpty {
+        if object.backdropPath.isEmpty == true {
             mediaBackdropPosterImageView.isHidden = true
         } else {
             self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (object.backdropPath)))
@@ -109,7 +110,7 @@ class DetailViewController: UIViewController {
         } else {
             let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
             let saveAction = UIAlertAction(title: "Save", style: .default) { action in
-                RealmDataManager.shared.saveMedia(from: self.media!)
+                RealmDataManager.shared.saveMedia(from: self.media!, mediaType: self.mediaType)
                 self.saveButtonOutlet.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
                 self.saveButtonOutlet.setTitle("Saved", for: .normal)
             }
@@ -123,7 +124,6 @@ class DetailViewController: UIViewController {
     
     func loadMediaVideos() {
         let url = K.baseUrl + mediaType + "/" + String(mediaID) + K.videosKey + K.apiKey
-        print(url)
         AF.request(url).responseData { response in
             do {
                 if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaVideos?.self, from: receivedData)  {

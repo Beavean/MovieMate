@@ -20,7 +20,7 @@ class SearchViewController: UIViewController {
     var enteredQuery = ""
     var lastScheduledSearch: Timer?
     
-    var moviesSearchResults = [MoviesSearch.Results]()
+    var moviesSearchResults = [MediaSearch.Results]()
     
     
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class SearchViewController: UIViewController {
         let url = K.baseUrl + K.trendingKey + mediaType + K.dayKey + K.apiKey
         AF.request(url).responseData { response in
             do {
-                if let receivedData = response.data, let allData = try JSONDecoder().decode(MoviesSearch?.self, from: receivedData) {
+                if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaSearch?.self, from: receivedData) {
                     self.moviesSearchResults = allData.results ?? []
                     DispatchQueue.main.async {
                         self.searchTableView.reloadData()
@@ -63,7 +63,7 @@ class SearchViewController: UIViewController {
                 let url = K.baseUrl + K.mediaSearchKey + mediaType + K.apiKey + K.mediaSearchQueryKey + apiQuery
                 AF.request(url).responseData { response in
                     do {
-                        if let receivedData = response.data, let allData = try JSONDecoder().decode(MoviesSearch?.self, from: receivedData)  {
+                        if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaSearch?.self, from: receivedData)  {
                             self.moviesSearchResults = allData.results ?? []
                             DispatchQueue.main.async {
                                 self.searchTableView.reloadData()
@@ -108,7 +108,7 @@ extension SearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? MediaSearchTableviewCell else { return UITableViewCell() }
+        guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
         let item = moviesSearchResults[indexPath.row]
         cell.configure(with: item)
         return cell

@@ -13,13 +13,13 @@ struct K {
     static let baseUrl = "https://api.themoviedb.org/3/"
     static let baseImageUrl = "https://image.tmdb.org/t/p/w780/"
     static let trendingKey = "trending/"
-    static let dayKey = "/day"
+    static let dayKey = "/week"
     static let mediaSearchKey = "search/"
     static let mediaSearchQueryKey = "&query="
     static let movieKey = "movie/"
     static let videosKey = "/videos"
     static let popularKey = "/popular"
     
-    static let MoviesCellReuseID = "SearchTableViewCell"
-    static let DetailViewControllerID = "DetailViewController"
+    static let MoviesCellReuseID = String(describing: MediaTableViewCell.self)
+    static let DetailViewControllerID = String(describing: DetailViewController.self)
 }

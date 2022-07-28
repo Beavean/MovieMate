@@ -1,5 +1,5 @@
 //
-//  MovieRealm.swift
+//  MediaRealm.swift
 //  The Movie Database
 //
 //  Created by Beavean on 21.07.2022.
@@ -24,6 +24,7 @@ class MediaRealm: Object {
     @objc dynamic var video = false
     @objc dynamic var voteAverage = 0.0
     @objc dynamic var voteCount = 0
+    @objc dynamic var mediaType = ""
     
     override class func primaryKey() -> String? {
         "id"
