@@ -35,12 +35,13 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        loadMediaVideos()
+        
         mediaBackdropPosterImageView.layer.cornerRadius = mediaBackdropPosterImageView.frame.height / 50
     }
     
     
     func configureViewController(with model: MoviesSearch.Results) {
+        loadMediaVideos()
         if let backdropPath = model.backdropPath {
             self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
         } else {
@@ -67,6 +68,7 @@ class DetailViewController: UIViewController {
     
     
     func configureViewController(with object: MediaRealm) {
+        loadMediaVideos()
         if object.backdropPath.isEmpty {
             mediaBackdropPosterImageView.isHidden = true
         } else {
@@ -120,7 +122,8 @@ class DetailViewController: UIViewController {
     }
     
     func loadMediaVideos() {
-        let url = K.baseUrl + K.movieKey + String(mediaID) + K.videosKey + K.apiKey
+        let url = K.baseUrl + mediaType + "/" + String(mediaID) + K.videosKey + K.apiKey
+        print(url)
         AF.request(url).responseData { response in
             do {
                 if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaVideos?.self, from: receivedData)  {

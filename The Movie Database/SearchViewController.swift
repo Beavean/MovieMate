@@ -124,6 +124,7 @@ extension SearchViewController: UITableViewDelegate {
             viewController.media = media
             viewController.mediaID = self.moviesSearchResults[indexPath.row].id!
             viewController.loadView()
+            viewController.mediaType = self.mediaType
             viewController.configureViewController(with: media)
             self.navigationController?.pushViewController(viewController, animated: true)
         }
