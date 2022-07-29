@@ -101,7 +101,7 @@ class SearchViewController: UIViewController {
     }
 }
 
-//MARK: - TableView DataSource extension
+//MARK: - extension - TableView DataSource
 
 extension SearchViewController: UITableViewDataSource {
     
@@ -118,7 +118,7 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
-//MARK: - TableView Delegate extension
+//MARK: - extension - TableView Delegate extension
 
 extension SearchViewController: UITableViewDelegate {
     
@@ -136,7 +136,7 @@ extension SearchViewController: UITableViewDelegate {
     }
 }
 
-//MARK: - SearchBar Delegate extension
+//MARK: - extension - SearchBar Delegate
 
 extension SearchViewController: UISearchBarDelegate {
     

@@ -25,6 +25,7 @@ struct Constants {
     }
     
     struct UI {
+        static let heightToCornerRadiusConstant = 20.0
         static let MoviesCellReuseID = String(describing: MediaTableViewCell.self)
         static let DetailViewControllerID = String(describing: DetailViewController.self)
     }

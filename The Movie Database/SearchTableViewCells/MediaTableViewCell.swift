@@ -23,7 +23,7 @@ class MediaTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mediaPosterImageView.layer.cornerRadius = mediaPosterImageView.frame.width / 5
+        mediaPosterImageView.layer.cornerRadius = mediaPosterImageView.frame.height / Constants.UI.heightToCornerRadiusConstant
     }
     
     //MARK: - Configure cell with JSON model

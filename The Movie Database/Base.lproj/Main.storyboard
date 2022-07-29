@@ -305,7 +305,7 @@
                         <outlet property="mediaTitleLabel" destination="SKv-Xk-WJ5" id="1WT-5C-lxO"/>
                         <outlet property="mediaVotesCountLabel" destination="W7j-vd-ha3" id="dpf-du-uUe"/>
                         <outlet property="playerView" destination="yLF-Xh-g48" id="FlC-pw-bVb"/>
-                        <outlet property="saveButtonOutlet" destination="07z-TI-Cnr" id="4mG-9l-dY2"/>
+                        <outlet property="saveButton" destination="07z-TI-Cnr" id="4mG-9l-dY2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeW-nJ-kgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -13,6 +13,8 @@ class SavedMediaViewController: UIViewController {
     
     var arrayOfMedia: [MediaRealm] = []
     
+    //MARK: - SavedMediaViewController lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         savedMediaTableView.dataSource = self
@@ -30,6 +32,8 @@ class SavedMediaViewController: UIViewController {
     }
 }
 
+//MARK: - extension - Table View Data Source
+
 extension SavedMediaViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         arrayOfMedia.count
@@ -46,7 +50,6 @@ extension SavedMediaViewController: UITableViewDataSource {
         }
     }
     
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.MoviesCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
         let item = arrayOfMedia[indexPath.row]
@@ -54,6 +57,8 @@ extension SavedMediaViewController: UITableViewDataSource {
         return cell
     }
 }
+
+//MARK: - extension - Table View Delegate
 
 extension SavedMediaViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
