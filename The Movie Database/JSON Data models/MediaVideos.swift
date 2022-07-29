@@ -5,19 +5,18 @@
 //  Created by Beavean on 26.07.2022.
 //
 
-
 import Foundation
 
 struct MediaVideos: Codable {
+    
     let id: Int?
     let results: [Results]?
-
+    
     enum CodingKeys: String, CodingKey {
-
         case id = "id"
         case results = "results"
     }
-
+    
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
@@ -33,7 +32,7 @@ struct MediaVideos: Codable {
         let official: Bool?
         let publishedAt: String?
         let id: String?
-
+        
         enum CodingKeys: String, CodingKey {
             case name = "name"
             case key = "key"
@@ -44,7 +43,7 @@ struct MediaVideos: Codable {
             case publishedAt = "published_at"
             case id = "id"
         }
-
+        
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             name = try values.decodeIfPresent(String.self, forKey: .name)
@@ -56,8 +55,5 @@ struct MediaVideos: Codable {
             publishedAt = try values.decodeIfPresent(String.self, forKey: .publishedAt)
             id = try values.decodeIfPresent(String.self, forKey: .id)
         }
-
     }
-
-
 }

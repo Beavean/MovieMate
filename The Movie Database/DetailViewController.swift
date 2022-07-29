@@ -11,16 +11,16 @@ import youtube_ios_player_helper
 
 class DetailViewController: UIViewController {
     
-    @IBOutlet var playerView: YTPlayerView!
-    @IBOutlet weak var mediaBackdropPosterImageView: UIImageView!
-    @IBOutlet weak var saveButtonOutlet: UIButton!
-    @IBOutlet weak var mediaTitleLabel: UILabel!
-    @IBOutlet weak var mediaReleaseDateLabel: UILabel!
-    @IBOutlet weak var mediaGenresLabel: UILabel!
-    @IBOutlet weak var mediaPosterImageView: UIImageView!
-    @IBOutlet weak var mediaOverviewLabel: UILabel!
-    @IBOutlet weak var mediaRatingLabel: UILabel!
-    @IBOutlet weak var mediaVotesCountLabel: UILabel!
+    @IBOutlet private var playerView: YTPlayerView!
+    @IBOutlet private weak var mediaBackdropPosterImageView: UIImageView!
+    @IBOutlet private weak var saveButtonOutlet: UIButton!
+    @IBOutlet private weak var mediaTitleLabel: UILabel!
+    @IBOutlet private weak var mediaReleaseDateLabel: UILabel!
+    @IBOutlet private weak var mediaGenresLabel: UILabel!
+    @IBOutlet private weak var mediaPosterImageView: UIImageView!
+    @IBOutlet private weak var mediaOverviewLabel: UILabel!
+    @IBOutlet private weak var mediaRatingLabel: UILabel!
+    @IBOutlet private weak var mediaVotesCountLabel: UILabel!
     
     var searchIndex = Int()
     var mediaID = Int()
@@ -39,16 +39,15 @@ class DetailViewController: UIViewController {
         mediaBackdropPosterImageView.layer.cornerRadius = mediaBackdropPosterImageView.frame.height / 50
     }
     
-    
     func configureViewController(with model: MediaSearch.Results) {
         loadMediaVideos()
         if let backdropPath = model.backdropPath {
-            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (backdropPath)))
+            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + (backdropPath)))
         } else {
             self.mediaBackdropPosterImageView.isHidden = true
         }
         if let posterPath = model.posterPath {
-            self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + posterPath))
+            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
             self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.width / 10
         } else {
             self.mediaPosterImageView.isHidden = true
@@ -65,18 +64,16 @@ class DetailViewController: UIViewController {
         }
     }
     
-    
-    
     func configureViewController(with object: MediaRealm) {
         self.mediaType = object.mediaType
         loadMediaVideos()
         if object.backdropPath.isEmpty == true {
             mediaBackdropPosterImageView.isHidden = true
         } else {
-            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + (object.backdropPath)))
+            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + (object.backdropPath)))
             
         }
-        self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + object.posterPath))
+        self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
         self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.width / 10
         self.mediaTitleLabel.text = object.title
         self.mediaOverviewLabel.text = object.overview
@@ -89,9 +86,6 @@ class DetailViewController: UIViewController {
             self.saveButtonOutlet.setTitle("Saved", for: .normal)
         } else { return }
     }
-    
-    
-    
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         if RealmDataManager.shared.checkIfAlreadySaved(id: mediaID) {
@@ -106,7 +100,6 @@ class DetailViewController: UIViewController {
             alert.addAction(cancelAction)
             alert.addAction(deleteAction)
             present(alert, animated: true)
-            
         } else {
             let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
             let saveAction = UIAlertAction(title: "Save", style: .default) { action in
@@ -123,7 +116,7 @@ class DetailViewController: UIViewController {
     }
     
     func loadMediaVideos() {
-        let url = K.baseUrl + mediaType + "/" + String(mediaID) + K.videosKey + K.apiKey
+        guard let url = URL(string: Constants.Network.baseUrl + mediaType + "/" + String(mediaID) + Constants.Network.videosKey + Constants.Network.apiKey) else { return }
         AF.request(url).responseData { response in
             do {
                 if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaVideos?.self, from: receivedData)  {
@@ -138,7 +131,7 @@ class DetailViewController: UIViewController {
                     }
                 }
             } catch {
-                print(error)
+                print("Error loading media videos: \(error)")
             }
         }
     }

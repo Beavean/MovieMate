@@ -98,8 +98,8 @@
 				08B046602889964C00E61D76 /* SavedMediaViewController.swift */,
 				08B0464C288946E600E61D76 /* RealmDataManager.swift */,
 				08B0465E2889886C00E61D76 /* MediaRealm.swift */,
-				08986CF7287C4A4F00D9FBDA /* JSON Data models */,
 				08DD20EE2885F34A0036FA84 /* SearchTableViewCells */,
+				08986CF7287C4A4F00D9FBDA /* JSON Data models */,
 				08986CE6287C46C100D9FBDA /* Assets.xcassets */,
 				08986CE8287C46C100D9FBDA /* LaunchScreen.storyboard */,
 				08986CEB287C46C100D9FBDA /* Info.plist */,
@@ -114,8 +114,8 @@
 				0881631D2886A79B005F2C9B /* MediaSearch.swift */,
 				08B046522889481800E61D76 /* MediaDetails.swift */,
 				080039AB28907EF3008BB7A6 /* MediaVideos.swift */,
-				08B04664288B316100E61D76 /* GenresDecoder.swift */,
 				08B04668288BD33700E61D76 /* DateFormatter.swift */,
+				08B04664288B316100E61D76 /* GenresDecoder.swift */,
 			);
 			path = "JSON Data models";
 			sourceTree = "<group>";

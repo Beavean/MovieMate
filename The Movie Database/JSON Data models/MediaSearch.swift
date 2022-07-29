@@ -8,28 +8,29 @@
 import Foundation
 
 struct MediaSearch: Codable {
-	let page: Int?
-	let results: [Results]?
-	let totalPages: Int?
-	let totalResults: Int?
-
-	enum CodingKeys: String, CodingKey {
-
-		case page = "page"
-		case results = "results"
-		case totalPages = "total_pages"
-		case totalResults = "total_results"
-	}
-
-	init(from decoder: Decoder) throws {
-		let values = try decoder.container(keyedBy: CodingKeys.self)
-		page = try values.decodeIfPresent(Int.self, forKey: .page)
-		results = try values.decodeIfPresent([Results].self, forKey: .results)
-		totalPages = try values.decodeIfPresent(Int.self, forKey: .totalPages)
-		totalResults = try values.decodeIfPresent(Int.self, forKey: .totalResults)
-	}
+    
+    let page: Int?
+    let results: [Results]?
+    let totalPages: Int?
+    let totalResults: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case page = "page"
+        case results = "results"
+        case totalPages = "total_pages"
+        case totalResults = "total_results"
+    }
+    
+    init(from decoder: Decoder) throws {
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        page = try values.decodeIfPresent(Int.self, forKey: .page)
+        results = try values.decodeIfPresent([Results].self, forKey: .results)
+        totalPages = try values.decodeIfPresent(Int.self, forKey: .totalPages)
+        totalResults = try values.decodeIfPresent(Int.self, forKey: .totalResults)
+    }
     
     struct Results: Codable {
+        
         let adult: Bool?
         let backdropPath: String?
         let genreIDs: [Int]?
@@ -47,9 +48,8 @@ struct MediaSearch: Codable {
         let firstAirDate: String?
         let name: String?
         let originalName: String?
-
+        
         enum CodingKeys: String, CodingKey {
-
             case adult = "adult"
             case backdropPath = "backdrop_path"
             case genreIDs = "genre_ids"
@@ -68,7 +68,7 @@ struct MediaSearch: Codable {
             case originalName = "original_name"
             case firstAirDate = "first_air_date"
         }
-
+        
         init(from decoder: Decoder) throws {
             let values = try decoder.container(keyedBy: CodingKeys.self)
             adult = try values.decodeIfPresent(Bool.self, forKey: .adult)
@@ -89,9 +89,5 @@ struct MediaSearch: Codable {
             originalName = try values.decodeIfPresent(String.self, forKey: .originalName)
             firstAirDate = try values.decodeIfPresent(String.self, forKey: .firstAirDate)
         }
-
     }
-    
-    
-
 }

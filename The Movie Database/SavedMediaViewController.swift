@@ -9,7 +9,7 @@ import UIKit
 
 class SavedMediaViewController: UIViewController {
     
-    @IBOutlet weak var savedMediaTableView: UITableView!
+    @IBOutlet private weak var savedMediaTableView: UITableView!
     
     var arrayOfMedia: [MediaRealm] = []
     
@@ -17,19 +17,16 @@ class SavedMediaViewController: UIViewController {
         super.viewDidLoad()
         savedMediaTableView.dataSource = self
         savedMediaTableView.delegate = self
-        
-        savedMediaTableView.register(UINib(nibName: K.MoviesCellReuseID, bundle: nil), forCellReuseIdentifier: K.MoviesCellReuseID)
-
+        savedMediaTableView.register(UINib(nibName: Constants.UI.MoviesCellReuseID, bundle: nil), forCellReuseIdentifier: Constants.UI.MoviesCellReuseID)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         getSavedMedia()
         savedMediaTableView.reloadData()
     }
-
+    
     func getSavedMedia() {
         arrayOfMedia = RealmDataManager.shared.getMedia()
- 
     }
 }
 
@@ -51,19 +48,17 @@ extension SavedMediaViewController: UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
+        guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.MoviesCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
         let item = arrayOfMedia[indexPath.row]
         cell.configure(with: item)
         return cell
     }
-    
-    
 }
 
 extension SavedMediaViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let viewController = storyboard.instantiateViewController(withIdentifier: K.DetailViewControllerID) as? DetailViewController {
+        if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.DetailViewControllerID) as? DetailViewController {
             let media = self.arrayOfMedia[indexPath.row]
             viewController.mediaID = self.arrayOfMedia[indexPath.row].id
             viewController.loadView()
@@ -71,5 +66,4 @@ extension SavedMediaViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
 }

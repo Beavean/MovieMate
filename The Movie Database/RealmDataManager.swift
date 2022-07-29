@@ -16,7 +16,6 @@ struct RealmDataManager {
     
     private init() { }
     
-    
     @discardableResult func saveMedia(from model: MediaSearch.Results, mediaType: String) -> Bool {
         let movieRealm = MediaRealm()
         
@@ -45,7 +44,6 @@ struct RealmDataManager {
         }
     }
     
-    
     func getMedia() -> [MediaRealm] {
         var moviesRealm: [MediaRealm] = []
         
@@ -71,5 +69,4 @@ struct RealmDataManager {
             return false
         }
     }
-    
 }

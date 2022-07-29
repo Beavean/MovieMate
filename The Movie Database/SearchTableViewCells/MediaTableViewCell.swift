@@ -9,29 +9,28 @@ import UIKit
 import SDWebImage
 import RealmSwift
 
-
 class MediaTableViewCell: UITableViewCell {
-    @IBOutlet weak var mediaPosterImageView: UIImageView!
-    @IBOutlet weak var mediaTitleLabel: UILabel!
-    @IBOutlet weak var mediaOverviewLabel: UILabel!
-    @IBOutlet weak var mediaReleaseDateLabel: UILabel!
-    @IBOutlet weak var mediaGenresLabel: UILabel!
-    @IBOutlet weak var mediaRatingLabel: UILabel!
-    @IBOutlet weak var mediaVotesCountLabel: UILabel!
+    
+    @IBOutlet private weak var mediaPosterImageView: UIImageView!
+    @IBOutlet private weak var mediaTitleLabel: UILabel!
+    @IBOutlet private weak var mediaOverviewLabel: UILabel!
+    @IBOutlet private weak var mediaReleaseDateLabel: UILabel!
+    @IBOutlet private weak var mediaGenresLabel: UILabel!
+    @IBOutlet private weak var mediaRatingLabel: UILabel!
+    @IBOutlet private weak var mediaVotesCountLabel: UILabel!
+    
+    //MARK: - TableViewCell lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mediaPosterImageView.layer.cornerRadius = mediaPosterImageView.frame.width / 6
+        mediaPosterImageView.layer.cornerRadius = mediaPosterImageView.frame.width / 5
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-    }
+    
+    //MARK: - Configure cell with JSON model
     
     func configure(with model: MediaSearch.Results) {
         if let posterPath = model.posterPath {
-            self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + posterPath))
+            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
         }
         self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
         self.mediaOverviewLabel.text = model.overview
@@ -39,19 +38,18 @@ class MediaTableViewCell: UITableViewCell {
         self.mediaGenresLabel.text = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
         self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? "") : MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? "")
         self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
-
-
     }
     
+    //MARK: - Configure cell with Realm object
+    
     func configure(with object: MediaRealm) {
-        self.mediaPosterImageView.sd_setImage(with: URL(string: K.baseImageUrl + object.posterPath))
+        self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
         self.mediaVotesCountLabel.text = String(describing: object.voteCount)
         self.mediaTitleLabel.text = object.title
         self.mediaOverviewLabel.text = object.overview
         self.mediaGenresLabel.text = object.genreIDs
         self.mediaReleaseDateLabel.text = object.releaseDate
         self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage)
-
+        
     }
-    
 }

@@ -12,33 +12,30 @@ import SwiftUI
 
 class SearchViewController: UIViewController {
     
-    @IBOutlet weak var searchBar: UISearchBar!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    @IBOutlet weak var searchTableView: UITableView!
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var searchTableView: UITableView!
     
-    var mediaType = "movie"
-    var enteredQuery = ""
+    var mediaType = Constants.Network.movieType
+    var enteredQuery: String?
     var lastScheduledSearch: Timer?
-    
     var moviesSearchResults = [MediaSearch.Results]()
     
+    //MARK: - SearchViewController lifecycle
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         searchTableView.dataSource = self
         searchTableView.delegate = self
         searchBar.delegate = self
-        
-        searchTableView.register(UINib(nibName: K.MoviesCellReuseID, bundle: nil), forCellReuseIdentifier: K.MoviesCellReuseID)
-        
+        searchTableView.register(UINib(nibName: Constants.UI.MoviesCellReuseID, bundle: nil), forCellReuseIdentifier: Constants.UI.MoviesCellReuseID)
         receiveTrendingMedia()
-        
     }
     
+    //MARK: - SearchViewController receives and shows trending media by default
+    
     func receiveTrendingMedia() {
-        let url = K.baseUrl + K.trendingKey + mediaType + K.dayKey + K.apiKey
+        guard let url = URL(string: Constants.Network.baseUrl + Constants.Network.trendingKey + mediaType + Constants.Network.dayKey + Constants.Network.apiKey) else { return }
         AF.request(url).responseData { response in
             do {
                 if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaSearch?.self, from: receivedData) {
@@ -48,19 +45,20 @@ class SearchViewController: UIViewController {
                     }
                 }
             } catch {
-                print(error)
+                print("Error loading trending media: \(error)")
             }
         }
     }
+    
+    //MARK: - SearchBar interactions
     
     @objc func receiveSearchResults() {
         if searchBar.searchTextField.text == "" {
             receiveTrendingMedia()
             return
         } else {
-            enteredQuery = searchBar.searchTextField.text!
-            if let apiQuery = enteredQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-                let url = K.baseUrl + K.mediaSearchKey + mediaType + K.apiKey + K.mediaSearchQueryKey + apiQuery
+            if let enteredQuery = searchBar.searchTextField.text, let apiQuery = enteredQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
+                guard let url = URL(string: Constants.Network.baseUrl + Constants.Network.mediaSearchKey + mediaType + Constants.Network.apiKey + Constants.Network.mediaSearchQueryKey + apiQuery) else { return }
                 AF.request(url).responseData { response in
                     do {
                         if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaSearch?.self, from: receivedData)  {
@@ -70,7 +68,7 @@ class SearchViewController: UIViewController {
                             }
                         }
                     } catch {
-                        print(error)
+                        print("Error loading search results: \(error)")
                     }
                 }
                 self.searchTableView.reloadData()
@@ -83,16 +81,17 @@ class SearchViewController: UIViewController {
         }
     }
     
+    //MARK: - SegmentedControl interactions
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
         switch segmentedControl.selectedSegmentIndex
         {
         case 0:
-            mediaType = "movie"
+            mediaType = Constants.Network.movieType
             receiveSearchResults()
             searchBar.endEditing(true)
         case 1:
-            mediaType = "tv"
+            mediaType = Constants.Network.tvSeriesType
             receiveSearchResults()
             searchBar.endEditing(true)
         default:
@@ -102,13 +101,16 @@ class SearchViewController: UIViewController {
     }
 }
 
+//MARK: - TableView DataSource extension
+
 extension SearchViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return moviesSearchResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: K.MoviesCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
+        guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.MoviesCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
         let item = moviesSearchResults[indexPath.row]
         cell.configure(with: item)
         return cell
@@ -116,13 +118,16 @@ extension SearchViewController: UITableViewDataSource {
     }
 }
 
+//MARK: - TableView Delegate extension
+
 extension SearchViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let viewController = storyboard.instantiateViewController(withIdentifier: K.DetailViewControllerID) as? DetailViewController {
+        if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.DetailViewControllerID) as? DetailViewController, let mediaID = self.moviesSearchResults[indexPath.row].id {
             let media = self.moviesSearchResults[indexPath.row]
             viewController.media = media
-            viewController.mediaID = self.moviesSearchResults[indexPath.row].id!
+            viewController.mediaID = mediaID
             viewController.loadView()
             viewController.mediaType = self.mediaType
             viewController.configureViewController(with: media)
@@ -130,6 +135,8 @@ extension SearchViewController: UITableViewDelegate {
         }
     }
 }
+
+//MARK: - SearchBar Delegate extension
 
 extension SearchViewController: UISearchBarDelegate {
     
@@ -148,7 +155,6 @@ extension SearchViewController: UISearchBarDelegate {
         lastScheduledSearch?.invalidate()
         lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(receiveSearchResults), userInfo: nil, repeats: false)
     }
-    
 }
 
 

@@ -6,7 +6,9 @@
 //
 
 import Foundation
+
 struct MediaDetails: Codable {
+    
     let adult: Bool?
     let backdropPath: String?
     let budget: Int?
@@ -30,7 +32,6 @@ struct MediaDetails: Codable {
     let vote_count: Int?
     
     enum CodingKeys: String, CodingKey {
-        
         case adult = "adult"
         case backdropPath = "backdrop_path"
         case budget = "budget"
@@ -79,13 +80,12 @@ struct MediaDetails: Codable {
         vote_count = try values.decodeIfPresent(Int.self, forKey: .vote_count)
     }
     
-    
     struct Genres: Codable {
+        
         let id: Int?
         let name: String?
         
         enum CodingKeys: String, CodingKey {
-            
             case id = "id"
             case name = "name"
         }
@@ -96,5 +96,4 @@ struct MediaDetails: Codable {
             name = try values.decodeIfPresent(String.self, forKey: .name)
         }
     }
-    
 }

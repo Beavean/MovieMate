@@ -29,5 +29,4 @@ class MediaRealm: Object {
     override class func primaryKey() -> String? {
         "id"
     }
-    
 }
