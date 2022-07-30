@@ -43,17 +43,5 @@ struct MediaVideos: Codable {
             case publishedAt = "published_at"
             case id = "id"
         }
-        
-        init(from decoder: Decoder) throws {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            name = try values.decodeIfPresent(String.self, forKey: .name)
-            key = try values.decodeIfPresent(String.self, forKey: .key)
-            site = try values.decodeIfPresent(String.self, forKey: .site)
-            size = try values.decodeIfPresent(Int.self, forKey: .size)
-            type = try values.decodeIfPresent(String.self, forKey: .type)
-            official = try values.decodeIfPresent(Bool.self, forKey: .official)
-            publishedAt = try values.decodeIfPresent(String.self, forKey: .publishedAt)
-            id = try values.decodeIfPresent(String.self, forKey: .id)
-        }
     }
 }

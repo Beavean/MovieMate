@@ -68,26 +68,5 @@ struct MediaSearch: Codable {
             case originalName = "original_name"
             case firstAirDate = "first_air_date"
         }
-        
-        init(from decoder: Decoder) throws {
-            let values = try decoder.container(keyedBy: CodingKeys.self)
-            adult = try values.decodeIfPresent(Bool.self, forKey: .adult)
-            backdropPath = try values.decodeIfPresent(String.self, forKey: .backdropPath)
-            genreIDs = try values.decodeIfPresent([Int].self, forKey: .genreIDs)
-            id = try values.decodeIfPresent(Int.self, forKey: .id)
-            originalLanguage = try values.decodeIfPresent(String.self, forKey: .originalLanguage)
-            originalTitle = try values.decodeIfPresent(String.self, forKey: .originalTitle)
-            overview = try values.decodeIfPresent(String.self, forKey: .overview)
-            popularity = try values.decodeIfPresent(Double.self, forKey: .popularity)
-            posterPath = try values.decodeIfPresent(String.self, forKey: .posterPath)
-            releaseDate = try values.decodeIfPresent(String.self, forKey: .releaseDate)
-            title = try values.decodeIfPresent(String.self, forKey: .title)
-            video = try values.decodeIfPresent(Bool.self, forKey: .video)
-            voteAverage = try values.decodeIfPresent(Double.self, forKey: .voteAverage)
-            voteCount = try values.decodeIfPresent(Int.self, forKey: .voteCount)
-            name = try values.decodeIfPresent(String.self, forKey: .name)
-            originalName = try values.decodeIfPresent(String.self, forKey: .originalName)
-            firstAirDate = try values.decodeIfPresent(String.self, forKey: .firstAirDate)
-        }
     }
 }

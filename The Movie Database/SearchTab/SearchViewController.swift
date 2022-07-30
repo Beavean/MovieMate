@@ -85,62 +85,6 @@ class SearchViewController: UIViewController {
     }
 }
 
-//MARK: - extension - TableView DataSource
-
-extension SearchViewController: UITableViewDataSource {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return moviesSearchResults.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.MoviesCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
-        let item = moviesSearchResults[indexPath.row]
-        cell.configure(with: item)
-        return cell
-        
-    }
-}
-
-//MARK: - extension - TableView Delegate extension
-
-extension SearchViewController: UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.DetailViewControllerID) as? DetailViewController, let mediaID = self.moviesSearchResults[indexPath.row].id {
-            let media = self.moviesSearchResults[indexPath.row]
-            viewController.media = media
-            viewController.mediaID = mediaID
-            viewController.loadView()
-            viewController.mediaType = self.mediaType
-            viewController.configureViewController(with: media)
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
-    }
-}
-
-//MARK: - extension - SearchBar Delegate
-
-extension SearchViewController: UISearchBarDelegate {
-    
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        receiveSearchResults()
-        searchBar.endEditing(true)
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.text = ""
-        receiveSearchResults()
-        searchBar.endEditing(true)
-    }
-    
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        lastScheduledSearch?.invalidate()
-        lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(receiveSearchResults), userInfo: nil, repeats: false)
-    }
-}
-
 
 
 
