@@ -35,18 +35,11 @@ class SearchViewController: UIViewController {
     //MARK: - SearchViewController receives and shows trending media by default
     
     func receiveTrendingMedia() {
-        guard let url = URL(string: Constants.Network.baseUrl + Constants.Network.trendingKey + mediaType + Constants.Network.dayKey + Constants.Network.apiKey) else { return }
-        AF.request(url).responseData { response in
-            do {
-                if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaSearch?.self, from: receivedData) {
-                    self.moviesSearchResults = allData.results ?? []
-                    DispatchQueue.main.async {
-                        self.searchTableView.reloadData()
-                    }
-                }
-            } catch {
-                print("Error loading trending media: \(error)")
-            }
+        let query = Constants.Network.trendingKey + mediaType + Constants.Network.dayKey + Constants.Network.apiKey
+        NetworkManager.shared.makeRequest(query: query, model: MediaSearch?.self) { data in
+            guard let mediaResults = data?.results else { return }
+            self.moviesSearchResults = mediaResults
+            self.searchTableView.reloadData()
         }
     }
     
@@ -55,23 +48,14 @@ class SearchViewController: UIViewController {
     @objc func receiveSearchResults() {
         if searchBar.searchTextField.text == "" {
             receiveTrendingMedia()
-            return
         } else {
             if let enteredQuery = searchBar.searchTextField.text, let apiQuery = enteredQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-                guard let url = URL(string: Constants.Network.baseUrl + Constants.Network.mediaSearchKey + mediaType + Constants.Network.apiKey + Constants.Network.mediaSearchQueryKey + apiQuery) else { return }
-                AF.request(url).responseData { response in
-                    do {
-                        if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaSearch?.self, from: receivedData)  {
-                            self.moviesSearchResults = allData.results ?? []
-                            DispatchQueue.main.async {
-                                self.searchTableView.reloadData()
-                            }
-                        }
-                    } catch {
-                        print("Error loading search results: \(error)")
-                    }
+                let query = Constants.Network.mediaSearchKey + mediaType + Constants.Network.apiKey + Constants.Network.mediaSearchQueryKey + apiQuery
+                NetworkManager.shared.makeRequest(query: query, model: MediaSearch?.self) { data in
+                    guard let mediaResults = data?.results else { return }
+                    self.moviesSearchResults = mediaResults
+                    self.searchTableView.reloadData()
                 }
-                self.searchTableView.reloadData()
                 if searchTableView.numberOfRows(inSection: 0) > 0 {
                     searchTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
                 } else {
@@ -95,8 +79,8 @@ class SearchViewController: UIViewController {
             receiveSearchResults()
             searchBar.endEditing(true)
         default:
-            searchBar.endEditing(true)
             receiveSearchResults()
+            searchBar.endEditing(true)
         }
     }
 }

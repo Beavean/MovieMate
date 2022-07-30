@@ -14,12 +14,9 @@ struct NetworkManager {
     
     private init() { }
     
-    func makeRequest<T: Codable>(query: String,
-                                 model: T.Type,
-                                 completion: @escaping (T) -> ()) {
+    func makeRequest<T: Codable>(query: String, model: T.Type, completion: @escaping (T) -> ()) {
         let baseUrl = Constants.Network.baseUrl
-        let apiKey = Constants.Network.apiKey
-        let url = baseUrl + query + apiKey
+        guard let url = URL(string: baseUrl + query) else { return }
         AF.request(url).response { response in
             guard let response = response.data else { return }
             do {
@@ -27,7 +24,6 @@ struct NetworkManager {
                 completion(data)
             } catch {
                 print("JSON decode error:", error)
-                return
             }
         }
     }

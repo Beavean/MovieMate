@@ -55,7 +55,7 @@ class DetailViewController: UIViewController {
             alert.addAction(deleteAction)
             present(alert, animated: true)
         } else {
-            let alert = UIAlertController(title: "Save it?", message: "This will save the page to the watch list", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Save it?", message: "This will add the item to the saved list", preferredStyle: .alert)
             let saveAction = UIAlertAction(title: "Save", style: .default) { action in
                 guard let media = self.media, let mediaType = self.mediaType else { return }
                 RealmDataManager.shared.saveMedia(from: media, mediaType: mediaType)
@@ -128,24 +128,13 @@ class DetailViewController: UIViewController {
     //MARK: - Loading videos to the Youtube player
     
     func loadMediaVideos() {
-        guard let mediaID = self.mediaID,
-              let mediaType = self.mediaType,
-              let url = URL(string: Constants.Network.baseUrl + mediaType + "/" + String(mediaID) + Constants.Network.videosKey + Constants.Network.apiKey) else { return }
-        AF.request(url).responseData { response in
-            do {
-                if let receivedData = response.data, let allData = try JSONDecoder().decode(MediaVideos?.self, from: receivedData)  {
-                    self.mediaVideos = allData
-                    guard let mediaVideoKey = allData.results?.first?.key else {
-                        return
-                    }
-                    if mediaVideoKey.isEmpty {
-                        self.playerView.isHidden = true
-                    } else {
-                        self.playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
-                    }
-                }
-            } catch {
-                print("Error loading media videos: \(error)")
+        guard let mediaID = self.mediaID, let mediaType = self.mediaType else { return }
+        let query = mediaType + "/" + String(mediaID) + Constants.Network.videosKey + Constants.Network.apiKey
+        NetworkManager.shared.makeRequest(query: query, model: MediaVideos?.self) { data in
+            if let mediaVideoKey = data?.results?.first?.key {
+                self.playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
+            } else {
+                self.playerView.isHidden = true
             }
         }
     }
