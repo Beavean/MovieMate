@@ -13,7 +13,7 @@ import SwiftUI
 class SearchViewController: UIViewController {
     
     @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var segmentedControl: UISegmentedControl!
+    @IBOutlet private weak var contentTypeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var searchTableView: UITableView!
     
     var mediaType = Constants.Network.movieType
@@ -84,7 +84,7 @@ class SearchViewController: UIViewController {
     //MARK: - SegmentedControl interactions
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
-        switch segmentedControl.selectedSegmentIndex
+        switch contentTypeSegmentedControl.selectedSegmentIndex
         {
         case 0:
             mediaType = Constants.Network.movieType

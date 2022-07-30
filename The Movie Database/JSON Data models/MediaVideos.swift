@@ -10,7 +10,7 @@ import Foundation
 struct MediaVideos: Codable {
     
     let id: Int?
-    let results: [Results]?
+    let results: [Video]?
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -20,10 +20,10 @@ struct MediaVideos: Codable {
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         id = try values.decodeIfPresent(Int.self, forKey: .id)
-        results = try values.decodeIfPresent([Results].self, forKey: .results)
+        results = try values.decodeIfPresent([Video].self, forKey: .results)
     }
     
-    struct Results: Codable {
+    struct Video: Codable {
         let name: String?
         let key: String?
         let site: String?

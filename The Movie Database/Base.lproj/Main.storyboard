@@ -120,9 +120,9 @@
                         <barButtonItem key="backBarButtonItem" title="Search" id="NE3-mT-dDF"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="contentTypeSegmentedControl" destination="ZNj-Jm-NrZ" id="p3x-gq-osp"/>
                         <outlet property="searchBar" destination="ZFB-ax-g72" id="T6r-F1-mmQ"/>
                         <outlet property="searchTableView" destination="IZt-Wr-L74" id="Z52-Xb-ofM"/>
-                        <outlet property="segmentedControl" destination="ZNj-Jm-NrZ" id="p3x-gq-osp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMj-oY-um2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

@@ -1,5 +1,5 @@
 //
-//  DateFormatter.swift
+//  MediaDateFormatter.swift
 //  The Movie Database
 //
 //  Created by Beavean on 23.07.2022.
@@ -18,7 +18,7 @@ struct MediaDateFormatter {
         dateFormatter.locale = Locale(identifier: "en-US")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         guard let date = dateFormatter.date(from: string) else { return "" }
-        dateFormatter.dateFormat = "dd MMMM yyyy"
+        dateFormatter.dateFormat = "d MMMM yyyy"
         let resultString = dateFormatter.string(from: date)
         return resultString
     }

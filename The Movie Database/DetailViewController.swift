@@ -36,7 +36,7 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        mediaBackdropPosterImageView.layer.cornerRadius = mediaBackdropPosterImageView.frame.height / Constants.UI.heightToCornerRadiusConstant
+        mediaBackdropPosterImageView.layer.cornerRadius = mediaBackdropPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
     }
     
     //MARK: - SaveButton interaction
@@ -75,19 +75,19 @@ class DetailViewController: UIViewController {
     func configureViewController(with model: MediaSearch.Results) {
         loadMediaVideos()
         if let backdropPath = model.backdropPath {
-            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + (backdropPath)))
+            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
         } else {
             self.mediaBackdropPosterImageView.isHidden = true
         }
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
-            self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.height / Constants.UI.heightToCornerRadiusConstant
+            self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
         } else {
             self.mediaPosterImageView.isHidden = true
         }
         self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
         self.mediaOverviewLabel.text = model.overview
-        self.mediaGenresLabel.text = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!).isEmpty == false ? GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!) : "Genre is not specified"
+        self.mediaGenresLabel.text = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
         self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate!) : "Unknown"
         self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
         self.mediaVotesCountLabel.text = "\(String(describing: model.voteCount!)) votes"
@@ -107,11 +107,15 @@ class DetailViewController: UIViewController {
         } else {
             self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.backdropPath))
         }
-        self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
-        self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.height / Constants.UI.heightToCornerRadiusConstant
+        if object.posterPath.isEmpty == true {
+            mediaPosterImageView.isHidden = true
+        } else {
+            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
+        }
+        self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
         self.mediaTitleLabel.text = object.title
         self.mediaOverviewLabel.text = object.overview
-        self.mediaGenresLabel.text = object.genreIDs.isEmpty == false ? object.genreIDs : "Unspecified"
+        self.mediaGenresLabel.text = object.genreIDs
         self.mediaReleaseDateLabel.text = object.releaseDate.isEmpty == false ? object.releaseDate : "Unknown"
         self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage).isEmpty == false ? String(format: "%.1f", object.voteAverage) : "-"
         self.mediaVotesCountLabel.text = "\(String(describing: object.voteCount)) votes"

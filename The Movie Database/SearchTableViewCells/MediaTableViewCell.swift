@@ -23,7 +23,7 @@ class MediaTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mediaPosterImageView.layer.cornerRadius = mediaPosterImageView.frame.height / Constants.UI.heightToCornerRadiusConstant
+        mediaPosterImageView.layer.cornerRadius = mediaPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
     }
     
     //MARK: - Configure cell with JSON model
@@ -35,7 +35,7 @@ class MediaTableViewCell: UITableViewCell {
         self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
         self.mediaOverviewLabel.text = model.overview
         self.mediaVotesCountLabel.text = String(describing: model.voteCount!)
-        self.mediaGenresLabel.text = GenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
+        self.mediaGenresLabel.text = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
         self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? "") : MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? "")
         self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
     }
