@@ -21,14 +21,6 @@ struct MediaSearch: Codable {
         case totalResults = "total_results"
     }
     
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        page = try values.decodeIfPresent(Int.self, forKey: .page)
-        results = try values.decodeIfPresent([Results].self, forKey: .results)
-        totalPages = try values.decodeIfPresent(Int.self, forKey: .totalPages)
-        totalResults = try values.decodeIfPresent(Int.self, forKey: .totalResults)
-    }
-    
     struct Results: Codable {
         
         let adult: Bool?

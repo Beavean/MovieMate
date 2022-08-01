@@ -5,7 +5,6 @@
 //  Created by Beavean on 30.07.2022.
 //
 
-import Foundation
 import UIKit
 
 struct SaveButtonManager {

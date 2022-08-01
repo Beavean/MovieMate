@@ -18,12 +18,17 @@ class MediaTableViewCell: UITableViewCell {
     @IBOutlet private weak var mediaGenresLabel: UILabel!
     @IBOutlet private weak var mediaRatingLabel: UILabel!
     @IBOutlet private weak var mediaVotesCountLabel: UILabel!
+    @IBOutlet private weak var mediaBackdropImageView: UIImageView!
+    @IBOutlet private weak var mediaCellMainView: UIView!
+    @IBOutlet private weak var mediaRatingBackgroundView: UIView!
     
     //MARK: - TableViewCell lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mediaPosterImageView.layer.cornerRadius = mediaPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
+        mediaBackdropImageView.alpha = 0.5
+        mediaBackdropImageView.applyBlurEffect()
+        mediaRatingBackgroundView.layer.cornerRadius = mediaRatingBackgroundView.frame.height * Constants.UI.cornerRadiusRatio
     }
     
     //MARK: - Configure cell with JSON model
@@ -31,6 +36,10 @@ class MediaTableViewCell: UITableViewCell {
     func configure(with model: MediaSearch.Results) {
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+        }
+        
+        if let backdropPath = model.backdropPath {
+            self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
         }
         self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
         self.mediaOverviewLabel.text = model.overview
@@ -44,6 +53,7 @@ class MediaTableViewCell: UITableViewCell {
     
     func configure(with object: MediaRealm) {
         self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
+        self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.backdropPath))
         self.mediaVotesCountLabel.text = String(describing: object.voteCount)
         self.mediaTitleLabel.text = object.title
         self.mediaOverviewLabel.text = object.overview
@@ -53,3 +63,14 @@ class MediaTableViewCell: UITableViewCell {
         
     }
 }
+
+extension UIImageView {
+    func applyBlurEffect() {
+        let blurEffect = UIBlurEffect(style: .light)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = bounds
+        blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        addSubview(blurEffectView)
+    }
+}
+
