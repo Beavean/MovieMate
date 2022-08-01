@@ -21,6 +21,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var mediaOverviewLabel: UILabel!
     @IBOutlet private weak var mediaRatingLabel: UILabel!
     @IBOutlet private weak var mediaVotesCountLabel: UILabel!
+    @IBOutlet private weak var mediaBackgroundBlurImage: UIImageView!
     
     var mediaID: Int?
     var mediaType: String?
@@ -49,6 +50,7 @@ class DetailViewController: UIViewController {
             let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
                 RealmDataManager.shared.deleteMedia(id: mediaID)
                 self.navigationController?.popToRootViewController(animated: true)
+                
             }
             alert.view.tintColor = UIColor.label
             alert.addAction(cancelAction)
@@ -59,8 +61,8 @@ class DetailViewController: UIViewController {
             let saveAction = UIAlertAction(title: "Save", style: .default) { action in
                 guard let media = self.media, let mediaType = self.mediaType else { return }
                 RealmDataManager.shared.saveMedia(from: media, mediaType: mediaType)
-                self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-                self.saveButton.setTitle("Saved", for: .normal)
+                self.saveButton.tintColor = .green
+                self.saveButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .default)
             alert.view.tintColor = UIColor.label
@@ -82,6 +84,8 @@ class DetailViewController: UIViewController {
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
             self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
+            self.mediaBackgroundBlurImage.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+            self.mediaBackgroundBlurImage.applyBlurEffect()
         } else {
             self.mediaPosterImageView.isHidden = true
         }
@@ -91,10 +95,8 @@ class DetailViewController: UIViewController {
         self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate!) : "Unknown"
         self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
         self.mediaVotesCountLabel.text = "\(String(describing: model.voteCount!)) votes"
-        if RealmDataManager.shared.checkIfAlreadySaved(id: model.id!) {
-            self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-            self.saveButton.setTitle("Saved", for: .normal)
-        }
+        saveButton.changeImageIfSaved(condition: RealmDataManager.shared.checkIfAlreadySaved(id: model.id))
+
     }
     
     //MARK: - Configuring with Realm object
@@ -111,6 +113,8 @@ class DetailViewController: UIViewController {
             mediaPosterImageView.isHidden = true
         } else {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
+            self.mediaBackgroundBlurImage.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
+            self.mediaBackgroundBlurImage.applyBlurEffect()
         }
         self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
         self.mediaTitleLabel.text = object.title
@@ -119,10 +123,8 @@ class DetailViewController: UIViewController {
         self.mediaReleaseDateLabel.text = object.releaseDate.isEmpty == false ? object.releaseDate : "Unknown"
         self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage).isEmpty == false ? String(format: "%.1f", object.voteAverage) : "-"
         self.mediaVotesCountLabel.text = "\(String(describing: object.voteCount)) votes"
-        if RealmDataManager.shared.checkIfAlreadySaved(id: object.id) {
-            self.saveButton.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
-            self.saveButton.setTitle("Saved", for: .normal)
-        } else { return }
+        saveButton.changeImageIfSaved(condition: RealmDataManager.shared.checkIfAlreadySaved(id: object.id))
+
     }
     
     //MARK: - Loading videos to the Youtube player

@@ -32,6 +32,10 @@ class SearchViewController: UIViewController {
         receiveTrendingMedia()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        self.searchTableView.reloadData()
+    }
+    
     //MARK: - SearchViewController receives and shows trending media by default
     
     func receiveTrendingMedia() {

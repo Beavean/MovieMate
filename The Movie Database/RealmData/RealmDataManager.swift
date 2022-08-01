@@ -62,7 +62,7 @@ struct RealmDataManager {
         }
     }
     
-    func checkIfAlreadySaved(id: Int) -> Bool {
+    func checkIfAlreadySaved(id: Int?) -> Bool {
         if (realm?.object(ofType: MediaRealm.self, forPrimaryKey: id)) != nil {
             return true
         } else {

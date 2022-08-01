@@ -30,7 +30,6 @@ class MediaTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        mediaBackdropImageView.alpha = 0.5
         mediaBackdropImageView.applyBlurEffect()
         mediaRatingBackgroundView.layer.cornerRadius = mediaRatingBackgroundView.frame.height * Constants.UI.cornerRadiusRatio
     }
@@ -38,7 +37,9 @@ class MediaTableViewCell: UITableViewCell {
     //MARK: - Configure cell with JSON model
     
     func configure(with model: MediaSearch.Results) {
-        self.mediaID = model.id
+        if let id = model.id {
+            saveButton.changeImageIfSaved(condition: RealmDataManager.shared.checkIfAlreadySaved(id: id))
+        }
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
         }
@@ -56,7 +57,7 @@ class MediaTableViewCell: UITableViewCell {
     //MARK: - Configure cell with Realm object
     
     func configure(with object: MediaRealm) {
-        self.mediaID = object.id
+        saveButton.changeImageIfSaved(condition: RealmDataManager.shared.checkIfAlreadySaved(id: object.id))
         self.mediaType = object.mediaType
         self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
         self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.backdropPath))
@@ -67,11 +68,9 @@ class MediaTableViewCell: UITableViewCell {
         self.mediaReleaseDateLabel.text = object.releaseDate
         self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage)
     }
-    
-    @IBAction func saveButtonPressed(_ sender: Any) {
-        SaveButtonManager.shared.savePressed(sender: saveButton, mediaID: mediaID, mediaType: mediaType)
-    }
 }
+
+
 
 extension UIImageView {
     func applyBlurEffect() {
@@ -80,6 +79,18 @@ extension UIImageView {
         blurEffectView.frame = bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(blurEffectView)
+        self.alpha = 0.3
     }
 }
 
+extension UIButton {
+    func changeImageIfSaved(condition: Bool) {
+        if condition {
+            self.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            self.tintColor = .green
+        } else {
+            self.setImage(UIImage(systemName: "plus.square"), for: .normal)
+            self.tintColor = .label
+        }
+    }
+}
