@@ -21,6 +21,10 @@ class MediaTableViewCell: UITableViewCell {
     @IBOutlet private weak var mediaBackdropImageView: UIImageView!
     @IBOutlet private weak var mediaCellMainView: UIView!
     @IBOutlet private weak var mediaRatingBackgroundView: UIView!
+    @IBOutlet private weak var saveButton: UIButton!
+    
+    var mediaID: Int? = nil
+    var mediaType: String? = nil
     
     //MARK: - TableViewCell lifecycle
     
@@ -34,10 +38,10 @@ class MediaTableViewCell: UITableViewCell {
     //MARK: - Configure cell with JSON model
     
     func configure(with model: MediaSearch.Results) {
+        self.mediaID = model.id
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
         }
-        
         if let backdropPath = model.backdropPath {
             self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
         }
@@ -52,6 +56,8 @@ class MediaTableViewCell: UITableViewCell {
     //MARK: - Configure cell with Realm object
     
     func configure(with object: MediaRealm) {
+        self.mediaID = object.id
+        self.mediaType = object.mediaType
         self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
         self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.backdropPath))
         self.mediaVotesCountLabel.text = String(describing: object.voteCount)
@@ -60,7 +66,10 @@ class MediaTableViewCell: UITableViewCell {
         self.mediaGenresLabel.text = object.genreIDs
         self.mediaReleaseDateLabel.text = object.releaseDate
         self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage)
-        
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        SaveButtonManager.shared.savePressed(sender: saveButton, mediaID: mediaID, mediaType: mediaType)
     }
 }
 

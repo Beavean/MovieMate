@@ -118,9 +118,12 @@
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" imagePadding="-2">
-                                                            <imageReference key="image" image="plus.app" catalog="system" symbolScale="large"/>
+                                                            <imageReference key="image" image="plus.square" catalog="system" symbolScale="large"/>
                                                             <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" scale="large" weight="semibold"/>
                                                         </buttonConfiguration>
+                                                        <connections>
+                                                            <action selector="saveButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Hgr-Gc-RNS"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
@@ -174,13 +177,14 @@
                 <outlet property="mediaReleaseDateLabel" destination="u3s-7Z-zjK" id="G2j-Vk-dEg"/>
                 <outlet property="mediaTitleLabel" destination="lcc-hX-5Da" id="y8u-5W-Hy6"/>
                 <outlet property="mediaVotesCountLabel" destination="cBH-gy-zK7" id="RQm-le-4R9"/>
+                <outlet property="saveButton" destination="SDR-eg-835" id="Y5a-Lo-ddm"/>
             </connections>
             <point key="canvasLocation" x="106.5217391304348" y="131.58482142857142"/>
         </tableViewCell>
     </objects>
     <resources>
         <image name="camera.metering.unknown" catalog="system" width="128" height="93"/>
-        <image name="plus.app" catalog="system" width="128" height="114"/>
+        <image name="plus.square" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

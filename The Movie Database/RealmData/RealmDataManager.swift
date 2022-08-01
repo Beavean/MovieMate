@@ -25,7 +25,7 @@ struct RealmDataManager {
             movieRealm.mediaType = mediaType
             movieRealm.adult = model.adult ?? false
             movieRealm.backdropPath = model.backdropPath ?? ""
-            movieRealm.genreIDs = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
+//            movieRealm.genreIDs = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
             movieRealm.id =  model.id ?? 0
             movieRealm.originalLanguage = model.originalLanguage ?? ""
             movieRealm.originalTitle = model.originalTitle ?? ""
