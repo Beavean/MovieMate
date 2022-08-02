@@ -133,7 +133,7 @@ class DetailViewController: UIViewController {
         guard let mediaID = self.mediaID, let mediaType = self.mediaType else { return }
         let query = mediaType + "/" + String(mediaID) + Constants.Network.videosKey + Constants.Network.apiKey
         NetworkManager.shared.makeRequest(query: query, model: MediaVideos?.self) { data in
-            if let mediaVideoKey = data?.results?.first?.key {
+            if let mediaVideoKey = data?.results?.last?.key {
                 self.playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
             } else {
                 self.playerView.isHidden = true

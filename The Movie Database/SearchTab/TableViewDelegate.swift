@@ -11,8 +11,8 @@ extension SearchViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.DetailViewControllerID) as? DetailViewController, let mediaID = self.moviesSearchResults[indexPath.row].id {
-            let media = self.moviesSearchResults[indexPath.row]
+        if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.DetailViewControllerID) as? DetailViewController, let mediaID = self.mediaSearchResults[indexPath.row].id {
+            let media = self.mediaSearchResults[indexPath.row]
             viewController.media = media
             viewController.mediaID = mediaID
             viewController.loadView()

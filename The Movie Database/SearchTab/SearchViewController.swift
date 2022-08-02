@@ -19,7 +19,7 @@ class SearchViewController: UIViewController {
     var mediaType = Constants.Network.movieType
     var enteredQuery: String?
     var lastScheduledSearch: Timer?
-    var moviesSearchResults = [MediaSearch.Results]()
+    var mediaSearchResults = [MediaSearch.Results]()
     
     //MARK: - SearchViewController lifecycle
     
@@ -42,7 +42,7 @@ class SearchViewController: UIViewController {
         let query = Constants.Network.trendingKey + mediaType + Constants.Network.dayKey + Constants.Network.apiKey
         NetworkManager.shared.makeRequest(query: query, model: MediaSearch?.self) { data in
             guard let mediaResults = data?.results else { return }
-            self.moviesSearchResults = mediaResults
+            self.mediaSearchResults = mediaResults
             self.searchTableView.reloadData()
         }
     }
@@ -57,7 +57,7 @@ class SearchViewController: UIViewController {
                 let query = Constants.Network.mediaSearchKey + mediaType + Constants.Network.apiKey + Constants.Network.mediaSearchQueryKey + apiQuery
                 NetworkManager.shared.makeRequest(query: query, model: MediaSearch?.self) { data in
                     guard let mediaResults = data?.results else { return }
-                    self.moviesSearchResults = mediaResults
+                    self.mediaSearchResults = mediaResults
                     self.searchTableView.reloadData()
                 }
                 if searchTableView.numberOfRows(inSection: 0) > 0 {
