@@ -18,7 +18,7 @@ struct MediaDateFormatter {
         dateFormatter.locale = Locale(identifier: "en-US")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         guard let date = dateFormatter.date(from: string) else { return "" }
-        dateFormatter.dateFormat = "d MMMM yyyy"
+        dateFormatter.dateFormat = "MMMM yyyy"
         let resultString = dateFormatter.string(from: date)
         return resultString
     }

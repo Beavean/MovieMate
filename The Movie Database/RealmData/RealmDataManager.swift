@@ -18,14 +18,13 @@ struct RealmDataManager {
     
     @discardableResult func saveMedia(from model: MediaSearch.Results, mediaType: String) -> Bool {
         let movieRealm = MediaRealm()
-        
         if (realm?.object(ofType: MediaRealm.self, forPrimaryKey: model.id)) != nil {
             return false
         } else {
             movieRealm.mediaType = mediaType
             movieRealm.adult = model.adult ?? false
             movieRealm.backdropPath = model.backdropPath ?? ""
-//            movieRealm.genreIDs = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
+            movieRealm.genreIDs = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
             movieRealm.id =  model.id ?? 0
             movieRealm.originalLanguage = model.originalLanguage ?? ""
             movieRealm.originalTitle = model.originalTitle ?? ""

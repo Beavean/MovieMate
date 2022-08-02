@@ -122,8 +122,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="contentTypeSegmentedControl" destination="ZNj-Jm-NrZ" id="p3x-gq-osp"/>
+                        <outlet property="mediaTableView" destination="IZt-Wr-L74" id="Z52-Xb-ofM"/>
                         <outlet property="searchBar" destination="ZFB-ax-g72" id="T6r-F1-mmQ"/>
-                        <outlet property="searchTableView" destination="IZt-Wr-L74" id="Z52-Xb-ofM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iMj-oY-um2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -162,11 +162,12 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-bK-pZz">
                                                 <rect key="frame" x="0.0" y="285" width="414" height="18"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Release Date:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPI-UR-QHA">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Released:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPI-UR-QHA">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="18"/>
                                                         <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
+                                                        <size key="shadowOffset" width="0.0" height="0.0"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Votes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7j-vd-ha3">
                                                         <rect key="frame" x="207" y="0.0" width="207" height="18"/>
@@ -340,11 +341,11 @@
             </objects>
             <point key="canvasLocation" x="979.71014492753636" y="-1206.0267857142856"/>
         </scene>
-        <!--Watch list-->
+        <!--Saved-->
         <scene sceneID="jgZ-F7-He8">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Dus-A1-biH" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Watch list" image="ticket" catalog="system" id="9QZ-tL-OZi"/>
+                    <tabBarItem key="tabBarItem" title="Saved" image="checkmark.square" catalog="system" id="9QZ-tL-OZi"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fz1-ev-B7n">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
@@ -362,9 +363,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="plus.square" catalog="system" width="128" height="114"/>
-        <image name="ticket" catalog="system" width="128" height="84"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

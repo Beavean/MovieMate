@@ -11,11 +11,12 @@ import Alamofire
 
 struct AnotherNetworkManager {
     
-
-    private func makeRequest<T: Codable>(apiQuery: String, model: T.Type, completion: @escaping (T) -> ()) {
+    
+    private func makeRequest<T: Codable>(apiQuery: String, enteredQuery: String = "", model: T.Type, completion: @escaping (T) -> ()) {
         let baseUrl = Constants.Network.baseUrl
         let apiKey = Constants.Network.apiKey
-        guard let url = URL(string: baseUrl + apiQuery + apiKey) else { return }
+        guard let searchQuery = enteredQuery.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed),
+              let url = URL(string: baseUrl + apiQuery + apiKey + "&query=" + searchQuery) else { return }
         AF.request(url).response { response in
             guard let response = response.data else { return }
             do {
@@ -40,15 +41,15 @@ struct AnotherNetworkManager {
     }
     
     func getSearchedMovies(enteredQuery: String, completion: @escaping (([MediaSearch.Results])->())) {
-        makeRequest(apiQuery: "search/movie", model: MediaSearch.self) { data in
+        makeRequest(apiQuery: "search/movie", enteredQuery: enteredQuery, model: MediaSearch.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getSearchedSeries(enteredQuery: String, completion: @escaping (([MediaSearch.Results])->())) {
-        makeRequest(apiQuery: "search/tv", model: MediaSearch.self) { data in
+        makeRequest(apiQuery: "search/tv", enteredQuery: enteredQuery, model: MediaSearch.self) { data in
             completion(data.results ?? [])
         }
     }
 }
-    
+

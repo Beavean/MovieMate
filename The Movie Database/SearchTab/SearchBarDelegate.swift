@@ -10,18 +10,18 @@ import UIKit
 extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        receiveSearchResults()
+        reloadMediaTableView()
         searchBar.endEditing(true)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        reloadMediaTableView()
         searchBar.text = ""
-        receiveSearchResults()
         searchBar.endEditing(true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         lastScheduledSearch?.invalidate()
-        lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(receiveSearchResults), userInfo: nil, repeats: false)
+        lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(reloadMediaTableView), userInfo: nil, repeats: false)
     }
 }

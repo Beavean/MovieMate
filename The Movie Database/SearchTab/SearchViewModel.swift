@@ -10,26 +10,30 @@ import UIKit
 class SearchViewModel {
     
     var mediaSearchResults: [MediaSearch.Results] = []
-    var enteredQuery: String?
-    var mediaType: String?
+    var enteredQuery = nil ?? ""
+    var mediaTypeSegmentedControl = 0
+    var mediaType = "movie"
     
     let networkManager = AnotherNetworkManager()
     
-    func receiveMedia(mediaTypeSegmentedControl: Int, searchQuery: String, completion: @escaping (()->())) {
-        if !searchQuery.isEmpty {
+    func receiveMedia(completion: @escaping (()->())) {
+        if enteredQuery.isEmpty {
             switch mediaTypeSegmentedControl {
             case 0:
-                networkManager.getSearchedMovies(enteredQuery: searchQuery) { media in
+                networkManager.getTrendingMovies { media in
+                    self.mediaType = Constants.Network.movieType
                     self.mediaSearchResults = media
                     completion()
                 }
             case 1:
-                networkManager.getSearchedSeries(enteredQuery: searchQuery) { media in
+                networkManager.getTrendingSeries { media in
+                    self.mediaType = Constants.Network.tvSeriesType
                     self.mediaSearchResults = media
                     completion()
                 }
             default:
-                networkManager.getSearchedMovies(enteredQuery: searchQuery) { media in
+                networkManager.getTrendingMovies { media in
+                    self.mediaType = Constants.Network.movieType
                     self.mediaSearchResults = media
                     completion()
                 }
@@ -37,17 +41,20 @@ class SearchViewModel {
         } else {
             switch mediaTypeSegmentedControl {
             case 0:
-                networkManager.getTrendingMovies { media in
+                networkManager.getSearchedMovies(enteredQuery: enteredQuery) { media in
+                    self.mediaType = Constants.Network.movieType
                     self.mediaSearchResults = media
                     completion()
                 }
             case 1:
-                networkManager.getTrendingSeries { media in
+                networkManager.getSearchedSeries(enteredQuery: enteredQuery) { media in
+                    self.mediaType = Constants.Network.tvSeriesType
                     self.mediaSearchResults = media
                     completion()
                 }
             default:
-                networkManager.getTrendingMovies { media in
+                networkManager.getSearchedMovies(enteredQuery: enteredQuery) { media in
+                    self.mediaType = Constants.Network.movieType
                     self.mediaSearchResults = media
                     completion()
                 }

@@ -37,7 +37,6 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        mediaBackdropPosterImageView.layer.cornerRadius = mediaBackdropPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
     }
     
     //MARK: - SaveButton interaction
