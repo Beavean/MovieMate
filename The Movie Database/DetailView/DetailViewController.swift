@@ -28,7 +28,7 @@ class DetailViewController: UIViewController {
     var mediaBackdropPosterLink: String?
     var media: MediaSearch.Results?
     var mediaVideos: MediaVideos?
-    var realmMediaData: MediaRealm?
+    var realmMediaData: RealmMediaObject?
     
     //MARK: - DetailViewController lifecycle
     
@@ -43,13 +43,12 @@ class DetailViewController: UIViewController {
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         guard let mediaID = self.mediaID else { return }
-        if RealmDataManager.shared.checkIfAlreadySaved(id: mediaID) {
+        if RealmManager.shared.checkIfAlreadySaved(id: mediaID) {
             let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .default)
             let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
-                RealmDataManager.shared.deleteMedia(id: mediaID)
+                RealmManager.shared.deleteMedia(id: mediaID)
                 self.navigationController?.popToRootViewController(animated: true)
-                
             }
             alert.view.tintColor = UIColor.label
             alert.addAction(cancelAction)
@@ -59,7 +58,7 @@ class DetailViewController: UIViewController {
             let alert = UIAlertController(title: "Save it?", message: "This will add the item to the saved list", preferredStyle: .alert)
             let saveAction = UIAlertAction(title: "Save", style: .default) { action in
                 guard let media = self.media, let mediaType = self.mediaType else { return }
-                RealmDataManager.shared.saveMedia(from: media, mediaType: mediaType)
+                RealmManager.shared.saveMedia(from: media, mediaType: mediaType)
                 self.saveButton.tintColor = .green
                 self.saveButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
             }
@@ -91,16 +90,16 @@ class DetailViewController: UIViewController {
         self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
         self.mediaOverviewLabel.text = model.overview
         self.mediaGenresLabel.text = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
-        self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate!) : "Unknown"
+        self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? "") : MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? "")
         self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
         self.mediaVotesCountLabel.text = "\(String(describing: model.voteCount!)) votes"
-        saveButton.changeImageIfSaved(condition: RealmDataManager.shared.checkIfAlreadySaved(id: model.id))
+        saveButton.changeImageIfSaved(condition: RealmManager.shared.checkIfAlreadySaved(id: model.id))
 
     }
     
     //MARK: - Configuring with Realm object
     
-    func configureViewController(with object: MediaRealm) {
+    func configureViewController(with object: RealmMediaObject) {
         self.mediaType = object.mediaType
         loadMediaVideos()
         if object.backdropPath.isEmpty == true {
@@ -122,7 +121,7 @@ class DetailViewController: UIViewController {
         self.mediaReleaseDateLabel.text = object.releaseDate.isEmpty == false ? object.releaseDate : "Unknown"
         self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage).isEmpty == false ? String(format: "%.1f", object.voteAverage) : "-"
         self.mediaVotesCountLabel.text = "\(String(describing: object.voteCount)) votes"
-        saveButton.changeImageIfSaved(condition: RealmDataManager.shared.checkIfAlreadySaved(id: object.id))
+        saveButton.changeImageIfSaved(condition: RealmManager.shared.checkIfAlreadySaved(id: object.id))
 
     }
     
