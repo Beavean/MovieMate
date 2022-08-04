@@ -42,32 +42,34 @@ class DetailViewController: UIViewController {
     //MARK: - SaveButton interaction
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        guard let mediaID = self.mediaID else { return }
-        if RealmManager.shared.checkIfAlreadySaved(id: mediaID) {
-            let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
-            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-            let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
-                RealmManager.shared.deleteMedia(id: mediaID)
-                self.navigationController?.popToRootViewController(animated: true)
-            }
-            alert.view.tintColor = UIColor.label
-            alert.addAction(cancelAction)
-            alert.addAction(deleteAction)
-            present(alert, animated: true)
-        } else {
-            let alert = UIAlertController(title: "Save it?", message: "This will add the item to the saved list", preferredStyle: .alert)
-            let saveAction = UIAlertAction(title: "Save", style: .default) { action in
-                guard let media = self.media, let mediaType = self.mediaType else { return }
-                RealmManager.shared.saveMedia(from: media, mediaType: mediaType)
-                self.saveButton.tintColor = .green
-                self.saveButton.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-            }
-            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-            alert.view.tintColor = UIColor.label
-            alert.addAction(cancelAction)
-            alert.addAction(saveAction)
-            present(alert, animated: true)
+        self.saveButtonPressed(button: saveButton, mediaID: mediaID, mediaType: mediaType) {
+            self.navigationController?.popToRootViewController(animated: true)
         }
+//        guard let mediaID = self.mediaID else { return }
+//        if RealmManager.shared.checkIfAlreadySaved(id: mediaID) {
+//            let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+//            let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
+//                RealmManager.shared.deleteMedia(id: mediaID)
+//                self.navigationController?.popToRootViewController(animated: true)
+//            }
+//            alert.view.tintColor = UIColor.label
+//            alert.addAction(cancelAction)
+//            alert.addAction(deleteAction)
+//            present(alert, animated: true)
+//        } else {
+//            let alert = UIAlertController(title: "Save it?", message: "This will add the item to the saved list", preferredStyle: .alert)
+//            let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+//                guard let media = self.media, let mediaType = self.mediaType else { return }
+//                RealmManager.shared.saveMedia(from: media, mediaType: mediaType)
+//                self.saveButton.changeImageIfSaved(condition: true)
+//            }
+//            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+//            alert.view.tintColor = UIColor.label
+//            alert.addAction(cancelAction)
+//            alert.addAction(saveAction)
+//            present(alert, animated: true)
+//        }
     }
     
     //MARK: - Configuring with JSON model
@@ -129,9 +131,8 @@ class DetailViewController: UIViewController {
     
     func loadMediaVideos() {
         guard let mediaID = self.mediaID, let mediaType = self.mediaType else { return }
-        let query = mediaType + "/" + String(mediaID) + Constants.Network.videosKey + Constants.Network.apiKey
-        NetworkManager.shared.makeRequest(query: query, model: MediaVideos?.self) { data in
-            if let mediaVideoKey = data?.results?.last?.key {
+        NetworkManager.shared.getMediaVideos(mediaID: mediaID, mediaType: mediaType) { video in
+            if let mediaVideoKey = video.last?.key {
                 self.playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
             } else {
                 self.playerView.isHidden = true

@@ -9,8 +9,7 @@
 /* Begin PBXBuildFile section */
 		05D987DBC295AB88D85713ED /* Pods_The_Movie_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FF59286F0A11AE754CA463 /* Pods_The_Movie_Database.framework */; };
 		080039AC28907EF3008BB7A6 /* MediaVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080039AB28907EF3008BB7A6 /* MediaVideos.swift */; };
-		08175EAF2895242C00C96E9E /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08175EAE2895242C00C96E9E /* NetworkManager.swift */; };
-		082170DD28992AA3000D74EF /* AnotherNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082170DC28992AA3000D74EF /* AnotherNetworkManager.swift */; };
+		082170DD28992AA3000D74EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082170DC28992AA3000D74EF /* NetworkManager.swift */; };
 		0881631F2886A79C005F2C9B /* MediaSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0881631D2886A79B005F2C9B /* MediaSearch.swift */; };
 		088163262886ABFC005F2C9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088163252886ABFC005F2C9B /* Constants.swift */; };
 		0881632C2886BEF0005F2C9B /* MediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0881632B2886BEF0005F2C9B /* MediaTableViewCell.xib */; };
@@ -31,14 +30,13 @@
 		08CC63A42895888B00EF29AD /* SearchViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC63A32895888B00EF29AD /* SearchViewExtensions.swift */; };
 		08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC63AF2898253200EF29AD /* SearchViewModel.swift */; };
 		08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF46E5289A7C1D009E67D4 /* SavedViewExtensions.swift */; };
-		08CF46E8289A865C009E67D4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF46E7289A865C009E67D4 /* DetailViewModel.swift */; };
+		08CF46EB289A894B009E67D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF46EA289A894B009E67D4 /* Extensions.swift */; };
 		08DD20EC2885F33E0036FA84 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD20EA2885F33E0036FA84 /* MediaTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		080039AB28907EF3008BB7A6 /* MediaVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaVideos.swift; sourceTree = "<group>"; };
-		08175EAE2895242C00C96E9E /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		082170DC28992AA3000D74EF /* AnotherNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnotherNetworkManager.swift; sourceTree = "<group>"; };
+		082170DC28992AA3000D74EF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		0881631D2886A79B005F2C9B /* MediaSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSearch.swift; sourceTree = "<group>"; };
 		088163252886ABFC005F2C9B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0881632B2886BEF0005F2C9B /* MediaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTableViewCell.xib; sourceTree = "<group>"; };
@@ -61,7 +59,7 @@
 		08CC63A32895888B00EF29AD /* SearchViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewExtensions.swift; sourceTree = "<group>"; };
 		08CC63AF2898253200EF29AD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		08CF46E5289A7C1D009E67D4 /* SavedViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewExtensions.swift; sourceTree = "<group>"; };
-		08CF46E7289A865C009E67D4 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		08CF46EA289A894B009E67D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		08DD20EA2885F33E0036FA84 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		11FF59286F0A11AE754CA463 /* Pods_The_Movie_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Movie_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC00BEBB31BFA682DEB487E /* Pods-The Movie Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Movie Database.release.xcconfig"; path = "Target Support Files/Pods-The Movie Database/Pods-The Movie Database.release.xcconfig"; sourceTree = "<group>"; };
@@ -103,16 +101,16 @@
 			children = (
 				08986CDD287C46C000D9FBDA /* AppDelegate.swift */,
 				08986CDF287C46C000D9FBDA /* SceneDelegate.swift */,
-				088163252886ABFC005F2C9B /* Constants.swift */,
+				08986CE8287C46C100D9FBDA /* LaunchScreen.storyboard */,
 				08986CE3287C46C000D9FBDA /* Main.storyboard */,
+				08CF46E9289A8930009E67D4 /* Global */,
 				08CC63A2289587E100EF29AD /* SearchView */,
 				08CC63AA289589F400EF29AD /* SavedView */,
 				08CC63A9289589D700EF29AD /* DetailView */,
-				08DD20EE2885F34A0036FA84 /* MediaTableViewCells */,
+				08DD20EE2885F34A0036FA84 /* MediaTableViewCell */,
 				08CC63AB28958A2400EF29AD /* Network */,
 				08CC63A12895864A00EF29AD /* Realm */,
 				08986CE6287C46C100D9FBDA /* Assets.xcassets */,
-				08986CE8287C46C100D9FBDA /* LaunchScreen.storyboard */,
 				08986CEB287C46C100D9FBDA /* Info.plist */,
 				08986CF1287C46F400D9FBDA /* Podfile */,
 			);
@@ -152,7 +150,6 @@
 			isa = PBXGroup;
 			children = (
 				08B0464A288854E600E61D76 /* DetailViewController.swift */,
-				08CF46E7289A865C009E67D4 /* DetailViewModel.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -169,8 +166,7 @@
 		08CC63AB28958A2400EF29AD /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				08175EAE2895242C00C96E9E /* NetworkManager.swift */,
-				082170DC28992AA3000D74EF /* AnotherNetworkManager.swift */,
+				082170DC28992AA3000D74EF /* NetworkManager.swift */,
 				08B04668288BD33700E61D76 /* MediaDateFormatter.swift */,
 				08B04664288B316100E61D76 /* MediaGenresDecoder.swift */,
 				08986CF7287C4A4F00D9FBDA /* DataModels */,
@@ -178,13 +174,22 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		08DD20EE2885F34A0036FA84 /* MediaTableViewCells */ = {
+		08CF46E9289A8930009E67D4 /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				088163252886ABFC005F2C9B /* Constants.swift */,
+				08CF46EA289A894B009E67D4 /* Extensions.swift */,
+			);
+			path = Global;
+			sourceTree = "<group>";
+		};
+		08DD20EE2885F34A0036FA84 /* MediaTableViewCell */ = {
 			isa = PBXGroup;
 			children = (
 				08DD20EA2885F33E0036FA84 /* MediaTableViewCell.swift */,
 				0881632B2886BEF0005F2C9B /* MediaTableViewCell.xib */,
 			);
-			path = MediaTableViewCells;
+			path = MediaTableViewCell;
 			sourceTree = "<group>";
 		};
 		3536C355C1603A6ABD595726 /* Pods */ = {
@@ -324,20 +329,19 @@
 				08B04669288BD33700E61D76 /* MediaDateFormatter.swift in Sources */,
 				08B0464B288854E600E61D76 /* DetailViewController.swift in Sources */,
 				08B04665288B316200E61D76 /* MediaGenresDecoder.swift in Sources */,
-				08CF46E8289A865C009E67D4 /* DetailViewModel.swift in Sources */,
 				08DD20EC2885F33E0036FA84 /* MediaTableViewCell.swift in Sources */,
 				08B0464D288946E800E61D76 /* RealmManager.swift in Sources */,
 				08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */,
 				08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */,
 				08986CE2287C46C000D9FBDA /* SearchViewController.swift in Sources */,
-				082170DD28992AA3000D74EF /* AnotherNetworkManager.swift in Sources */,
+				082170DD28992AA3000D74EF /* NetworkManager.swift in Sources */,
 				08B0465F2889886D00E61D76 /* MediaRealmObject.swift in Sources */,
 				08B046582889481800E61D76 /* MediaDetails.swift in Sources */,
 				08986CDE287C46C000D9FBDA /* AppDelegate.swift in Sources */,
+				08CF46EB289A894B009E67D4 /* Extensions.swift in Sources */,
 				080039AC28907EF3008BB7A6 /* MediaVideos.swift in Sources */,
 				08986CE0287C46C000D9FBDA /* SceneDelegate.swift in Sources */,
 				08B046612889964C00E61D76 /* SavedViewController.swift in Sources */,
-				08175EAF2895242C00C96E9E /* NetworkManager.swift in Sources */,
 				0881631F2886A79C005F2C9B /* MediaSearch.swift in Sources */,
 				08CC63A42895888B00EF29AD /* SearchViewExtensions.swift in Sources */,
 				088163262886ABFC005F2C9B /* Constants.swift in Sources */,
