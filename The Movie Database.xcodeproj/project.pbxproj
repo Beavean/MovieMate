@@ -31,6 +31,7 @@
 		08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC63AF2898253200EF29AD /* SearchViewModel.swift */; };
 		08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF46E5289A7C1D009E67D4 /* SavedViewExtensions.swift */; };
 		08CF46EB289A894B009E67D4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF46EA289A894B009E67D4 /* Extensions.swift */; };
+		08CF46F3289C505E009E67D4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF46F2289C505D009E67D4 /* DetailViewModel.swift */; };
 		08DD20EC2885F33E0036FA84 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD20EA2885F33E0036FA84 /* MediaTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +61,7 @@
 		08CC63AF2898253200EF29AD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		08CF46E5289A7C1D009E67D4 /* SavedViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewExtensions.swift; sourceTree = "<group>"; };
 		08CF46EA289A894B009E67D4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		08CF46F2289C505D009E67D4 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
 		08DD20EA2885F33E0036FA84 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		11FF59286F0A11AE754CA463 /* Pods_The_Movie_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Movie_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC00BEBB31BFA682DEB487E /* Pods-The Movie Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Movie Database.release.xcconfig"; path = "Target Support Files/Pods-The Movie Database/Pods-The Movie Database.release.xcconfig"; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				08B0464A288854E600E61D76 /* DetailViewController.swift */,
+				08CF46F2289C505D009E67D4 /* DetailViewModel.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -329,6 +332,7 @@
 				08B04669288BD33700E61D76 /* MediaDateFormatter.swift in Sources */,
 				08B0464B288854E600E61D76 /* DetailViewController.swift in Sources */,
 				08B04665288B316200E61D76 /* MediaGenresDecoder.swift in Sources */,
+				08CF46F3289C505E009E67D4 /* DetailViewModel.swift in Sources */,
 				08DD20EC2885F33E0036FA84 /* MediaTableViewCell.swift in Sources */,
 				08B0464D288946E800E61D76 /* RealmManager.swift in Sources */,
 				08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */,

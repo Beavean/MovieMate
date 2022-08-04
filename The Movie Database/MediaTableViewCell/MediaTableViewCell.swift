@@ -31,8 +31,8 @@ class MediaTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         mediaBackdropImageView.applyBlurEffect()
-        mediaRatingBackgroundView.addCornerRadiusBasedOnHeight()
-        mediaCellMainView.addCornerRadiusBasedOnHeight()
+        mediaRatingBackgroundView.addSmallCornerRadius()
+        mediaCellMainView.addSmallCornerRadius()
     }
     
     override func prepareForReuse() {
@@ -55,11 +55,11 @@ class MediaTableViewCell: UITableViewCell {
         if let backdropPath = model.backdropPath {
             self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
         }
-        self.mediaTitleLabel.text = (model.title ?? "").isEmpty == false ? model.title : model.name
+        self.mediaTitleLabel.text = model.title ?? model.name
         self.mediaOverviewLabel.text = model.overview
         self.mediaVotesCountLabel.text = String(describing: model.voteCount!)
         self.mediaGenresLabel.text = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
-        self.mediaReleaseDateLabel.text = (model.releaseDate ?? "").isEmpty == false ? MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? "") : MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? "")
+        self.mediaReleaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? model.firstAirDate)
         self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
     }
     

@@ -9,23 +9,27 @@ import UIKit
 
 extension UIImageView {
     func applyBlurEffect() {
-        let blurEffect = UIBlurEffect(style: .light)
+        var blurEffect = UIBlurEffect()
+        if self.traitCollection.userInterfaceStyle == .dark {
+            blurEffect = UIBlurEffect(style: .dark)
+        } else {
+            blurEffect = UIBlurEffect(style: .light)
+        }
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(blurEffectView)
-        self.alpha = 0.3
+        self.alpha = 0.6
     }
 }
 
 extension UIView {
-    func addCornerRadiusBasedOnHeight() {
-        self.layer.cornerRadius = self.frame.height * Constants.UI.cornerRadiusRatio
-        self.updateConstraints()
-    }
-    
-    func addCornerRadiusBasedOnWidth() {
-        self.layer.cornerRadius = self.frame.width * Constants.UI.cornerRadiusRatio 
+    func addSmallCornerRadius() {
+        if self.frame.height < self.frame.width {
+            self.layer.cornerRadius = self.bounds.height * Constants.UI.cornerRadiusRatio
+        } else {
+            self.layer.cornerRadius = self.bounds.width * Constants.UI.cornerRadiusRatio
+        }
         self.updateConstraints()
     }
 }
@@ -34,7 +38,7 @@ extension UIButton {
     func changeImageIfSaved(condition: Bool) {
         if condition {
             self.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
-            self.tintColor = .green
+            self.tintColor = .orange
         } else {
             self.setImage(UIImage(systemName: "plus.square"), for: .normal)
             self.tintColor = .label
