@@ -31,8 +31,8 @@ class MediaTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         mediaBackdropImageView.applyBlurEffect()
-        mediaRatingBackgroundView.layer.cornerRadius = mediaRatingBackgroundView.frame.height * Constants.UI.cornerRadiusRatio
-        mediaCellMainView.layer.cornerRadius = mediaCellMainView.frame.height / 5
+        mediaRatingBackgroundView.addCornerRadiusBasedOnHeight()
+        mediaCellMainView.addCornerRadiusBasedOnHeight()
     }
     
     override func prepareForReuse() {

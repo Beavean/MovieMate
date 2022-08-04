@@ -22,6 +22,8 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var mediaRatingLabel: UILabel!
     @IBOutlet private weak var mediaVotesCountLabel: UILabel!
     @IBOutlet private weak var mediaBackgroundBlurImage: UIImageView!
+    @IBOutlet weak var transparentView: UIView!
+    @IBOutlet weak var scrollViewBackground: UIView!
     
     var mediaID: Int?
     var mediaType: String?
@@ -45,31 +47,6 @@ class DetailViewController: UIViewController {
         self.saveButtonPressed(button: saveButton, mediaID: mediaID, mediaType: mediaType) {
             self.navigationController?.popToRootViewController(animated: true)
         }
-//        guard let mediaID = self.mediaID else { return }
-//        if RealmManager.shared.checkIfAlreadySaved(id: mediaID) {
-//            let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-//            let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
-//                RealmManager.shared.deleteMedia(id: mediaID)
-//                self.navigationController?.popToRootViewController(animated: true)
-//            }
-//            alert.view.tintColor = UIColor.label
-//            alert.addAction(cancelAction)
-//            alert.addAction(deleteAction)
-//            present(alert, animated: true)
-//        } else {
-//            let alert = UIAlertController(title: "Save it?", message: "This will add the item to the saved list", preferredStyle: .alert)
-//            let saveAction = UIAlertAction(title: "Save", style: .default) { action in
-//                guard let media = self.media, let mediaType = self.mediaType else { return }
-//                RealmManager.shared.saveMedia(from: media, mediaType: mediaType)
-//                self.saveButton.changeImageIfSaved(condition: true)
-//            }
-//            let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-//            alert.view.tintColor = UIColor.label
-//            alert.addAction(cancelAction)
-//            alert.addAction(saveAction)
-//            present(alert, animated: true)
-//        }
     }
     
     //MARK: - Configuring with JSON model
@@ -83,9 +60,10 @@ class DetailViewController: UIViewController {
         }
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
-            self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
+            self.mediaPosterImageView.addCornerRadiusBasedOnHeight()
             self.mediaBackgroundBlurImage.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
             self.mediaBackgroundBlurImage.applyBlurEffect()
+            self.mediaBackgroundBlurImage.addCornerRadiusBasedOnWidth()
         } else {
             self.mediaPosterImageView.isHidden = true
         }
@@ -116,7 +94,6 @@ class DetailViewController: UIViewController {
             self.mediaBackgroundBlurImage.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
             self.mediaBackgroundBlurImage.applyBlurEffect()
         }
-        self.mediaPosterImageView.layer.cornerRadius = self.mediaPosterImageView.frame.height * Constants.UI.cornerRadiusRatio
         self.mediaTitleLabel.text = object.title
         self.mediaOverviewLabel.text = object.overview
         self.mediaGenresLabel.text = object.genreIDs

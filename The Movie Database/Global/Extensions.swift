@@ -18,6 +18,18 @@ extension UIImageView {
     }
 }
 
+extension UIView {
+    func addCornerRadiusBasedOnHeight() {
+        self.layer.cornerRadius = self.frame.height * Constants.UI.cornerRadiusRatio
+        self.updateConstraints()
+    }
+    
+    func addCornerRadiusBasedOnWidth() {
+        self.layer.cornerRadius = self.frame.width * Constants.UI.cornerRadiusRatio 
+        self.updateConstraints()
+    }
+}
+
 extension UIButton {
     func changeImageIfSaved(condition: Bool) {
         if condition {
