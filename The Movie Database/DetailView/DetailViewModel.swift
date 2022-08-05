@@ -7,11 +7,19 @@
 
 import Foundation
 
-class DetailViewModel {
+protocol DetailViewModeling {
+    var onError: (String) -> Void { get set }
+    var onDataUpdated: () -> Void { get set }
+    func updateData()
     
-    var mediaID: Int?
-    var mediaType: String?
-    var media: MediaDetails?
-    var mediaVideos: MediaVideos?
+}
 
+class DetailViewModel: DetailViewModeling {
+    
+    var onError: (String) -> Void = { _ in }
+    var onDataUpdated = { }
+    
+    func updateData() {
+        onDataUpdated()
+    }
 }

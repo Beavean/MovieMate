@@ -31,6 +31,8 @@ class DetailViewController: UIViewController {
     var mediaVideos: MediaVideos?
     var realmMediaData: RealmMediaObject?
     
+    var viewModel: DetailViewModeling!
+    
     //MARK: - DetailViewController lifecycle
     
     override func viewDidLoad() {
@@ -46,6 +48,8 @@ class DetailViewController: UIViewController {
     }
     
     func configureWithMediaID(mediaID: Int?, mediaType: String?) {
+        self.mediaPosterImageView.addSmallCornerRadius()
+        self.mediaBackgroundBlurImage.applyBlurEffect()
         guard let mediaID = mediaID, let mediaType = mediaType else { return }
         NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { model in
             if let backdropPath = model.backdropPath {
@@ -55,9 +59,7 @@ class DetailViewController: UIViewController {
             }
             if let posterPath = model.posterPath {
                 self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
-                self.mediaPosterImageView.addSmallCornerRadius()
                 self.mediaBackgroundBlurImage.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
-                self.mediaBackgroundBlurImage.applyBlurEffect()
             } else {
                 self.mediaPosterImageView.isHidden = true
             }

@@ -33,11 +33,12 @@ class MediaTableViewCell: UITableViewCell {
         mediaBackdropImageView.applyBlurEffect()
         mediaRatingBackgroundView.addSmallCornerRadius()
         mediaCellMainView.addSmallCornerRadius()
+    
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.mediaPosterImageView.image = UIImage(systemName: "camera.metering.unknown")
+        self.mediaPosterImageView.image = UIImage(systemName: "questionmark.square")
     }
     
     
@@ -50,7 +51,7 @@ class MediaTableViewCell: UITableViewCell {
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
         } else {
-            self.mediaPosterImageView.image = UIImage(systemName: "camera.metering.unknown")
+            self.mediaPosterImageView.image = UIImage(systemName: "questionmark.square")
         }
         if let backdropPath = model.backdropPath {
             self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))

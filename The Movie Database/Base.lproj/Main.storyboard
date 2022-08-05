@@ -37,7 +37,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Pe-24-3ek">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Pe-24-3ek">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
@@ -90,7 +90,7 @@
                                     <action selector="segmentedControlChanged:" destination="WZt-Bz-7Oc" eventType="valueChanged" id="YUy-sd-dWg"/>
                                 </connections>
                             </segmentedControl>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IZt-Wr-L74">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="IZt-Wr-L74">
                                 <rect key="frame" x="0.0" y="186" width="414" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <connections>
@@ -141,9 +141,8 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ct1-2b-ukO">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
-                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-DV-uff">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1154.5"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-DV-uff">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1180.5"/>
                                     </imageView>
                                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jav-Ss-LMh">
                                         <rect key="frame" x="0.0" y="568" width="414" height="53"/>
@@ -302,23 +301,16 @@
                                             <constraint firstAttribute="trailing" secondItem="L81-8v-4B4" secondAttribute="trailing" id="nb6-vn-kvs"/>
                                         </constraints>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93Y-oj-l5v">
-                                        <rect key="frame" x="159" y="792.5" width="96.5" height="61.5"/>
-                                        <color key="tintColor" systemColor="labelColor"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" imagePadding="0.0">
-                                            <imageReference key="image" image="play.rectangle.fill" catalog="system" symbolScale="large"/>
-                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="40"/>
-                                        </buttonConfiguration>
-                                    </button>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="H7t-fa-4aA" firstAttribute="leading" secondItem="xZf-vA-Zyz" secondAttribute="leading" id="5LD-0F-E3I"/>
                                     <constraint firstItem="jav-Ss-LMh" firstAttribute="leading" secondItem="PaR-uj-Vgt" secondAttribute="leading" id="64V-Yk-YV2"/>
+                                    <constraint firstItem="vCR-DV-uff" firstAttribute="trailing" secondItem="H7t-fa-4aA" secondAttribute="trailing" id="7x0-XD-P5z"/>
                                     <constraint firstItem="jav-Ss-LMh" firstAttribute="bottom" secondItem="li1-jK-fHE" secondAttribute="bottom" id="Bbh-3I-aGd"/>
+                                    <constraint firstItem="vCR-DV-uff" firstAttribute="top" secondItem="H7t-fa-4aA" secondAttribute="top" id="E93-tf-h7V"/>
+                                    <constraint firstItem="vCR-DV-uff" firstAttribute="bottom" secondItem="H7t-fa-4aA" secondAttribute="bottom" id="G37-vy-0ds"/>
+                                    <constraint firstItem="vCR-DV-uff" firstAttribute="leading" secondItem="H7t-fa-4aA" secondAttribute="leading" id="Hmy-fd-uJS"/>
                                     <constraint firstItem="jav-Ss-LMh" firstAttribute="top" secondItem="PaR-uj-Vgt" secondAttribute="top" id="NM2-Yg-eUQ"/>
-                                    <constraint firstItem="93Y-oj-l5v" firstAttribute="centerY" secondItem="40G-6l-Jff" secondAttribute="centerY" id="O6Z-50-IIr"/>
-                                    <constraint firstItem="93Y-oj-l5v" firstAttribute="centerX" secondItem="40G-6l-Jff" secondAttribute="centerX" id="T4C-K1-EsJ"/>
                                     <constraint firstItem="H7t-fa-4aA" firstAttribute="bottom" secondItem="xZf-vA-Zyz" secondAttribute="bottom" id="a9x-xA-gdW"/>
                                     <constraint firstItem="H7t-fa-4aA" firstAttribute="trailing" secondItem="xZf-vA-Zyz" secondAttribute="trailing" id="ebS-z6-2gO"/>
                                     <constraint firstItem="H7t-fa-4aA" firstAttribute="top" secondItem="xZf-vA-Zyz" secondAttribute="top" id="leC-zl-iDW"/>
@@ -341,10 +333,10 @@
                     </view>
                     <connections>
                         <outlet property="mediaBackdropPosterImageView" destination="40G-6l-Jff" id="Txs-zb-7gx"/>
-                        <outlet property="mediaBackgroundBlurImage" destination="vCR-DV-uff" id="8UH-9o-YuG"/>
+                        <outlet property="mediaBackgroundBlurImage" destination="vCR-DV-uff" id="3Qx-fw-hXb"/>
                         <outlet property="mediaGenresLabel" destination="uI1-r1-nst" id="dWu-Ce-cNj"/>
                         <outlet property="mediaOverviewLabel" destination="U90-sQ-Thb" id="G3d-Bz-smr"/>
-                        <outlet property="mediaPosterImageView" destination="n7A-q5-eEE" id="jNc-YU-npy"/>
+                        <outlet property="mediaPosterImageView" destination="n7A-q5-eEE" id="z1Z-zT-zAt"/>
                         <outlet property="mediaRatingLabel" destination="y8W-fx-7l0" id="9aT-If-aDs"/>
                         <outlet property="mediaReleaseDateLabel" destination="h7A-P9-chk" id="BfY-0e-COV"/>
                         <outlet property="mediaRuntimeLabel" destination="4ln-gd-fta" id="1EP-aK-gys"/>
@@ -403,7 +395,6 @@
     <resources>
         <image name="checkmark.square" catalog="system" width="128" height="114"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
-        <image name="play.rectangle.fill" catalog="system" width="128" height="93"/>
         <image name="plus.square" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
