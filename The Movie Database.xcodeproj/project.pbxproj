@@ -10,6 +10,11 @@
 		05D987DBC295AB88D85713ED /* Pods_The_Movie_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11FF59286F0A11AE754CA463 /* Pods_The_Movie_Database.framework */; };
 		080039AC28907EF3008BB7A6 /* MediaVideos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080039AB28907EF3008BB7A6 /* MediaVideos.swift */; };
 		082170DD28992AA3000D74EF /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082170DC28992AA3000D74EF /* NetworkManager.swift */; };
+		0828F3BA289E7A3400A9C81C /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0828F3B9289E7A3400A9C81C /* ObservableObject.swift */; };
+		0828F3E4289EB37200A9C81C /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0828F3E2289EB37200A9C81C /* DiscoverCollectionViewCell.swift */; };
+		0828F3E5289EB37200A9C81C /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0828F3E3289EB37200A9C81C /* DiscoverCollectionViewCell.xib */; };
+		0828F3E8289EB45E00A9C81C /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0828F3E7289EB45E00A9C81C /* DiscoverViewController.swift */; };
+		0828F3EB289EE3AD00A9C81C /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0828F3EA289EE3AD00A9C81C /* DiscoverViewModel.swift */; };
 		0881631F2886A79C005F2C9B /* MediaSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0881631D2886A79B005F2C9B /* MediaSearch.swift */; };
 		088163262886ABFC005F2C9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088163252886ABFC005F2C9B /* Constants.swift */; };
 		0881632C2886BEF0005F2C9B /* MediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0881632B2886BEF0005F2C9B /* MediaTableViewCell.xib */; };
@@ -38,6 +43,11 @@
 /* Begin PBXFileReference section */
 		080039AB28907EF3008BB7A6 /* MediaVideos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaVideos.swift; sourceTree = "<group>"; };
 		082170DC28992AA3000D74EF /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		0828F3B9289E7A3400A9C81C /* ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
+		0828F3E2289EB37200A9C81C /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
+		0828F3E3289EB37200A9C81C /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
+		0828F3E7289EB45E00A9C81C /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		0828F3EA289EE3AD00A9C81C /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		0881631D2886A79B005F2C9B /* MediaSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSearch.swift; sourceTree = "<group>"; };
 		088163252886ABFC005F2C9B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0881632B2886BEF0005F2C9B /* MediaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTableViewCell.xib; sourceTree = "<group>"; };
@@ -80,6 +90,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0828F3E6289EB37B00A9C81C /* DiscoverCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				0828F3E2289EB37200A9C81C /* DiscoverCollectionViewCell.swift */,
+				0828F3E3289EB37200A9C81C /* DiscoverCollectionViewCell.xib */,
+			);
+			path = DiscoverCollectionViewCell;
+			sourceTree = "<group>";
+		};
+		0828F3E9289EB46400A9C81C /* DiscoverView */ = {
+			isa = PBXGroup;
+			children = (
+				0828F3E7289EB45E00A9C81C /* DiscoverViewController.swift */,
+				0828F3EA289EE3AD00A9C81C /* DiscoverViewModel.swift */,
+			);
+			path = DiscoverView;
+			sourceTree = "<group>";
+		};
 		08986CD1287C46C000D9FBDA = {
 			isa = PBXGroup;
 			children = (
@@ -106,6 +134,8 @@
 				08986CE8287C46C100D9FBDA /* LaunchScreen.storyboard */,
 				08986CE3287C46C000D9FBDA /* Main.storyboard */,
 				08CF46E9289A8930009E67D4 /* Global */,
+				0828F3E9289EB46400A9C81C /* DiscoverView */,
+				0828F3E6289EB37B00A9C81C /* DiscoverCollectionViewCell */,
 				08CC63A2289587E100EF29AD /* SearchView */,
 				08CC63AA289589F400EF29AD /* SavedView */,
 				08CC63A9289589D700EF29AD /* DetailView */,
@@ -153,6 +183,7 @@
 			children = (
 				08B0464A288854E600E61D76 /* DetailViewController.swift */,
 				08CF46F2289C505D009E67D4 /* DetailViewModel.swift */,
+				0828F3B9289E7A3400A9C81C /* ObservableObject.swift */,
 			);
 			path = DetailView;
 			sourceTree = "<group>";
@@ -273,6 +304,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				08986CEA287C46C100D9FBDA /* LaunchScreen.storyboard in Resources */,
+				0828F3E5289EB37200A9C81C /* DiscoverCollectionViewCell.xib in Resources */,
 				08986CE7287C46C100D9FBDA /* Assets.xcassets in Resources */,
 				08986CF2287C46F400D9FBDA /* Podfile in Resources */,
 				08986CE5287C46C000D9FBDA /* Main.storyboard in Resources */,
@@ -340,13 +372,17 @@
 				08986CE2287C46C000D9FBDA /* SearchViewController.swift in Sources */,
 				082170DD28992AA3000D74EF /* NetworkManager.swift in Sources */,
 				08B0465F2889886D00E61D76 /* MediaRealmObject.swift in Sources */,
+				0828F3BA289E7A3400A9C81C /* ObservableObject.swift in Sources */,
+				0828F3E4289EB37200A9C81C /* DiscoverCollectionViewCell.swift in Sources */,
 				08B046582889481800E61D76 /* MediaDetails.swift in Sources */,
 				08986CDE287C46C000D9FBDA /* AppDelegate.swift in Sources */,
 				08CF46EB289A894B009E67D4 /* Extensions.swift in Sources */,
+				0828F3E8289EB45E00A9C81C /* DiscoverViewController.swift in Sources */,
 				080039AC28907EF3008BB7A6 /* MediaVideos.swift in Sources */,
 				08986CE0287C46C000D9FBDA /* SceneDelegate.swift in Sources */,
 				08B046612889964C00E61D76 /* SavedViewController.swift in Sources */,
 				0881631F2886A79C005F2C9B /* MediaSearch.swift in Sources */,
+				0828F3EB289EE3AD00A9C81C /* DiscoverViewModel.swift in Sources */,
 				08CC63A42895888B00EF29AD /* SearchViewExtensions.swift in Sources */,
 				088163262886ABFC005F2C9B /* Constants.swift in Sources */,
 			);

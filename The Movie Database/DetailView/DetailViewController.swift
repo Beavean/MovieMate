@@ -27,16 +27,14 @@ class DetailViewController: UIViewController {
     
     var mediaID: Int?
     var mediaType: String?
-    var media: MediaSearch.Results?
-    var mediaVideos: MediaVideos?
-    var realmMediaData: RealmMediaObject?
-    
-    var viewModel: DetailViewModeling!
     
     //MARK: - DetailViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mediaPosterImageView.addSmallCornerRadius()
+        self.mediaBackgroundBlurImage.applyBlurEffect()
+        configureWithMediaID(mediaID: self.mediaID, mediaType: self.mediaType)
     }
 
     //MARK: - SaveButton interaction
@@ -48,8 +46,6 @@ class DetailViewController: UIViewController {
     }
     
     func configureWithMediaID(mediaID: Int?, mediaType: String?) {
-        self.mediaPosterImageView.addSmallCornerRadius()
-        self.mediaBackgroundBlurImage.applyBlurEffect()
         guard let mediaID = mediaID, let mediaType = mediaType else { return }
         NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { model in
             if let backdropPath = model.backdropPath {

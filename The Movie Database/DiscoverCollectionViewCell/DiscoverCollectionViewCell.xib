@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" restorationIdentifier="DiscoverCollectionViewCell" reuseIdentifier="DiscoverCollectionViewCell" id="gTV-IL-0wX" customClass="DiscoverCollectionViewCell" customModule="The_Movie_Database" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="132" height="198"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="132" height="198"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="questionmark.app" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="GKd-Fp-gAw">
+                        <rect key="frame" x="0.0" y="1" width="132" height="195.5"/>
+                        <color key="tintColor" systemColor="labelColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="GKd-Fp-gAw" secondAttribute="height" multiplier="2:3" id="88b-k9-OxZ"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="GKd-Fp-gAw" secondAttribute="bottom" id="DhU-d3-M71"/>
+                <constraint firstItem="GKd-Fp-gAw" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="SQB-iZ-tK4"/>
+                <constraint firstItem="GKd-Fp-gAw" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="Zyf-VG-JAx"/>
+                <constraint firstAttribute="trailing" secondItem="GKd-Fp-gAw" secondAttribute="trailing" id="hn0-9G-cY0"/>
+            </constraints>
+            <size key="customSize" width="132" height="198"/>
+            <connections>
+                <outlet property="posterImageView" destination="GKd-Fp-gAw" id="I7G-sA-j2Z"/>
+            </connections>
+            <point key="canvasLocation" x="197.10144927536234" y="169.41964285714286"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="questionmark.app" catalog="system" width="128" height="114"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
