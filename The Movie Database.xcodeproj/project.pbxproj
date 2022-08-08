@@ -13,8 +13,6 @@
 		0828F3BA289E7A3400A9C81C /* ObservableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0828F3B9289E7A3400A9C81C /* ObservableObject.swift */; };
 		0828F3E4289EB37200A9C81C /* DiscoverCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0828F3E2289EB37200A9C81C /* DiscoverCollectionViewCell.swift */; };
 		0828F3E5289EB37200A9C81C /* DiscoverCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0828F3E3289EB37200A9C81C /* DiscoverCollectionViewCell.xib */; };
-		0828F3E8289EB45E00A9C81C /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0828F3E7289EB45E00A9C81C /* DiscoverViewController.swift */; };
-		0828F3EB289EE3AD00A9C81C /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0828F3EA289EE3AD00A9C81C /* DiscoverViewModel.swift */; };
 		0881631F2886A79C005F2C9B /* MediaSearch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0881631D2886A79B005F2C9B /* MediaSearch.swift */; };
 		088163262886ABFC005F2C9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088163252886ABFC005F2C9B /* Constants.swift */; };
 		0881632C2886BEF0005F2C9B /* MediaTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0881632B2886BEF0005F2C9B /* MediaTableViewCell.xib */; };
@@ -32,6 +30,9 @@
 		08B046612889964C00E61D76 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B046602889964C00E61D76 /* SavedViewController.swift */; };
 		08B04665288B316200E61D76 /* MediaGenresDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B04664288B316100E61D76 /* MediaGenresDecoder.swift */; };
 		08B04669288BD33700E61D76 /* MediaDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B04668288BD33700E61D76 /* MediaDateFormatter.swift */; };
+		08C57B2728A121EA00A61668 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C57B2628A121EA00A61668 /* DiscoverViewModel.swift */; };
+		08C57B2928A121FD00A61668 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C57B2828A121FD00A61668 /* DiscoverViewController.swift */; };
+		08C57B2B28A14A2900A61668 /* DiscoverViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C57B2A28A14A2900A61668 /* DiscoverViewExtensions.swift */; };
 		08CC63A42895888B00EF29AD /* SearchViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC63A32895888B00EF29AD /* SearchViewExtensions.swift */; };
 		08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC63AF2898253200EF29AD /* SearchViewModel.swift */; };
 		08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF46E5289A7C1D009E67D4 /* SavedViewExtensions.swift */; };
@@ -46,8 +47,6 @@
 		0828F3B9289E7A3400A9C81C /* ObservableObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObservableObject.swift; sourceTree = "<group>"; };
 		0828F3E2289EB37200A9C81C /* DiscoverCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverCollectionViewCell.swift; sourceTree = "<group>"; };
 		0828F3E3289EB37200A9C81C /* DiscoverCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiscoverCollectionViewCell.xib; sourceTree = "<group>"; };
-		0828F3E7289EB45E00A9C81C /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
-		0828F3EA289EE3AD00A9C81C /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		0881631D2886A79B005F2C9B /* MediaSearch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaSearch.swift; sourceTree = "<group>"; };
 		088163252886ABFC005F2C9B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		0881632B2886BEF0005F2C9B /* MediaTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MediaTableViewCell.xib; sourceTree = "<group>"; };
@@ -67,6 +66,9 @@
 		08B046602889964C00E61D76 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
 		08B04664288B316100E61D76 /* MediaGenresDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGenresDecoder.swift; sourceTree = "<group>"; };
 		08B04668288BD33700E61D76 /* MediaDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDateFormatter.swift; sourceTree = "<group>"; };
+		08C57B2628A121EA00A61668 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		08C57B2828A121FD00A61668 /* DiscoverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		08C57B2A28A14A2900A61668 /* DiscoverViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewExtensions.swift; sourceTree = "<group>"; };
 		08CC63A32895888B00EF29AD /* SearchViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewExtensions.swift; sourceTree = "<group>"; };
 		08CC63AF2898253200EF29AD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		08CF46E5289A7C1D009E67D4 /* SavedViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewExtensions.swift; sourceTree = "<group>"; };
@@ -102,8 +104,9 @@
 		0828F3E9289EB46400A9C81C /* DiscoverView */ = {
 			isa = PBXGroup;
 			children = (
-				0828F3E7289EB45E00A9C81C /* DiscoverViewController.swift */,
-				0828F3EA289EE3AD00A9C81C /* DiscoverViewModel.swift */,
+				08C57B2628A121EA00A61668 /* DiscoverViewModel.swift */,
+				08C57B2828A121FD00A61668 /* DiscoverViewController.swift */,
+				08C57B2A28A14A2900A61668 /* DiscoverViewExtensions.swift */,
 			);
 			path = DiscoverView;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				08DD20EC2885F33E0036FA84 /* MediaTableViewCell.swift in Sources */,
 				08B0464D288946E800E61D76 /* RealmManager.swift in Sources */,
 				08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */,
+				08C57B2B28A14A2900A61668 /* DiscoverViewExtensions.swift in Sources */,
 				08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */,
 				08986CE2287C46C000D9FBDA /* SearchViewController.swift in Sources */,
 				082170DD28992AA3000D74EF /* NetworkManager.swift in Sources */,
@@ -377,12 +381,12 @@
 				08B046582889481800E61D76 /* MediaDetails.swift in Sources */,
 				08986CDE287C46C000D9FBDA /* AppDelegate.swift in Sources */,
 				08CF46EB289A894B009E67D4 /* Extensions.swift in Sources */,
-				0828F3E8289EB45E00A9C81C /* DiscoverViewController.swift in Sources */,
 				080039AC28907EF3008BB7A6 /* MediaVideos.swift in Sources */,
+				08C57B2728A121EA00A61668 /* DiscoverViewModel.swift in Sources */,
 				08986CE0287C46C000D9FBDA /* SceneDelegate.swift in Sources */,
 				08B046612889964C00E61D76 /* SavedViewController.swift in Sources */,
 				0881631F2886A79C005F2C9B /* MediaSearch.swift in Sources */,
-				0828F3EB289EE3AD00A9C81C /* DiscoverViewModel.swift in Sources */,
+				08C57B2928A121FD00A61668 /* DiscoverViewController.swift in Sources */,
 				08CC63A42895888B00EF29AD /* SearchViewExtensions.swift in Sources */,
 				088163262886ABFC005F2C9B /* Constants.swift in Sources */,
 			);

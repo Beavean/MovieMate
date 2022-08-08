@@ -2,14 +2,27 @@
 //  DiscoverViewModel.swift
 //  The Movie Database
 //
-//  Created by Beavean on 06.08.2022.
+//  Created by Beavean on 08.08.2022.
 //
 
-import Foundation
+import UIKit
 
-class DiscoverViewModel {
+protocol DiscoverViewModeling {
+    var nowPlayingMedia: [MediaSearch.Results] { get set }
+    var onDataUpdated: () -> Void { get set }
+    func updateData()
+}
+
+class DiscoverViewModel: DiscoverViewModeling {
     
     var nowPlayingMedia: [MediaSearch.Results] = []
+    var onDataUpdated = { }
+    
+    func updateData() {
+        receiveNowPlayingMedia { [weak self] in
+            self?.onDataUpdated()
+        }
+    }
     
     func receiveNowPlayingMedia(completion: @escaping (()->())) {
         NetworkManager.shared.getNowPlaying { movies in
