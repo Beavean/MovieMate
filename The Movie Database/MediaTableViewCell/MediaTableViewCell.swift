@@ -33,7 +33,7 @@ class MediaTableViewCell: UITableViewCell {
         mediaBackdropImageView.applyBlurEffect()
         mediaRatingBackgroundView.addSmallCornerRadius()
         mediaCellMainView.addSmallCornerRadius()
-    
+        
     }
     
     override func prepareForReuse() {

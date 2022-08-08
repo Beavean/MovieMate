@@ -28,5 +28,6 @@ struct Constants {
         static let cornerRadiusRatio = 0.05
         static let mediaTableViewCellReuseID = String(describing: MediaTableViewCell.self)
         static let detailViewControllerID = String(describing: DetailViewController.self)
+        static let discoverCollectionViewCellID = String(describing: DiscoverCollectionViewCell.self)
     }
 }

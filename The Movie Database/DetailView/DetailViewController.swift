@@ -27,16 +27,20 @@ class DetailViewController: UIViewController {
     
     var mediaID: Int?
     var mediaType: String?
+    var mediaVideoKey: String?
+    var viewModel: DetailViewModeling = DetailViewModel()
+    var receivedDetails: MediaDetails?
     
     //MARK: - DetailViewController lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.mediaPosterImageView.addSmallCornerRadius()
-        self.mediaBackgroundBlurImage.applyBlurEffect()
-        configureWithMediaID(mediaID: self.mediaID, mediaType: self.mediaType)
+        setupCompletions()
+        viewModel.updateData()
+        mediaPosterImageView.addSmallCornerRadius()
+        mediaBackgroundBlurImage.applyBlurEffect()
     }
-
+    
     //MARK: - SaveButton interaction
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
@@ -45,39 +49,47 @@ class DetailViewController: UIViewController {
         }
     }
     
-    func configureWithMediaID(mediaID: Int?, mediaType: String?) {
-        guard let mediaID = mediaID, let mediaType = mediaType else { return }
-        NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { model in
-            if let backdropPath = model.backdropPath {
-                self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
-            } else {
-                self.mediaBackdropPosterImageView.isHidden = true
-            }
-            if let posterPath = model.posterPath {
-                self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
-                self.mediaBackgroundBlurImage.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
-            } else {
-                self.mediaPosterImageView.isHidden = true
-            }
-            self.mediaTaglineLabel.text = model.tagline
-            self.mediaTitleLabel.text = model.title ?? model.name
-            self.mediaOverviewLabel.text = model.overview
-            self.mediaGenresLabel.text = model.convertGenresIntoString()
-            self.mediaReleaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? model.releaseDate)
-            self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
-            self.mediaVotesCountLabel.text = "\(String(describing: model.voteCount!)) votes"
-            self.mediaRuntimeLabel.text = model.convertTimeDuration() ?? model.convertSeasonsAndEpisodes()
-            self.saveButton.changeImageIfSaved(condition: RealmManager.shared.checkIfAlreadySaved(id: model.id))
-            NetworkManager.shared.getMediaVideos(mediaID: mediaID, mediaType: mediaType) { video in
-                if let mediaVideoKey = video.last?.key {
-                    self.playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
-                } else {
-                    self.playerView.isHidden = true
-                }
-            }
+    func setupCompletions() {
+        viewModel.mediaType = self.mediaType
+        viewModel.mediaID = self.mediaID
+        viewModel.onDataUpdated = { [weak self] in
+            self?.receivedDetails = self?.viewModel.mediaDetails
+            self?.mediaVideoKey = self?.viewModel.mediaVideoKey
+            self?.configureWithMediaDetails(model: self?.viewModel.mediaDetails)
+            self?.loadVideoPlayer(videoKey: self?.viewModel.mediaVideoKey)
         }
     }
+    
+    func configureWithMediaDetails(model: MediaDetails?) {
+        guard let model = model else { return }
+        if let backdropPath = model.backdropPath {
+            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
+        } else {
+            self.mediaBackdropPosterImageView.isHidden = true
+        }
+        if let posterPath = model.posterPath {
+            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+            self.mediaBackgroundBlurImage.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+        } else {
+            self.mediaPosterImageView.isHidden = true
+        }
+        self.mediaTaglineLabel.text = model.tagline
+        self.mediaTitleLabel.text = model.title ?? model.name
+        self.mediaOverviewLabel.text = model.overview
+        self.mediaGenresLabel.text = model.convertGenresIntoString()
+        self.mediaReleaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? model.releaseDate)
+        self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
+        self.mediaVotesCountLabel.text = "\(String(describing: model.voteCount!)) votes"
+        self.mediaRuntimeLabel.text = model.convertTimeDuration() ?? model.convertSeasonsAndEpisodes()
+        self.saveButton.changeImageIfSaved(condition: RealmManager.shared.checkIfAlreadySaved(id: model.id))
+    }
+    
+    func loadVideoPlayer(videoKey: String?) {
+        guard let mediaVideoKey = videoKey else {
+            self.playerView.isHidden = true
+            return }
+        self.playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
+    }
 }
-
 
 
