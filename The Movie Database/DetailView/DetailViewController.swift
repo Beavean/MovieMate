@@ -8,6 +8,7 @@
 import UIKit
 import Alamofire
 import youtube_ios_player_helper
+import SafariServices
 
 class DetailViewController: UIViewController {
     
@@ -50,6 +51,18 @@ class DetailViewController: UIViewController {
         }
     }
     
+    @IBAction func openTMDBPageButtonPressed(_ sender: Any) {
+        guard let openingUrl = URL(string: "https://www.themoviedb.org/") else { return }
+        var resultUrl = openingUrl
+        let baseURL = "https://www.themoviedb.org/"
+        if let mediaID = mediaID, let mediaType = mediaType {
+            guard let convertedUrl = URL(string: baseURL + mediaType + "/" + (String(describing: (mediaID)))) else { return }
+            resultUrl = convertedUrl
+        }
+        let safariVC = SFSafariViewController(url: resultUrl)
+        present(safariVC, animated: true)
+    }
+
     //MARK: - Completions to run after model receives data
     
     func setupCompletions() {
