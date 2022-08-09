@@ -37,10 +37,10 @@ extension UIView {
 extension UIButton {
     func changeImageIfSaved(condition: Bool) {
         if condition {
-            self.setImage(UIImage(systemName: "checkmark.square"), for: .normal)
+            self.setImage(UIImage(systemName: Constants.UI.alreadySavedButtonImage), for: .normal)
             self.tintColor = .orange
         } else {
-            self.setImage(UIImage(systemName: "plus.square"), for: .normal)
+            self.setImage(UIImage(systemName: Constants.UI.saveButtonImage), for: .normal)
             self.tintColor = .label
         }
     }

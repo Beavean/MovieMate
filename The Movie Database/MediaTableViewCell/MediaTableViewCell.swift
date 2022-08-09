@@ -38,7 +38,7 @@ class MediaTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.mediaPosterImageView.image = UIImage(systemName: "questionmark.square")
+        self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
     }
     
     
@@ -51,10 +51,12 @@ class MediaTableViewCell: UITableViewCell {
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
         } else {
-            self.mediaPosterImageView.image = UIImage(systemName: "questionmark.square")
+            self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
         if let backdropPath = model.backdropPath {
             self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
+        } else {
+            self.mediaBackdropImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
         self.mediaTitleLabel.text = model.title ?? model.name
         self.mediaOverviewLabel.text = model.overview
@@ -66,17 +68,29 @@ class MediaTableViewCell: UITableViewCell {
     
     //MARK: - Configure cell with Realm object
     
-    func configure(with object: RealmMediaObject) {
+    func configure(with object: RealmObjectModel) {
         saveButton.changeImageIfSaved(condition: RealmManager.shared.checkIfAlreadySaved(id: object.id))
         self.mediaType = object.mediaType
-        self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.posterPath))
-        self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + object.backdropPath))
-        self.mediaVotesCountLabel.text = String(describing: object.voteCount)
-        self.mediaTitleLabel.text = object.title
-        self.mediaOverviewLabel.text = object.overview
-        self.mediaGenresLabel.text = object.genreIDs
-        self.mediaReleaseDateLabel.text = object.releaseDate
-        self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage)
+        if let posterPath = object.posterPath {
+            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+        } else {
+            self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+        }
+        if let backdropPath = object.backdropPath {
+            self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
+        } else {
+            self.mediaBackdropImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+        }
+        self.mediaVotesCountLabel.text = String(describing: object.voteCount ?? 0)
+        self.mediaTitleLabel.text = object.title ?? "No title"
+        self.mediaOverviewLabel.text = object.overview ?? "No overview"
+        self.mediaGenresLabel.text = object.genreIDs ?? "Genre is not specified"
+        self.mediaReleaseDateLabel.text = object.releaseDate ?? "No release date"
+        if let voteAverage = object.voteAverage {
+        self.mediaRatingLabel.text = String(format: "%.1f", voteAverage)
+        } else {
+            self.mediaRatingLabel.text = "0.0"
+        }
     }
 }
 

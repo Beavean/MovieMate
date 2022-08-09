@@ -23,9 +23,9 @@
 		08986CEA287C46C100D9FBDA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08986CE8287C46C100D9FBDA /* LaunchScreen.storyboard */; };
 		08986CF2287C46F400D9FBDA /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = 08986CF1287C46F400D9FBDA /* Podfile */; };
 		08B0464B288854E600E61D76 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0464A288854E600E61D76 /* DetailViewController.swift */; };
-		08B0464D288946E800E61D76 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0464C288946E600E61D76 /* RealmManager.swift */; };
+		08B0464D288946E800E61D76 /* RealmObjectManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0464C288946E600E61D76 /* RealmObjectManager.swift */; };
 		08B046582889481800E61D76 /* MediaDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B046522889481800E61D76 /* MediaDetails.swift */; };
-		08B0465F2889886D00E61D76 /* MediaRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0465E2889886C00E61D76 /* MediaRealmObject.swift */; };
+		08B0465F2889886D00E61D76 /* RealmObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0465E2889886C00E61D76 /* RealmObjectModel.swift */; };
 		08B04665288B316200E61D76 /* MediaGenresDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B04664288B316100E61D76 /* MediaGenresDecoder.swift */; };
 		08B04669288BD33700E61D76 /* MediaDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B04668288BD33700E61D76 /* MediaDateFormatter.swift */; };
 		08C57B2728A121EA00A61668 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C57B2628A121EA00A61668 /* DiscoverViewModel.swift */; };
@@ -59,9 +59,9 @@
 		08986CEB287C46C100D9FBDA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08986CF1287C46F400D9FBDA /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		08B0464A288854E600E61D76 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
-		08B0464C288946E600E61D76 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		08B0464C288946E600E61D76 /* RealmObjectManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjectManager.swift; sourceTree = "<group>"; };
 		08B046522889481800E61D76 /* MediaDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaDetails.swift; sourceTree = "<group>"; };
-		08B0465E2889886C00E61D76 /* MediaRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaRealmObject.swift; sourceTree = "<group>"; };
+		08B0465E2889886C00E61D76 /* RealmObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjectModel.swift; sourceTree = "<group>"; };
 		08B04664288B316100E61D76 /* MediaGenresDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGenresDecoder.swift; sourceTree = "<group>"; };
 		08B04668288BD33700E61D76 /* MediaDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDateFormatter.swift; sourceTree = "<group>"; };
 		08C57B2628A121EA00A61668 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
@@ -165,8 +165,8 @@
 		08CC63A12895864A00EF29AD /* Realm */ = {
 			isa = PBXGroup;
 			children = (
-				08B0464C288946E600E61D76 /* RealmManager.swift */,
-				08B0465E2889886C00E61D76 /* MediaRealmObject.swift */,
+				08B0464C288946E600E61D76 /* RealmObjectManager.swift */,
+				08B0465E2889886C00E61D76 /* RealmObjectModel.swift */,
 			);
 			path = Realm;
 			sourceTree = "<group>";
@@ -369,14 +369,14 @@
 				08B04665288B316200E61D76 /* MediaGenresDecoder.swift in Sources */,
 				08CF46F3289C505E009E67D4 /* DetailViewModel.swift in Sources */,
 				08DD20EC2885F33E0036FA84 /* MediaTableViewCell.swift in Sources */,
-				08B0464D288946E800E61D76 /* RealmManager.swift in Sources */,
+				08B0464D288946E800E61D76 /* RealmObjectManager.swift in Sources */,
 				08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */,
 				08C57B2B28A14A2900A61668 /* DiscoverViewExtensions.swift in Sources */,
 				08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */,
 				08986CE2287C46C000D9FBDA /* SearchViewController.swift in Sources */,
 				08C57B2D28A157ED00A61668 /* SavedViewModel.swift in Sources */,
 				082170DD28992AA3000D74EF /* NetworkManager.swift in Sources */,
-				08B0465F2889886D00E61D76 /* MediaRealmObject.swift in Sources */,
+				08B0465F2889886D00E61D76 /* RealmObjectModel.swift in Sources */,
 				08C57B2F28A1602000A61668 /* SavedViewController.swift in Sources */,
 				0828F3E4289EB37200A9C81C /* DiscoverCollectionViewCell.swift in Sources */,
 				08B046582889481800E61D76 /* MediaDetails.swift in Sources */,

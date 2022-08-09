@@ -37,6 +37,7 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
         setupCompletions()
         viewModel.updateData()
+        configureWithMediaDetails(model: receivedDetails)
         mediaPosterImageView.addSmallCornerRadius()
         mediaBackgroundBlurImage.applyBlurEffect()
     }

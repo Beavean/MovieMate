@@ -20,7 +20,7 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         if let posterPath = model.posterPath {
             self.posterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
         } else {
-            self.posterImageView.image = UIImage(systemName: "questionmark.square")
+            self.posterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
     }
 }

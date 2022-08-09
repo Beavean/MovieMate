@@ -9,7 +9,7 @@ import Foundation
 
 protocol SavedViewModeling {
     
-    var arrayOfMedia: [RealmMediaObject] { get set }
+    var arrayOfMedia: [RealmObjectModel] { get set }
     var onDataUpdated: () -> Void { get set }
     
     func loadSavedMedia()
@@ -17,7 +17,7 @@ protocol SavedViewModeling {
 
 class SavedViewModel: SavedViewModeling {
     
-    var arrayOfMedia: [RealmMediaObject] = []
+    var arrayOfMedia: [RealmObjectModel] = []
     var onDataUpdated = { }
     
     func loadSavedMedia() {

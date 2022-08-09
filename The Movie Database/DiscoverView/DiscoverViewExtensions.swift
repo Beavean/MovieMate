@@ -21,7 +21,7 @@ extension DiscoverViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DiscoverCollectionViewCell", for: indexPath) as? DiscoverCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.UI.discoverCollectionViewCellID, for: indexPath) as? DiscoverCollectionViewCell
         var item: MediaSearch.Results
         switch collectionView {
         case nowPlayingCollectionView: item = nowPlayingMedia[indexPath.row]
@@ -37,7 +37,7 @@ extension DiscoverViewController: UICollectionViewDataSource {
 extension DiscoverViewController: UICollectionViewDelegate {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let storyboard = UIStoryboard(name: Constants.UI.mainStoryboardName, bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.detailViewControllerID) as? DetailViewController {
             var delegatingMediaID: Int
             switch collectionView {

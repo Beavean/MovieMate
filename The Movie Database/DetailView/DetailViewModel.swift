@@ -15,7 +15,6 @@ protocol DetailViewModeling {
     var onDataUpdated: () -> Void { get set }
     
     func updateData()
-    
 }
 
 class DetailViewModel: DetailViewModeling {
@@ -36,10 +35,10 @@ class DetailViewModel: DetailViewModeling {
         guard let mediaID = mediaID, let mediaType = mediaType else { return }
         NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { media in
             self.mediaDetails = media
-        }
-        NetworkManager.shared.getMediaVideos(mediaID: mediaID, mediaType: mediaType) { video in
-            self.mediaVideoKey = video.last?.key
-            completion()
+            NetworkManager.shared.getMediaVideos(mediaID: mediaID, mediaType: mediaType) { video in
+                self.mediaVideoKey = video.last?.key
+                completion()
+            }
         }
     }
 }

@@ -11,7 +11,7 @@ class SavedViewController: UIViewController {
 
     @IBOutlet weak var savedMediaTableView: UITableView!
 
-    var arrayOfMedia: [RealmMediaObject] = []
+    var arrayOfMedia: [RealmObjectModel] = []
     var viewModel: SavedViewModeling = SavedViewModel()
 
     //MARK: - SavedViewController lifecycle
