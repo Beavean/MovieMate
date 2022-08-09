@@ -44,9 +44,9 @@ class MediaTableViewCell: UITableViewCell {
     
     //MARK: - Configure cell with JSON model
     
-    func configure(with model: MediaSearch.Results) {
+    func configure(with model: BasicMedia.Results) {
         if let id = model.id {
-            saveButton.changeImageIfSaved(condition: RealmManager.shared.checkIfAlreadySaved(id: id))
+            saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: id))
         }
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
@@ -60,16 +60,16 @@ class MediaTableViewCell: UITableViewCell {
         }
         self.mediaTitleLabel.text = model.title ?? model.name
         self.mediaOverviewLabel.text = model.overview
-        self.mediaVotesCountLabel.text = String(describing: model.voteCount!)
-        self.mediaGenresLabel.text = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: model.genreIDs!)
+        self.mediaVotesCountLabel.text = String(describing: (model.voteCount ?? 0))
+        self.mediaGenresLabel.text = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: (model.genreIDs ?? []))
         self.mediaReleaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? model.firstAirDate)
-        self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
+        self.mediaRatingLabel.text = String(format: "%.1f", (model.voteAverage ?? 0.0))
     }
     
     //MARK: - Configure cell with Realm object
     
     func configure(with object: RealmObjectModel) {
-        saveButton.changeImageIfSaved(condition: RealmManager.shared.checkIfAlreadySaved(id: object.id))
+        saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: object.id))
         self.mediaType = object.mediaType
         if let posterPath = object.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))

@@ -50,6 +50,8 @@ class DetailViewController: UIViewController {
         }
     }
     
+    //MARK: - Completions to run after model receives data
+    
     func setupCompletions() {
         viewModel.mediaType = self.mediaType
         viewModel.mediaID = self.mediaID
@@ -60,6 +62,8 @@ class DetailViewController: UIViewController {
             self?.loadVideoPlayer(videoKey: self?.viewModel.mediaVideoKey)
         }
     }
+    
+    //MARK: - Configuring all UI from media details
     
     func configureWithMediaDetails(model: MediaDetails?) {
         guard let model = model else { return }
@@ -79,10 +83,10 @@ class DetailViewController: UIViewController {
         self.mediaOverviewLabel.text = model.overview
         self.mediaGenresLabel.text = model.convertGenresIntoString()
         self.mediaReleaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? model.releaseDate)
-        self.mediaRatingLabel.text = String(format: "%.1f", model.voteAverage!)
-        self.mediaVotesCountLabel.text = "\(String(describing: model.voteCount!)) votes"
+        self.mediaRatingLabel.text = String(format: "%.1f", (model.voteAverage ?? 0.0))
+        self.mediaVotesCountLabel.text = "\(String(describing: (model.voteCount ?? 0))) votes"
         self.mediaRuntimeLabel.text = model.convertTimeDuration() ?? model.convertSeasonsAndEpisodes()
-        self.saveButton.changeImageIfSaved(condition: RealmManager.shared.checkIfAlreadySaved(id: model.id))
+        self.saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: model.id))
     }
     
     func loadVideoPlayer(videoKey: String?) {

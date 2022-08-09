@@ -9,6 +9,8 @@ import Foundation
 
 struct Constants {
     
+//MARK: - URLs and Api Keys
+    
     struct Network {
         static let apiKey = "?api_key=2cfd0db8398a10e5a9777f73b2218ca9"
         static let baseUrl = "https://api.themoviedb.org/3/"
@@ -16,6 +18,8 @@ struct Constants {
         static let movieType = "movie"
         static let tvSeriesType = "tv"
     }
+    
+    //MARK: - UI constants and names
     
     struct UI {
         static let cornerRadiusRatio = 0.05

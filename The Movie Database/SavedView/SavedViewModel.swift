@@ -21,7 +21,7 @@ class SavedViewModel: SavedViewModeling {
     var onDataUpdated = { }
     
     func loadSavedMedia() {
-        arrayOfMedia = RealmManager.shared.getMedia()
+        arrayOfMedia = RealmObjectManager.shared.getMedia()
         onDataUpdated()
     }
 }
