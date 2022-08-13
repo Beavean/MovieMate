@@ -545,29 +545,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VideoPlayerCell" rowHeight="233" id="YCB-a1-Js5" customClass="VideoPlayerCell" customModule="The_Movie_Database" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="44.5" width="414" height="233"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YCB-a1-Js5" id="dbX-yV-VgN">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <view contentMode="scaleToFill" id="jQj-Tp-HdM" customClass="YTPlayerView">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" secondItem="jQj-Tp-HdM" secondAttribute="height" multiplier="16:9" id="2PC-F5-KE9"/>
-                                            </constraints>
-                                        </view>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="videoPlayer" destination="jQj-Tp-HdM" id="zhA-lA-GOA"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="ZZp-DV-QwW" id="Y9p-Qu-ypS"/>
                             <outlet property="delegate" destination="ZZp-DV-QwW" id="1eD-QI-MKu"/>

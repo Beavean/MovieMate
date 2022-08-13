@@ -47,6 +47,8 @@
 		08E6493628A2968D00AD9DCF /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6493528A2968D00AD9DCF /* SeriesViewController.swift */; };
 		08E6493828A2993F00AD9DCF /* SeriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6493728A2993F00AD9DCF /* SeriesViewModel.swift */; };
 		08E6493A28A29A0C00AD9DCF /* SeriesViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6493928A29A0C00AD9DCF /* SeriesViewExtensions.swift */; };
+		08F70C8128A83EB700FB5E40 /* VideoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F70C7F28A83EB700FB5E40 /* VideoViewCell.swift */; };
+		08F70C8228A83EB700FB5E40 /* VideoViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 08F70C8028A83EB700FB5E40 /* VideoViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +93,8 @@
 		08E6493528A2968D00AD9DCF /* SeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		08E6493728A2993F00AD9DCF /* SeriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewModel.swift; sourceTree = "<group>"; };
 		08E6493928A29A0C00AD9DCF /* SeriesViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewExtensions.swift; sourceTree = "<group>"; };
+		08F70C7F28A83EB700FB5E40 /* VideoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewCell.swift; sourceTree = "<group>"; };
+		08F70C8028A83EB700FB5E40 /* VideoViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = VideoViewCell.xib; sourceTree = "<group>"; };
 		11FF59286F0A11AE754CA463 /* Pods_The_Movie_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_The_Movie_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DBC00BEBB31BFA682DEB487E /* Pods-The Movie Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Movie Database.release.xcconfig"; path = "Target Support Files/Pods-The Movie Database/Pods-The Movie Database.release.xcconfig"; sourceTree = "<group>"; };
 		E57CDB9AB729AA47A779AEE8 /* Pods-The Movie Database.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-The Movie Database.debug.xcconfig"; path = "Target Support Files/Pods-The Movie Database/Pods-The Movie Database.debug.xcconfig"; sourceTree = "<group>"; };
@@ -249,6 +253,7 @@
 		08D6A13528A7E832001BD9E2 /* VideoView */ = {
 			isa = PBXGroup;
 			children = (
+				08F70C8328A83EBD00FB5E40 /* VideoViewCell */,
 				08D6A13328A7E81A001BD9E2 /* VideoViewController.swift */,
 				08D6A13628A7E861001BD9E2 /* VideoViewModel.swift */,
 			);
@@ -283,6 +288,15 @@
 				08E6493928A29A0C00AD9DCF /* SeriesViewExtensions.swift */,
 			);
 			path = SeriesView;
+			sourceTree = "<group>";
+		};
+		08F70C8328A83EBD00FB5E40 /* VideoViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				08F70C7F28A83EB700FB5E40 /* VideoViewCell.swift */,
+				08F70C8028A83EB700FB5E40 /* VideoViewCell.xib */,
+			);
+			path = VideoViewCell;
 			sourceTree = "<group>";
 		};
 		3536C355C1603A6ABD595726 /* Pods */ = {
@@ -368,6 +382,7 @@
 				08986CF2287C46F400D9FBDA /* Podfile in Resources */,
 				08986CE5287C46C000D9FBDA /* Main.storyboard in Resources */,
 				0881632C2886BEF0005F2C9B /* MediaTableViewCell.xib in Resources */,
+				08F70C8228A83EB700FB5E40 /* VideoViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -430,6 +445,7 @@
 				08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */,
 				08C57B2B28A14A2900A61668 /* MoviesViewExtensions.swift in Sources */,
 				08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */,
+				08F70C8128A83EB700FB5E40 /* VideoViewCell.swift in Sources */,
 				08D6A13428A7E81A001BD9E2 /* VideoViewController.swift in Sources */,
 				08986CE2287C46C000D9FBDA /* SearchViewController.swift in Sources */,
 				08C57B2D28A157ED00A61668 /* SavedViewModel.swift in Sources */,
