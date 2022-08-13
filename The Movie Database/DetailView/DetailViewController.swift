@@ -43,11 +43,17 @@ class DetailViewController: UIViewController {
         mediaBackgroundBlurImage.applyBlurEffect()
     }
     
-    //MARK: - SaveButton interaction
+    override func viewWillAppear(_ animated: Bool) {
+         super.viewWillAppear(animated)
+        viewModel.updateData()
+        configureWithMediaDetails(model: receivedDetails)
+      }
+    
+    //MARK: - Button interaction
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         self.saveButtonPressed(button: saveButton, mediaID: mediaID, mediaType: mediaType) {
-            self.navigationController?.popToRootViewController(animated: true)
+            
         }
     }
     
@@ -62,7 +68,15 @@ class DetailViewController: UIViewController {
         let safariVC = SFSafariViewController(url: resultUrl)
         present(safariVC, animated: true)
     }
-
+    @IBAction func openVideosPressed(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        if let viewController = storyboard.instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController {
+            viewController.mediaID = mediaID
+            viewController.mediaType = self.mediaType
+            self.navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
     //MARK: - Completions to run after model receives data
     
     func setupCompletions() {

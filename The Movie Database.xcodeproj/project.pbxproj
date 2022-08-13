@@ -37,6 +37,8 @@
 		08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CC63AF2898253200EF29AD /* SearchViewModel.swift */; };
 		08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF46E5289A7C1D009E67D4 /* SavedViewExtensions.swift */; };
 		08CF46F3289C505E009E67D4 /* DetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08CF46F2289C505D009E67D4 /* DetailViewModel.swift */; };
+		08D6A13428A7E81A001BD9E2 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6A13328A7E81A001BD9E2 /* VideoViewController.swift */; };
+		08D6A13728A7E861001BD9E2 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6A13628A7E861001BD9E2 /* VideoViewModel.swift */; };
 		08DD20EC2885F33E0036FA84 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD20EA2885F33E0036FA84 /* MediaTableViewCell.swift */; };
 		08E6492C28A2898D00AD9DCF /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6492B28A2898D00AD9DCF /* UIImageViewExtensions.swift */; };
 		08E6492E28A289C800AD9DCF /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6492D28A289C800AD9DCF /* UIViewExtensions.swift */; };
@@ -79,6 +81,8 @@
 		08CC63AF2898253200EF29AD /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
 		08CF46E5289A7C1D009E67D4 /* SavedViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewExtensions.swift; sourceTree = "<group>"; };
 		08CF46F2289C505D009E67D4 /* DetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewModel.swift; sourceTree = "<group>"; };
+		08D6A13328A7E81A001BD9E2 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
+		08D6A13628A7E861001BD9E2 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
 		08DD20EA2885F33E0036FA84 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
 		08E6492B28A2898D00AD9DCF /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		08E6492D28A289C800AD9DCF /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
@@ -155,6 +159,7 @@
 				08CC63AA289589F400EF29AD /* SavedView */,
 				08DD20EE2885F34A0036FA84 /* MediaTableViewCell */,
 				08CC63A9289589D700EF29AD /* DetailView */,
+				08D6A13528A7E832001BD9E2 /* VideoView */,
 				08CC63AB28958A2400EF29AD /* Network */,
 				08CC63A12895864A00EF29AD /* Realm */,
 				08C6A40228A663A8004692EC /* Supporting Files */,
@@ -239,6 +244,15 @@
 				08E6493328A28EF800AD9DCF /* Extensions */,
 			);
 			path = Global;
+			sourceTree = "<group>";
+		};
+		08D6A13528A7E832001BD9E2 /* VideoView */ = {
+			isa = PBXGroup;
+			children = (
+				08D6A13328A7E81A001BD9E2 /* VideoViewController.swift */,
+				08D6A13628A7E861001BD9E2 /* VideoViewModel.swift */,
+			);
+			path = VideoView;
 			sourceTree = "<group>";
 		};
 		08DD20EE2885F34A0036FA84 /* MediaTableViewCell */ = {
@@ -416,11 +430,13 @@
 				08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */,
 				08C57B2B28A14A2900A61668 /* MoviesViewExtensions.swift in Sources */,
 				08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */,
+				08D6A13428A7E81A001BD9E2 /* VideoViewController.swift in Sources */,
 				08986CE2287C46C000D9FBDA /* SearchViewController.swift in Sources */,
 				08C57B2D28A157ED00A61668 /* SavedViewModel.swift in Sources */,
 				082170DD28992AA3000D74EF /* NetworkManager.swift in Sources */,
 				08E6493028A28E5600AD9DCF /* UIButtonExtensions.swift in Sources */,
 				08E6493228A28E8A00AD9DCF /* UIViewControllerExtensions.swift in Sources */,
+				08D6A13728A7E861001BD9E2 /* VideoViewModel.swift in Sources */,
 				08B0465F2889886D00E61D76 /* RealmObjectModel.swift in Sources */,
 				08C57B2F28A1602000A61668 /* SavedViewController.swift in Sources */,
 				0828F3E4289EB37200A9C81C /* DiscoverCollectionViewCell.swift in Sources */,

@@ -14,10 +14,11 @@ extension UIViewController {
     func saveButtonPressed(button: UIButton, mediaID: Int?, mediaType: String?, completion: @escaping ()->()) {
         guard let mediaID = mediaID else { return }
         if RealmObjectManager.shared.checkIfAlreadySaved(id: mediaID) {
-            let alert = UIAlertController(title: "Already saved", message: "Do you want to remove it?", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Remove from saved?", message: "", preferredStyle: .alert)
             let cancelAction = UIAlertAction(title: "Cancel", style: .default)
             let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
                 RealmObjectManager.shared.deleteMedia(id: mediaID)
+                button.changeImageIfSaved(condition: false)
                 completion()
             }
             alert.view.tintColor = UIColor.label
@@ -25,7 +26,7 @@ extension UIViewController {
             alert.addAction(deleteAction)
             present(alert, animated: true)
         } else {
-            let alert = UIAlertController(title: "Save it?", message: "This will add the item to the saved list", preferredStyle: .alert)
+            let alert = UIAlertController(title: "Add to saved?", message: "", preferredStyle: .alert)
             let saveAction = UIAlertAction(title: "Save", style: .default) { action in
                 guard let mediaType = mediaType else { return }
                 NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { details in

@@ -308,14 +308,14 @@
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                                 <subviews>
                                     <imageView opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vCR-DV-uff">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1219.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1258.5"/>
                                     </imageView>
                                     <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jav-Ss-LMh">
                                         <rect key="frame" x="0.0" y="568" width="414" height="53"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     </view>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="H7t-fa-4aA">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1219.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="1258.5"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="1000" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SKv-Xk-WJ5">
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="30"/>
@@ -350,46 +350,46 @@
                                                 <rect key="frame" x="0.0" y="568" width="414" height="45"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kxe-bK-pZz">
-                                                        <rect key="frame" x="0.0" y="0.0" width="180" height="45"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="172" height="45"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Released:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CPI-UR-QHA">
-                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="22.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="172" height="22.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Release Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7A-P9-chk">
-                                                                <rect key="frame" x="0.0" y="22.5" width="180" height="22.5"/>
+                                                                <rect key="frame" x="0.0" y="22.5" width="172" height="22.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="15"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                     </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpN-Im-2fH">
-                                                        <rect key="frame" x="180" y="0.0" width="54" height="45"/>
+                                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" contentHorizontalAlignment="fill" contentVerticalAlignment="fill" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZpN-Im-2fH">
+                                                        <rect key="frame" x="172" y="0.0" width="70" height="45"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" imagePadding="0.0">
                                                             <imageReference key="image" image="plus.square" catalog="system" symbolScale="large"/>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="20" scale="large" weight="semibold"/>
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="31" scale="large" weight="regular"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="saveButtonPressed:" destination="47k-N6-AGp" eventType="touchUpInside" id="aUX-LC-aLZ"/>
                                                         </connections>
                                                     </button>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="X8H-pC-4vL">
-                                                        <rect key="frame" x="234" y="0.0" width="180" height="45"/>
+                                                        <rect key="frame" x="242" y="0.0" width="172" height="45"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Votes" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W7j-vd-ha3">
-                                                                <rect key="frame" x="0.0" y="0.0" width="180" height="22.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="172" height="22.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="14"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalCompressionResistancePriority="1000" text="Rating" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8W-fx-7l0">
-                                                                <rect key="frame" x="0.0" y="22.5" width="180" height="22.5"/>
+                                                                <rect key="frame" x="0.0" y="22.5" width="172" height="22.5"/>
                                                                 <fontDescription key="fontDescription" type="system" weight="heavy" pointSize="27"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
@@ -457,14 +457,24 @@
                                                     <action selector="openTMDBPageButtonPressed:" destination="47k-N6-AGp" eventType="touchUpInside" id="Sk2-WY-kqU"/>
                                                 </connections>
                                             </button>
+                                            <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dad-IT-2i4">
+                                                <rect key="frame" x="0.0" y="746" width="414" height="31"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="tintColor" systemColor="labelColor"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="plain" image="play.rectangle" catalog="system" imagePlacement="trailing" title="Load videos" imagePadding="9"/>
+                                                <connections>
+                                                    <action selector="openVideosPressed:" destination="47k-N6-AGp" eventType="touchUpInside" id="hda-6P-MZc"/>
+                                                </connections>
+                                            </button>
                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="40G-6l-Jff">
-                                                <rect key="frame" x="0.0" y="746" width="414" height="232.5"/>
+                                                <rect key="frame" x="0.0" y="785" width="414" height="232.5"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="40G-6l-Jff" secondAttribute="height" multiplier="16:9" id="rCP-9k-RGt"/>
                                                 </constraints>
                                             </imageView>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yLF-Xh-g48" customClass="YTPlayerView">
-                                                <rect key="frame" x="0.0" y="986.5" width="414" height="233"/>
+                                                <rect key="frame" x="0.0" y="1025.5" width="414" height="233"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="yLF-Xh-g48" secondAttribute="height" multiplier="16:9" id="WRt-DM-Ugj"/>
@@ -526,6 +536,47 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CeW-nJ-kgQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-346" y="-395"/>
+        </scene>
+        <!--Video View Controller-->
+        <scene sceneID="2Lf-l2-q9k">
+            <objects>
+                <tableViewController storyboardIdentifier="VideoViewController" id="ZZp-DV-QwW" customClass="VideoViewController" customModule="The_Movie_Database" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="VoZ-1m-ajw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="VideoPlayerCell" rowHeight="233" id="YCB-a1-Js5" customClass="VideoPlayerCell" customModule="The_Movie_Database" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44.5" width="414" height="233"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YCB-a1-Js5" id="dbX-yV-VgN">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <view contentMode="scaleToFill" id="jQj-Tp-HdM" customClass="YTPlayerView">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="233"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="jQj-Tp-HdM" secondAttribute="height" multiplier="16:9" id="2PC-F5-KE9"/>
+                                            </constraints>
+                                        </view>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="videoPlayer" destination="jQj-Tp-HdM" id="zhA-lA-GOA"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ZZp-DV-QwW" id="Y9p-Qu-ypS"/>
+                            <outlet property="delegate" destination="ZZp-DV-QwW" id="1eD-QI-MKu"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U5r-37-XCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="802.89855072463774" y="-385.04464285714283"/>
         </scene>
         <!--Search-->
         <scene sceneID="Esk-mQ-XSR">
@@ -779,6 +830,7 @@
         <image name="checkmark.rectangle" catalog="system" width="128" height="93"/>
         <image name="film" catalog="system" width="128" height="93"/>
         <image name="magnifyingglass" catalog="system" width="128" height="115"/>
+        <image name="play.rectangle" catalog="system" width="128" height="93"/>
         <image name="plus.square" catalog="system" width="128" height="114"/>
         <image name="tv" catalog="system" width="128" height="97"/>
         <systemColor name="labelColor">

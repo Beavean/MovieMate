@@ -94,33 +94,33 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Media overview" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2hY-gq-aO1">
-                                                <rect key="frame" x="0.0" y="58" width="158.5" height="20.5"/>
+                                                <rect key="frame" x="0.0" y="58" width="158.5" height="16"/>
                                                 <fontDescription key="fontDescription" type="italicSystem" pointSize="13"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Media genres" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v5k-da-XQN">
-                                                <rect key="frame" x="0.0" y="82.5" width="158.5" height="14.5"/>
+                                                <rect key="frame" x="0.0" y="78" width="158.5" height="14.5"/>
                                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="12"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="UnE-qu-7sw">
-                                                <rect key="frame" x="0.0" y="101" width="158.5" height="34"/>
+                                                <rect key="frame" x="0.0" y="96.5" width="158.5" height="38.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Release date" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3s-7Z-zjK">
-                                                        <rect key="frame" x="0.0" y="0.0" width="94" height="34"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="89.5" height="38.5"/>
                                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SDR-eg-835">
-                                                        <rect key="frame" x="98" y="0.0" width="60.5" height="34"/>
+                                                        <rect key="frame" x="93.5" y="0.0" width="65" height="38.5"/>
                                                         <color key="tintColor" systemColor="labelColor"/>
                                                         <state key="normal" title="Button"/>
                                                         <buttonConfiguration key="configuration" style="plain" imagePlacement="trailing" imagePadding="0.0">
                                                             <imageReference key="image" image="plus.square" catalog="system" symbolScale="large"/>
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="17" scale="large" weight="semibold"/>
+                                                            <preferredSymbolConfiguration key="preferredSymbolConfigurationForImage" configurationType="pointSize" pointSize="21" scale="large" weight="regular"/>
                                                         </buttonConfiguration>
                                                         <connections>
                                                             <action selector="saveButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="mLc-zO-Dhg"/>
