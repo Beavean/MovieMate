@@ -146,7 +146,6 @@
 			children = (
 				08986CDD287C46C000D9FBDA /* AppDelegate.swift */,
 				08986CDF287C46C000D9FBDA /* SceneDelegate.swift */,
-				08986CE8287C46C100D9FBDA /* LaunchScreen.storyboard */,
 				08986CE3287C46C000D9FBDA /* Main.storyboard */,
 				08CF46E9289A8930009E67D4 /* Global */,
 				0828F3E9289EB46400A9C81C /* MoviesView */,
@@ -158,7 +157,7 @@
 				08CC63A9289589D700EF29AD /* DetailView */,
 				08CC63AB28958A2400EF29AD /* Network */,
 				08CC63A12895864A00EF29AD /* Realm */,
-				08986CE6287C46C100D9FBDA /* Assets.xcassets */,
+				08C6A40228A663A8004692EC /* Supporting Files */,
 				08986CEB287C46C100D9FBDA /* Info.plist */,
 				08986CF1287C46F400D9FBDA /* Podfile */,
 			);
@@ -173,6 +172,15 @@
 				080039AB28907EF3008BB7A6 /* MediaVideos.swift */,
 			);
 			path = DataModels;
+			sourceTree = "<group>";
+		};
+		08C6A40228A663A8004692EC /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				08986CE8287C46C100D9FBDA /* LaunchScreen.storyboard */,
+				08986CE6287C46C100D9FBDA /* Assets.xcassets */,
+			);
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		08CC63A12895864A00EF29AD /* Realm */ = {

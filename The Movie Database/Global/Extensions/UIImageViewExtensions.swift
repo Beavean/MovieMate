@@ -13,11 +13,7 @@ extension UIImageView {
     
     func applyBlurEffect() {
         var blurEffect = UIBlurEffect()
-        if self.traitCollection.userInterfaceStyle == .dark {
-            blurEffect = UIBlurEffect(style: .dark)
-        } else {
-            blurEffect = UIBlurEffect(style: .light)
-        }
+        blurEffect = self.traitCollection.userInterfaceStyle == .dark ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = bounds
         blurEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]

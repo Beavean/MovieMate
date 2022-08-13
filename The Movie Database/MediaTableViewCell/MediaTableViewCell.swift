@@ -21,10 +21,11 @@ class MediaTableViewCell: UITableViewCell {
     @IBOutlet private weak var mediaBackdropImageView: UIImageView!
     @IBOutlet private weak var mediaCellMainView: UIView!
     @IBOutlet private weak var mediaRatingBackgroundView: UIView!
-    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
     
     var mediaID: Int? = nil
     var mediaType: String? = nil
+    var buttonPressed: (() -> ()) = {}
     
     //MARK: - TableViewCell lifecycle
     
@@ -39,6 +40,11 @@ class MediaTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+    }
+    
+    
+    @IBAction func saveButtonPressed(_ sender: UIButton) {
+        buttonPressed()
     }
     
     
