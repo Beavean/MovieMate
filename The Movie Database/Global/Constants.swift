@@ -26,9 +26,11 @@ struct Constants {
         static let mediaTableViewCellReuseID = String(describing: MediaTableViewCell.self)
         static let detailViewControllerID = String(describing: DetailViewController.self)
         static let discoverCollectionViewCellID = String(describing: DiscoverCollectionViewCell.self)
+        static let videoViewCellID = String(describing: VideoViewCell.self)
+        static let videoViewControllerID = String(describing: VideoViewController.self)
         static let alreadySavedButtonImage = "checkmark.square"
         static let saveButtonImage = "plus.square"
-        static let emptyPosterImage = "questionmark.square"
+        static let emptyPosterImage = "questionmark.square.fill"
         static let mainStoryboardName = "Main"
     }
 }

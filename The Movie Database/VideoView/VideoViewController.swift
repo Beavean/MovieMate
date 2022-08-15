@@ -19,13 +19,14 @@ class VideoViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(UINib(nibName: "VideoViewCell", bundle: nil), forCellReuseIdentifier: "VideoViewCell")
+        tableView.register(UINib(nibName: Constants.UI.videoViewCellID, bundle: nil), forCellReuseIdentifier: Constants.UI.videoViewCellID)
         setupCompletions()
         viewModel.updateData()
     }
     
     func setupCompletions() {
         viewModel.mediaType = self.mediaType
+        
         viewModel.mediaID = self.mediaID
         viewModel.onDataUpdated = { [weak self] in
             self?.receivedDetails = self?.viewModel.videoDetails
@@ -42,9 +43,10 @@ class VideoViewController: UITableViewController {
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "VideoViewCell", for: indexPath) as? VideoViewCell, let videos = receivedDetails else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.videoViewCellID, for: indexPath) as? VideoViewCell, let videos = receivedDetails else { return UITableViewCell() }
         guard let videoKey = videos.reversed()[indexPath.row].key else { return UITableViewCell() }
         cell.videoPlayer.load(withVideoId: videoKey, playerVars: ["playsinline": 1])
+        cell.videoTitleLabel.text = videos.reversed()[indexPath.row].name
         return cell
     }
     

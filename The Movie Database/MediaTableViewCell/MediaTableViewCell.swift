@@ -25,7 +25,8 @@ class MediaTableViewCell: UITableViewCell {
     
     var mediaID: Int? = nil
     var mediaType: String? = nil
-    var buttonPressed: (() -> ()) = {}
+    var saveButtonCompletion: (() -> ()) = {}
+    var videoButtonCompletion: (() -> ()) = {}
     
     //MARK: - TableViewCell lifecycle
     
@@ -44,7 +45,11 @@ class MediaTableViewCell: UITableViewCell {
     
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
-        buttonPressed()
+        saveButtonCompletion()
+    }
+    
+    @IBAction func videoButtonPressed(_ sender: UIButton) {
+        videoButtonCompletion()
     }
     
     

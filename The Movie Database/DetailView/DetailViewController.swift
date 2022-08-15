@@ -22,7 +22,7 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var mediaOverviewLabel: UILabel!
     @IBOutlet private weak var mediaRatingLabel: UILabel!
     @IBOutlet private weak var mediaVotesCountLabel: UILabel!
-    @IBOutlet private weak var mediaBackgroundBlurImage: UIImageView!
+    @IBOutlet private weak var mediaBackgroundBlurImageView: UIImageView!
     @IBOutlet private weak var mediaTaglineLabel: UILabel!
     @IBOutlet private weak var mediaRuntimeLabel: UILabel!
     
@@ -40,7 +40,8 @@ class DetailViewController: UIViewController {
         viewModel.updateData()
         configureWithMediaDetails(model: receivedDetails)
         mediaPosterImageView.addSmallCornerRadius()
-        mediaBackgroundBlurImage.applyBlurEffect()
+        mediaBackgroundBlurImageView.applyBlurEffect()
+        mediaBackgroundBlurImageView.addSmallCornerRadius()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,7 +71,7 @@ class DetailViewController: UIViewController {
     }
     @IBAction func openVideosPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let viewController = storyboard.instantiateViewController(withIdentifier: "VideoViewController") as? VideoViewController {
+        if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.videoViewControllerID) as? VideoViewController {
             viewController.mediaID = mediaID
             viewController.mediaType = self.mediaType
             self.navigationController?.pushViewController(viewController, animated: true)
@@ -101,9 +102,10 @@ class DetailViewController: UIViewController {
         }
         if let posterPath = model.posterPath {
             self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
-            self.mediaBackgroundBlurImage.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+            self.mediaBackgroundBlurImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
         } else {
-            self.mediaPosterImageView.isHidden = true
+            self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+            self.mediaBackgroundBlurImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
         self.mediaTaglineLabel.text = model.tagline
         self.mediaTitleLabel.text = model.title ?? model.name
