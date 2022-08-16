@@ -42,22 +42,34 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Search" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E4o-d8-Rof">
+                                <rect key="frame" x="0.0" y="88" width="414" height="51"/>
+                                <color key="tintColor" systemColor="labelColor"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="search" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="gTf-OT-ues" id="SSj-lt-cTx"/>
+                                </connections>
+                            </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="1Pe-24-3ek">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="139" width="414" height="674"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="itO-02-fWD"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="1Pe-24-3ek" firstAttribute="top" secondItem="itO-02-fWD" secondAttribute="top" id="Itp-RU-Dji"/>
+                            <constraint firstItem="E4o-d8-Rof" firstAttribute="top" secondItem="itO-02-fWD" secondAttribute="top" id="9tg-e3-2Sn"/>
+                            <constraint firstItem="1Pe-24-3ek" firstAttribute="top" secondItem="E4o-d8-Rof" secondAttribute="bottom" id="Itp-RU-Dji"/>
                             <constraint firstItem="1Pe-24-3ek" firstAttribute="trailing" secondItem="itO-02-fWD" secondAttribute="trailing" id="Oy7-j6-hFd"/>
                             <constraint firstItem="1Pe-24-3ek" firstAttribute="bottom" secondItem="itO-02-fWD" secondAttribute="bottom" id="VXw-W0-Oo0"/>
+                            <constraint firstItem="E4o-d8-Rof" firstAttribute="trailing" secondItem="itO-02-fWD" secondAttribute="trailing" id="jwS-Zv-dnJ"/>
                             <constraint firstItem="1Pe-24-3ek" firstAttribute="leading" secondItem="itO-02-fWD" secondAttribute="leading" id="utr-WH-bdI"/>
+                            <constraint firstItem="E4o-d8-Rof" firstAttribute="leading" secondItem="itO-02-fWD" secondAttribute="leading" id="vZg-0h-k9a"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Saved list" largeTitleDisplayMode="always" id="ZVH-wi-XiK"/>
                     <connections>
+                        <outlet property="savedMediaSearchBar" destination="E4o-d8-Rof" id="U0A-9B-tRG"/>
                         <outlet property="savedMediaTableView" destination="1Pe-24-3ek" id="7E6-WX-Ue3"/>
                     </connections>
                 </viewController>

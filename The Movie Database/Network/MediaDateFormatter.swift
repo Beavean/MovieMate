@@ -13,11 +13,12 @@ struct MediaDateFormatter {
     
     private init() { }
     
-    func formatDate(from string: String) -> String {
+    func formatDate(from string: String?) -> String {
+        guard let string = string else { return "No release date" }
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "en-US")
         dateFormatter.dateFormat = "yyyy-MM-dd"
-        guard let date = dateFormatter.date(from: string) else { return "" }
+        guard let date = dateFormatter.date(from: string) else { return "No release date" }
         dateFormatter.dateFormat = "MMMM yyyy"
         let resultString = dateFormatter.string(from: date)
         return resultString

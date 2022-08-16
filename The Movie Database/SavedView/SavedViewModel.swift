@@ -6,22 +6,31 @@
 //
 
 import Foundation
+import RealmSwift
 
 protocol SavedViewModeling {
     
-    var arrayOfMedia: [RealmObjectModel] { get set }
+    var arrayOfMedia: Results<RealmObjectModel>? { get set }
     var onDataUpdated: () -> Void { get set }
     
-    func loadSavedMedia()
+    func loadSavedMedia(searchText: String?)
 }
 
 class SavedViewModel: SavedViewModeling {
     
-    var arrayOfMedia: [RealmObjectModel] = []
+    var arrayOfMedia: Results<RealmObjectModel>?
     var onDataUpdated = { }
     
-    func loadSavedMedia() {
-        arrayOfMedia = RealmObjectManager.shared.getMedia()
+    func loadSavedMedia(searchText: String?) {
+        if let searchText = searchText {
+            if searchText.isEmpty {
+                guard let loadedMedia = RealmObjectManager.shared.getMedia() else { return }
+                arrayOfMedia = loadedMedia
+            } else {
+                guard let loadedMedia = RealmObjectManager.shared.getMedia()?.filter("title CONTAINS[cd] %@", searchText).sorted(byKeyPath: "dateSaved", ascending: true) else { return }
+                arrayOfMedia = loadedMedia
+            }
+        }
         onDataUpdated()
     }
 }

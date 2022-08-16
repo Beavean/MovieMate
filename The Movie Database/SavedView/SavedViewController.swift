@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SavedViewController: UIViewController {
 
     @IBOutlet weak var savedMediaTableView: UITableView!
-
-    var arrayOfMedia: [RealmObjectModel] = []
+    @IBOutlet weak var savedMediaSearchBar: UISearchBar!
+    
+    var lastScheduledSearch: Timer?
+    var arrayOfMedia: Results<RealmObjectModel>?
     var viewModel: SavedViewModeling = SavedViewModel()
 
     //MARK: - SavedViewController lifecycle
@@ -19,7 +22,7 @@ class SavedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCompletions()
-        viewModel.loadSavedMedia()
+        viewModel.loadSavedMedia(searchText: self.savedMediaSearchBar.text)
         savedMediaTableView.dataSource = self
         savedMediaTableView.delegate = self
         savedMediaTableView.register(UINib(nibName: Constants.UI.mediaTableViewCellReuseID, bundle: nil), forCellReuseIdentifier: Constants.UI.mediaTableViewCellReuseID)
@@ -27,7 +30,7 @@ class SavedViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.loadSavedMedia()
+        viewModel.loadSavedMedia(searchText: self.savedMediaSearchBar.text)
         savedMediaTableView.reloadData()
     }
 

@@ -1,0 +1,74 @@
+//
+//  SearchViewController.swift
+//  The Movie Database
+//
+//  Created by Beavean on 11.07.2022.
+//
+
+import UIKit
+import SDWebImage
+import Alamofire
+import SwiftUI
+
+class SearchViewController: UIViewController {
+    
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var contentTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet private weak var mediaTableView: UITableView!
+    
+    var mediaType = Constants.Network.movieType
+    var enteredQuery: String?
+    var lastScheduledSearch: Timer?
+    var mediaSearchResults = [BasicMedia.Results]()
+    var viewModel: SearchViewModeling = SearchViewModel()
+    
+    //MARK: - SearchViewController lifecycle
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        setupCompletions()
+        viewModel.updateData()
+        mediaTableView.dataSource = self
+        mediaTableView.delegate = self
+        searchBar.delegate = self
+        mediaTableView.register(UINib(nibName: Constants.UI.mediaTableViewCellReuseID, bundle: nil), forCellReuseIdentifier: Constants.UI.mediaTableViewCellReuseID)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.mediaTableView.reloadData()
+    }
+    
+    //MARK: - SegmentedControl interaction and reload media methods
+    
+    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
+        viewModel.mediaTypeSegmentedControl =  contentTypeSegmentedControl.selectedSegmentIndex
+        loadSearchResults()
+    }
+    
+    @objc func loadSearchResults() {
+        guard let enteredQuery = self.searchBar.searchTextField.text else { return }
+        self.viewModel.enteredQuery = enteredQuery
+        viewModel.updateData()
+    }
+    
+    func setupCompletions() {
+        viewModel.onDataUpdated = { [weak self] in
+            guard let receivedMedia = self?.viewModel.mediaSearchResults, let mediaType = self?.viewModel.mediaType, let mediaTableView = self?.mediaTableView else { return }
+            self?.mediaSearchResults = receivedMedia
+            self?.mediaType = mediaType
+            self?.mediaTableView.reloadData()
+            if mediaTableView.numberOfRows(inSection: 0) > 0 {
+                mediaTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
+            } else {
+                return
+            }
+        }
+    }
+}
+
+
+
+
+
+
+

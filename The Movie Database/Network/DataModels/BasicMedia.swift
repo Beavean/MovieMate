@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MediaSearch: Codable {
+struct BasicMedia: Codable {
     
     let page: Int?
     let results: [Results]?
