@@ -18,8 +18,8 @@ extension UIViewController {
             let cancelAction = UIAlertAction(title: "Cancel", style: .default)
             let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
                 RealmObjectManager.shared.deleteMedia(id: mediaID)
-                button.changeImageIfSaved(condition: false)
                 completion()
+                button.changeImageIfSaved(condition: false)
             }
             alert.view.tintColor = UIColor.label
             alert.addAction(cancelAction)

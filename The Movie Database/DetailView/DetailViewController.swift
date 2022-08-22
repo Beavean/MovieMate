@@ -72,6 +72,7 @@ class DetailViewController: UIViewController {
     @IBAction func openVideosPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.videoViewControllerID) as? VideoViewController {
+            viewController.configureTitle(title: receivedDetails?.title ?? receivedDetails?.originalName)
             viewController.mediaID = mediaID
             viewController.mediaType = self.mediaType
             self.navigationController?.pushViewController(viewController, animated: true)

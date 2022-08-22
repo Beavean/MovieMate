@@ -563,21 +563,54 @@
             <point key="canvasLocation" x="-346" y="-395"/>
         </scene>
         <!--Video View Controller-->
-        <scene sceneID="2Lf-l2-q9k">
+        <scene sceneID="3Ww-hf-iKn">
             <objects>
-                <tableViewController storyboardIdentifier="VideoViewController" id="ZZp-DV-QwW" customClass="VideoViewController" customModule="The_Movie_Database" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="VoZ-1m-ajw">
+                <viewController storyboardIdentifier="VideoViewController" id="LXw-gK-xPy" customClass="VideoViewController" customModule="The_Movie_Database" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="m25-eO-wQZ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <connections>
-                            <outlet property="dataSource" destination="ZZp-DV-QwW" id="Y9p-Qu-ypS"/>
-                            <outlet property="delegate" destination="ZZp-DV-QwW" id="1eD-QI-MKu"/>
-                        </connections>
-                    </tableView>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="U5r-37-XCM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n2O-p9-LCO">
+                                <rect key="frame" x="0.0" y="44" width="414" height="38.5"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="32"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="j8i-p1-ZWw">
+                                <rect key="frame" x="0.0" y="114" width="414" height="748"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trailers &amp; videos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xv6-5a-ZmI">
+                                <rect key="frame" x="0.0" y="82.5" width="414" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="zzf-Al-LHm"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="xv6-5a-ZmI" firstAttribute="trailing" secondItem="zzf-Al-LHm" secondAttribute="trailing" id="0tB-kj-sp1"/>
+                            <constraint firstItem="j8i-p1-ZWw" firstAttribute="leading" secondItem="zzf-Al-LHm" secondAttribute="leading" id="2tB-fW-g2Y"/>
+                            <constraint firstItem="n2O-p9-LCO" firstAttribute="top" secondItem="zzf-Al-LHm" secondAttribute="top" id="Pvp-OU-Inq"/>
+                            <constraint firstItem="j8i-p1-ZWw" firstAttribute="bottom" secondItem="zzf-Al-LHm" secondAttribute="bottom" id="QkF-gx-X76"/>
+                            <constraint firstItem="j8i-p1-ZWw" firstAttribute="top" secondItem="xv6-5a-ZmI" secondAttribute="bottom" id="YuF-t5-cJw"/>
+                            <constraint firstItem="xv6-5a-ZmI" firstAttribute="top" secondItem="n2O-p9-LCO" secondAttribute="bottom" id="myl-lI-Ysi"/>
+                            <constraint firstItem="n2O-p9-LCO" firstAttribute="leading" secondItem="zzf-Al-LHm" secondAttribute="leading" id="rLM-7M-tL5"/>
+                            <constraint firstItem="xv6-5a-ZmI" firstAttribute="leading" secondItem="zzf-Al-LHm" secondAttribute="leading" id="toV-TV-L0V"/>
+                            <constraint firstItem="n2O-p9-LCO" firstAttribute="trailing" secondItem="zzf-Al-LHm" secondAttribute="trailing" id="vgp-YU-l3B"/>
+                            <constraint firstItem="j8i-p1-ZWw" firstAttribute="trailing" secondItem="zzf-Al-LHm" secondAttribute="trailing" id="x92-sg-8MN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="titleLabel" destination="n2O-p9-LCO" id="iWu-L9-vdR"/>
+                        <outlet property="videoInfoLabel" destination="xv6-5a-ZmI" id="sAA-p0-TR8"/>
+                        <outlet property="videosTableView" destination="j8i-p1-ZWw" id="e9x-ZO-IlY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wb8-NU-SO9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802.89855072463774" y="-385.04464285714283"/>
+            <point key="canvasLocation" x="600" y="-384.375"/>
         </scene>
         <!--Search-->
         <scene sceneID="Esk-mQ-XSR">

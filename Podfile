@@ -11,5 +11,6 @@ target 'The Movie Database' do
   pod 'SDWebImage' 
   pod 'RealmSwift'
   pod 'youtube-ios-player-helper'
+  pod 'SwipeCellKit'
 
 end

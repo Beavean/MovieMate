@@ -36,9 +36,8 @@ class SavedViewController: UIViewController {
 
     func setupCompletions() {
         viewModel.onDataUpdated = { [weak self] in
-            guard let arrayOfMedia = self?.viewModel.arrayOfMedia, let tableView = self?.savedMediaTableView else { return }
+            guard let arrayOfMedia = self?.viewModel.arrayOfMedia else { return }
             self?.arrayOfMedia = arrayOfMedia
-            tableView.reloadData()
         }
     }
 }

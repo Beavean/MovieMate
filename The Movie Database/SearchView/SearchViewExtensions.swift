@@ -25,13 +25,14 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UISe
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
         let item = mediaSearchResults[indexPath.row]
-        cell.saveButtonCompletion = {
+        cell.saveButtonCompletion = { aCell in
             self.saveButtonPressed(button: cell.saveButton, mediaID: item.id, mediaType: self.mediaType) {
                 tableView.reloadData()
             }
         }
         cell.videoButtonCompletion = {
             if let viewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.UI.videoViewControllerID) as? VideoViewController {
+                viewController.configureTitle(title: item.originalTitle ?? item.originalName)
                 viewController.mediaID = item.id
                 viewController.mediaType = self.mediaType
                 self.navigationController?.pushViewController(viewController, animated: true)

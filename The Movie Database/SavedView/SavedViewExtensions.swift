@@ -36,21 +36,22 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell, let item = self.arrayOfMedia?[indexPath.row] else {  return UITableViewCell() }
-        cell.saveButtonCompletion = {
+        cell.configure(with: item)
+        cell.selectionStyle = .none
+        cell.saveButtonCompletion = { aCell in
+            let actualIndexPath = tableView.indexPath(for: aCell)!
             self.saveButtonPressed(button: cell.saveButton, mediaID: item.id, mediaType: item.mediaType) {
-                tableView.deleteRows(at: [indexPath], with: .fade)
-                self.savedMediaTableView.reloadData()
+                tableView.deleteRows(at: [actualIndexPath], with: .fade)
             }
         }
         cell.videoButtonCompletion = {
             if let viewController = self.storyboard?.instantiateViewController(withIdentifier: Constants.UI.videoViewControllerID) as? VideoViewController {
+                viewController.configureTitle(title: item.originalTitle)
                 viewController.mediaID = item.id
                 viewController.mediaType = item.mediaType
                 self.navigationController?.pushViewController(viewController, animated: true)
             }
         }
-        cell.configure(with: item)
-        cell.selectionStyle = .none
         return cell
     }
 }
