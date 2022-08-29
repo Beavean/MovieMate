@@ -9,7 +9,7 @@ import Foundation
 
 struct Constants {
     
-//MARK: - URLs and Api Keys
+    //MARK: - URLs and Api Keys
     
     struct Network {
         static let apiKey = "?api_key=2cfd0db8398a10e5a9777f73b2218ca9"
@@ -17,6 +17,18 @@ struct Constants {
         static let baseImageUrl = "https://image.tmdb.org/t/p/w780/"
         static let movieType = "movie"
         static let tvSeriesType = "tv"
+        static let trendingMovies = "trending/movie/week"
+        static let trendingSeries = "trending/tv/week"
+        static let searchMovies = "search/movie"
+        static let searchSeries = "search/tv"
+        static let getVideos = "mediaType/ID/videos"
+        static let getDetails = "mediaType/ID"
+        static let nowPlayingMovies = "movie/now_playing"
+        static let upcomingMovies = "movie/upcoming"
+        static let topRatedMovies = "movie/top_rated"
+        static let popularSeries = "tv/popular"
+        static let onTheAirSeries = "tv/on_the_air"
+        static let topRatedSeries = "tv/top_rated"
     }
     
     //MARK: - UI constants and names
@@ -34,3 +46,6 @@ struct Constants {
         static let mainStoryboardName = "Main"
     }
 }
+
+
+

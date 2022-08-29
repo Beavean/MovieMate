@@ -6,21 +6,22 @@
 //
 
 import UIKit
-import SDWebImage
-import Alamofire
-import SwiftUI
 
 class SearchViewController: UIViewController {
+    
+    //MARK: - IBOutlets
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var contentTypeSegmentedControl: UISegmentedControl!
     @IBOutlet private weak var mediaTableView: UITableView!
     
+    //MARK: - Variables
+    
     var mediaType = Constants.Network.movieType
-    var enteredQuery: String?
-    var lastScheduledSearch: Timer?
     var mediaSearchResults = [BasicMedia.Results]()
-    var viewModel: SearchViewModeling = SearchViewModel()
+    private var lastScheduledSearch: Timer?
+    private var enteredQuery: String?
+    private var viewModel: SearchViewModeling = SearchViewModel()
     
     //MARK: - SearchViewController lifecycle
     
@@ -41,7 +42,7 @@ class SearchViewController: UIViewController {
     //MARK: - SegmentedControl interaction and reload media methods
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
-        viewModel.mediaTypeSegmentedControl =  contentTypeSegmentedControl.selectedSegmentIndex
+        viewModel.mediaTypeSegmentedControl = contentTypeSegmentedControl.selectedSegmentIndex
         loadSearchResults()
     }
     
@@ -63,6 +64,24 @@ class SearchViewController: UIViewController {
                 return
             }
         }
+    }
+    
+    //MARK: - SearchBar methods
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        loadSearchResults()
+        searchBar.endEditing(true)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        loadSearchResults()
+        searchBar.text = ""
+        searchBar.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        lastScheduledSearch?.invalidate()
+        lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(loadSearchResults), userInfo: nil, repeats: false)
     }
 }
 

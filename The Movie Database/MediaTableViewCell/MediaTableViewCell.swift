@@ -5,12 +5,14 @@
 //  Created by Beavean on 18.07.2022.
 //
 
-import UIKit
+import Foundation
 import SDWebImage
-import RealmSwift
 
 class MediaTableViewCell: UITableViewCell {
     
+    //MARK: - IBOutlets
+    
+    @IBOutlet weak var saveButton: UIButton!
     @IBOutlet private weak var mediaPosterImageView: UIImageView!
     @IBOutlet private weak var mediaTitleLabel: UILabel!
     @IBOutlet private weak var mediaOverviewLabel: UILabel!
@@ -21,12 +23,13 @@ class MediaTableViewCell: UITableViewCell {
     @IBOutlet private weak var mediaBackdropImageView: UIImageView!
     @IBOutlet private weak var mediaCellMainView: UIView!
     @IBOutlet private weak var mediaRatingBackgroundView: UIView!
-    @IBOutlet weak var saveButton: UIButton!
     
-    var mediaID: Int? = nil
-    var mediaType: String? = nil
+    //MARK: - Variables
+    
+    var mediaType: String?
     var saveButtonCompletion: ((UITableViewCell) -> Void)?
     var videoButtonCompletion: (() -> ()) = {}
+    private var mediaID: Int?
     
     //MARK: - TableViewCell lifecycle
     
@@ -43,6 +46,7 @@ class MediaTableViewCell: UITableViewCell {
         self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
     }
     
+    //MARK: - Button interactions
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         saveButtonCompletion?(self)
@@ -60,12 +64,12 @@ class MediaTableViewCell: UITableViewCell {
             saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: id))
         }
         if let posterPath = model.posterPath {
-            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
             self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
         if let backdropPath = model.backdropPath {
-            self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
+            self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
             self.mediaBackdropImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
@@ -77,18 +81,18 @@ class MediaTableViewCell: UITableViewCell {
         self.mediaRatingLabel.text = String(format: "%.1f", (model.voteAverage ?? 0.0))
     }
     
-    //MARK: - Configure cell with Realm object
+    //MARK: - Configure cell with Realm object model
     
     func configure(with object: RealmObjectModel) {
         saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: object.id))
         self.mediaType = object.mediaType
         if let posterPath = object.posterPath {
-            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
             self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
         if let backdropPath = object.backdropPath {
-            self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
+            self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
             self.mediaBackdropImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
@@ -98,7 +102,7 @@ class MediaTableViewCell: UITableViewCell {
         self.mediaGenresLabel.text = object.genreIDs ?? "Genre is not specified"
         self.mediaReleaseDateLabel.text = object.releaseDate ?? "No release date"
         if let voteAverage = object.voteAverage {
-        self.mediaRatingLabel.text = String(format: "%.1f", voteAverage)
+            self.mediaRatingLabel.text = String(format: "%.1f", voteAverage)
         } else {
             self.mediaRatingLabel.text = "0.0"
         }

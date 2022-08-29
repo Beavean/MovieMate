@@ -16,13 +16,7 @@ struct MediaVideos: Codable {
         case id = "id"
         case results = "results"
     }
-    
-    init(from decoder: Decoder) throws {
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        id = try values.decodeIfPresent(Int.self, forKey: .id)
-        results = try values.decodeIfPresent([Video].self, forKey: .results)
-    }
-    
+        
     struct Video: Codable {
         let name: String?
         let key: String?

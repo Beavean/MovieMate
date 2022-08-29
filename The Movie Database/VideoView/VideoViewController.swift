@@ -7,20 +7,23 @@
 
 import UIKit
 import youtube_ios_player_helper
-import SwiftUI
 
 class VideoViewController: UIViewController {
     
-    var mediaTitle: String?
+    //MARK: - IBOutlets
+    
+    @IBOutlet weak var videoInfoLabel: UILabel!
+    @IBOutlet private weak var titleLabel: UILabel!
+    @IBOutlet private weak var videosTableView: UITableView!
+    
+    //MARK: - Variables
+    
     var mediaID: Int?
     var mediaType: String?
-    var viewModel: VideoViewModeling = VideoViewModel()
     var receivedDetails: [MediaVideos.Video]?
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var videosTableView: UITableView!
-    @IBOutlet weak var videoInfoLabel: UILabel!
-    
-    
+    private var viewModel: VideoViewModeling = VideoViewModel()
+    private var mediaTitle: String?
+
     override func viewDidLoad() {
         videosTableView.dataSource = self
         super.viewDidLoad()
@@ -29,6 +32,8 @@ class VideoViewController: UIViewController {
         viewModel.updateData()
         titleLabel.text = mediaTitle
     }
+    
+    //MARK: - Model completions setup & self configuration
     
     func setupCompletions() {
         viewModel.mediaType = self.mediaType
@@ -40,10 +45,6 @@ class VideoViewController: UIViewController {
     }
     
     func configureTitle(title: String?) {
-        if let title = title {
-            self.mediaTitle = title
-        } else {
-            self.mediaTitle = "No title available"
-        }
+        self.mediaTitle = title ?? "No title available"
     }
 }

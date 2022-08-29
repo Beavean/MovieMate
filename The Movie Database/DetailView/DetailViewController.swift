@@ -6,11 +6,13 @@
 //
 
 import UIKit
-import Alamofire
+import SDWebImage
 import youtube_ios_player_helper
 import SafariServices
 
 class DetailViewController: UIViewController {
+    
+    //MARK: - IBOutlets
     
     @IBOutlet private var playerView: YTPlayerView!
     @IBOutlet private weak var mediaBackdropPosterImageView: UIImageView!
@@ -26,11 +28,13 @@ class DetailViewController: UIViewController {
     @IBOutlet private weak var mediaTaglineLabel: UILabel!
     @IBOutlet private weak var mediaRuntimeLabel: UILabel!
     
+    //MARK: - Variables
+    
     var mediaID: Int?
     var mediaType: String?
-    var mediaVideoKey: String?
-    var viewModel: DetailViewModeling = DetailViewModel()
-    var receivedDetails: MediaDetails?
+    private var mediaVideoKey: String?
+    private var viewModel: DetailViewModeling = DetailViewModel()
+    private var receivedDetails: MediaDetails?
     
     //MARK: - DetailViewController lifecycle
     
@@ -50,7 +54,7 @@ class DetailViewController: UIViewController {
         configureWithMediaDetails(model: receivedDetails)
       }
     
-    //MARK: - Button interaction
+    //MARK: - Button interactions
     
     @IBAction func saveButtonPressed(_ sender: UIButton) {
         self.saveButtonPressed(button: saveButton, mediaID: mediaID, mediaType: mediaType) {
@@ -97,13 +101,13 @@ class DetailViewController: UIViewController {
     func configureWithMediaDetails(model: MediaDetails?) {
         guard let model = model else { return }
         if let backdropPath = model.backdropPath {
-            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath))
+            self.mediaBackdropPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
             self.mediaBackdropPosterImageView.isHidden = true
         }
         if let posterPath = model.posterPath {
-            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
-            self.mediaBackgroundBlurImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
+            self.mediaBackgroundBlurImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
             self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
             self.mediaBackgroundBlurImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)

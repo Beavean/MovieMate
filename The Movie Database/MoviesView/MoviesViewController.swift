@@ -9,14 +9,18 @@ import UIKit
 
 class MoviesViewController: UIViewController {
     
+    //MARK: - IBOutlets
+    
     @IBOutlet weak var nowPlayingCollectionView: UICollectionView!
     @IBOutlet weak var upcomingCollectionView: UICollectionView!
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
     
-    var viewModel: MoviesViewModeling = MoviesViewModel()
+    //MARK: - Variables
+    
     var nowPlayingMovies = [BasicMedia.Results]()
     var upcomingMovies = [BasicMedia.Results]()
     var topRatedMovies = [BasicMedia.Results]()
+    private var viewModel: MoviesViewModeling = MoviesViewModel()
     
     //MARK: - Discover View lifecycle
     
@@ -27,6 +31,9 @@ class MoviesViewController: UIViewController {
         nowPlayingCollectionView.dataSource = self
         upcomingCollectionView.dataSource = self
         topRatedCollectionView.dataSource = self
+        nowPlayingCollectionView.delegate = self
+        upcomingCollectionView.delegate = self
+        topRatedCollectionView.delegate = self
         self.nowPlayingCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
         self.upcomingCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
         self.topRatedCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
@@ -41,7 +48,7 @@ class MoviesViewController: UIViewController {
         topRatedCollectionView.layoutIfNeeded()
     }
     
-    //MARK: - Completions to run the code after model receives data
+    //MARK: - Completions to run after model receives data
     
     func setupCompletions() {
         viewModel.onDataUpdated = { [weak self] in

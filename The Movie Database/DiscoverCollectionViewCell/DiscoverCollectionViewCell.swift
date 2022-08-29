@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import SDWebImage
 
 class DiscoverCollectionViewCell: UICollectionViewCell {
     
-    @IBOutlet weak var posterImageView: UIImageView!
+    //MARK: - IBOutlets
+    
+    @IBOutlet private weak var posterImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -9,14 +9,18 @@ import UIKit
 
 class SeriesViewController: UIViewController {
     
-        @IBOutlet weak var popularCollectionView: UICollectionView!
-        @IBOutlet weak var latestCollectionView: UICollectionView!
-        @IBOutlet weak var topRatedCollectionView: UICollectionView!
+    //MARK: - IBOutlets
     
-    var viewModel: SeriesViewModeling = SeriesViewModel()
+    @IBOutlet weak var popularCollectionView: UICollectionView!
+    @IBOutlet weak var latestCollectionView: UICollectionView!
+    @IBOutlet weak var topRatedCollectionView: UICollectionView!
+    
+    //MARK: - Variables
+    
     var popularSeries = [BasicMedia.Results]()
     var latestSeries = [BasicMedia.Results]()
     var topRatedSeries = [BasicMedia.Results]()
+    private var viewModel: SeriesViewModeling = SeriesViewModel()
     
     //MARK: - Discover View lifecycle
     
@@ -27,6 +31,9 @@ class SeriesViewController: UIViewController {
         popularCollectionView.dataSource = self
         latestCollectionView.dataSource = self
         topRatedCollectionView.dataSource = self
+        popularCollectionView.delegate = self
+        latestCollectionView.delegate = self
+        topRatedCollectionView.delegate = self
         self.popularCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
         self.latestCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
         self.topRatedCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)

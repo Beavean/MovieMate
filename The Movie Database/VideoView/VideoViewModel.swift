@@ -19,10 +19,14 @@ protocol VideoViewModeling {
 
 class VideoViewModel: VideoViewModeling {
     
+    //MARK: - Variables
+    
     var videoDetails: [MediaVideos.Video]?
     var mediaType: String?
     var mediaID: Int?
     var onDataUpdated = { }
+    
+    //MARK: - Data update and process
     
     func updateData() {
         receiveMedia { [weak self] in

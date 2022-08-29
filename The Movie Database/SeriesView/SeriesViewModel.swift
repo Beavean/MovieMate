@@ -5,7 +5,7 @@
 //  Created by Beavean on 09.08.2022.
 //
 
-import UIKit
+import Foundation
 
 protocol SeriesViewModeling {
     var popularSeries: [BasicMedia.Results] { get set }
@@ -18,10 +18,14 @@ protocol SeriesViewModeling {
 
 class SeriesViewModel: SeriesViewModeling {
     
+    //MARK: - Variables
+    
     var popularSeries: [BasicMedia.Results] = []
     var latestSeries: [BasicMedia.Results] = []
     var topRatedSeries: [BasicMedia.Results] = []
     var onDataUpdated = { }
+    
+    //MARK: - Model data update and completions
     
     func updateData() {
         receiveAllSeries { [weak self] in

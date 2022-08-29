@@ -5,7 +5,7 @@
 //  Created by Beavean on 08.08.2022.
 //
 
-import UIKit
+import Foundation
 
 protocol MoviesViewModeling {
     var nowPlayingMovies: [BasicMedia.Results] { get set }
@@ -18,16 +18,23 @@ protocol MoviesViewModeling {
 
 class MoviesViewModel: MoviesViewModeling {
     
+    //MARK: - Variables
+    
     var nowPlayingMovies: [BasicMedia.Results] = []
     var upcomingMovies: [BasicMedia.Results] = []
     var topRatedMovies: [BasicMedia.Results] = []
     var onDataUpdated = { }
+    
+    //MARK: - Model data update and completions
     
     func updateData() {
         receiveAllMovies { [weak self] in
             self?.onDataUpdated()
         }
     }
+    
+    
+    //MARK: - Receiving data after update
     
     func receiveAllMovies(completion: @escaping (()->())) {
         NetworkManager.shared.getNowPlayingMovies { movies in

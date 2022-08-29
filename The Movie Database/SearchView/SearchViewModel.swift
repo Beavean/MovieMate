@@ -5,7 +5,7 @@
 //  Created by Beavean on 01.08.2022.
 //
 
-import UIKit
+import Foundation
 
 protocol SearchViewModeling {
     var mediaSearchResults: [BasicMedia.Results] { get set }
@@ -19,13 +19,15 @@ protocol SearchViewModeling {
 
 class SearchViewModel: SearchViewModeling {
     
+    //MARK: - Variables
+    
     var mediaSearchResults: [BasicMedia.Results] = []
     var enteredQuery = nil ?? ""
     var mediaTypeSegmentedControl = 0
     var mediaType: String?
     var onDataUpdated = { }
     
-    //MARK: - Receiving and processing data methods
+    //MARK: - Model data update and completions
     
     func updateData() {
         receiveMedia { [weak self] in
@@ -36,12 +38,6 @@ class SearchViewModel: SearchViewModeling {
     func receiveMedia(completion: @escaping (()->())) {
         if enteredQuery.isEmpty {
             switch mediaTypeSegmentedControl {
-            case 0:
-                NetworkManager.shared.getTrendingMovies { media in
-                    self.mediaType = Constants.Network.movieType
-                    self.mediaSearchResults = media
-                    completion()
-                }
             case 1:
                 NetworkManager.shared.getTrendingSeries { media in
                     self.mediaType = Constants.Network.tvSeriesType
@@ -57,12 +53,6 @@ class SearchViewModel: SearchViewModeling {
             }
         } else {
             switch mediaTypeSegmentedControl {
-            case 0:
-                NetworkManager.shared.getSearchedMovies(enteredQuery: enteredQuery) { media in
-                    self.mediaType = Constants.Network.movieType
-                    self.mediaSearchResults = media
-                    completion()
-                }
             case 1:
                 NetworkManager.shared.getSearchedSeries(enteredQuery: enteredQuery) { media in
                     self.mediaType = Constants.Network.tvSeriesType

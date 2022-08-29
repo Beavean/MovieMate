@@ -19,11 +19,15 @@ protocol DetailViewModeling {
 
 class DetailViewModel: DetailViewModeling {
     
+    //MARK: - Variables
+    
     var mediaDetails: MediaDetails?
     var mediaType: String?
     var mediaVideoKey: String?
     var mediaID: Int?
     var onDataUpdated = { }
+    
+    //MARK: - Model data update and completions
     
     func updateData() {
         receiveMedia { [weak self] in

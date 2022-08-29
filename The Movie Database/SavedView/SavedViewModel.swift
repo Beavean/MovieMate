@@ -18,8 +18,12 @@ protocol SavedViewModeling {
 
 class SavedViewModel: SavedViewModeling {
     
+    //MARK: - Variables
+    
     var arrayOfMedia: Results<RealmObjectModel>?
     var onDataUpdated = { }
+    
+    //MARK: - Loading data
     
     func loadSavedMedia(searchText: String?) {
         if let searchText = searchText {

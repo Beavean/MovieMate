@@ -12,11 +12,7 @@ extension UIView {
     //MARK: - Adds small corner radius based on height or width to images
     
     func addSmallCornerRadius() {
-        if self.frame.height < self.frame.width {
-            self.layer.cornerRadius = self.bounds.height * Constants.UI.cornerRadiusRatio
-        } else {
-            self.layer.cornerRadius = self.bounds.width * Constants.UI.cornerRadiusRatio
-        }
+        self.layer.cornerRadius = self.frame.height < self.frame.width ? self.bounds.height * Constants.UI.cornerRadiusRatio : self.bounds.width * Constants.UI.cornerRadiusRatio
         self.updateConstraints()
     }
 }

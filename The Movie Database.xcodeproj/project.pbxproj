@@ -29,7 +29,7 @@
 		08B0465F2889886D00E61D76 /* RealmObjectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B0465E2889886C00E61D76 /* RealmObjectModel.swift */; };
 		08B04665288B316200E61D76 /* MediaGenresDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B04664288B316100E61D76 /* MediaGenresDecoder.swift */; };
 		08B04669288BD33700E61D76 /* MediaDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B04668288BD33700E61D76 /* MediaDateFormatter.swift */; };
-		08C57B2728A121EA00A61668 /* MoviesViewModeling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C57B2628A121EA00A61668 /* MoviesViewModeling.swift */; };
+		08C57B2728A121EA00A61668 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C57B2628A121EA00A61668 /* MoviesViewModel.swift */; };
 		08C57B2928A121FD00A61668 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C57B2828A121FD00A61668 /* MoviesViewController.swift */; };
 		08C57B2B28A14A2900A61668 /* MoviesViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C57B2A28A14A2900A61668 /* MoviesViewExtensions.swift */; };
 		08C57B2D28A157ED00A61668 /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C57B2C28A157ED00A61668 /* SavedViewModel.swift */; };
@@ -41,10 +41,10 @@
 		08D6A13428A7E81A001BD9E2 /* VideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6A13328A7E81A001BD9E2 /* VideoViewController.swift */; };
 		08D6A13728A7E861001BD9E2 /* VideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08D6A13628A7E861001BD9E2 /* VideoViewModel.swift */; };
 		08DD20EC2885F33E0036FA84 /* MediaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DD20EA2885F33E0036FA84 /* MediaTableViewCell.swift */; };
-		08E6492C28A2898D00AD9DCF /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6492B28A2898D00AD9DCF /* UIImageViewExtensions.swift */; };
-		08E6492E28A289C800AD9DCF /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6492D28A289C800AD9DCF /* UIViewExtensions.swift */; };
-		08E6493028A28E5600AD9DCF /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6492F28A28E5600AD9DCF /* UIButtonExtensions.swift */; };
-		08E6493228A28E8A00AD9DCF /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6493128A28E8A00AD9DCF /* UIViewControllerExtensions.swift */; };
+		08E6492C28A2898D00AD9DCF /* UIImageView+Blur.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6492B28A2898D00AD9DCF /* UIImageView+Blur.swift */; };
+		08E6492E28A289C800AD9DCF /* UIView+CornerRadius.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6492D28A289C800AD9DCF /* UIView+CornerRadius.swift */; };
+		08E6493028A28E5600AD9DCF /* UIButton+SavedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6492F28A28E5600AD9DCF /* UIButton+SavedImage.swift */; };
+		08E6493228A28E8A00AD9DCF /* UIViewController+SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6493128A28E8A00AD9DCF /* UIViewController+SaveButton.swift */; };
 		08E6493628A2968D00AD9DCF /* SeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6493528A2968D00AD9DCF /* SeriesViewController.swift */; };
 		08E6493828A2993F00AD9DCF /* SeriesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6493728A2993F00AD9DCF /* SeriesViewModel.swift */; };
 		08E6493A28A29A0C00AD9DCF /* SeriesViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08E6493928A29A0C00AD9DCF /* SeriesViewExtensions.swift */; };
@@ -76,7 +76,7 @@
 		08B0465E2889886C00E61D76 /* RealmObjectModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmObjectModel.swift; sourceTree = "<group>"; };
 		08B04664288B316100E61D76 /* MediaGenresDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGenresDecoder.swift; sourceTree = "<group>"; };
 		08B04668288BD33700E61D76 /* MediaDateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaDateFormatter.swift; sourceTree = "<group>"; };
-		08C57B2628A121EA00A61668 /* MoviesViewModeling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModeling.swift; sourceTree = "<group>"; };
+		08C57B2628A121EA00A61668 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 		08C57B2828A121FD00A61668 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
 		08C57B2A28A14A2900A61668 /* MoviesViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewExtensions.swift; sourceTree = "<group>"; };
 		08C57B2C28A157ED00A61668 /* SavedViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewModel.swift; sourceTree = "<group>"; };
@@ -88,10 +88,10 @@
 		08D6A13328A7E81A001BD9E2 /* VideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewController.swift; sourceTree = "<group>"; };
 		08D6A13628A7E861001BD9E2 /* VideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoViewModel.swift; sourceTree = "<group>"; };
 		08DD20EA2885F33E0036FA84 /* MediaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaTableViewCell.swift; sourceTree = "<group>"; };
-		08E6492B28A2898D00AD9DCF /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
-		08E6492D28A289C800AD9DCF /* UIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
-		08E6492F28A28E5600AD9DCF /* UIButtonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIButtonExtensions.swift; sourceTree = "<group>"; };
-		08E6493128A28E8A00AD9DCF /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		08E6492B28A2898D00AD9DCF /* UIImageView+Blur.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Blur.swift"; sourceTree = "<group>"; };
+		08E6492D28A289C800AD9DCF /* UIView+CornerRadius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+CornerRadius.swift"; sourceTree = "<group>"; };
+		08E6492F28A28E5600AD9DCF /* UIButton+SavedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+SavedImage.swift"; sourceTree = "<group>"; };
+		08E6493128A28E8A00AD9DCF /* UIViewController+SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+SaveButton.swift"; sourceTree = "<group>"; };
 		08E6493528A2968D00AD9DCF /* SeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewController.swift; sourceTree = "<group>"; };
 		08E6493728A2993F00AD9DCF /* SeriesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewModel.swift; sourceTree = "<group>"; };
 		08E6493928A29A0C00AD9DCF /* SeriesViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesViewExtensions.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				08C57B2828A121FD00A61668 /* MoviesViewController.swift */,
-				08C57B2628A121EA00A61668 /* MoviesViewModeling.swift */,
+				08C57B2628A121EA00A61668 /* MoviesViewModel.swift */,
 				08C57B2A28A14A2900A61668 /* MoviesViewExtensions.swift */,
 			);
 			path = MoviesView;
@@ -275,10 +275,10 @@
 		08E6493328A28EF800AD9DCF /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				08E6493128A28E8A00AD9DCF /* UIViewControllerExtensions.swift */,
-				08E6492B28A2898D00AD9DCF /* UIImageViewExtensions.swift */,
-				08E6492F28A28E5600AD9DCF /* UIButtonExtensions.swift */,
-				08E6492D28A289C800AD9DCF /* UIViewExtensions.swift */,
+				08E6493128A28E8A00AD9DCF /* UIViewController+SaveButton.swift */,
+				08E6492B28A2898D00AD9DCF /* UIImageView+Blur.swift */,
+				08E6492F28A28E5600AD9DCF /* UIButton+SavedImage.swift */,
+				08E6492D28A289C800AD9DCF /* UIView+CornerRadius.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -444,7 +444,7 @@
 				08CF46F3289C505E009E67D4 /* DetailViewModel.swift in Sources */,
 				08DD20EC2885F33E0036FA84 /* MediaTableViewCell.swift in Sources */,
 				08B0464D288946E800E61D76 /* RealmObjectManager.swift in Sources */,
-				08E6492C28A2898D00AD9DCF /* UIImageViewExtensions.swift in Sources */,
+				08E6492C28A2898D00AD9DCF /* UIImageView+Blur.swift in Sources */,
 				08CF46E6289A7C1D009E67D4 /* SavedViewExtensions.swift in Sources */,
 				08C57B2B28A14A2900A61668 /* MoviesViewExtensions.swift in Sources */,
 				08CC63B02898253200EF29AD /* SearchViewModel.swift in Sources */,
@@ -454,18 +454,18 @@
 				08986CE2287C46C000D9FBDA /* SearchViewController.swift in Sources */,
 				08C57B2D28A157ED00A61668 /* SavedViewModel.swift in Sources */,
 				082170DD28992AA3000D74EF /* NetworkManager.swift in Sources */,
-				08E6493028A28E5600AD9DCF /* UIButtonExtensions.swift in Sources */,
-				08E6493228A28E8A00AD9DCF /* UIViewControllerExtensions.swift in Sources */,
+				08E6493028A28E5600AD9DCF /* UIButton+SavedImage.swift in Sources */,
+				08E6493228A28E8A00AD9DCF /* UIViewController+SaveButton.swift in Sources */,
 				08D6A13728A7E861001BD9E2 /* VideoViewModel.swift in Sources */,
 				08B0465F2889886D00E61D76 /* RealmObjectModel.swift in Sources */,
 				08C57B2F28A1602000A61668 /* SavedViewController.swift in Sources */,
 				0828F3E4289EB37200A9C81C /* DiscoverCollectionViewCell.swift in Sources */,
-				08E6492E28A289C800AD9DCF /* UIViewExtensions.swift in Sources */,
+				08E6492E28A289C800AD9DCF /* UIView+CornerRadius.swift in Sources */,
 				08B046582889481800E61D76 /* MediaDetails.swift in Sources */,
 				08E6493628A2968D00AD9DCF /* SeriesViewController.swift in Sources */,
 				08986CDE287C46C000D9FBDA /* AppDelegate.swift in Sources */,
 				080039AC28907EF3008BB7A6 /* MediaVideos.swift in Sources */,
-				08C57B2728A121EA00A61668 /* MoviesViewModeling.swift in Sources */,
+				08C57B2728A121EA00A61668 /* MoviesViewModel.swift in Sources */,
 				08986CE0287C46C000D9FBDA /* SceneDelegate.swift in Sources */,
 				08E6493828A2993F00AD9DCF /* SeriesViewModel.swift in Sources */,
 				0881631F2886A79C005F2C9B /* BasicMedia.swift in Sources */,

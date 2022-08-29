@@ -38,73 +38,75 @@ struct NetworkManager {
     }
     
     func getTrendingMovies(completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "trending/movie/week", model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.trendingMovies, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getTrendingSeries(completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "trending/tv/week", model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.trendingSeries, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getSearchedMovies(enteredQuery: String, completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "search/movie", enteredQuery: enteredQuery, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.searchMovies, enteredQuery: enteredQuery, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getSearchedSeries(enteredQuery: String, completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "search/tv", enteredQuery: enteredQuery, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.searchSeries, enteredQuery: enteredQuery, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getMediaVideos(mediaID: Int, mediaType: String, completion: @escaping (([MediaVideos.Video])->())) {
-        makeRequest(apiQuery: "\(mediaType)/\(mediaID)/videos", model: MediaVideos.self) { data in
+        let query = Constants.Network.getVideos.replacingOccurrences(of: "mediaType", with: mediaType).replacingOccurrences(of: "ID", with: String(mediaID))
+        makeRequest(apiQuery: query, model: MediaVideos.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getMediaDetails(mediaID: Int, mediaType: String, completion: @escaping ((MediaDetails)->())) {
-        makeRequest(apiQuery: "\(mediaType)/\(mediaID)", model: MediaDetails.self) { data in
+        let query = Constants.Network.getDetails.replacingOccurrences(of: "mediaType", with: mediaType).replacingOccurrences(of: "ID", with: String(mediaID))
+        makeRequest(apiQuery: query, model: MediaDetails.self) { data in
             completion(data)
         }
     }
     
     func getNowPlayingMovies(completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "movie/now_playing", model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.nowPlayingMovies, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getUpcomingMovies(completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "movie/upcoming", model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.upcomingMovies, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getTopRatedMovies(completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "movie/top_rated", model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.topRatedMovies, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getPopularSeries(completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "tv/popular", model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.popularSeries, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getLatestSeries(completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "tv/on_the_air", model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.onTheAirSeries, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getTopRatedSeries(completion: @escaping (([BasicMedia.Results])->())) {
-        makeRequest(apiQuery: "tv/top_rated", model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.topRatedSeries, model: BasicMedia.self) { data in
             completion(data.results ?? [])
         }
     }
