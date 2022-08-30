@@ -28,24 +28,9 @@ class SeriesViewController: UIViewController {
         super.viewDidLoad()
         setupCompletions()
         viewModel.updateData()
-        popularCollectionView.dataSource = self
-        latestCollectionView.dataSource = self
-        topRatedCollectionView.dataSource = self
-        popularCollectionView.delegate = self
-        latestCollectionView.delegate = self
-        topRatedCollectionView.delegate = self
-        self.popularCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
-        self.latestCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
-        self.topRatedCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        popularCollectionView.reloadData()
-        latestCollectionView.reloadData()
-        topRatedCollectionView.reloadData()
-        popularCollectionView.layoutIfNeeded()
-        latestCollectionView.layoutIfNeeded()
-        topRatedCollectionView.layoutIfNeeded()
+        setupCollectionView(popularCollectionView)
+        setupCollectionView(latestCollectionView)
+        setupCollectionView(topRatedCollectionView)
     }
     
     //MARK: - Completions to run the code after model receives data
@@ -59,13 +44,25 @@ class SeriesViewController: UIViewController {
             self?.popularSeries = popularSeries
             self?.latestSeries = latestSeries
             self?.topRatedSeries = topRatedSeries
-            self?.popularCollectionView.reloadData()
-            self?.latestCollectionView.reloadData()
-            self?.topRatedCollectionView.reloadData()
-            self?.popularCollectionView.layoutIfNeeded()
-            self?.latestCollectionView.layoutIfNeeded()
-            self?.topRatedCollectionView.layoutIfNeeded()
+            self?.reloadCollectionView(self?.popularCollectionView)
+            self?.reloadCollectionView(self?.latestCollectionView)
+            self?.reloadCollectionView(self?.topRatedCollectionView)
         }
+    }
+    //MARK: - Collection View setups
+    
+    func setupCollectionView(_ collectionView: UICollectionView) {
+        collectionView.delegate = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
+    }
+    
+    func reloadCollectionView(_ collectionView: UICollectionView?) {
+        guard let collectionView = collectionView else {
+            return
+        }
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
     }
 }
 

@@ -28,24 +28,9 @@ class MoviesViewController: UIViewController {
         super.viewDidLoad()
         setupCompletions()
         viewModel.updateData()
-        nowPlayingCollectionView.dataSource = self
-        upcomingCollectionView.dataSource = self
-        topRatedCollectionView.dataSource = self
-        nowPlayingCollectionView.delegate = self
-        upcomingCollectionView.delegate = self
-        topRatedCollectionView.delegate = self
-        self.nowPlayingCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
-        self.upcomingCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
-        self.topRatedCollectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
-    }
-    
-    override func viewWillLayoutSubviews() {
-        nowPlayingCollectionView.reloadData()
-        upcomingCollectionView.reloadData()
-        topRatedCollectionView.reloadData()
-        nowPlayingCollectionView.layoutIfNeeded()
-        upcomingCollectionView.layoutIfNeeded()
-        topRatedCollectionView.layoutIfNeeded()
+        setupCollectionView(nowPlayingCollectionView)
+        setupCollectionView(upcomingCollectionView)
+        setupCollectionView(topRatedCollectionView)
     }
     
     //MARK: - Completions to run after model receives data
@@ -59,12 +44,25 @@ class MoviesViewController: UIViewController {
             self?.nowPlayingMovies = nowPlayingMovies
             self?.upcomingMovies = upcomingMovies
             self?.topRatedMovies = topRatedMovies
-            self?.nowPlayingCollectionView.reloadData()
-            self?.upcomingCollectionView.reloadData()
-            self?.topRatedCollectionView.reloadData()
-            self?.nowPlayingCollectionView.layoutIfNeeded()
-            self?.upcomingCollectionView.layoutIfNeeded()
-            self?.topRatedCollectionView.layoutIfNeeded()
+            self?.reloadCollectionView(self?.nowPlayingCollectionView)
+            self?.reloadCollectionView(self?.upcomingCollectionView)
+            self?.reloadCollectionView(self?.topRatedCollectionView)
         }
+    }
+    
+    //MARK: - Collection View setups
+    
+    func setupCollectionView(_ collectionView: UICollectionView) {
+        collectionView.delegate = self
+        collectionView.delegate = self
+        collectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
+    }
+    
+    func reloadCollectionView(_ collectionView: UICollectionView?) {
+        guard let collectionView = collectionView else {
+            return
+        }
+        collectionView.reloadData()
+        collectionView.layoutIfNeeded()
     }
 }
