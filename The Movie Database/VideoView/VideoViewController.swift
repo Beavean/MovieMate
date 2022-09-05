@@ -36,11 +36,13 @@ class VideoViewController: UIViewController {
     //MARK: - Model completions setup & self configuration
     
     func setupCompletions() {
+        showLoader(true)
         viewModel.mediaType = self.mediaType
         viewModel.mediaID = self.mediaID
         viewModel.onDataUpdated = { [weak self] in
             self?.receivedDetails = self?.viewModel.videoDetails
             self?.videosTableView.reloadData()
+            self?.showLoader(false)
         }
     }
     

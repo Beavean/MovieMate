@@ -36,6 +36,7 @@ class MoviesViewController: UIViewController {
     //MARK: - Completions to run after model receives data
     
     func setupCompletions() {
+        showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
             guard let nowPlayingMovies = self?.viewModel.nowPlayingMovies,
                   let upcomingMovies = self?.viewModel.upcomingMovies,
@@ -47,6 +48,7 @@ class MoviesViewController: UIViewController {
             self?.reloadCollectionView(self?.nowPlayingCollectionView)
             self?.reloadCollectionView(self?.upcomingCollectionView)
             self?.reloadCollectionView(self?.topRatedCollectionView)
+            self?.showLoader(false)
         }
     }
     

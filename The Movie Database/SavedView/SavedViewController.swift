@@ -40,9 +40,11 @@ class SavedViewController: UIViewController {
     //MARK: - Model completion setup
     
     func setupCompletions() {
+        showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
             guard let arrayOfMedia = self?.viewModel.arrayOfMedia else { return }
             self?.arrayOfMedia = arrayOfMedia
+            self?.showLoader(false)
         }
     }
     

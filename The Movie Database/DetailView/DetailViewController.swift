@@ -86,6 +86,7 @@ class DetailViewController: UIViewController {
     //MARK: - Completions to run after model receives data
     
     func setupCompletions() {
+        showLoader(true)
         viewModel.mediaType = self.mediaType
         viewModel.mediaID = self.mediaID
         viewModel.onDataUpdated = { [weak self] in
@@ -93,6 +94,7 @@ class DetailViewController: UIViewController {
             self?.mediaVideoKey = self?.viewModel.mediaVideoKey
             self?.configureWithMediaDetails(model: self?.viewModel.mediaDetails)
             self?.loadVideoPlayer(videoKey: self?.viewModel.mediaVideoKey)
+            self?.showLoader(false)
         }
     }
     

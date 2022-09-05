@@ -19,7 +19,7 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource, UISea
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        arrayOfMedia?.count ?? 1
+        arrayOfMedia?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {

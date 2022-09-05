@@ -286,9 +286,7 @@
                             <constraint firstItem="IZt-Wr-L74" firstAttribute="trailing" secondItem="QBC-WW-kgT" secondAttribute="trailing" id="Awy-Ql-HJW"/>
                             <constraint firstItem="ZFB-ax-g72" firstAttribute="trailing" secondItem="QBC-WW-kgT" secondAttribute="trailing" id="BVP-8Q-GU0"/>
                             <constraint firstItem="ZFB-ax-g72" firstAttribute="top" secondItem="QBC-WW-kgT" secondAttribute="top" id="E1T-FW-B3O"/>
-                            <constraint firstItem="IZt-Wr-L74" firstAttribute="trailing" secondItem="QBC-WW-kgT" secondAttribute="trailing" id="FyA-aW-0ZE"/>
                             <constraint firstItem="IZt-Wr-L74" firstAttribute="top" secondItem="ZNj-Jm-NrZ" secondAttribute="bottom" constant="8" id="Rld-X5-0sv"/>
-                            <constraint firstItem="IZt-Wr-L74" firstAttribute="leading" secondItem="QBC-WW-kgT" secondAttribute="leading" id="W2L-P5-oVG"/>
                             <constraint firstItem="ZFB-ax-g72" firstAttribute="leading" secondItem="QBC-WW-kgT" secondAttribute="leading" id="id9-Jw-FMP"/>
                             <constraint firstItem="ZNj-Jm-NrZ" firstAttribute="leading" secondItem="QBC-WW-kgT" secondAttribute="leading" constant="8" id="n0t-Li-5Jz"/>
                             <constraint firstItem="IZt-Wr-L74" firstAttribute="bottom" secondItem="QBC-WW-kgT" secondAttribute="bottom" id="q6d-AD-UCa"/>

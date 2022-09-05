@@ -14,7 +14,7 @@ struct NetworkManager {
     
     private init() { }
     
-    func makeRequest<T: Codable>(apiQuery: String, enteredQuery: String = "", model: T.Type, completion: @escaping (T) -> ()) {
+    private func makeRequest<T: Codable>(apiQuery: String, enteredQuery: String = "", model: T.Type, completion: @escaping (T) -> ()) {
         let baseUrl = Constants.Network.baseUrl
         let apiKey = Constants.Network.apiKey
         var url: URL

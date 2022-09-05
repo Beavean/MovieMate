@@ -36,6 +36,7 @@ class SeriesViewController: UIViewController {
     //MARK: - Completions to run the code after model receives data
     
     func setupCompletions() {
+        showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
             guard let popularSeries = self?.viewModel.popularSeries,
                   let latestSeries = self?.viewModel.latestSeries,
@@ -47,6 +48,7 @@ class SeriesViewController: UIViewController {
             self?.reloadCollectionView(self?.popularCollectionView)
             self?.reloadCollectionView(self?.latestCollectionView)
             self?.reloadCollectionView(self?.topRatedCollectionView)
+            self?.showLoader(false)
         }
     }
     //MARK: - Collection View setups

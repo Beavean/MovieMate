@@ -12,5 +12,6 @@ target 'The Movie Database' do
   pod 'RealmSwift'
   pod 'youtube-ios-player-helper'
   pod 'SwipeCellKit'
+  pod 'JGProgressHUD'
 
 end
