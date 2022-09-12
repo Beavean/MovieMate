@@ -49,10 +49,10 @@ class DetailViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         super.viewWillAppear(animated)
+        super.viewWillAppear(animated)
         viewModel.updateData()
         configureWithMediaDetails(model: receivedDetails)
-      }
+    }
     
     //MARK: - Button interactions
     

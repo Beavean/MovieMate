@@ -60,9 +60,7 @@ class SeriesViewController: UIViewController {
     }
     
     func reloadCollectionView(_ collectionView: UICollectionView?) {
-        guard let collectionView = collectionView else {
-            return
-        }
+        guard let collectionView = collectionView else { return }
         collectionView.reloadData()
         collectionView.layoutIfNeeded()
     }

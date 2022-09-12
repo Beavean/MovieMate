@@ -21,14 +21,23 @@ struct Constants {
         static let trendingSeries = "trending/tv/week"
         static let searchMovies = "search/movie"
         static let searchSeries = "search/tv"
-        static let getVideos = "mediaType/ID/videos"
-        static let getDetails = "mediaType/ID"
         static let nowPlayingMovies = "movie/now_playing"
         static let upcomingMovies = "movie/upcoming"
         static let topRatedMovies = "movie/top_rated"
         static let popularSeries = "tv/popular"
         static let onTheAirSeries = "tv/on_the_air"
         static let topRatedSeries = "tv/top_rated"
+        
+        static func getDetailsRequest(mediaID: Int, mediaType: String) -> String {
+            let query = "\(mediaType)/\(mediaID)"
+            return query
+        }
+        
+        static func getMediaVideos(mediaID: Int, mediaType: String) -> String {
+            let query = "\(mediaType)/\(mediaID)/videos"
+            return query
+        }
+        
     }
     
     //MARK: - UI constants and names

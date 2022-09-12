@@ -5,7 +5,7 @@
 //  Created by Beavean on 23.07.2022.
 //
 
-import UIKit
+import Foundation
 
 struct MediaDateFormatter {
     

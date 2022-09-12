@@ -39,7 +39,7 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UISe
             }
         }
         cell.mediaType = self.mediaType
-        cell.configure(with: item)
+        cell.receivedMedia = item
         cell.selectionStyle = .none
         return cell
     }

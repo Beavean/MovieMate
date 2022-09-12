@@ -27,12 +27,17 @@ struct NetworkManager {
             url = urlFromString
         }
         AF.request(url).response { response in
-            guard let response = response.data else { return }
-            do {
-                let data = try JSONDecoder().decode(model, from: response)
-                completion(data)
-            } catch {
-                print("JSON decode error:", error)
+            switch response.error {
+            case .none:
+                guard let response = response.data else { return }
+                do {
+                    let data = try JSONDecoder().decode(model, from: response)
+                    completion(data)
+                } catch {
+                    print("JSON decode error:", error)
+                }
+            case .some(_):
+                print("Server error: \(String(describing: response.error))")
             }
         }
     }
@@ -62,14 +67,14 @@ struct NetworkManager {
     }
     
     func getMediaVideos(mediaID: Int, mediaType: String, completion: @escaping (([MediaVideos.Video])->())) {
-        let query = Constants.Network.getVideos.replacingOccurrences(of: "mediaType", with: mediaType).replacingOccurrences(of: "ID", with: String(mediaID))
+        let query = Constants.Network.getMediaVideos(mediaID: mediaID, mediaType: mediaType)
         makeRequest(apiQuery: query, model: MediaVideos.self) { data in
             completion(data.results ?? [])
         }
     }
     
     func getMediaDetails(mediaID: Int, mediaType: String, completion: @escaping ((MediaDetails)->())) {
-        let query = Constants.Network.getDetails.replacingOccurrences(of: "mediaType", with: mediaType).replacingOccurrences(of: "ID", with: String(mediaID))
+        let query = Constants.Network.getDetailsRequest(mediaID: mediaID, mediaType: mediaType)
         makeRequest(apiQuery: query, model: MediaDetails.self) { data in
             completion(data)
         }

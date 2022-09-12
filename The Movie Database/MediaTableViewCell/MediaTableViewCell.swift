@@ -30,6 +30,12 @@ class MediaTableViewCell: UITableViewCell {
     var saveButtonCompletion: ((UITableViewCell) -> Void)?
     var videoButtonCompletion: (() -> ()) = {}
     private var mediaID: Int?
+    var receivedMedia: BasicMedia.Results? {
+        didSet { configureWithReceivedMedia() }
+    }
+    var savedMedia: RealmObjectModel? {
+        didSet { configureWithSavedMedia() }
+    }
     
     //MARK: - TableViewCell lifecycle
     
@@ -59,7 +65,8 @@ class MediaTableViewCell: UITableViewCell {
     
     //MARK: - Configure cell with JSON model
     
-    func configure(with model: BasicMedia.Results) {
+    func configureWithReceivedMedia() {
+        guard let model = receivedMedia else { return }
         if let id = model.id {
             saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: id))
         }
@@ -83,7 +90,8 @@ class MediaTableViewCell: UITableViewCell {
     
     //MARK: - Configure cell with Realm object model
     
-    func configure(with object: RealmObjectModel) {
+    func configureWithSavedMedia() {
+        guard let object = savedMedia else { return }
         saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: object.id))
         self.mediaType = object.mediaType
         if let posterPath = object.posterPath {

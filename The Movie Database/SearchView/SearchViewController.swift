@@ -55,7 +55,9 @@ class SearchViewController: UIViewController {
     func setupCompletions() {
         showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
-            guard let receivedMedia = self?.viewModel.mediaSearchResults, let mediaType = self?.viewModel.mediaType, let mediaTableView = self?.mediaTableView else { return }
+            guard let receivedMedia = self?.viewModel.mediaSearchResults,
+                  let mediaType = self?.viewModel.mediaType,
+                  let mediaTableView = self?.mediaTableView else { return }
             self?.mediaSearchResults = receivedMedia
             self?.mediaType = mediaType
             self?.mediaTableView.reloadData()

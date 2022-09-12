@@ -5,7 +5,7 @@
 //  Created by Beavean on 21.07.2022.
 //
 
-import UIKit
+import Foundation
 import RealmSwift
 
 struct RealmObjectManager {
@@ -16,11 +16,10 @@ struct RealmObjectManager {
     
     private init() { }
     
-   func saveMedia(from model: MediaDetails, mediaType: String) {
+    func saveMedia(from model: MediaDetails, mediaType: String) {
         let movieRealm = RealmObjectModel()
-        if (realm?.object(ofType: RealmObjectModel.self, forPrimaryKey: model.id)) != nil {
-            return
-        } else {
+        if (realm?.object(ofType: RealmObjectModel.self, forPrimaryKey: model.id)) != nil { return }
+        else {
             movieRealm.mediaType = mediaType
             movieRealm.adult = model.adult ?? false
             movieRealm.backdropPath = model.backdropPath ?? ""

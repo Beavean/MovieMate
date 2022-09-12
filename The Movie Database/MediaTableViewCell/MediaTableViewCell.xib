@@ -204,12 +204,12 @@
                     <constraint firstItem="0ZH-fY-jlb" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="4" id="1lO-Yq-x9N"/>
                     <constraint firstAttribute="bottom" secondItem="0ZH-fY-jlb" secondAttribute="bottom" constant="4" id="5wG-TN-gzn"/>
                     <constraint firstItem="0ZH-fY-jlb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Njk-S4-lPF"/>
-                    <constraint firstAttribute="trailing" secondItem="0ZH-fY-jlb" secondAttribute="trailing" constant="8" id="uCu-mN-8Mn"/>
+                    <constraint firstAttribute="trailing" secondItem="0ZH-fY-jlb" secondAttribute="trailing" priority="999" constant="8" id="uCu-mN-8Mn"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <constraints>
-                <constraint firstItem="mey-Ro-yGY" firstAttribute="width" secondItem="njF-e1-oar" secondAttribute="width" multiplier="0.969314" id="jQ6-UZ-dws"/>
+                <constraint firstItem="mey-Ro-yGY" firstAttribute="width" secondItem="njF-e1-oar" secondAttribute="width" multiplier="0.97" id="jQ6-UZ-dws"/>
             </constraints>
             <connections>
                 <outlet property="mediaBackdropImageView" destination="TfU-RK-6Th" id="dMb-mQ-sd7"/>

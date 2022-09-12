@@ -61,10 +61,10 @@ class SavedViewController: UIViewController {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         lastScheduledSearch?.invalidate()
-        lastScheduledSearch = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { _ in
-            self.viewModel.loadSavedMedia(searchText: self.savedMediaSearchBar.text)
-            self.lastScheduledSearch?.invalidate()
-            self.savedMediaTableView.reloadData()
+        lastScheduledSearch = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] _ in
+            self?.viewModel.loadSavedMedia(searchText: self?.savedMediaSearchBar.text)
+            self?.lastScheduledSearch?.invalidate()
+            self?.savedMediaTableView.reloadData()
         })
     }
     

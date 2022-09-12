@@ -1,5 +1,5 @@
 //
-//  UIImageViewExtensions.swift
+//  UIImageView+Blur.swift
 //  The Movie Database
 //
 //  Created by Beavean on 09.08.2022.

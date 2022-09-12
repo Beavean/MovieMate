@@ -34,10 +34,10 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource, UISea
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell, let item = self.arrayOfMedia?[indexPath.row] else {  return UITableViewCell() }
-        cell.configure(with: item)
+        cell.savedMedia = item
         cell.selectionStyle = .none
         cell.saveButtonCompletion = { aCell in
-            let actualIndexPath = tableView.indexPath(for: aCell)!
+            guard let actualIndexPath = tableView.indexPath(for: aCell) else { return }
             self.saveButtonPressed(button: cell.saveButton, mediaID: item.id, mediaType: item.mediaType) {
                 tableView.deleteRows(at: [actualIndexPath], with: .fade)
             }
