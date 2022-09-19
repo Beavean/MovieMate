@@ -26,8 +26,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UISe
         guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
         let item = mediaSearchResults[indexPath.row]
         cell.saveButtonCompletion = { aCell in
-            self.saveButtonPressed(button: cell.saveButton, mediaID: item.id, mediaType: self.mediaType) {
-                tableView.reloadData()
+            self.saveButtonPressed(button: cell.saveButton, mediaID: item.id, mediaType: self.mediaType) { [weak self] in
+                self?.mediaTableView.reloadData()
             }
         }
         cell.videoButtonCompletion = { [weak self] in

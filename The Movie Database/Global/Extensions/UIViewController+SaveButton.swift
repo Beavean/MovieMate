@@ -11,7 +11,7 @@ extension UIViewController {
     
     //MARK: - Save button processing & alert display methods
     
-    func saveButtonPressed(button: UIButton, mediaID: Int?, mediaType: String?, completion: @escaping ()->()) {
+    func saveButtonPressed(button: UIButton, mediaID: Int?, mediaType: String?, completion: @escaping () -> Void) {
         guard let mediaID = mediaID else { return }
         if RealmObjectManager.shared.checkIfAlreadySaved(id: mediaID) {
             let alert = UIAlertController(title: "Remove from saved?", message: "", preferredStyle: .alert)

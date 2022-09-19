@@ -27,6 +27,7 @@ struct Constants {
         static let popularSeries = "tv/popular"
         static let onTheAirSeries = "tv/on_the_air"
         static let topRatedSeries = "tv/top_rated"
+        static let movieDatabaseMainUrl = "https://www.themoviedb.org/"
         
         static func getDetailsRequest(mediaID: Int, mediaType: String) -> String {
             let query = "\(mediaType)/\(mediaID)"

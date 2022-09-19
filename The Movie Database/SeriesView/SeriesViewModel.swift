@@ -33,7 +33,7 @@ class SeriesViewModel: SeriesViewModeling {
         }
     }
     
-    func receiveAllSeries(completion: @escaping (()->())) {
+    func receiveAllSeries(completion: @escaping ()->()) {
         NetworkManager.shared.getPopularSeries { series in
             self.popularSeries = series
             completion()

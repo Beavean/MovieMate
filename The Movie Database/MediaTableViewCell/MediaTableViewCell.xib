@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -19,10 +20,10 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ZH-fY-jlb">
-                        <rect key="frame" x="8" y="4" width="476" height="199"/>
+                        <rect key="frame" x="8" y="4" width="476" height="200"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.14999999999999999" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="TfU-RK-6Th">
-                                <rect key="frame" x="0.0" y="0.0" width="476" height="199"/>
+                                <rect key="frame" x="0.0" y="0.0" width="476" height="200"/>
                                 <color key="tintColor" systemColor="labelColor"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pRr-81-Igr" userLabel="Rating Background">
@@ -41,7 +42,7 @@
                                         <color key="tintColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="200" id="Aey-PD-1OI"/>
-                                            <constraint firstAttribute="width" secondItem="hL7-os-fMQ" secondAttribute="height" multiplier="2:3" id="y8Q-Yq-cGq"/>
+                                            <constraint firstAttribute="width" constant="133.33000000000001" id="P77-Yf-BqE"/>
                                         </constraints>
                                     </imageView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="stz-RB-fqU">
@@ -187,6 +188,7 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="mey-Ro-yGY" secondAttribute="bottom" priority="999" id="09m-Cg-u9e"/>
+                            <constraint firstItem="hL7-os-fMQ" firstAttribute="height" secondItem="TfU-RK-6Th" secondAttribute="height" id="4dN-Ei-xGK"/>
                             <constraint firstItem="pRr-81-Igr" firstAttribute="centerX" secondItem="yy6-Yj-Uif" secondAttribute="centerX" id="4qJ-wC-jxg"/>
                             <constraint firstAttribute="trailing" secondItem="mey-Ro-yGY" secondAttribute="trailing" priority="998" id="EvZ-Pb-rbd"/>
                             <constraint firstItem="mey-Ro-yGY" firstAttribute="top" secondItem="0ZH-fY-jlb" secondAttribute="top" id="Tdw-RC-bX7"/>
@@ -232,7 +234,7 @@
         <image name="plus.square" catalog="system" width="128" height="114"/>
         <image name="questionmark.square.fill" catalog="system" width="128" height="114"/>
         <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

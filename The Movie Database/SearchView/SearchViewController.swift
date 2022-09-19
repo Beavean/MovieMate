@@ -13,12 +13,15 @@ class SearchViewController: UIViewController {
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var contentTypeSegmentedControl: UISegmentedControl!
-    @IBOutlet private weak var mediaTableView: UITableView!
+    @IBOutlet weak var mediaTableView: UITableView!
     
     //MARK: - Variables
     
+    var mediaSearchResults = [BasicMedia.Results]() {
+        didSet { mediaTableView.reloadData() }
+    }
+    
     var mediaType = Constants.Network.movieType
-    var mediaSearchResults = [BasicMedia.Results]()
     private var lastScheduledSearch: Timer?
     private var enteredQuery: String?
     private var viewModel: SearchViewModeling = SearchViewModel()
@@ -35,10 +38,6 @@ class SearchViewController: UIViewController {
         mediaTableView.register(UINib(nibName: Constants.UI.mediaTableViewCellReuseID, bundle: nil), forCellReuseIdentifier: Constants.UI.mediaTableViewCellReuseID)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.mediaTableView.reloadData()
-    }
-    
     //MARK: - SegmentedControl interaction and reload media methods
     
     @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
@@ -52,7 +51,7 @@ class SearchViewController: UIViewController {
         viewModel.updateData()
     }
     
-    func setupCompletions() {
+    private func setupCompletions() {
         showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
             guard let receivedMedia = self?.viewModel.mediaSearchResults,
@@ -60,7 +59,6 @@ class SearchViewController: UIViewController {
                   let mediaTableView = self?.mediaTableView else { return }
             self?.mediaSearchResults = receivedMedia
             self?.mediaType = mediaType
-            self?.mediaTableView.reloadData()
             if mediaTableView.numberOfRows(inSection: 0) > 0 {
                 mediaTableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .bottom, animated: true)
             } else {

@@ -35,7 +35,7 @@ class DetailViewModel: DetailViewModeling {
         }
     }
     
-    func receiveMedia(completion: @escaping(()->())) {
+    func receiveMedia(completion: @escaping()->()) {
         guard let mediaID = mediaID, let mediaType = mediaType else { return }
         NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { media in
             self.mediaDetails = media

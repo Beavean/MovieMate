@@ -38,8 +38,8 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource, UISea
         cell.selectionStyle = .none
         cell.saveButtonCompletion = { aCell in
             guard let actualIndexPath = tableView.indexPath(for: aCell) else { return }
-            self.saveButtonPressed(button: cell.saveButton, mediaID: item.id, mediaType: item.mediaType) {
-                tableView.deleteRows(at: [actualIndexPath], with: .fade)
+            self.saveButtonPressed(button: cell.saveButton, mediaID: item.id, mediaType: item.mediaType) { [weak self] in
+                self?.savedMediaTableView.deleteRows(at: [actualIndexPath], with: .fade)
             }
         }
         cell.videoButtonCompletion = { [weak self] in

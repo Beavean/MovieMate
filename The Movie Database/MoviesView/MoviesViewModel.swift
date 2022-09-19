@@ -36,7 +36,7 @@ class MoviesViewModel: MoviesViewModeling {
     
     //MARK: - Receiving data after update
     
-    func receiveAllMovies(completion: @escaping (()->())) {
+    private func receiveAllMovies(completion: @escaping ()->()) {
         NetworkManager.shared.getNowPlayingMovies { movies in
             self.nowPlayingMovies = movies
             completion()

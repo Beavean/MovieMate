@@ -17,9 +17,18 @@ class MoviesViewController: UIViewController {
     
     //MARK: - Variables
     
-    var nowPlayingMovies = [BasicMedia.Results]()
-    var upcomingMovies = [BasicMedia.Results]()
-    var topRatedMovies = [BasicMedia.Results]()
+    var nowPlayingMovies = [BasicMedia.Results]()  {
+        didSet { nowPlayingCollectionView.reloadData() }
+    }
+    
+    var upcomingMovies = [BasicMedia.Results]() {
+        didSet { upcomingCollectionView.reloadData() }
+    }
+    
+    var topRatedMovies = [BasicMedia.Results]() {
+        didSet { topRatedCollectionView.reloadData() }
+    }
+    
     private var viewModel: MoviesViewModeling = MoviesViewModel()
     
     //MARK: - Discover View lifecycle
@@ -35,7 +44,7 @@ class MoviesViewController: UIViewController {
     
     //MARK: - Completions to run after model receives data
     
-    func setupCompletions() {
+    private func setupCompletions() {
         showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
             guard let nowPlayingMovies = self?.viewModel.nowPlayingMovies,
@@ -45,24 +54,15 @@ class MoviesViewController: UIViewController {
             self?.nowPlayingMovies = nowPlayingMovies
             self?.upcomingMovies = upcomingMovies
             self?.topRatedMovies = topRatedMovies
-            self?.reloadCollectionView(self?.nowPlayingCollectionView)
-            self?.reloadCollectionView(self?.upcomingCollectionView)
-            self?.reloadCollectionView(self?.topRatedCollectionView)
             self?.showLoader(false)
         }
     }
     
     //MARK: - Collection View setups
     
-    func setupCollectionView(_ collectionView: UICollectionView) {
+    private func setupCollectionView(_ collectionView: UICollectionView) {
         collectionView.delegate = self
         collectionView.delegate = self
         collectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
-    }
-    
-    func reloadCollectionView(_ collectionView: UICollectionView?) {
-        guard let collectionView = collectionView else { return }
-        collectionView.reloadData()
-        collectionView.layoutIfNeeded()
     }
 }

@@ -15,7 +15,10 @@ class SavedViewController: UIViewController {
     @IBOutlet weak var savedMediaTableView: UITableView!
     @IBOutlet private weak var savedMediaSearchBar: UISearchBar!
     
-    var arrayOfMedia: Results<RealmObjectModel>?
+    var arrayOfMedia: Results<RealmObjectModel>? {
+        didSet { savedMediaTableView.reloadData() }
+    }
+    
     private var lastScheduledSearch: Timer?
     private var viewModel: SavedViewModeling = SavedViewModel()
     
@@ -33,13 +36,12 @@ class SavedViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        viewModel.loadSavedMedia(searchText: self.savedMediaSearchBar.text)
         savedMediaTableView.reloadData()
     }
     
     //MARK: - Model completion setup
     
-    func setupCompletions() {
+    private func setupCompletions() {
         showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
             guard let arrayOfMedia = self?.viewModel.arrayOfMedia else { return }
@@ -50,7 +52,7 @@ class SavedViewController: UIViewController {
     
     //MARK: - SearchBar methods
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    private func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
         self.viewModel.loadSavedMedia(searchText: self.savedMediaSearchBar.text)
         self.savedMediaTableView.reloadData()
@@ -59,7 +61,7 @@ class SavedViewController: UIViewController {
         }
     }
     
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    private func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         lastScheduledSearch?.invalidate()
         lastScheduledSearch = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] _ in
             self?.viewModel.loadSavedMedia(searchText: self?.savedMediaSearchBar.text)
@@ -68,7 +70,7 @@ class SavedViewController: UIViewController {
         })
     }
     
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    private func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         viewModel.loadSavedMedia(searchText: self.savedMediaSearchBar.text)
         self.savedMediaTableView.reloadData()
         searchBar.text = ""

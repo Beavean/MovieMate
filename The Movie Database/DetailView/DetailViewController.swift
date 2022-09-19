@@ -63,16 +63,16 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func openTMDBPageButtonPressed(_ sender: Any) {
-        guard let openingUrl = URL(string: "https://www.themoviedb.org/") else { return }
-        var resultUrl = openingUrl
-        let baseURL = "https://www.themoviedb.org/"
+        guard let openingUrl = URL(string: Constants.Network.movieDatabaseMainUrl) else { return }
+        var resultUrl: URL?
         if let mediaID = mediaID, let mediaType = mediaType {
-            guard let convertedUrl = URL(string: baseURL + mediaType + "/" + (String(describing: (mediaID)))) else { return }
+            guard let convertedUrl = URL(string: Constants.Network.movieDatabaseMainUrl + mediaType + "/" + (String(describing: (mediaID)))) else { return }
             resultUrl = convertedUrl
         }
-        let safariVC = SFSafariViewController(url: resultUrl)
+        let safariVC = SFSafariViewController(url: resultUrl ?? openingUrl)
         present(safariVC, animated: true)
     }
+    
     @IBAction func openVideosPressed(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.videoViewControllerID) as? VideoViewController {
@@ -85,7 +85,7 @@ class DetailViewController: UIViewController {
     
     //MARK: - Completions to run after model receives data
     
-    func setupCompletions() {
+    private func setupCompletions() {
         showLoader(true)
         viewModel.mediaType = self.mediaType
         viewModel.mediaID = self.mediaID
@@ -125,7 +125,7 @@ class DetailViewController: UIViewController {
         self.saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: model.id))
     }
     
-    func loadVideoPlayer(videoKey: String?) {
+    private func loadVideoPlayer(videoKey: String?) {
         guard let mediaVideoKey = videoKey else {
             self.playerView.isHidden = true
             return }

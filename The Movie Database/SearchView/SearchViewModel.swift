@@ -35,7 +35,7 @@ class SearchViewModel: SearchViewModeling {
         }
     }
     
-    func receiveMedia(completion: @escaping (()->())) {
+    func receiveMedia(completion: @escaping ()->()) {
         if enteredQuery.isEmpty {
             switch mediaTypeSegmentedControl {
             case 1:

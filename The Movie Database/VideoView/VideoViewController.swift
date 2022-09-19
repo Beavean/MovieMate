@@ -23,7 +23,7 @@ class VideoViewController: UIViewController {
     var receivedDetails: [MediaVideos.Video]?
     private var viewModel: VideoViewModeling = VideoViewModel()
     private var mediaTitle: String?
-
+    
     override func viewDidLoad() {
         videosTableView.dataSource = self
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class VideoViewController: UIViewController {
     
     //MARK: - Model completions setup & self configuration
     
-    func setupCompletions() {
+    private func setupCompletions() {
         showLoader(true)
         viewModel.mediaType = self.mediaType
         viewModel.mediaID = self.mediaID
