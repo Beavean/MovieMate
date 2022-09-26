@@ -39,30 +39,30 @@ class SearchViewModel: SearchViewModeling {
         if enteredQuery.isEmpty {
             switch mediaTypeSegmentedControl {
             case 1:
-                NetworkManager.shared.getTrendingSeries { media in
-                    self.mediaType = Constants.Network.tvSeriesType
-                    self.mediaSearchResults = media
+                NetworkManager.shared.getTrendingSeries { [weak self] media in
+                    self?.mediaType = Constants.Network.tvSeriesType
+                    self?.mediaSearchResults = media
                     completion()
                 }
             default:
-                NetworkManager.shared.getTrendingMovies { media in
-                    self.mediaType = Constants.Network.movieType
-                    self.mediaSearchResults = media
+                NetworkManager.shared.getTrendingMovies { [weak self] media in
+                    self?.mediaType = Constants.Network.movieType
+                    self?.mediaSearchResults = media
                     completion()
                 }
             }
         } else {
             switch mediaTypeSegmentedControl {
             case 1:
-                NetworkManager.shared.getSearchedSeries(enteredQuery: enteredQuery) { media in
-                    self.mediaType = Constants.Network.tvSeriesType
-                    self.mediaSearchResults = media
+                NetworkManager.shared.getSearchedSeries(enteredQuery: enteredQuery) { [weak self] media in
+                    self?.mediaType = Constants.Network.tvSeriesType
+                    self?.mediaSearchResults = media
                     completion()
                 }
             default:
-                NetworkManager.shared.getSearchedMovies(enteredQuery: enteredQuery) { media in
-                    self.mediaType = Constants.Network.movieType
-                    self.mediaSearchResults = media
+                NetworkManager.shared.getSearchedMovies(enteredQuery: enteredQuery) { [weak self] media in
+                    self?.mediaType = Constants.Network.movieType
+                    self?.mediaSearchResults = media
                     completion()
                 }
             }

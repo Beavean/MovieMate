@@ -20,7 +20,9 @@ class VideoViewController: UIViewController {
     
     var mediaID: Int?
     var mediaType: String?
-    var receivedDetails: [MediaVideos.Video]?
+    var receivedDetails: [MediaVideos.Video]? {
+        didSet { videosTableView.reloadData() }
+    }
     private var viewModel: VideoViewModeling = VideoViewModel()
     private var mediaTitle: String?
     
@@ -41,7 +43,6 @@ class VideoViewController: UIViewController {
         viewModel.mediaID = self.mediaID
         viewModel.onDataUpdated = { [weak self] in
             self?.receivedDetails = self?.viewModel.videoDetails
-            self?.videosTableView.reloadData()
             self?.showLoader(false)
         }
     }

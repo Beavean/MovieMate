@@ -70,7 +70,9 @@ class DetailViewController: UIViewController {
             resultUrl = convertedUrl
         }
         let safariVC = SFSafariViewController(url: resultUrl ?? openingUrl)
-        present(safariVC, animated: true)
+        DispatchQueue.main.async {
+            self.present(safariVC, animated: true)
+        }
     }
     
     @IBAction func openVideosPressed(_ sender: UIButton) {

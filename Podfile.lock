@@ -1,14 +1,14 @@
 PODS:
   - Alamofire (5.6.2)
   - JGProgressHUD (2.2)
-  - Realm (10.28.7):
-    - Realm/Headers (= 10.28.7)
-  - Realm/Headers (10.28.7)
-  - RealmSwift (10.28.7):
-    - Realm (= 10.28.7)
-  - SDWebImage (5.13.2):
-    - SDWebImage/Core (= 5.13.2)
-  - SDWebImage/Core (5.13.2)
+  - Realm (10.29.0):
+    - Realm/Headers (= 10.29.0)
+  - Realm/Headers (10.29.0)
+  - RealmSwift (10.29.0):
+    - Realm (= 10.29.0)
+  - SDWebImage (5.13.3):
+    - SDWebImage/Core (= 5.13.3)
+  - SDWebImage/Core (5.13.3)
   - SwipeCellKit (2.7.1)
   - youtube-ios-player-helper (1.0.4)
 
@@ -33,9 +33,9 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: d368e1ff8a298e6dde360e35a3e68e6c610e7204
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
-  Realm: d1d5ad078b9c1d22f99f7f7f2e692b548b518f24
-  RealmSwift: 7c38e0acca7d3df9cc60d79c073ef68245351d0e
-  SDWebImage: 72f86271a6f3139cc7e4a89220946489d4b9a866
+  Realm: 5596770daeff1ad76c8eb10d5947dc10472da779
+  RealmSwift: 35d8d318b7e5a8dbc7096c2a243184e4d19abcc0
+  SDWebImage: af5bbffef2cde09f148d826f9733dcde1a9414cd
   SwipeCellKit: 3972254a826da74609926daf59b08d6c72e619ea
   youtube-ios-player-helper: e9b97535e816db3152179d84d999bc1807ecd689
 

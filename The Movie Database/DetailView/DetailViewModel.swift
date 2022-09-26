@@ -37,10 +37,10 @@ class DetailViewModel: DetailViewModeling {
     
     func receiveMedia(completion: @escaping()->()) {
         guard let mediaID = mediaID, let mediaType = mediaType else { return }
-        NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { media in
-            self.mediaDetails = media
-            NetworkManager.shared.getMediaVideos(mediaID: mediaID, mediaType: mediaType) { video in
-                self.mediaVideoKey = video.last?.key
+        NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { [weak self] media in
+            self?.mediaDetails = media
+            NetworkManager.shared.getMediaVideos(mediaID: mediaID, mediaType: mediaType) { [weak self] video in
+                self?.mediaVideoKey = video.last?.key
                 completion()
             }
         }

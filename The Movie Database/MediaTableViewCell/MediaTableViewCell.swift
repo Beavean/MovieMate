@@ -109,11 +109,7 @@ class MediaTableViewCell: UITableViewCell {
         self.mediaOverviewLabel.text = object.overview ?? "No overview"
         self.mediaGenresLabel.text = object.genreIDs ?? "Genre is not specified"
         self.mediaReleaseDateLabel.text = object.releaseDate ?? "No release date"
-        if let voteAverage = object.voteAverage {
-            self.mediaRatingLabel.text = String(format: "%.1f", voteAverage)
-        } else {
-            self.mediaRatingLabel.text = "0.0"
-        }
+        self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage ?? 0.0)
     }
 }
 

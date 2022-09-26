@@ -34,16 +34,16 @@ class SeriesViewModel: SeriesViewModeling {
     }
     
     func receiveAllSeries(completion: @escaping ()->()) {
-        NetworkManager.shared.getPopularSeries { series in
-            self.popularSeries = series
+        NetworkManager.shared.getPopularSeries { [weak self] series in
+            self?.popularSeries = series
             completion()
         }
-        NetworkManager.shared.getLatestSeries { series in
-            self.latestSeries = series.reversed()
+        NetworkManager.shared.getLatestSeries { [weak self] series in
+            self?.latestSeries = series.reversed()
             completion()
         }
-        NetworkManager.shared.getTopRatedSeries { series in
-            self.topRatedSeries = series
+        NetworkManager.shared.getTopRatedSeries { [weak self] series in
+            self?.topRatedSeries = series
             completion()
         }
     }

@@ -27,7 +27,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource, UISe
         let item = mediaSearchResults[indexPath.row]
         cell.saveButtonCompletion = { aCell in
             self.saveButtonPressed(button: cell.saveButton, mediaID: item.id, mediaType: self.mediaType) { [weak self] in
-                self?.mediaTableView.reloadData()
+                DispatchQueue.main.async {
+                    self?.mediaTableView.reloadData()
+                }
             }
         }
         cell.videoButtonCompletion = { [weak self] in
