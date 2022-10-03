@@ -8,7 +8,7 @@
 import Foundation
 import SDWebImage
 
-class MediaTableViewCell: UITableViewCell {
+final class MediaTableViewCell: UITableViewCell {
     
     //MARK: - IBOutlets
     
@@ -29,13 +29,13 @@ class MediaTableViewCell: UITableViewCell {
     var mediaType: String?
     var saveButtonCompletion: ((UITableViewCell) -> Void)?
     var videoButtonCompletion: (() -> ()) = {}
-    private var mediaID: Int?
     var receivedMedia: BasicMedia.Results? {
         didSet { configureWithReceivedMedia() }
     }
     var savedMedia: RealmObjectModel? {
         didSet { configureWithSavedMedia() }
     }
+    private var mediaID: Int?
     
     //MARK: - TableViewCell lifecycle
     
@@ -54,11 +54,11 @@ class MediaTableViewCell: UITableViewCell {
     
     //MARK: - Button interactions
     
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
+    @IBAction func saveButtonPressed() {
         saveButtonCompletion?(self)
     }
     
-    @IBAction func videoButtonPressed(_ sender: UIButton) {
+    @IBAction func videoButtonPressed() {
         videoButtonCompletion()
     }
     
@@ -112,6 +112,3 @@ class MediaTableViewCell: UITableViewCell {
         self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage ?? 0.0)
     }
 }
-
-
-

@@ -8,7 +8,7 @@
 import UIKit
 import youtube_ios_player_helper
 
-class VideoViewController: UIViewController {
+final class VideoViewController: UIViewController {
     
     //MARK: - IBOutlets
     

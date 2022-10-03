@@ -16,7 +16,7 @@ protocol MoviesViewModeling {
     func updateData()
 }
 
-class MoviesViewModel: MoviesViewModeling {
+final class MoviesViewModel: MoviesViewModeling {
     
     //MARK: - Variables
     

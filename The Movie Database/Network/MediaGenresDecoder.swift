@@ -17,8 +17,8 @@ struct MediaGenresDecoder {
         if idNumbers.isEmpty {
             return "Genre is not specified"
         } else {
-            var resultString = ""
-            var idString = ""
+            var resultString = String()
+            var idString = String()
             var decodingArray: [String] = []
             for id in idNumbers {
                 switch id {

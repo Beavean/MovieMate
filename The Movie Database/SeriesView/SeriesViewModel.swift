@@ -16,7 +16,7 @@ protocol SeriesViewModeling {
     func updateData()
 }
 
-class SeriesViewModel: SeriesViewModeling {
+final class SeriesViewModel: SeriesViewModeling {
     
     //MARK: - Variables
     
@@ -48,4 +48,3 @@ class SeriesViewModel: SeriesViewModeling {
         }
     }
 }
-

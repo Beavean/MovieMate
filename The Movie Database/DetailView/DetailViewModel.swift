@@ -17,7 +17,7 @@ protocol DetailViewModeling {
     func updateData()
 }
 
-class DetailViewModel: DetailViewModeling {
+final class DetailViewModel: DetailViewModeling {
     
     //MARK: - Variables
     
@@ -46,4 +46,3 @@ class DetailViewModel: DetailViewModeling {
         }
     }
 }
-

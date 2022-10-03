@@ -17,7 +17,7 @@ protocol VideoViewModeling {
     func updateData()
 }
 
-class VideoViewModel: VideoViewModeling {
+final class VideoViewModel: VideoViewModeling {
     
     //MARK: - Variables
     

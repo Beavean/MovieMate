@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SeriesViewController: UIViewController {
+final class SeriesViewController: UIViewController {
     
     //MARK: - IBOutlets
     
@@ -65,4 +65,3 @@ class SeriesViewController: UIViewController {
         collectionView.register(UINib(nibName: Constants.UI.discoverCollectionViewCellID, bundle: nil), forCellWithReuseIdentifier: Constants.UI.discoverCollectionViewCellID)
     }
 }
-

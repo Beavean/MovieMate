@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-class RealmObjectModel: Object {
+final class RealmObjectModel: Object {
    
     @Persisted var id: Int
     @Persisted var adult: Bool?

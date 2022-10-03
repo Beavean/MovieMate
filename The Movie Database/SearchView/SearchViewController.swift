@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
+final class SearchViewController: UIViewController {
     
     //MARK: - IBOutlets
     
@@ -40,7 +40,7 @@ class SearchViewController: UIViewController {
     
     //MARK: - SegmentedControl interaction and reload media methods
     
-    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
+    @IBAction func segmentedControlChanged() {
         viewModel.mediaTypeSegmentedControl = contentTypeSegmentedControl.selectedSegmentIndex
         loadSearchResults()
     }
@@ -86,10 +86,3 @@ class SearchViewController: UIViewController {
         lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(loadSearchResults), userInfo: nil, repeats: false)
     }
 }
-
-
-
-
-
-
-

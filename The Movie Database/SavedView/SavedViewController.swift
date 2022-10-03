@@ -8,7 +8,7 @@
 import UIKit
 import RealmSwift
 
-class SavedViewController: UIViewController {
+final class SavedViewController: UIViewController {
     
     //MARK: - IBOutlets
     
@@ -73,5 +73,3 @@ class SavedViewController: UIViewController {
         searchBar.endEditing(true)
     }
 }
-
-

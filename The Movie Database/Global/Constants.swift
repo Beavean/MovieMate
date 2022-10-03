@@ -56,6 +56,3 @@ struct Constants {
         static let mainStoryboardName = "Main"
     }
 }
-
-
-

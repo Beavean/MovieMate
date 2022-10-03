@@ -10,7 +10,7 @@ import SDWebImage
 import youtube_ios_player_helper
 import SafariServices
 
-class DetailViewController: UIViewController {
+final class DetailViewController: UIViewController {
     
     //MARK: - IBOutlets
     
@@ -56,13 +56,13 @@ class DetailViewController: UIViewController {
     
     //MARK: - Button interactions
     
-    @IBAction func saveButtonPressed(_ sender: UIButton) {
+    @IBAction func saveButtonPressed() {
         self.saveButtonPressed(button: saveButton, mediaID: mediaID, mediaType: mediaType) {
             
         }
     }
     
-    @IBAction func openTMDBPageButtonPressed(_ sender: Any) {
+    @IBAction func openTMDBPageButtonPressed() {
         guard let openingUrl = URL(string: Constants.Network.movieDatabaseMainUrl) else { return }
         var resultUrl: URL?
         if let mediaID = mediaID, let mediaType = mediaType {
@@ -75,7 +75,7 @@ class DetailViewController: UIViewController {
         }
     }
     
-    @IBAction func openVideosPressed(_ sender: UIButton) {
+    @IBAction func openVideosPressed() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.videoViewControllerID) as? VideoViewController {
             viewController.configureTitle(title: receivedDetails?.title ?? receivedDetails?.originalName)
@@ -134,5 +134,3 @@ class DetailViewController: UIViewController {
         self.playerView.load(withVideoId: mediaVideoKey, playerVars: ["playsinline": 1])
     }
 }
-
-

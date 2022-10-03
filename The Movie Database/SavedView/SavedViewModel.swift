@@ -16,7 +16,7 @@ protocol SavedViewModeling {
     func loadSavedMedia(searchText: String?)
 }
 
-class SavedViewModel: SavedViewModeling {
+final class SavedViewModel: SavedViewModeling {
     
     //MARK: - Variables
     

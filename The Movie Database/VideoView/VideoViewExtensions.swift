@@ -7,7 +7,6 @@
 
 import UIKit
 
-
 extension VideoViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -33,9 +32,3 @@ extension VideoViewController: UITableViewDataSource {
         return cell
     }
 }
-
-
-
-
-
-

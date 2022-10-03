@@ -8,7 +8,7 @@
 import UIKit
 import SDWebImage
 
-class DiscoverCollectionViewCell: UICollectionViewCell {
+final class DiscoverCollectionViewCell: UICollectionViewCell {
     
     //MARK: - IBOutlets
     
@@ -27,5 +27,3 @@ class DiscoverCollectionViewCell: UICollectionViewCell {
         }
     }
 }
-    
-    

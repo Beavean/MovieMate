@@ -17,7 +17,7 @@ protocol SearchViewModeling {
 }
 
 
-class SearchViewModel: SearchViewModeling {
+final class SearchViewModel: SearchViewModeling {
     
     //MARK: - Variables
     
