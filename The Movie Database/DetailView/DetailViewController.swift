@@ -57,9 +57,7 @@ final class DetailViewController: UIViewController {
     //MARK: - Button interactions
     
     @IBAction func saveButtonPressed() {
-        self.saveButtonPressed(button: saveButton, mediaID: mediaID, mediaType: mediaType) {
-            
-        }
+        self.saveButtonPressed(button: saveButton, mediaID: mediaID, mediaType: mediaType)
     }
     
     @IBAction func openTMDBPageButtonPressed() {

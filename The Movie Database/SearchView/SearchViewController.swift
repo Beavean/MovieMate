@@ -45,7 +45,7 @@ final class SearchViewController: UIViewController {
         loadSearchResults()
     }
     
-    @objc func loadSearchResults() {
+    @objc private func loadSearchResults() {
         guard let enteredQuery = self.searchBar.searchTextField.text else { return }
         self.viewModel.enteredQuery = enteredQuery
         viewModel.updateData()

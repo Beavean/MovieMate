@@ -44,12 +44,14 @@ final class SearchViewModel: SearchViewModeling {
                     self?.mediaSearchResults = media
                     completion()
                 }
-            default:
+            case 0:
                 NetworkManager.shared.getTrendingMovies { [weak self] media in
                     self?.mediaType = Constants.Network.movieType
                     self?.mediaSearchResults = media
                     completion()
                 }
+            default:
+                break
             }
         } else {
             switch mediaTypeSegmentedControl {
@@ -59,12 +61,14 @@ final class SearchViewModel: SearchViewModeling {
                     self?.mediaSearchResults = media
                     completion()
                 }
-            default:
+            case 0:
                 NetworkManager.shared.getSearchedMovies(enteredQuery: enteredQuery) { [weak self] media in
                     self?.mediaType = Constants.Network.movieType
                     self?.mediaSearchResults = media
                     completion()
                 }
+            default:
+                break
             }
         }
     }
