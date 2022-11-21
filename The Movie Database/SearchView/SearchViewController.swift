@@ -8,26 +8,26 @@
 import UIKit
 
 final class SearchViewController: UIViewController {
-    
-    //MARK: - IBOutlets
-    
+
+    // MARK: - IBOutlets
+
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var contentTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var mediaTableView: UITableView!
-    
-    //MARK: - Variables
-    
+
+    // MARK: - Variables
+
     var mediaSearchResults = [BasicMedia.Results]() {
         didSet { mediaTableView.reloadData() }
     }
-    
+
     var mediaType = Constants.Network.movieType
     private var lastScheduledSearch: Timer?
     private var enteredQuery: String?
     private var viewModel: SearchViewModeling = SearchViewModel()
-    
-    //MARK: - SearchViewController lifecycle
-    
+
+    // MARK: - SearchViewController lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCompletions()
@@ -37,20 +37,20 @@ final class SearchViewController: UIViewController {
         searchBar.delegate = self
         mediaTableView.register(UINib(nibName: Constants.UI.mediaTableViewCellReuseID, bundle: nil), forCellReuseIdentifier: Constants.UI.mediaTableViewCellReuseID)
     }
-    
-    //MARK: - SegmentedControl interaction and reload media methods
-    
+
+    // MARK: - SegmentedControl interaction and reload media methods
+
     @IBAction func segmentedControlChanged() {
         viewModel.mediaTypeSegmentedControl = contentTypeSegmentedControl.selectedSegmentIndex
         loadSearchResults()
     }
-    
+
     @objc private func loadSearchResults() {
         guard let enteredQuery = self.searchBar.searchTextField.text else { return }
         self.viewModel.enteredQuery = enteredQuery
         viewModel.updateData()
     }
-    
+
     private func setupCompletions() {
         showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
@@ -67,20 +67,20 @@ final class SearchViewController: UIViewController {
             self?.showLoader(false)
         }
     }
-    
-    //MARK: - SearchBar methods
-    
+
+    // MARK: - SearchBar methods
+
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         loadSearchResults()
         searchBar.endEditing(true)
     }
-    
+
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         loadSearchResults()
         searchBar.text = ""
         searchBar.endEditing(true)
     }
-    
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         lastScheduledSearch?.invalidate()
         lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(loadSearchResults), userInfo: nil, repeats: false)

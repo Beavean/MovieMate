@@ -8,9 +8,9 @@
 import UIKit
 
 extension UIImageView {
-    
-    //MARK: - Adds blur effect for background images
-    
+
+    // MARK: - Adds blur effect for background images
+
     func applyBlurEffect() {
         var blurEffect = UIBlurEffect()
         blurEffect = self.traitCollection.userInterfaceStyle == .dark ? UIBlurEffect(style: .dark) : UIBlurEffect(style: .light)

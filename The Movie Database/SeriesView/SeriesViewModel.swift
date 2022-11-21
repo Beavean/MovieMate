@@ -12,28 +12,28 @@ protocol SeriesViewModeling {
     var latestSeries: [BasicMedia.Results] { get set }
     var topRatedSeries: [BasicMedia.Results] { get set }
     var onDataUpdated: () -> Void { get set }
-    
+
     func updateData()
 }
 
 final class SeriesViewModel: SeriesViewModeling {
-    
-    //MARK: - Variables
-    
+
+    // MARK: - Variables
+
     var popularSeries: [BasicMedia.Results] = []
     var latestSeries: [BasicMedia.Results] = []
     var topRatedSeries: [BasicMedia.Results] = []
     var onDataUpdated = { }
-    
-    //MARK: - Model data update and completions
-    
+
+    // MARK: - Model data update and completions
+
     func updateData() {
         receiveAllSeries { [weak self] in
             self?.onDataUpdated()
         }
     }
-    
-    func receiveAllSeries(completion: @escaping ()->()) {
+
+    func receiveAllSeries(completion: @escaping () -> Void) {
         NetworkManager.shared.getPopularSeries { [weak self] series in
             self?.popularSeries = series
             completion()

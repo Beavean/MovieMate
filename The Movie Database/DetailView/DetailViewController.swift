@@ -11,9 +11,9 @@ import youtube_ios_player_helper
 import SafariServices
 
 final class DetailViewController: UIViewController {
-    
-    //MARK: - IBOutlets
-    
+
+    // MARK: - IBOutlets
+
     @IBOutlet private var playerView: YTPlayerView!
     @IBOutlet private weak var mediaBackdropPosterImageView: UIImageView!
     @IBOutlet private weak var saveButton: UIButton!
@@ -27,17 +27,17 @@ final class DetailViewController: UIViewController {
     @IBOutlet private weak var mediaBackgroundBlurImageView: UIImageView!
     @IBOutlet private weak var mediaTaglineLabel: UILabel!
     @IBOutlet private weak var mediaRuntimeLabel: UILabel!
-    
-    //MARK: - Variables
-    
+
+    // MARK: - Variables
+
     var mediaID: Int?
     var mediaType: String?
     private var mediaVideoKey: String?
     private var viewModel: DetailViewModeling = DetailViewModel()
     private var receivedDetails: MediaDetails?
-    
-    //MARK: - DetailViewController lifecycle
-    
+
+    // MARK: - DetailViewController lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCompletions()
@@ -47,19 +47,19 @@ final class DetailViewController: UIViewController {
         mediaBackgroundBlurImageView.applyBlurEffect()
         mediaBackgroundBlurImageView.addSmallCornerRadius()
     }
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         viewModel.updateData()
         configureWithMediaDetails(model: receivedDetails)
     }
-    
-    //MARK: - Button interactions
-    
+
+    // MARK: - Button interactions
+
     @IBAction func saveButtonPressed() {
         self.saveButtonPressed(button: saveButton, mediaID: mediaID, mediaType: mediaType)
     }
-    
+
     @IBAction func openTMDBPageButtonPressed() {
         guard let openingUrl = URL(string: Constants.Network.movieDatabaseMainUrl) else { return }
         var resultUrl: URL?
@@ -72,7 +72,7 @@ final class DetailViewController: UIViewController {
             self.present(safariVC, animated: true)
         }
     }
-    
+
     @IBAction func openVideosPressed() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.videoViewControllerID) as? VideoViewController {
@@ -82,9 +82,9 @@ final class DetailViewController: UIViewController {
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
-    //MARK: - Completions to run after model receives data
-    
+
+    // MARK: - Completions to run after model receives data
+
     private func setupCompletions() {
         showLoader(true)
         viewModel.mediaType = self.mediaType
@@ -97,9 +97,9 @@ final class DetailViewController: UIViewController {
             self?.showLoader(false)
         }
     }
-    
-    //MARK: - Configuring all UI from media details
-    
+
+    // MARK: - Configuring all UI from media details
+
     func configureWithMediaDetails(model: MediaDetails?) {
         guard let model = model else { return }
         if let backdropPath = model.backdropPath {
@@ -124,7 +124,7 @@ final class DetailViewController: UIViewController {
         self.mediaRuntimeLabel.text = model.convertTimeDuration() ?? model.convertSeasonsAndEpisodes()
         self.saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: model.id))
     }
-    
+
     private func loadVideoPlayer(videoKey: String?) {
         guard let mediaVideoKey = videoKey else {
             self.playerView.isHidden = true

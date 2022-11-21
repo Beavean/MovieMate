@@ -8,9 +8,9 @@
 import UIKit
 
 extension UIButton {
-    
-    //MARK: - Save button image and colour changes
-    
+
+    // MARK: - Save button image and colour changes
+
     func changeImageIfSaved(condition: Bool) {
         if condition {
             self.setImage(UIImage(systemName: Constants.UI.alreadySavedButtonImage), for: .normal)

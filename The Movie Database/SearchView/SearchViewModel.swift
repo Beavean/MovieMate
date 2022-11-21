@@ -16,26 +16,25 @@ protocol SearchViewModeling {
     func updateData()
 }
 
-
 final class SearchViewModel: SearchViewModeling {
-    
-    //MARK: - Variables
-    
+
+    // MARK: - Variables
+
     var mediaSearchResults: [BasicMedia.Results] = []
     var enteredQuery = nil ?? ""
     var mediaTypeSegmentedControl = 0
     var mediaType: String?
     var onDataUpdated = { }
-    
-    //MARK: - Model data update and completions
-    
+
+    // MARK: - Model data update and completions
+
     func updateData() {
         receiveMedia { [weak self] in
             self?.onDataUpdated()
         }
     }
-    
-    func receiveMedia(completion: @escaping ()->()) {
+
+    func receiveMedia(completion: @escaping () -> Void) {
         if enteredQuery.isEmpty {
             switch mediaTypeSegmentedControl {
             case 1:

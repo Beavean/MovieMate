@@ -9,16 +9,16 @@ import UIKit
 import SDWebImage
 
 final class DiscoverCollectionViewCell: UICollectionViewCell {
-    
-    //MARK: - IBOutlets
-    
+
+    // MARK: - IBOutlets
+
     @IBOutlet private weak var posterImageView: UIImageView!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         posterImageView.addSmallCornerRadius()
     }
-    
+
     func configure(with model: BasicMedia.Results) {
         if let posterPath = model.posterPath {
             self.posterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))

@@ -8,9 +8,9 @@
 import JGProgressHUD
 
 extension UIViewController {
-    
+
     static let hud = JGProgressHUD()
-    
+
     func showLoader(_ show: Bool, withText text: String? = "Loading") {
         UIViewController.hud.textLabel.text = text
         if show {

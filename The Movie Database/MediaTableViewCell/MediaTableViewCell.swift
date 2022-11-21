@@ -9,9 +9,9 @@ import Foundation
 import SDWebImage
 
 final class MediaTableViewCell: UITableViewCell {
-    
-    //MARK: - IBOutlets
-    
+
+    // MARK: - IBOutlets
+
     @IBOutlet weak var saveButton: UIButton!
     @IBOutlet private weak var mediaPosterImageView: UIImageView!
     @IBOutlet private weak var mediaTitleLabel: UILabel!
@@ -23,12 +23,12 @@ final class MediaTableViewCell: UITableViewCell {
     @IBOutlet private weak var mediaBackdropImageView: UIImageView!
     @IBOutlet private weak var mediaCellMainView: UIView!
     @IBOutlet private weak var mediaRatingBackgroundView: UIView!
-    
-    //MARK: - Variables
-    
+
+    // MARK: - Variables
+
     var mediaType: String?
     var saveButtonCompletion: ((UITableViewCell) -> Void)?
-    var videoButtonCompletion: (() -> ()) = {}
+    var videoButtonCompletion: (() -> Void) = {}
     var receivedMedia: BasicMedia.Results? {
         didSet { configureWithReceivedMedia() }
     }
@@ -36,35 +36,34 @@ final class MediaTableViewCell: UITableViewCell {
         didSet { configureWithSavedMedia() }
     }
     private var mediaID: Int?
-    
-    //MARK: - TableViewCell lifecycle
-    
+
+    // MARK: - TableViewCell lifecycle
+
     override func awakeFromNib() {
         super.awakeFromNib()
         mediaBackdropImageView.applyBlurEffect()
         mediaRatingBackgroundView.addSmallCornerRadius()
         mediaCellMainView.addSmallCornerRadius()
-        
+
     }
-    
+
     override func prepareForReuse() {
         super.prepareForReuse()
         self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
     }
-    
-    //MARK: - Button interactions
-    
+
+    // MARK: - Button interactions
+
     @IBAction func saveButtonPressed() {
         saveButtonCompletion?(self)
     }
-    
+
     @IBAction func videoButtonPressed() {
         videoButtonCompletion()
     }
-    
-    
-    //MARK: - Configure cell with JSON model
-    
+
+    // MARK: - Configure cell with JSON model
+
     func configureWithReceivedMedia() {
         guard let model = receivedMedia else { return }
         if let id = model.id {
@@ -87,9 +86,9 @@ final class MediaTableViewCell: UITableViewCell {
         self.mediaReleaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? model.firstAirDate)
         self.mediaRatingLabel.text = String(format: "%.1f", (model.voteAverage ?? 0.0))
     }
-    
-    //MARK: - Configure cell with Realm object model
-    
+
+    // MARK: - Configure cell with Realm object model
+
     func configureWithSavedMedia() {
         guard let object = savedMedia else { return }
         saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: object.id))

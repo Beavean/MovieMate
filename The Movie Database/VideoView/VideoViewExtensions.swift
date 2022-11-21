@@ -8,7 +8,7 @@
 import UIKit
 
 extension VideoViewController: UITableViewDataSource {
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let videos = receivedDetails else { return 0 }
         switch videos.count {
@@ -23,7 +23,7 @@ extension VideoViewController: UITableViewDataSource {
             return videos.count
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.videoViewCellID, for: indexPath) as? VideoViewCell, let videos = receivedDetails else { return UITableViewCell() }
         guard let videoKey = videos.reversed()[indexPath.row].key else { return UITableViewCell() }

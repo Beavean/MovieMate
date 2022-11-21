@@ -8,7 +8,7 @@
 import UIKit
 
 extension SavedViewController: UITableViewDelegate, UITableViewDataSource, UISearchBarDelegate {
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: Constants.UI.mainStoryboardName, bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.detailViewControllerID) as? DetailViewController, let media = self.arrayOfMedia?[indexPath.row] {
@@ -17,23 +17,24 @@ extension SavedViewController: UITableViewDelegate, UITableViewDataSource, UISea
             self.navigationController?.pushViewController(viewController, animated: true)
         }
     }
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         arrayOfMedia?.count ?? 0
     }
-    
+
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         guard let media = self.arrayOfMedia?[indexPath.row] else { return }
         if editingStyle == .delete {
             RealmObjectManager.shared.deleteMedia(id: media.id)
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else { 
+        } else {
             return
         }
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell, let item = self.arrayOfMedia?[indexPath.row] else {  return UITableViewCell() }
+        guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell,
+                let item = self.arrayOfMedia?[indexPath.row] else {  return UITableViewCell() }
         cell.savedMedia = item
         cell.selectionStyle = .none
         cell.saveButtonCompletion = { aCell in

@@ -8,7 +8,7 @@
 import Foundation
 
 struct MediaDetails: Codable {
-    
+
     let adult: Bool?
     let backdropPath: String?
     let budget: Int?
@@ -36,7 +36,7 @@ struct MediaDetails: Codable {
     let numberOfSeasons: Int?
     let originalName: String?
     let type: String?
-    
+
     enum CodingKeys: String, CodingKey {
         case adult = "adult"
         case backdropPath = "backdrop_path"
@@ -66,7 +66,7 @@ struct MediaDetails: Codable {
         case originalName = "original_name"
         case type = "type"
     }
-    
+
     func convertGenresIntoString() -> String {
         guard let genres = genres else { return "Genre is not specified" }
         var resultString = "Genre is not specified"
@@ -82,7 +82,7 @@ struct MediaDetails: Codable {
             return resultString
         }
     }
-    
+
     func convertTimeDuration() -> String? {
         guard let runtime = runtime else {
             return nil
@@ -95,7 +95,7 @@ struct MediaDetails: Codable {
         default: return "\(hours) hours \(minutes) minutes"
         }
     }
-    
+
     func convertSeasonsAndEpisodes() -> String? {
         let resultString: String
         if let numberOfSeasons = numberOfSeasons, let numberOfEpisodes = numberOfEpisodes {
@@ -109,17 +109,16 @@ struct MediaDetails: Codable {
         if let numberOfEpisodes = numberOfEpisodes {
             resultString = "Episodes: \(numberOfEpisodes)"
             return resultString
-        }
-        else {
+        } else {
             return nil
         }
     }
-    
+
     struct Genres: Codable {
-        
+
         let id: Int?
         let name: String?
-        
+
         enum CodingKeys: String, CodingKey {
             case id = "id"
             case name = "name"

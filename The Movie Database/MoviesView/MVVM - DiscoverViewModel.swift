@@ -14,17 +14,17 @@ protocol DiscoverViewModeling {
 }
 
 class DiscoverViewModel: DiscoverViewModeling {
-    
+
     var nowPlayingMedia: [MediaSearch.Results] = []
     var onDataUpdated = { }
-    
+
     func updateData() {
         receiveNowPlayingMedia { [weak self] in
             self?.onDataUpdated()
         }
     }
-    
-    func receiveNowPlayingMedia(completion: @escaping (()->())) {
+
+    func receiveNowPlayingMedia(completion: @escaping () -> Void) {
         NetworkManager.shared.getNowPlaying { movies in
             self.nowPlayingMedia = movies
             completion()

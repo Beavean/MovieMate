@@ -8,9 +8,9 @@
 import Foundation
 
 struct Constants {
-    
-    //MARK: - URLs and Api Keys
-    
+
+    // MARK: - URLs and Api Keys
+
     struct Network {
         static let apiKey = "?api_key=2cfd0db8398a10e5a9777f73b2218ca9"
         static let baseUrl = "https://api.themoviedb.org/3/"
@@ -28,21 +28,21 @@ struct Constants {
         static let onTheAirSeries = "tv/on_the_air"
         static let topRatedSeries = "tv/top_rated"
         static let movieDatabaseMainUrl = "https://www.themoviedb.org/"
-        
+
         static func getDetailsRequest(mediaID: Int, mediaType: String) -> String {
             let query = "\(mediaType)/\(mediaID)"
             return query
         }
-        
+
         static func getMediaVideos(mediaID: Int, mediaType: String) -> String {
             let query = "\(mediaType)/\(mediaID)/videos"
             return query
         }
-        
+
     }
-    
-    //MARK: - UI constants and names
-    
+
+    // MARK: - UI constants and names
+
     struct UI {
         static let cornerRadiusRatio = 0.05
         static let mediaTableViewCellReuseID = String(describing: MediaTableViewCell.self)

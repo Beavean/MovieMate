@@ -8,12 +8,12 @@
 import Foundation
 
 struct MediaGenresDecoder {
-    
+
     static let shared = MediaGenresDecoder()
-    
+
     private init() { }
-    
-    func decodeMovieGenreIDs(idNumbers:[Int]) -> String {
+
+    func decodeMovieGenreIDs(idNumbers: [Int]) -> String {
         if idNumbers.isEmpty {
             return "Genre is not specified"
         } else {

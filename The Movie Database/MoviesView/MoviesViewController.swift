@@ -8,31 +8,31 @@
 import UIKit
 
 final class MoviesViewController: UIViewController {
-    
-    //MARK: - IBOutlets
-    
+
+    // MARK: - IBOutlets
+
     @IBOutlet weak var nowPlayingCollectionView: UICollectionView!
     @IBOutlet weak var upcomingCollectionView: UICollectionView!
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
-    
-    //MARK: - Variables
-    
-    var nowPlayingMovies = [BasicMedia.Results]()  {
+
+    // MARK: - Variables
+
+    var nowPlayingMovies = [BasicMedia.Results]() {
         didSet { nowPlayingCollectionView.reloadData() }
     }
-    
+
     var upcomingMovies = [BasicMedia.Results]() {
         didSet { upcomingCollectionView.reloadData() }
     }
-    
+
     var topRatedMovies = [BasicMedia.Results]() {
         didSet { topRatedCollectionView.reloadData() }
     }
-    
+
     private var viewModel: MoviesViewModeling = MoviesViewModel()
-    
-    //MARK: - Discover View lifecycle
-    
+
+    // MARK: - Discover View lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCompletions()
@@ -41,9 +41,9 @@ final class MoviesViewController: UIViewController {
         setupCollectionView(upcomingCollectionView)
         setupCollectionView(topRatedCollectionView)
     }
-    
-    //MARK: - Completions to run after model receives data
-    
+
+    // MARK: - Completions to run after model receives data
+
     private func setupCompletions() {
         showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
@@ -57,9 +57,9 @@ final class MoviesViewController: UIViewController {
             self?.showLoader(false)
         }
     }
-    
-    //MARK: - Collection View setups
-    
+
+    // MARK: - Collection View setups
+
     private func setupCollectionView(_ collectionView: UICollectionView) {
         collectionView.delegate = self
         collectionView.delegate = self

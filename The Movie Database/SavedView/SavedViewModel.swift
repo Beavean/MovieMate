@@ -9,22 +9,22 @@ import Foundation
 import RealmSwift
 
 protocol SavedViewModeling {
-    
+
     var arrayOfMedia: Results<RealmObjectModel>? { get set }
     var onDataUpdated: () -> Void { get set }
-    
+
     func loadSavedMedia(searchText: String?)
 }
 
 final class SavedViewModel: SavedViewModeling {
-    
-    //MARK: - Variables
-    
+
+    // MARK: - Variables
+
     var arrayOfMedia: Results<RealmObjectModel>?
     var onDataUpdated = { }
-    
-    //MARK: - Loading data
-    
+
+    // MARK: - Loading data
+
     func loadSavedMedia(searchText: String?) {
         if let searchText = searchText {
             if searchText.isEmpty {

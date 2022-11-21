@@ -8,31 +8,31 @@
 import UIKit
 
 final class SeriesViewController: UIViewController {
-    
-    //MARK: - IBOutlets
-    
+
+    // MARK: - IBOutlets
+
     @IBOutlet weak var popularCollectionView: UICollectionView!
     @IBOutlet weak var latestCollectionView: UICollectionView!
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
-    
-    //MARK: - Variables
-    
+
+    // MARK: - Variables
+
     var popularSeries = [BasicMedia.Results]() {
         didSet { popularCollectionView.reloadData() }
     }
-    
+
     var latestSeries = [BasicMedia.Results]() {
         didSet { latestCollectionView.reloadData() }
     }
-    
+
     var topRatedSeries = [BasicMedia.Results]() {
         didSet { topRatedCollectionView.reloadData() }
     }
-    
+
     private var viewModel: SeriesViewModeling = SeriesViewModel()
-    
-    //MARK: - Discover View lifecycle
-    
+
+    // MARK: - Discover View lifecycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCompletions()
@@ -41,9 +41,9 @@ final class SeriesViewController: UIViewController {
         setupCollectionView(latestCollectionView)
         setupCollectionView(topRatedCollectionView)
     }
-    
-    //MARK: - Completions to run the code after model receives data
-    
+
+    // MARK: - Completions to run the code after model receives data
+
     private func setupCompletions() {
         showLoader(true)
         viewModel.onDataUpdated = { [weak self] in
@@ -57,8 +57,8 @@ final class SeriesViewController: UIViewController {
             self?.showLoader(false)
         }
     }
-    //MARK: - Collection View setups
-    
+    // MARK: - Collection View setups
+
     private func setupCollectionView(_ collectionView: UICollectionView) {
         collectionView.delegate = self
         collectionView.delegate = self

@@ -8,16 +8,16 @@
 import UIKit
 
 extension UIViewController {
-    
-    //MARK: - Save button processing & alert display methods
-    
+
+    // MARK: - Save button processing & alert display methods
+
     func saveButtonPressed(button: UIButton, mediaID: Int?, mediaType: String?, completion: (() -> Void)? = nil) {
         DispatchQueue.main.async {
             guard let mediaID = mediaID else { return }
             if RealmObjectManager.shared.checkIfAlreadySaved(id: mediaID) {
                 let alert = UIAlertController(title: "Remove from saved?", message: "", preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-                let deleteAction = UIAlertAction(title: "Remove", style: .default) { action in
+                let deleteAction = UIAlertAction(title: "Remove", style: .default) { _ in
                     RealmObjectManager.shared.deleteMedia(id: mediaID)
                     if let completion = completion {
                         completion()
@@ -30,7 +30,7 @@ extension UIViewController {
                 self.present(alert, animated: true)
             } else {
                 let alert = UIAlertController(title: "Add to saved?", message: "", preferredStyle: .alert)
-                let saveAction = UIAlertAction(title: "Save", style: .default) { action in
+                let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
                     guard let mediaType = mediaType else { return }
                     NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { details in
                         RealmObjectManager.shared.saveMedia(from: details, mediaType: mediaType)

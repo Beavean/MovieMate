@@ -12,31 +12,30 @@ protocol MoviesViewModeling {
     var upcomingMovies: [BasicMedia.Results] { get set }
     var topRatedMovies: [BasicMedia.Results] { get set }
     var onDataUpdated: () -> Void { get set }
-    
+
     func updateData()
 }
 
 final class MoviesViewModel: MoviesViewModeling {
-    
-    //MARK: - Variables
-    
+
+    // MARK: - Variables
+
     var nowPlayingMovies: [BasicMedia.Results] = []
     var upcomingMovies: [BasicMedia.Results] = []
     var topRatedMovies: [BasicMedia.Results] = []
     var onDataUpdated = { }
-    
-    //MARK: - Model data update and completions
-    
+
+    // MARK: - Model data update and completions
+
     func updateData() {
         receiveAllMovies { [weak self] in
             self?.onDataUpdated()
         }
     }
-    
-    
-    //MARK: - Receiving data after update
-    
-    private func receiveAllMovies(completion: @escaping ()->()) {
+
+    // MARK: - Receiving data after update
+
+    private func receiveAllMovies(completion: @escaping () -> Void) {
         NetworkManager.shared.getNowPlayingMovies { [weak self] movies in
             self?.nowPlayingMovies = movies
             completion()

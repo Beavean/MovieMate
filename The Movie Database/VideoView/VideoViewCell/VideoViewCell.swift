@@ -9,12 +9,12 @@ import UIKit
 import youtube_ios_player_helper
 
 class VideoViewCell: UITableViewCell {
-    
-    //MARK: - IBOutlets
-    
+
+    // MARK: - IBOutlets
+
     @IBOutlet weak var videoPlayer: YTPlayerView!
     @IBOutlet weak var videoTitleLabel: UILabel!
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }

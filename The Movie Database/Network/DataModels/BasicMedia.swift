@@ -8,21 +8,21 @@
 import Foundation
 
 struct BasicMedia: Codable {
-    
+
     let page: Int?
     let results: [Results]?
     let totalPages: Int?
     let totalResults: Int?
-    
+
     enum CodingKeys: String, CodingKey {
         case page = "page"
         case results = "results"
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
-    
+
     struct Results: Codable {
-        
+
         let adult: Bool?
         let backdropPath: String?
         let genreIDs: [Int]?
@@ -40,7 +40,7 @@ struct BasicMedia: Codable {
         let firstAirDate: String?
         let name: String?
         let originalName: String?
-        
+
         enum CodingKeys: String, CodingKey {
             case adult = "adult"
             case backdropPath = "backdrop_path"

@@ -8,7 +8,7 @@
 import UIKit
 
 extension MoviesViewController: UICollectionViewDataSource {
-    
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         var countOfItems = 0
         switch collectionView {
@@ -19,7 +19,7 @@ extension MoviesViewController: UICollectionViewDataSource {
         }
         return countOfItems
     }
-    
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.UI.discoverCollectionViewCellID, for: indexPath) as? DiscoverCollectionViewCell
         var item: BasicMedia.Results

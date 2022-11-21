@@ -8,11 +8,11 @@
 import Foundation
 
 struct MediaDateFormatter {
-    
+
     static let shared = MediaDateFormatter()
-    
+
     private init() { }
-    
+
     func formatDate(from string: String?) -> String {
         guard let string = string else { return "No release date" }
         let dateFormatter = DateFormatter()
