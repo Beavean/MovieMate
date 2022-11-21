@@ -1,0 +1,11 @@
+excluded:
+  - Pods
+line_length: 200
+cyclomatic_complexity: 40
+function_body_length: 70
+type_name:
+    min_length: 2
+    max_length: 40
+disabled_rules:
+ - unused_optional_binding
+ - redundant_string_enum_value
