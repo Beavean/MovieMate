@@ -15,9 +15,9 @@ final class SearchViewController: UIViewController {
     @IBOutlet private weak var contentTypeSegmentedControl: UISegmentedControl!
     @IBOutlet weak var mediaTableView: UITableView!
 
-    // MARK: - Variables
+    // MARK: - Properties
 
-    var mediaSearchResults = [BasicMedia.Results]() {
+    var mediaSearchResults = [MediaDetails]() {
         didSet { mediaTableView.reloadData() }
     }
 

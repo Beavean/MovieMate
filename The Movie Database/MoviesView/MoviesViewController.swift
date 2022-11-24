@@ -15,17 +15,17 @@ final class MoviesViewController: UIViewController {
     @IBOutlet weak var upcomingCollectionView: UICollectionView!
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
 
-    // MARK: - Variables
+    // MARK: - Properties
 
-    var nowPlayingMovies = [BasicMedia.Results]() {
+    var nowPlayingMovies = [MediaDetails]() {
         didSet { nowPlayingCollectionView.reloadData() }
     }
 
-    var upcomingMovies = [BasicMedia.Results]() {
+    var upcomingMovies = [MediaDetails]() {
         didSet { upcomingCollectionView.reloadData() }
     }
 
-    var topRatedMovies = [BasicMedia.Results]() {
+    var topRatedMovies = [MediaDetails]() {
         didSet { topRatedCollectionView.reloadData() }
     }
 

@@ -18,7 +18,7 @@ protocol SavedViewModeling {
 
 final class SavedViewModel: SavedViewModeling {
 
-    // MARK: - Variables
+    // MARK: - Properties
 
     var arrayOfMedia: Results<RealmObjectModel>?
     var onDataUpdated = { }

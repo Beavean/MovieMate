@@ -28,7 +28,7 @@ final class DetailViewController: UIViewController {
     @IBOutlet private weak var mediaTaglineLabel: UILabel!
     @IBOutlet private weak var mediaRuntimeLabel: UILabel!
 
-    // MARK: - Variables
+    // MARK: - Properties
 
     var mediaID: Int?
     var mediaType: String?

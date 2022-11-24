@@ -8,9 +8,9 @@
 import Foundation
 
 protocol MoviesViewModeling {
-    var nowPlayingMovies: [BasicMedia.Results] { get set }
-    var upcomingMovies: [BasicMedia.Results] { get set }
-    var topRatedMovies: [BasicMedia.Results] { get set }
+    var nowPlayingMovies: [MediaDetails] { get set }
+    var upcomingMovies: [MediaDetails] { get set }
+    var topRatedMovies: [MediaDetails] { get set }
     var onDataUpdated: () -> Void { get set }
 
     func updateData()
@@ -18,11 +18,11 @@ protocol MoviesViewModeling {
 
 final class MoviesViewModel: MoviesViewModeling {
 
-    // MARK: - Variables
+    // MARK: - Properties
 
-    var nowPlayingMovies: [BasicMedia.Results] = []
-    var upcomingMovies: [BasicMedia.Results] = []
-    var topRatedMovies: [BasicMedia.Results] = []
+    var nowPlayingMovies: [MediaDetails] = []
+    var upcomingMovies: [MediaDetails] = []
+    var topRatedMovies: [MediaDetails] = []
     var onDataUpdated = { }
 
     // MARK: - Model data update and completions

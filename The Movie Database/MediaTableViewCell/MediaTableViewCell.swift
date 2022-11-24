@@ -24,12 +24,12 @@ final class MediaTableViewCell: UITableViewCell {
     @IBOutlet private weak var mediaCellMainView: UIView!
     @IBOutlet private weak var mediaRatingBackgroundView: UIView!
 
-    // MARK: - Variables
+    // MARK: - Properties
 
     var mediaType: String?
     var saveButtonCompletion: ((UITableViewCell) -> Void)?
     var videoButtonCompletion: (() -> Void) = {}
-    var receivedMedia: BasicMedia.Results? {
+    var receivedMedia: MediaDetails? {
         didSet { configureWithReceivedMedia() }
     }
     var savedMedia: RealmObjectModel? {

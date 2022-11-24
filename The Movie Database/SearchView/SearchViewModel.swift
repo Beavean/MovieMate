@@ -8,7 +8,7 @@
 import Foundation
 
 protocol SearchViewModeling {
-    var mediaSearchResults: [BasicMedia.Results] { get set }
+    var mediaSearchResults: [MediaDetails] { get set }
     var enteredQuery: String { get set }
     var mediaTypeSegmentedControl: Int { get set }
     var mediaType: String? { get set }
@@ -18,9 +18,9 @@ protocol SearchViewModeling {
 
 final class SearchViewModel: SearchViewModeling {
 
-    // MARK: - Variables
+    // MARK: - Properties
 
-    var mediaSearchResults: [BasicMedia.Results] = []
+    var mediaSearchResults: [MediaDetails] = []
     var enteredQuery = nil ?? ""
     var mediaTypeSegmentedControl = 0
     var mediaType: String?

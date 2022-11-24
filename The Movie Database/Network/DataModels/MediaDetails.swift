@@ -13,6 +13,7 @@ struct MediaDetails: Codable {
     let backdropPath: String?
     let budget: Int?
     let genres: [Genres]?
+    let genreIDs: [Int]?
     let homepage: String?
     let id: Int?
     let imdbID: String?
@@ -42,6 +43,7 @@ struct MediaDetails: Codable {
         case backdropPath = "backdrop_path"
         case budget = "budget"
         case genres = "genres"
+        case genreIDs = "genre_ids"
         case homepage = "homepage"
         case id = "id"
         case imdbID = "imdb_id"
@@ -111,17 +113,6 @@ struct MediaDetails: Codable {
             return resultString
         } else {
             return nil
-        }
-    }
-
-    struct Genres: Codable {
-
-        let id: Int?
-        let name: String?
-
-        enum CodingKeys: String, CodingKey {
-            case id = "id"
-            case name = "name"
         }
     }
 }

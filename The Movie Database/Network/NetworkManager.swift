@@ -8,7 +8,7 @@
 import Foundation
 import Alamofire
 
-typealias BasicMediaCompletion = ([BasicMedia.Results]) -> Void
+typealias BasicMediaCompletion = ([MediaDetails]) -> Void
 
 struct NetworkManager {
 
@@ -45,30 +45,30 @@ struct NetworkManager {
     }
 
     func getTrendingMovies(completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.trendingMovies, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.trendingMovies, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }
 
     func getTrendingSeries(completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.trendingSeries, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.trendingSeries, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }
 
     func getSearchedMovies(enteredQuery: String, completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.searchMovies, enteredQuery: enteredQuery, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.searchMovies, enteredQuery: enteredQuery, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }
 
     func getSearchedSeries(enteredQuery: String, completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.searchSeries, enteredQuery: enteredQuery, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.searchSeries, enteredQuery: enteredQuery, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }
 
-    func getMediaVideos(mediaID: Int, mediaType: String, completion: @escaping (([MediaVideos.Video]) -> Void)) {
+    func getMediaVideos(mediaID: Int, mediaType: String, completion: @escaping (([Video]) -> Void)) {
         let query = Constants.Network.getMediaVideos(mediaID: mediaID, mediaType: mediaType)
         makeRequest(apiQuery: query, model: MediaVideos.self) { data in
             completion(data.results ?? [])
@@ -83,37 +83,37 @@ struct NetworkManager {
     }
 
     func getNowPlayingMovies(completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.nowPlayingMovies, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.nowPlayingMovies, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }
 
     func getUpcomingMovies(completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.upcomingMovies, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.upcomingMovies, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }
 
     func getTopRatedMovies(completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.topRatedMovies, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.topRatedMovies, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }
 
     func getPopularSeries(completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.popularSeries, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.popularSeries, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }
 
     func getLatestSeries(completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.onTheAirSeries, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.onTheAirSeries, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }
 
     func getTopRatedSeries(completion: @escaping (BasicMediaCompletion)) {
-        makeRequest(apiQuery: Constants.Network.topRatedSeries, model: BasicMedia.self) { data in
+        makeRequest(apiQuery: Constants.Network.topRatedSeries, model: MediaSearchResults.self) { data in
             completion(data.results ?? [])
         }
     }

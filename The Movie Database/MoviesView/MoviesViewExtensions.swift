@@ -22,7 +22,7 @@ extension MoviesViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: Constants.UI.discoverCollectionViewCellID, for: indexPath) as? DiscoverCollectionViewCell
-        var item: BasicMedia.Results
+        var item: MediaDetails
         switch collectionView {
         case nowPlayingCollectionView: item = nowPlayingMovies[indexPath.row]
         case upcomingCollectionView: item = upcomingMovies[indexPath.row]

@@ -19,7 +19,7 @@ protocol DetailViewModeling {
 
 final class DetailViewModel: DetailViewModeling {
 
-    // MARK: - Variables
+    // MARK: - Properties
 
     var mediaDetails: MediaDetails?
     var mediaType: String?

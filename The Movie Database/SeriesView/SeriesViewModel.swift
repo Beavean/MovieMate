@@ -8,9 +8,9 @@
 import Foundation
 
 protocol SeriesViewModeling {
-    var popularSeries: [BasicMedia.Results] { get set }
-    var latestSeries: [BasicMedia.Results] { get set }
-    var topRatedSeries: [BasicMedia.Results] { get set }
+    var popularSeries: [MediaDetails] { get set }
+    var latestSeries: [MediaDetails] { get set }
+    var topRatedSeries: [MediaDetails] { get set }
     var onDataUpdated: () -> Void { get set }
 
     func updateData()
@@ -18,11 +18,11 @@ protocol SeriesViewModeling {
 
 final class SeriesViewModel: SeriesViewModeling {
 
-    // MARK: - Variables
+    // MARK: - Properties
 
-    var popularSeries: [BasicMedia.Results] = []
-    var latestSeries: [BasicMedia.Results] = []
-    var topRatedSeries: [BasicMedia.Results] = []
+    var popularSeries: [MediaDetails] = []
+    var latestSeries: [MediaDetails] = []
+    var topRatedSeries: [MediaDetails] = []
     var onDataUpdated = { }
 
     // MARK: - Model data update and completions

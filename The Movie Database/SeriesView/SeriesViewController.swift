@@ -15,17 +15,17 @@ final class SeriesViewController: UIViewController {
     @IBOutlet weak var latestCollectionView: UICollectionView!
     @IBOutlet weak var topRatedCollectionView: UICollectionView!
 
-    // MARK: - Variables
+    // MARK: - Properties
 
-    var popularSeries = [BasicMedia.Results]() {
+    var popularSeries = [MediaDetails]() {
         didSet { popularCollectionView.reloadData() }
     }
 
-    var latestSeries = [BasicMedia.Results]() {
+    var latestSeries = [MediaDetails]() {
         didSet { latestCollectionView.reloadData() }
     }
 
-    var topRatedSeries = [BasicMedia.Results]() {
+    var topRatedSeries = [MediaDetails]() {
         didSet { topRatedCollectionView.reloadData() }
     }
 

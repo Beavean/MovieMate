@@ -19,7 +19,7 @@ final class DiscoverCollectionViewCell: UICollectionViewCell {
         posterImageView.addSmallCornerRadius()
     }
 
-    func configure(with model: BasicMedia.Results) {
+    func configure(with model: MediaDetails) {
         if let posterPath = model.posterPath {
             self.posterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
         } else {
