@@ -16,11 +16,11 @@ final class VideoViewController: UIViewController {
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var videosTableView: UITableView!
 
-    // MARK: - Variables
+    // MARK: - Properties
 
     var mediaID: Int?
     var mediaType: String?
-    var receivedDetails: [MediaVideos.Video]? {
+    var receivedDetails: [Video]? {
         didSet { videosTableView.reloadData() }
     }
     private var viewModel: VideoViewModeling = VideoViewModel()

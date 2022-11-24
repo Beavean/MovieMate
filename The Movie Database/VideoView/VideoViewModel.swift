@@ -9,7 +9,7 @@ import Foundation
 
 protocol VideoViewModeling {
 
-    var videoDetails: [MediaVideos.Video]? { get set }
+    var videoDetails: [Video]? { get set }
     var mediaType: String? { get set }
     var mediaID: Int? { get set }
     var onDataUpdated: () -> Void { get set }
@@ -19,9 +19,9 @@ protocol VideoViewModeling {
 
 final class VideoViewModel: VideoViewModeling {
 
-    // MARK: - Variables
+    // MARK: - Properties
 
-    var videoDetails: [MediaVideos.Video]?
+    var videoDetails: [Video]?
     var mediaType: String?
     var mediaID: Int?
     var onDataUpdated = { }
