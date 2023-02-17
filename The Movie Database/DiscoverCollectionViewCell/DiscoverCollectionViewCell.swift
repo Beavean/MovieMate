@@ -9,9 +9,6 @@ import UIKit
 import SDWebImage
 
 final class DiscoverCollectionViewCell: UICollectionViewCell {
-
-    // MARK: - IBOutlets
-
     @IBOutlet private weak var posterImageView: UIImageView!
 
     override func awakeFromNib() {

@@ -8,7 +8,6 @@
 import Foundation
 
 struct MediaDateFormatter {
-
     static let shared = MediaDateFormatter()
 
     private init() { }

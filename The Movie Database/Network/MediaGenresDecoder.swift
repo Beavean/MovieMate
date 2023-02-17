@@ -8,7 +8,6 @@
 import Foundation
 
 struct MediaGenresDecoder {
-
     static let shared = MediaGenresDecoder()
 
     private init() { }

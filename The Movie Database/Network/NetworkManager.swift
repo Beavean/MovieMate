@@ -11,7 +11,6 @@ import Alamofire
 typealias BasicMediaCompletion = ([MediaDetails]) -> Void
 
 struct NetworkManager {
-
     static let shared = NetworkManager()
 
     private init() { }
@@ -90,7 +89,7 @@ struct NetworkManager {
 
     func getUpcomingMovies(completion: @escaping (BasicMediaCompletion)) {
         makeRequest(apiQuery: Constants.Network.upcomingMovies, model: MediaSearchResults.self) { data in
-            completion(data.results ?? [])
+            completion(data.results?.reversed() ?? [])
         }
     }
 
