@@ -23,7 +23,6 @@ final class RealmObjectManager {
 
     func saveMedia(from model: MediaDetails, mediaType: String) {
         guard !checkIfAlreadySaved(id: model.id) else { return }
-
         let movieRealm = RealmObjectModel()
         movieRealm.mediaType = mediaType
         movieRealm.adult = model.adult ?? false
@@ -41,7 +40,6 @@ final class RealmObjectManager {
         movieRealm.voteAverage = model.voteAverage ?? 0
         movieRealm.voteCount = model.voteCount ?? 0
         movieRealm.dateSaved = Date()
-
         do {
             try realm.write {
                 realm.add(movieRealm)
@@ -57,7 +55,6 @@ final class RealmObjectManager {
 
     func deleteMedia(id: Int) {
         guard let realmObject = realm.object(ofType: RealmObjectModel.self, forPrimaryKey: id) else { return }
-
         do {
             try realm.write {
                 realm.delete(realmObject)
