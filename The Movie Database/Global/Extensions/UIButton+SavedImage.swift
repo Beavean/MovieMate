@@ -8,16 +8,9 @@
 import UIKit
 
 extension UIButton {
-
-    // MARK: - Save button image and colour changes
-
     func changeImageIfSaved(condition: Bool) {
-        if condition {
-            self.setImage(UIImage(systemName: Constants.UI.alreadySavedButtonImage), for: .normal)
-            self.tintColor = .orange
-        } else {
-            self.setImage(UIImage(systemName: Constants.UI.saveButtonImage), for: .normal)
-            self.tintColor = .label
-        }
+        let image = UIImage(systemName: condition ? Constants.UI.alreadySavedButtonImage : Constants.UI.saveButtonImage)
+        self.setImage(image, for: .normal)
+        self.tintColor = condition ? .orange : .label
     }
 }
