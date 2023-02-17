@@ -8,12 +8,6 @@
 import Foundation
 
 struct MediaVideos: Codable {
-
     let id: Int?
     let results: [Video]?
-
-    enum CodingKeys: String, CodingKey {
-        case id = "id"
-        case results = "results"
-    }
 }

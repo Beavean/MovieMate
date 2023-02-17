@@ -8,7 +8,6 @@
 import Foundation
 
 struct Video: Codable {
-
     let name: String?
     let key: String?
     let site: String?
@@ -19,13 +18,7 @@ struct Video: Codable {
     let id: String?
 
     enum CodingKeys: String, CodingKey {
-        case name = "name"
-        case key = "key"
-        case site = "site"
-        case size = "size"
-        case type = "type"
-        case official = "official"
+        case name, key, site, size, type, official, id
         case publishedAt = "published_at"
-        case id = "id"
     }
 }
