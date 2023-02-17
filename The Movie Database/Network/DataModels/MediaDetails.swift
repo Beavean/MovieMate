@@ -8,7 +8,6 @@
 import Foundation
 
 struct MediaDetails: Codable {
-
     let adult: Bool?
     let backdropPath: String?
     let budget: Int?
@@ -39,56 +38,45 @@ struct MediaDetails: Codable {
     let type: String?
 
     enum CodingKeys: String, CodingKey {
-        case adult = "adult"
+        case adult
         case backdropPath = "backdrop_path"
-        case budget = "budget"
-        case genres = "genres"
+        case budget
+        case genres
         case genreIDs = "genre_ids"
-        case homepage = "homepage"
-        case id = "id"
+        case homepage
+        case id
         case imdbID = "imdb_id"
         case originalLanguage = "original_language"
         case originalTitle = "original_title"
-        case overview = "overview"
-        case popularity = "popularity"
+        case overview
+        case popularity
         case posterPath = "poster_path"
         case releaseDate = "release_date"
-        case revenue = "revenue"
-        case runtime = "runtime"
-        case status = "status"
-        case tagline = "tagline"
-        case title = "title"
-        case video = "video"
+        case revenue
+        case runtime
+        case status
+        case tagline
+        case title
+        case video
         case voteAverage = "vote_average"
         case voteCount = "vote_count"
         case firstAirDate = "first_air_date"
-        case name = "name"
+        case name
         case numberOfEpisodes = "number_of_episodes"
         case numberOfSeasons = "number_of_seasons"
         case originalName = "original_name"
-        case type = "type"
+        case type
     }
 
     func convertGenresIntoString() -> String {
-        guard let genres = genres else { return "Genre is not specified" }
-        var resultString = "Genre is not specified"
-        var decodingArray: [String] = []
-        for genre in genres {
-            guard let name = genre.name else { return "Genre is not specified" }
-            decodingArray.append(name)
-        }
-        resultString = decodingArray.joined(separator: ", ")
-        if resultString.isEmpty {
-            return "Genre is not specified"
-        } else {
-            return resultString
-        }
+        let genreNotSpecified = "Genre is not specified"
+        guard let genres = genres else { return genreNotSpecified }
+        let decodingArray = genres.compactMap { $0.name }
+        return decodingArray.isEmpty ? genreNotSpecified : decodingArray.joined(separator: ", ")
     }
 
     func convertTimeDuration() -> String? {
-        guard let runtime = runtime else {
-            return nil
-        }
+        guard let runtime = runtime else { return nil }
         let hours = runtime / 60
         let minutes = runtime - (hours * 60)
         switch hours {
@@ -99,20 +87,8 @@ struct MediaDetails: Codable {
     }
 
     func convertSeasonsAndEpisodes() -> String? {
-        let resultString: String
-        if let numberOfSeasons = numberOfSeasons, let numberOfEpisodes = numberOfEpisodes {
-            resultString = "Seasons: \(numberOfSeasons) \n Episodes: \(numberOfEpisodes)"
-            return resultString
-        }
-        if let numberOfSeasons = numberOfSeasons {
-            resultString = "Seasons: \(numberOfSeasons)"
-            return resultString
-        }
-        if let numberOfEpisodes = numberOfEpisodes {
-            resultString = "Episodes: \(numberOfEpisodes)"
-            return resultString
-        } else {
-            return nil
-        }
+        let seasonsString = numberOfSeasons.map { "Seasons: \($0)" } ?? ""
+        let episodesString = numberOfEpisodes.map { "Episodes: \($0)" } ?? ""
+        return [seasonsString, episodesString].filter { !$0.isEmpty }.joined(separator: " \n ")
     }
 }
