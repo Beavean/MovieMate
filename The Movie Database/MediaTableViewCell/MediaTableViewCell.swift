@@ -82,8 +82,8 @@ final class MediaTableViewCell: UITableViewCell {
         self.mediaTitleLabel.text = model.title ?? model.name
         self.mediaOverviewLabel.text = model.overview
         self.mediaVotesCountLabel.text = String(describing: (model.voteCount ?? 0))
-        self.mediaGenresLabel.text = MediaGenresDecoder.shared.decodeMovieGenreIDs(idNumbers: (model.genreIDs ?? []))
-        self.mediaReleaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? model.firstAirDate)
+        self.mediaGenresLabel.text = model.decodeMovieGenreIDs()
+        self.mediaReleaseDateLabel.text = model.formatDate()
         self.mediaRatingLabel.text = String(format: "%.1f", (model.voteAverage ?? 0.0))
     }
 

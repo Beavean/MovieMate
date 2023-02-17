@@ -34,7 +34,7 @@ final class RealmObjectManager {
         movieRealm.overview = model.overview ?? ""
         movieRealm.popularity = model.popularity ?? 0
         movieRealm.posterPath = model.posterPath ?? ""
-        movieRealm.releaseDate = MediaDateFormatter.shared.formatDate(from: model.releaseDate ?? model.firstAirDate)
+        movieRealm.releaseDate = model.formatDate()
         movieRealm.title = model.title ?? model.name ?? ""
         movieRealm.video = model.video ?? false
         movieRealm.voteAverage = model.voteAverage ?? 0

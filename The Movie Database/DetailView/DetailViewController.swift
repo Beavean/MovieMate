@@ -118,7 +118,7 @@ final class DetailViewController: UIViewController {
         self.mediaTitleLabel.text = model.title ?? model.name
         self.mediaOverviewLabel.text = model.overview
         self.mediaGenresLabel.text = model.convertGenresIntoString()
-        self.mediaReleaseDateLabel.text = MediaDateFormatter.shared.formatDate(from: model.firstAirDate ?? model.releaseDate)
+        self.mediaReleaseDateLabel.text = model.formatDate()
         self.mediaRatingLabel.text = String(format: "%.1f", (model.voteAverage ?? 0.0))
         self.mediaVotesCountLabel.text = "\(String(describing: (model.voteCount ?? 0))) votes"
         self.mediaRuntimeLabel.text = model.convertTimeDuration() ?? model.convertSeasonsAndEpisodes()
