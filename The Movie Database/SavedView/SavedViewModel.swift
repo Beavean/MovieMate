@@ -28,11 +28,9 @@ final class SavedViewModel: SavedViewModeling {
     func loadSavedMedia(searchText: String?) {
         if let searchText = searchText {
             if searchText.isEmpty {
-                guard let loadedMedia = RealmObjectManager.shared.getMedia() else { return }
-                arrayOfMedia = loadedMedia
+                arrayOfMedia = RealmObjectManager.shared.getMedia()
             } else {
-                guard let loadedMedia = RealmObjectManager.shared.getMedia()?.filter("title CONTAINS[cd] %@", searchText).sorted(byKeyPath: "dateSaved", ascending: true) else { return }
-                arrayOfMedia = loadedMedia
+                arrayOfMedia = RealmObjectManager.shared.getMedia().filter("title CONTAINS[cd] %@", searchText).sorted(byKeyPath: "dateSaved", ascending: true)
             }
         }
         onDataUpdated()
