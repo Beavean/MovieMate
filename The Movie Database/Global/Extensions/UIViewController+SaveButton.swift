@@ -8,41 +8,29 @@
 import UIKit
 
 extension UIViewController {
-
-    // MARK: - Save button processing & alert display methods
-
     func saveButtonPressed(button: UIButton, mediaID: Int?, mediaType: String?, completion: (() -> Void)? = nil) {
-        DispatchQueue.main.async {
-            guard let mediaID = mediaID else { return }
-            if RealmObjectManager.shared.checkIfAlreadySaved(id: mediaID) {
-                let alert = UIAlertController(title: "Remove from saved?", message: "", preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-                let deleteAction = UIAlertAction(title: "Remove", style: .default) { _ in
-                    RealmObjectManager.shared.deleteMedia(id: mediaID)
-                    if let completion = completion {
-                        completion()
-                    }
-                    button.changeImageIfSaved(condition: false)
-                }
-                alert.view.tintColor = UIColor.label
-                alert.addAction(cancelAction)
-                alert.addAction(deleteAction)
-                self.present(alert, animated: true)
+        guard let mediaID = mediaID else { return }
+        let isMediaSaved = RealmObjectManager.shared.checkIfAlreadySaved(id: mediaID)
+        let alertTitle = isMediaSaved ? "Remove from saved?" : "Add to saved?"
+        let saveActionTitle = isMediaSaved ? "Remove" : "Save"
+        let alertController = UIAlertController(title: alertTitle, message: "", preferredStyle: .alert)
+        alertController.view.tintColor = UIColor.label
+        let cancelAction = UIAlertAction(title: "Cancel", style: .default)
+        alertController.addAction(cancelAction)
+        let saveAction = UIAlertAction(title: saveActionTitle, style: .default) { _ in
+            guard let mediaType else { return }
+            if isMediaSaved {
+                RealmObjectManager.shared.deleteMedia(id: mediaID)
+                button.changeImageIfSaved(condition: false)
             } else {
-                let alert = UIAlertController(title: "Add to saved?", message: "", preferredStyle: .alert)
-                let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
-                    guard let mediaType = mediaType else { return }
-                    NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { details in
-                        RealmObjectManager.shared.saveMedia(from: details, mediaType: mediaType)
-                    }
+                NetworkManager.shared.getMediaDetails(mediaID: mediaID, mediaType: mediaType) { details in
+                    RealmObjectManager.shared.saveMedia(from: details, mediaType: mediaType)
                     button.changeImageIfSaved(condition: true)
                 }
-                let cancelAction = UIAlertAction(title: "Cancel", style: .default)
-                alert.view.tintColor = UIColor.label
-                alert.addAction(cancelAction)
-                alert.addAction(saveAction)
-                self.present(alert, animated: true)
             }
+            completion?()
         }
+        alertController.addAction(saveAction)
+        self.present(alertController, animated: true)
     }
 }
