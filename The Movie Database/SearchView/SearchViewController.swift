@@ -10,9 +10,9 @@ import UIKit
 final class SearchViewController: UIViewController {
     // MARK: - IBOutlets
 
-    @IBOutlet private weak var searchBar: UISearchBar!
-    @IBOutlet private weak var contentTypeSegmentedControl: UISegmentedControl!
-    @IBOutlet weak var mediaTableView: UITableView!
+    @IBOutlet private var searchBar: UISearchBar!
+    @IBOutlet private var contentTypeSegmentedControl: UISegmentedControl!
+    @IBOutlet var mediaTableView: UITableView!
 
     // MARK: - Properties
 
@@ -45,8 +45,8 @@ final class SearchViewController: UIViewController {
     }
 
     @objc private func loadSearchResults() {
-        guard let enteredQuery = self.searchBar.searchTextField.text else { return }
-        self.viewModel.enteredQuery = enteredQuery
+        guard let enteredQuery = searchBar.searchTextField.text else { return }
+        viewModel.enteredQuery = enteredQuery
         viewModel.updateData()
     }
 
@@ -82,7 +82,7 @@ extension SearchViewController: UISearchBarDelegate {
         searchBar.endEditing(true)
     }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_: UISearchBar, textDidChange _: String) {
         lastScheduledSearch?.invalidate()
         lastScheduledSearch = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(loadSearchResults), userInfo: nil, repeats: false)
     }
@@ -91,13 +91,13 @@ extension SearchViewController: UISearchBarDelegate {
 // MARK: - UITableViewDelegate
 
 extension SearchViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: Constants.UI.mainStoryboardName, bundle: nil)
         if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.detailViewControllerID) as? DetailViewController,
-            let mediaID = self.mediaSearchResults[indexPath.row].id {
+           let mediaID = mediaSearchResults[indexPath.row].id {
             viewController.mediaID = mediaID
-            viewController.mediaType = self.mediaType
-            self.navigationController?.pushViewController(viewController, animated: true)
+            viewController.mediaType = mediaType
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }
@@ -105,12 +105,12 @@ extension SearchViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 
 extension SearchViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         return mediaSearchResults.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell else { return UITableViewCell() }
         let item = mediaSearchResults[indexPath.row]
         cell.saveButtonCompletion = { _ in
             self.saveButtonPressed(button: cell.saveButton, mediaID: item.id, mediaType: self.mediaType) { [weak self] in
@@ -127,7 +127,7 @@ extension SearchViewController: UITableViewDataSource {
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
         }
-        cell.mediaType = self.mediaType
+        cell.mediaType = mediaType
         cell.receivedMedia = item
         cell.selectionStyle = .none
         return cell

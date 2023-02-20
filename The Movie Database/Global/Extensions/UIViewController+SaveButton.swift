@@ -31,6 +31,6 @@ extension UIViewController {
             completion?()
         }
         alertController.addAction(saveAction)
-        self.present(alertController, animated: true)
+        present(alertController, animated: true)
     }
 }

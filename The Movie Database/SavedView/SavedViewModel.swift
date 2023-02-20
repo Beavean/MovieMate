@@ -9,7 +9,6 @@ import Foundation
 import RealmSwift
 
 protocol SavedViewModeling {
-
     var arrayOfMedia: Results<RealmObjectModel>? { get set }
     var onDataUpdated: () -> Void { get set }
 
@@ -17,11 +16,10 @@ protocol SavedViewModeling {
 }
 
 final class SavedViewModel: SavedViewModeling {
-
     // MARK: - Properties
 
     var arrayOfMedia: Results<RealmObjectModel>?
-    var onDataUpdated = { }
+    var onDataUpdated = {}
 
     // MARK: - Loading data
 

@@ -8,12 +8,11 @@
 import UIKit
 
 final class SeriesViewController: UIViewController {
-
     // MARK: - IBOutlets
 
-    @IBOutlet weak var popularCollectionView: UICollectionView!
-    @IBOutlet weak var latestCollectionView: UICollectionView!
-    @IBOutlet weak var topRatedCollectionView: UICollectionView!
+    @IBOutlet var popularCollectionView: UICollectionView!
+    @IBOutlet var latestCollectionView: UICollectionView!
+    @IBOutlet var topRatedCollectionView: UICollectionView!
 
     // MARK: - Properties
 
@@ -57,6 +56,7 @@ final class SeriesViewController: UIViewController {
             self?.showLoader(false)
         }
     }
+
     // MARK: - Collection View setups
 
     private func setupCollectionView(_ collectionView: UICollectionView) {
@@ -67,7 +67,7 @@ final class SeriesViewController: UIViewController {
 }
 
 extension SeriesViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         var countOfItems = 0
         switch collectionView {
         case popularCollectionView: countOfItems = popularSeries.count
@@ -112,7 +112,7 @@ extension SeriesViewController: UICollectionViewDelegate {
             }
             viewController.mediaID = delegatingMediaID
             viewController.mediaType = Constants.Network.tvSeriesType
-            self.navigationController?.pushViewController(viewController, animated: true)
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }

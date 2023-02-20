@@ -18,14 +18,13 @@ protocol DetailViewModeling {
 }
 
 final class DetailViewModel: DetailViewModeling {
-
     // MARK: - Properties
 
     var mediaDetails: MediaDetails?
     var mediaType: String?
     var mediaVideoKey: String?
     var mediaID: Int?
-    var onDataUpdated = { }
+    var onDataUpdated = {}
 
     // MARK: - Model data update and completions
 

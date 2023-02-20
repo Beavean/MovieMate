@@ -9,9 +9,9 @@ import UIKit
 
 extension UIView {
     func addSmallCornerRadius() {
-        let cornerRadius = min(self.bounds.width, self.bounds.height) * Constants.UI.cornerRadiusRatio
-        self.layer.cornerRadius = cornerRadius
-        self.clipsToBounds = true
-        self.updateConstraints()
+        let cornerRadius = min(bounds.width, bounds.height) * Constants.UI.cornerRadiusRatio
+        layer.cornerRadius = cornerRadius
+        clipsToBounds = true
+        updateConstraints()
     }
 }

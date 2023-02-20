@@ -8,24 +8,26 @@
 import UIKit
 
 final class MoviesViewController: UIViewController {
-
     // MARK: - IBOutlets
 
-    @IBOutlet weak var nowPlayingCollectionView: UICollectionView!
-    @IBOutlet weak var upcomingCollectionView: UICollectionView!
-    @IBOutlet weak var topRatedCollectionView: UICollectionView!
+    @IBOutlet var nowPlayingCollectionView: UICollectionView!
+    @IBOutlet var upcomingCollectionView: UICollectionView!
+    @IBOutlet var topRatedCollectionView: UICollectionView!
 
     // MARK: - Properties
 
     var nowPlayingMovies = [MediaDetails]() {
         didSet { nowPlayingCollectionView.reloadData() }
     }
+
     var upcomingMovies = [MediaDetails]() {
         didSet { upcomingCollectionView.reloadData() }
     }
+
     var topRatedMovies = [MediaDetails]() {
         didSet { topRatedCollectionView.reloadData() }
     }
+
     private var viewModel: MoviesViewModeling = MoviesViewModel()
 
     // MARK: - Discover View lifecycle
@@ -64,7 +66,7 @@ final class MoviesViewController: UIViewController {
 // MARK: - UICollectionViewDataSource
 
 extension MoviesViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection _: Int) -> Int {
         var countOfItems = 0
         switch collectionView {
         case nowPlayingCollectionView: countOfItems = nowPlayingMovies.count
@@ -111,7 +113,7 @@ extension MoviesViewController: UICollectionViewDelegate {
             }
             viewController.mediaID = delegatingMediaID
             viewController.mediaType = Constants.Network.movieType
-            self.navigationController?.pushViewController(viewController, animated: true)
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 }

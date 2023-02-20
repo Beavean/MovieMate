@@ -17,14 +17,13 @@ protocol SearchViewModeling {
 }
 
 final class SearchViewModel: SearchViewModeling {
-
     // MARK: - Properties
 
     var mediaSearchResults: [MediaDetails] = []
     var enteredQuery = nil ?? ""
     var mediaTypeSegmentedControl = 0
     var mediaType: String?
-    var onDataUpdated = { }
+    var onDataUpdated = {}
 
     // MARK: - Model data update and completions
 

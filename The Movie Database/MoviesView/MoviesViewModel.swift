@@ -17,13 +17,12 @@ protocol MoviesViewModeling {
 }
 
 final class MoviesViewModel: MoviesViewModeling {
-
     // MARK: - Properties
 
     var nowPlayingMovies: [MediaDetails] = []
     var upcomingMovies: [MediaDetails] = []
     var topRatedMovies: [MediaDetails] = []
-    var onDataUpdated = { }
+    var onDataUpdated = {}
 
     // MARK: - Model data update and completions
 

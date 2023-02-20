@@ -5,15 +5,14 @@
 //  Created by Beavean on 21.07.2022.
 //
 
-import UIKit
 import RealmSwift
+import UIKit
 
 final class SavedViewController: UIViewController {
-
     // MARK: - IBOutlets
 
-    @IBOutlet weak var savedMediaTableView: UITableView!
-    @IBOutlet private weak var savedMediaSearchBar: UISearchBar!
+    @IBOutlet var savedMediaTableView: UITableView!
+    @IBOutlet private var savedMediaSearchBar: UISearchBar!
 
     var arrayOfMedia: Results<RealmObjectModel>? {
         didSet { savedMediaTableView.reloadData() }
@@ -27,14 +26,14 @@ final class SavedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupCompletions()
-        viewModel.loadSavedMedia(searchText: self.savedMediaSearchBar.text)
+        viewModel.loadSavedMedia(searchText: savedMediaSearchBar.text)
         savedMediaTableView.dataSource = self
         savedMediaTableView.delegate = self
         savedMediaSearchBar.delegate = self
         savedMediaTableView.register(UINib(nibName: Constants.UI.mediaTableViewCellReuseID, bundle: nil), forCellReuseIdentifier: Constants.UI.mediaTableViewCellReuseID)
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewWillAppear(_: Bool) {
         savedMediaTableView.reloadData()
     }
 
@@ -53,17 +52,17 @@ final class SavedViewController: UIViewController {
 // MARK: - UITableViewDelegate
 
 extension SavedViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(_: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: Constants.UI.mainStoryboardName, bundle: nil)
-        if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.detailViewControllerID) as? DetailViewController, let media = self.arrayOfMedia?[indexPath.row] {
+        if let viewController = storyboard.instantiateViewController(withIdentifier: Constants.UI.detailViewControllerID) as? DetailViewController, let media = arrayOfMedia?[indexPath.row] {
             viewController.mediaID = media.id
             viewController.mediaType = media.mediaType
-            self.navigationController?.pushViewController(viewController, animated: true)
+            navigationController?.pushViewController(viewController, animated: true)
         }
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        guard let media = self.arrayOfMedia?[indexPath.row] else { return }
+        guard let media = arrayOfMedia?[indexPath.row] else { return }
         if editingStyle == .delete {
             RealmObjectManager.shared.deleteMedia(id: media.id)
             tableView.deleteRows(at: [indexPath], with: .fade)
@@ -76,13 +75,13 @@ extension SavedViewController: UITableViewDelegate {
 // MARK: - UITableViewDataSource
 
 extension SavedViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         arrayOfMedia?.count ?? 0
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell =  tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell,
-                let item = self.arrayOfMedia?[indexPath.row] else {  return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: Constants.UI.mediaTableViewCellReuseID, for: indexPath) as? MediaTableViewCell,
+              let item = arrayOfMedia?[indexPath.row] else { return UITableViewCell() }
         cell.savedMedia = item
         cell.selectionStyle = .none
         cell.saveButtonCompletion = { aCell in
@@ -108,13 +107,13 @@ extension SavedViewController: UITableViewDataSource {
 extension SavedViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.endEditing(true)
-        self.viewModel.loadSavedMedia(searchText: self.savedMediaSearchBar.text)
+        viewModel.loadSavedMedia(searchText: savedMediaSearchBar.text)
         DispatchQueue.main.async {
             searchBar.resignFirstResponder()
         }
     }
 
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_: UISearchBar, textDidChange _: String) {
         lastScheduledSearch?.invalidate()
         lastScheduledSearch = Timer.scheduledTimer(withTimeInterval: 0.5, repeats: true, block: { [weak self] _ in
             self?.viewModel.loadSavedMedia(searchText: self?.savedMediaSearchBar.text)
@@ -123,7 +122,7 @@ extension SavedViewController: UISearchBarDelegate {
     }
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        viewModel.loadSavedMedia(searchText: self.savedMediaSearchBar.text)
+        viewModel.loadSavedMedia(searchText: savedMediaSearchBar.text)
         searchBar.text = ""
         searchBar.endEditing(true)
     }

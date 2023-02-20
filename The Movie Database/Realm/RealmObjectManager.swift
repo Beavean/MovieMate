@@ -15,7 +15,7 @@ final class RealmObjectManager {
 
     private init() {
         do {
-            self.realm = try Realm()
+            realm = try Realm()
         } catch {
             fatalError("Failed to create Realm instance: \(error)")
         }

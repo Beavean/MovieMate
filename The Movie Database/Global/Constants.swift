@@ -8,10 +8,9 @@
 import Foundation
 
 struct Constants {
-
     // MARK: - URLs and Api Keys
 
-    struct Network {
+    enum Network {
         static let apiKey = "?api_key=2cfd0db8398a10e5a9777f73b2218ca9"
         static let baseUrl = "https://api.themoviedb.org/3/"
         static let baseImageUrl = "https://image.tmdb.org/t/p/w780/"
@@ -38,12 +37,11 @@ struct Constants {
             let query = "\(mediaType)/\(mediaID)/videos"
             return query
         }
-
     }
 
     // MARK: - UI constants and names
 
-    struct UI {
+    enum UI {
         static let cornerRadiusRatio = 0.05
         static let mediaTableViewCellReuseID = String(describing: MediaTableViewCell.self)
         static let detailViewControllerID = String(describing: DetailViewController.self)

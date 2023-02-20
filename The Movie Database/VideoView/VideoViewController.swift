@@ -9,12 +9,11 @@ import UIKit
 import youtube_ios_player_helper
 
 final class VideoViewController: UIViewController {
-
     // MARK: - IBOutlets
 
-    @IBOutlet weak var videoInfoLabel: UILabel!
-    @IBOutlet private weak var titleLabel: UILabel!
-    @IBOutlet private weak var videosTableView: UITableView!
+    @IBOutlet var videoInfoLabel: UILabel!
+    @IBOutlet private var titleLabel: UILabel!
+    @IBOutlet private var videosTableView: UITableView!
 
     // MARK: - Properties
 
@@ -23,6 +22,7 @@ final class VideoViewController: UIViewController {
     var receivedDetails: [Video]? {
         didSet { videosTableView.reloadData() }
     }
+
     private var viewModel: VideoViewModeling = VideoViewModel()
     private var mediaTitle: String?
 
@@ -39,8 +39,8 @@ final class VideoViewController: UIViewController {
 
     private func setupCompletions() {
         showLoader(true)
-        viewModel.mediaType = self.mediaType
-        viewModel.mediaID = self.mediaID
+        viewModel.mediaType = mediaType
+        viewModel.mediaID = mediaID
         viewModel.onDataUpdated = { [weak self] in
             self?.receivedDetails = self?.viewModel.videoDetails
             self?.showLoader(false)
@@ -48,24 +48,24 @@ final class VideoViewController: UIViewController {
     }
 
     func configureTitle(title: String?) {
-        self.mediaTitle = title ?? "No title available"
+        mediaTitle = title ?? "No title available"
     }
 }
 
 // MARK: - UITableViewDataSource
 
 extension VideoViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_: UITableView, numberOfRowsInSection _: Int) -> Int {
         guard let videos = receivedDetails else { return 0 }
         switch videos.count {
         case 0:
-            self.videoInfoLabel.text = "No videos available ⚠️"
+            videoInfoLabel.text = "No videos available ⚠️"
             return 0
         case 1:
-            self.videoInfoLabel.text = "\(videos.count) video available:"
+            videoInfoLabel.text = "\(videos.count) video available:"
             return videos.count
         default:
-            self.videoInfoLabel.text = "\(videos.count) videos available:"
+            videoInfoLabel.text = "\(videos.count) videos available:"
             return videos.count
         }
     }

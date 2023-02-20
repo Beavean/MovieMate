@@ -9,20 +9,19 @@ import Foundation
 import SDWebImage
 
 final class MediaTableViewCell: UITableViewCell {
-
     // MARK: - IBOutlets
 
-    @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet private weak var mediaPosterImageView: UIImageView!
-    @IBOutlet private weak var mediaTitleLabel: UILabel!
-    @IBOutlet private weak var mediaOverviewLabel: UILabel!
-    @IBOutlet private weak var mediaReleaseDateLabel: UILabel!
-    @IBOutlet private weak var mediaGenresLabel: UILabel!
-    @IBOutlet private weak var mediaRatingLabel: UILabel!
-    @IBOutlet private weak var mediaVotesCountLabel: UILabel!
-    @IBOutlet private weak var mediaBackdropImageView: UIImageView!
-    @IBOutlet private weak var mediaCellMainView: UIView!
-    @IBOutlet private weak var mediaRatingBackgroundView: UIView!
+    @IBOutlet var saveButton: UIButton!
+    @IBOutlet private var mediaPosterImageView: UIImageView!
+    @IBOutlet private var mediaTitleLabel: UILabel!
+    @IBOutlet private var mediaOverviewLabel: UILabel!
+    @IBOutlet private var mediaReleaseDateLabel: UILabel!
+    @IBOutlet private var mediaGenresLabel: UILabel!
+    @IBOutlet private var mediaRatingLabel: UILabel!
+    @IBOutlet private var mediaVotesCountLabel: UILabel!
+    @IBOutlet private var mediaBackdropImageView: UIImageView!
+    @IBOutlet private var mediaCellMainView: UIView!
+    @IBOutlet private var mediaRatingBackgroundView: UIView!
 
     // MARK: - Properties
 
@@ -32,9 +31,11 @@ final class MediaTableViewCell: UITableViewCell {
     var receivedMedia: MediaDetails? {
         didSet { configureWithReceivedMedia() }
     }
+
     var savedMedia: RealmObjectModel? {
         didSet { configureWithSavedMedia() }
     }
+
     private var mediaID: Int?
 
     // MARK: - TableViewCell lifecycle
@@ -44,12 +45,11 @@ final class MediaTableViewCell: UITableViewCell {
         mediaBackdropImageView.applyBlurEffect()
         mediaRatingBackgroundView.addSmallCornerRadius()
         mediaCellMainView.addSmallCornerRadius()
-
     }
 
     override func prepareForReuse() {
         super.prepareForReuse()
-        self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+        mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
     }
 
     // MARK: - Button interactions
@@ -70,21 +70,21 @@ final class MediaTableViewCell: UITableViewCell {
             saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: id))
         }
         if let posterPath = model.posterPath {
-            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
+            mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
-            self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+            mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
         if let backdropPath = model.backdropPath {
-            self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
+            mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
-            self.mediaBackdropImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+            mediaBackdropImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
-        self.mediaTitleLabel.text = model.title ?? model.name
-        self.mediaOverviewLabel.text = model.overview
-        self.mediaVotesCountLabel.text = String(describing: (model.voteCount ?? 0))
-        self.mediaGenresLabel.text = model.decodeMovieGenreIDs()
-        self.mediaReleaseDateLabel.text = model.formatDate()
-        self.mediaRatingLabel.text = String(format: "%.1f", (model.voteAverage ?? 0.0))
+        mediaTitleLabel.text = model.title ?? model.name
+        mediaOverviewLabel.text = model.overview
+        mediaVotesCountLabel.text = String(describing: model.voteCount ?? 0)
+        mediaGenresLabel.text = model.decodeMovieGenreIDs()
+        mediaReleaseDateLabel.text = model.formatDate()
+        mediaRatingLabel.text = String(format: "%.1f", model.voteAverage ?? 0.0)
     }
 
     // MARK: - Configure cell with Realm object model
@@ -92,22 +92,22 @@ final class MediaTableViewCell: UITableViewCell {
     func configureWithSavedMedia() {
         guard let object = savedMedia else { return }
         saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: object.id))
-        self.mediaType = object.mediaType
+        mediaType = object.mediaType
         if let posterPath = object.posterPath {
-            self.mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
+            mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
-            self.mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+            mediaPosterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
         if let backdropPath = object.backdropPath {
-            self.mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
+            mediaBackdropImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + backdropPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
-            self.mediaBackdropImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+            mediaBackdropImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
-        self.mediaVotesCountLabel.text = String(describing: object.voteCount ?? 0)
-        self.mediaTitleLabel.text = object.title ?? "No title"
-        self.mediaOverviewLabel.text = object.overview ?? "No overview"
-        self.mediaGenresLabel.text = object.genreIDs ?? "Genre is not specified"
-        self.mediaReleaseDateLabel.text = object.releaseDate ?? "No release date"
-        self.mediaRatingLabel.text = String(format: "%.1f", object.voteAverage ?? 0.0)
+        mediaVotesCountLabel.text = String(describing: object.voteCount ?? 0)
+        mediaTitleLabel.text = object.title ?? "No title"
+        mediaOverviewLabel.text = object.overview ?? "No overview"
+        mediaGenresLabel.text = object.genreIDs ?? "Genre is not specified"
+        mediaReleaseDateLabel.text = object.releaseDate ?? "No release date"
+        mediaRatingLabel.text = String(format: "%.1f", object.voteAverage ?? 0.0)
     }
 }

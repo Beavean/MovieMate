@@ -5,11 +5,11 @@
 //  Created by Beavean on 06.08.2022.
 //
 
-import UIKit
 import SDWebImage
+import UIKit
 
 final class DiscoverCollectionViewCell: UICollectionViewCell {
-    @IBOutlet private weak var posterImageView: UIImageView!
+    @IBOutlet private var posterImageView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -18,9 +18,9 @@ final class DiscoverCollectionViewCell: UICollectionViewCell {
 
     func configure(with model: MediaDetails) {
         if let posterPath = model.posterPath {
-            self.posterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
+            posterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath))
         } else {
-            self.posterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
+            posterImageView.image = UIImage(systemName: Constants.UI.emptyPosterImage)
         }
     }
 }

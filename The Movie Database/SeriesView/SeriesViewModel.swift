@@ -17,13 +17,12 @@ protocol SeriesViewModeling {
 }
 
 final class SeriesViewModel: SeriesViewModeling {
-
     // MARK: - Properties
 
     var popularSeries: [MediaDetails] = []
     var latestSeries: [MediaDetails] = []
     var topRatedSeries: [MediaDetails] = []
-    var onDataUpdated = { }
+    var onDataUpdated = {}
 
     // MARK: - Model data update and completions
 

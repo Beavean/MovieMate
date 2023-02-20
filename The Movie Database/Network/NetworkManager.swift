@@ -5,15 +5,15 @@
 //  Created by Beavean on 02.08.2022.
 //
 
-import Foundation
 import Alamofire
+import Foundation
 
 typealias BasicMediaCompletion = ([MediaDetails]) -> Void
 
 struct NetworkManager {
     static let shared = NetworkManager()
 
-    private init() { }
+    private init() {}
 
     private func makeRequest<T: Codable>(apiQuery: String, enteredQuery: String = "", model: T.Type, completion: @escaping (T) -> Void) {
         let baseUrl = Constants.Network.baseUrl

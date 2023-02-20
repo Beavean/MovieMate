@@ -14,9 +14,8 @@ protocol DiscoverViewModeling {
 }
 
 class DiscoverViewModel: DiscoverViewModeling {
-
     var nowPlayingMedia: [MediaSearch.Results] = []
-    var onDataUpdated = { }
+    var onDataUpdated = {}
 
     func updateData() {
         receiveNowPlayingMedia { [weak self] in
