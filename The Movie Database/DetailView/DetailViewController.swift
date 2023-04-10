@@ -31,7 +31,6 @@ final class DetailViewController: UIViewController {
 
     var mediaID: Int?
     var mediaType: String?
-    private var mediaVideoKey: String?
     private var viewModel: DetailViewModeling = DetailViewModel()
     private var receivedDetails: MediaDetails?
 
@@ -90,7 +89,6 @@ final class DetailViewController: UIViewController {
         viewModel.mediaID = mediaID
         viewModel.onDataUpdated = { [weak self] in
             self?.receivedDetails = self?.viewModel.mediaDetails
-            self?.mediaVideoKey = self?.viewModel.mediaVideoKey
             self?.configureWithMediaDetails(model: self?.viewModel.mediaDetails)
             self?.loadVideoPlayer(videoKey: self?.viewModel.mediaVideoKey)
             self?.showLoader(false)

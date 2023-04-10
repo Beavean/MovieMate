@@ -1,5 +1,5 @@
 excluded:
-  - Pods/
+  - Pods
 line_length: 200
 cyclomatic_complexity: 40
 function_body_length: 70

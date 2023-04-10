@@ -314,8 +314,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 08986CEE287C46C100D9FBDA /* Build configuration list for PBXNativeTarget "The Movie Database" */;
 			buildPhases = (
-				B114D3FAD4B04723C1085DAF /* [CP] Check Pods Manifest.lock */,
 				087A468829226C5B00B5838A /* Swiftlint */,
+				B114D3FAD4B04723C1085DAF /* [CP] Check Pods Manifest.lock */,
 				08986CD6287C46C000D9FBDA /* Sources */,
 				08986CD8287C46C000D9FBDA /* Resources */,
 				3299B3626D03371352465D84 /* [CP] Embed Pods Frameworks */,

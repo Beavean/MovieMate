@@ -22,7 +22,6 @@ final class SearchViewController: UIViewController {
 
     var mediaType = Constants.Network.movieType
     private var lastScheduledSearch: Timer?
-    private var enteredQuery: String?
     private var viewModel: SearchViewModeling = SearchViewModel()
 
     // MARK: - SearchViewController lifecycle
@@ -127,7 +126,6 @@ extension SearchViewController: UITableViewDataSource {
                 self?.navigationController?.pushViewController(viewController, animated: true)
             }
         }
-        cell.mediaType = mediaType
         cell.receivedMedia = item
         cell.selectionStyle = .none
         return cell

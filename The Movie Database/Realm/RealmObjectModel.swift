@@ -26,11 +26,6 @@ final class RealmObjectModel: Object {
     @Persisted var mediaType: String?
     @Persisted var dateSaved: Date?
 
-    convenience init(id: Int) {
-        self.init()
-        self.id = id
-    }
-
     override class func primaryKey() -> String? {
         "id"
     }

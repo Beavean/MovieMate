@@ -25,7 +25,6 @@ final class MediaTableViewCell: UITableViewCell {
 
     // MARK: - Properties
 
-    var mediaType: String?
     var saveButtonCompletion: ((UITableViewCell) -> Void)?
     var videoButtonCompletion: (() -> Void) = {}
     var receivedMedia: MediaDetails? {
@@ -35,8 +34,6 @@ final class MediaTableViewCell: UITableViewCell {
     var savedMedia: RealmObjectModel? {
         didSet { configureWithSavedMedia() }
     }
-
-    private var mediaID: Int?
 
     // MARK: - TableViewCell lifecycle
 
@@ -92,7 +89,6 @@ final class MediaTableViewCell: UITableViewCell {
     func configureWithSavedMedia() {
         guard let object = savedMedia else { return }
         saveButton.changeImageIfSaved(condition: RealmObjectManager.shared.checkIfAlreadySaved(id: object.id))
-        mediaType = object.mediaType
         if let posterPath = object.posterPath {
             mediaPosterImageView.sd_setImage(with: URL(string: Constants.Network.baseImageUrl + posterPath), placeholderImage: UIImage(systemName: Constants.UI.emptyPosterImage))
         } else {
