@@ -29,7 +29,7 @@ Pods:
 - JGProgressHUD 
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/105853157/234714844-0203c951-8a66-4b4f-84b1-be7a244fa510.gif" alt="Simulator Screen Recording - iPad">
-  <img src="https://user-images.githubusercontent.com/105853157/234713101-46a58685-2fbf-4dbb-b8ef-d3dd4fda983f.gif" alt="Simulator Screen Recording - iPhone 14 2">
-  <img src="https://user-images.githubusercontent.com/105853157/234716028-2eb1dbc2-a83d-4aed-b7a2-69860706749c.gif" alt="Simulator Screen Recording - iPad landscape">
+  <img src="https://user-images.githubusercontent.com/105853157/234714844-0203c951-8a66-4b4f-84b1-be7a244fa510.gif" alt="Simulator Screen Recording - iPad mini (6th generation) ">
+  <img src="https://user-images.githubusercontent.com/105853157/234713101-46a58685-2fbf-4dbb-b8ef-d3dd4fda983f.gif" alt="Simulator Screen Recording - iPhone 14">
+  <img src="https://user-images.githubusercontent.com/105853157/234717406-3f45fa33-2abe-4b4f-ad1b-e010bebd2ebf.gif" alt="Simulator Screen Recording - iPad mini (6th generation) - landscape">
 </p>
