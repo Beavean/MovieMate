@@ -1,6 +1,6 @@
 # MovieMate
-This movie and series search ap allows:
-- Check latest/trending/popular movies and series
+This movie and series search app allows:
+- Check the latest/trending/popular movies and series
 - Search for movies or series
 - Get ratings, genres, dates and descriptions for movies and series
 - Watch trailers and teasers
